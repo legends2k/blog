@@ -2,7 +2,7 @@
 tags = ["lua", "luarocks", "zerobrane"]
 date = "2016-09-23T17:00:46+05:30"
 description = "with Lua Rocks and ZeroBrane Studio"
-title = "Setup Lua on Windows"
+title = "Lua Setup on Windows"
 
 +++
 

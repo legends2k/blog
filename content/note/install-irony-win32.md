@@ -2,7 +2,7 @@
 tags = ["tech","emacs","c++","intellisense"]
 date = "2017-01-24T17:33:27+05:30"
 description = "Using Irony, Clang & Co"
-title = "Windows Emacs C++ auto complete"
+title = "Emacs C++ auto-complete setup on Windows"
 
 +++
 
