@@ -16,7 +16,7 @@ I am a patron of [Better Explained][] --- where Kalid Azad explains technical co
 
 > Every master was once a beginner.
 
-Remembering this fact, building intuition should be the prime effort of teachers; for once the learner is hooked, they would naturally delve into the details -- rigour -- of the subject.  I belong to the camp that says sacrifing rigour for intuition is OK.  My intention is to not just write.  I believe mere words are not enough to get the idea through; images and interactive content are essential.
+Remembering this fact, building intuition should be the prime effort of teachers; for once the learner is hooked, delving into the details -- rigour -- of the subject would naturally follow.  So I belong to the camp that says sacrifing rigour for intuition is OK.  My intention is to not just write.  I believe mere words are not enough to get the idea through; images and interactive content are essential.
 
 [Better Explained]: http://betterexplained.com/
 
