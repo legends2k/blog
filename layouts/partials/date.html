@@ -1,0 +1,7 @@
+{{ if ne .Date .Lastmod }}
+    <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="date">Updated {{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) .Lastmod }}</time>
+{{ else if ne ($.PublishDate.Format "2006-01-02") "0001-01-01" }}
+    Published {{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) .PublishDate }}</time>
+{{ else }}
+    <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">Published {{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) .Date }}</time>
+{{ end }}

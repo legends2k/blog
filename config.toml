@@ -1,0 +1,52 @@
+# use / to create a website server locally
+baseurl = "https://legends2k.github.io/"
+languageCode = "en-uk"
+title = "CGrok"
+theme = "ghostwriter"
+copyright = "Sundaram Ramaswamy"
+footnoteReturnLinkContents = "↩"
+googleAnalytics = ""
+disqusShortname = "legends2k"
+
+[Author]
+    name = "Sundaram Ramaswamy"
+    profile = "https://legends2k.github.io/"
+
+[Taxonomies]
+    tag = "tags"
+
+[Params]
+    intro = true
+    headline = "Bits of Insight"
+    description = "Building intuition by substantiating"
+    email = "legends2k@yahoo.com"
+    github = "https://github.com/legends2k"
+    linkedin = "https://in.linkedin.com/pub/sundaram-ramaswamy/24/b20/1a0"
+    bitbucket = "https://bitbucket.org/rmsundaram"
+    stackoverflow = "https://stackoverflow.com/users/183120/legends2k"
+    flickr = "https://flickr.com/photos/legends2k"
+    opengraph = true
+    shareTwitter = true
+    shareFacebook = true
+    shareGooglePlus = true
+    shareLinkedIn = true
+
+[[menu.main]]
+    name = "Articles"
+    url = "/post/"
+    weight = 1
+
+[[menu.main]]
+    name = "Notes"
+    url = "/note/"
+    weight = 2
+
+[[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 3
+
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4

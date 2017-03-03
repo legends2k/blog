@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html{{ if .Site.Params.opengraph }} prefix="og: http://ogp.me/ns#"{{ end }}>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{ .Title }} &middot; {{ .Site.Author.name }}</title>
+        <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        {{ .Hugo.Generator }}
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Favicon -->
+        <link rel="icon" href="/images/pencil-square-o.svg" sizes="any" type="image/svg+xml">
+        {{ if .Site.Params.opengraph }}{{ partial "opengraph.html" . }}{{ end }}
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}dist/styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- include MathJax if requested in frontmatter -->
+        {{ if .Params.MathJax }}
+            <!-- TeX-AMS-MML_SVG is another option but this one is lighter -->
+            <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+             MathJax.Hub.Config({
+                 tex2jax: {
+                     inlineMath: [['$','$'], ['\\(','\\)']],
+                     displayMath: [['$$','$$'], ['\\[','\\]']],
+                     processEscapes: true,
+                     processEnvironments: true,
+                     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                     TeX: { equationNumbers: { autoNumber: "AMS" },
+                            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+                 }
+             });
+            </script>
+        {{ end }}
+        {{ if .RSSLink }}
+            <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml">
+        {{ end }}
+    </head>
+    <body>
+        {{ template "_internal/google_analytics.html" . }}
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        {{ with .Site.Params.logo }}
+                            <a class="site-logo" title="{{ .Title }}" href="{{ .Site.BaseURL }}">
+                                <img src="{{ . }}" alt="{{ .Title }}" />
+                            </a>
+                        <!-- instead of using the site name use Home icon from Font Awesome -->
+                        {{ else }}
+                            <a class="button-square button-social hint--top" data-hint="Home" title="Home" href="{{ .Site.BaseURL }}">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        {{ end }}
+                        <a class="button-square" href="{{ .Site.BaseURL }}index.xml"><i class="fa fa-rss"></i></a>
+                        {{ with .Site.Params.twitter }}
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="{{ . }}">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.gitlab }}
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="{{ . }}">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.github }}
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="{{ . }}">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        {{ end }}
+                        <!-- add Bitbucket icon to the mix -->
+                        {{ with .Site.Params.bitbucket }}
+                            <a class="button-square button-social hint--top" data-hint="Bitbucket" title="Bitbucket" href="{{ . }}">
+                                <i class="fa fa-bitbucket"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.stackoverflow }}
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="{{ . }}">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.linkedin }}
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="{{ . }}">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.gplus }}
+                        <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="{{ . }}">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.flickr }}
+                            <a class="button-square button-social hint--top" data-hint="Flickr" title="Flickr" href="{{ . }}">
+                                <i class="fa fa-flickr"></i>
+                            </a>
+                        {{ end }}
+                        {{ with .Site.Params.email }}
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:{{ . }}">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        {{ end }}
+                    </div>
+
+                    <ul class="site-nav">
+                        {{ partial "navigation.html" . }}
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
