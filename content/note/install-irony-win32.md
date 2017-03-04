@@ -76,17 +76,17 @@ This snippet was lifted from the project's homepage.  Make sure you do the Windo
         * The Win32 variant [doesn't support C++11 concurrency][mingw_win32_threads].
     + I prefer Dwarf for exception handling
     + I used CMake 3.6.2 and MinGW 6.3.0
-2. Install LLVM from a [pre-built binary package][llvm_binaries]
-    + It should match the bitness of the MinGW toolchain installed
+2. Install LLVM from a [pre-built binary package][llvm_download]
+    + It should match the *bit-ness* of the MinGW toolchain installed
     + Verify that the installed directory has `/bin/libclang.dll` or `/bin/clang.dll`
     + The LLVM binaries (specifically `clang.dll`) should have been built with MinGW
         * The ones built with MSVC didn't seem to work for me
-    + I chose [`LLVM-3.9.1-win32.exe`][setup_download]
+    + I chose [`LLVM-3.9.1-win32.exe`][llvm391]
 
 [mingw64_not_dual]: http://stackoverflow.com/questions/16304804/dual-target-mingw-w64-isnt-really-dual-target
 [mingw_win32_threads]: http://stackoverflow.com/q/13741711/183120
-[llvm_binaries]: http://releases.llvm.org/download.html
-[setup_download]: http://releases.llvm.org/3.9.1/LLVM-3.9.1-win32.exe
+[llvm_download]: http://releases.llvm.org/download.html
+[llvm391]: http://releases.llvm.org/3.9.1/LLVM-3.9.1-win32.exe
 
 # Irony Server
 
@@ -112,7 +112,7 @@ While you type out code in a buffer with `c++-mode` enabled, `irony-mode` will g
 12. Put this file in the project root or your home directory
 13. Restart Emacs
 14. A buffer with `c++-mode`, `irony-mode` and `company-mode` should display suggestions
-    + Save it to a persistant file if it's not backed by one
+    + Save it to a persistent file if it's not backed by one
 
 **Sample `.clang_complete`**
 
@@ -157,7 +157,7 @@ where `flycheck-irony-setup` is a function you get with the `flycheck-irony` pac
   (flycheck-pos-tip-mode))
 {{< /highlight >}}
 
-Flycheck shows the errors in a separate buffer which keeps getting update as you type.  But you can see the error in a particular statement without having to open this buffer with `flycheck-pos-tip-mode`.  It will show error tooltips as the cusror is moved to an errorenous token.
+Flycheck shows the errors in a separate buffer which keeps getting update as you type.  But you can see the error in a particular statement without having to open this buffer with `flycheck-pos-tip-mode`.  It will show error tooltips as the cursor is moved to an erroneous token.
 
 # Advantages
 

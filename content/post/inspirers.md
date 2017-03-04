@@ -8,7 +8,7 @@ title = "My Inspirers"
 I have been inspired by many unknown authors all over the internet and otherwise, but a few lingered on my mind long enough to be listed here.  Not all of them are authors, but they inspired me with some creative work of theirs.
 
 ## Kalki R. Krishnamurthy
-[A *great* writer][Kalki], and freedom fighter, who effortlessly balanced content against gripping narration.  He pioneered in writing under a unique genre --- Historical fiction --- by mixing imagination with facts in the right amount and proved that it can be done with [great success][Ponniyin Selvan].  He's the only author I have seen to give evidences in a fictinal work.  Though *[Tamil][]* is my mother tounge, I am sure I am unbiased here.
+[A *great* writer][Kalki], and freedom fighter, who effortlessly balanced content against gripping narration.  He pioneered in writing under a unique genre --- Historical fiction --- by mixing imagination with facts in the right amount and proved that it can be done with [great success][Ponniyin Selvan].  He's the only author I have seen to give evidences in a fictional work.  Though *[Tamil][]* is my mother tongue, I am sure I am unbiased here.
 
 [Kalki]:https://en.wikipedia.org/wiki/Kalki_Krishnamurthy
 [Ponniyin Selvan]: https://en.wikipedia.org/wiki/Ponniyin_Selvan
@@ -55,13 +55,13 @@ The founder of [BetterExplained.com][Better Explained].  If you haven't been to 
 [Why Do We Learn Math?]: https://betterexplained.com/articles/why-do-we-learn-math/
 
 ## Scott H. Young
-This man successfully completed MIT’s 4-year undergraduate computer science curriculum in 12 months, *without taking any classes*.  He also devised the [Feynman technique][] you may use to learn any topic in any domain.  He has wrtten many great articles of which [one stands out][hello, world] as an inspiration.
+This man successfully completed MIT’s 4-year undergraduate computer science curriculum in 12 months, *without taking any classes*.  He also devised the [Feynman technique][] you may use to learn any topic in any domain.  He has written many great articles of which [one stands out][hello, world] as an inspiration.
 
 [Feynman technique]: https://www.scotthyoung.com/learnonsteroids/grab/TranscriptFeynman.pdf
 [hello, world]: /post/hello_world#writing-a-powerful-tool
 
 ## Richard Feynman
-He needs no introduction.  [His essays on Physics][Feynman essays] are the go-to literature if you are an amatuer physist.
+He needs no introduction.  [His essays on Physics][Feynman essays] are the go-to literature if you are an amateur physicist.
 
 [Feynman essays]: http://www.feynmanlectures.info/
 
@@ -82,4 +82,4 @@ I was dumb struck when I watched [his Ted talk][Daniel Kahneman] that explains t
 [Daniel Kahneman]: https://www.ted.com/talks/daniel_kahneman_the_riddle_of_experience_vs_memory
 
 ## And more
-People like *Salman Khan*, the educator, and neumerous other open source developers like *Richard M Stallman*,  *Linus Torvalds*, who open up their work for the betterment of humanity and respect freedom are my inspirations too.
+People like *Salman Khan*, the educator, *Amit Patel*, whose blog is a treasure trove of interactive articles for a game developer, and numerous other open source developers like *Richard M Stallman*,  *Linus Torvalds*, who open up their work for the betterment of humanity and respect freedom are my inspirations too.

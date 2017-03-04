@@ -16,7 +16,7 @@ I did quite a few things to get this blog up and running the way you see it now.
 * Create a dummy site using Hugo's documentation; quite simple.
 * Install the _[Ghostwriter][]_ theme inside the `themes` directory.
 
-Hugo recommends that customizations be done outside the theme's directory tree to clearly differtiate customizations.  I followed it.
+Hugo recommends that customizations be done outside the theme's directory tree to clearly differentiate customizations.  I followed it.
 
 [Ghostwriter]: http://themes.gohugo.io/theme/ghostwriter/
 
@@ -31,7 +31,7 @@ Also, prefer using the Hugo _[shortcode][]_ `{{ <highlight> }}` instead of <code
 [shortcode]: https://gohugo.io/extras/shortcodes/
 
 ## 2. Nice Font
-I really like the font used in *[The Book of Shaders][]* and saw that the font name is **Baskerville**.  Remebered that for custom web fonts, _reveal.js_ used to do this using [Google Fonts][]; luckily it had _Libre Baskerville_, an open version of the face.  Thankfully the site also gives the code to use it and everything started looking great!  Beautiful fonts everywhere! 😁
+I really like the font used in *[The Book of Shaders][]* and saw that the font name is **Baskerville**.  Remembered that for custom web fonts, _reveal.js_ used to do this using [Google Fonts][]; luckily it had _Libre Baskerville_, an open version of the face.  Thankfully the site also gives the code to use it and everything started looking great!  Beautiful fonts everywhere! 😁
 
 [The Book of Shaders]: https://thebookofshaders.com/
 [Google Fonts]: http://fonts.google.com
@@ -48,7 +48,7 @@ $$
 \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}
 $$
 
-_MathJax_ is the go-to solution in browsers.  The _display math_ (MathJax lingo) works with no quirks; inline math doesn't work properly by default; I'd to [stuff][hugo_markdown_quirk] to get it working.  I added a custom parameter in the markdown's frontmatter, which is later used in a partial HTML document to include the [necessary script][hugo_markdown] tag for markdown.  MathJax may work-up `<code>` tags, and the workaround for this is shown in the documentation.  The `TeX-AMS-MML_HTMLorMML` configuration is used, but this should be tested out in all browsers since I remember this getting rendered appallingly in Firefox for the [_2D Transforms 101_][transforms_101] presentation; I'd to resort to `TeX-AMS-MML_SVG` in its case.
+_MathJax_ is the go-to solution in browsers.  The _display math_ (MathJax lingo) works with no quirks; inline math doesn't work properly by default; I'd to [stuff][hugo_markdown_quirk] to get it working.  I added a custom parameter in the markdown's front matter, which is later used in a partial HTML document to include the [necessary script][hugo_markdown] tag for markdown.  MathJax may work-up `<code>` tags, and the workaround for this is shown in the documentation.  The `TeX-AMS-MML_HTMLorMML` configuration is used, but this should be tested out in all browsers since I remember this getting rendered appallingly in Firefox for the [_2D Transforms 101_][transforms_101] presentation; I'd to resort to `TeX-AMS-MML_SVG` in its case.
 
 [hugo_markdown_quirk]: http://github.com/spf13/hugo/issues/1666#issuecomment-225316394
 [hugo_markdown]: http://gohugo.io/tutorials/mathjax/
