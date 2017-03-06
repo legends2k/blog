@@ -1,20 +1,22 @@
 {{ partial "header.html" . }}
 
-<div id="post-index" class="container">
-    {{ partial "page-header.html" . }}
+<div id="post-index" class="container" itemscope="" itemtype="https://schema.org/Blog">
+    <article class="post-container">
+        {{ partial "page-header.html" . }}
 
-    {{ partial "page-content.html" . }}
+        {{ partial "page-content.html" . }}
 
-    <ol class="post-list">
-        {{ $pag := .Paginate .Data.Pages }}
-        {{ range $pag.Pages }}
-            {{ partial "post-stub.html" . }}
-        {{ end }}
-    </ol>
+        <ol class="post-list">
+            {{ $pag := .Paginate .Data.Pages }}
+            {{ range $pag.Pages }}
+                {{ partial "post-stub.html" . }}
+            {{ end }}
+        </ol>
 
-    <div class="post-navigation">
-        {{ partial "pagination.html" . }}
-    </div>
+        <div class="post-navigation">
+            {{ partial "pagination.html" . }}
+        </div>
+    </article>
 </div>
 
 {{ partial "footer.html" . }}

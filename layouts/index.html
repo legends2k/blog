@@ -1,18 +1,20 @@
 {{ partial "header.html" . }}
 
 <div id="post-index" class="container" itemscope="" itemtype="https://schema.org/Blog">
-    {{ if .Site.Params.intro }}
-        <header class="post-header">
-            <h1 class="post-title" itemprop="name">{{ .Site.Params.headline }}</h1>
-            <p>{{ .Site.Params.description }}</p>
-        </header>
-    {{ end }}
+    <article class="post-container">
+        {{ if .Site.Params.intro }}
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name">{{ .Site.Params.headline }}</h1>
+                <p>{{ .Site.Params.description }}</p>
+            </header>
+        {{ end }}
 
-    {{ partial "page-content.html" . }}
+        {{ partial "post-content.html" . }}
 
-    <div class="post-navigation">
-        {{ partial "pagination.html" . }}
-    </div>
+        <div class="post-navigation">
+            {{ partial "pagination.html" . }}
+        </div>
+    </article>
 </div>
 
 {{ partial "footer.html" . }}
