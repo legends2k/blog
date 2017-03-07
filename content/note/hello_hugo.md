@@ -7,9 +7,9 @@ mathjax = true
 
 +++
 
-There are many [static site generators][SSG] these days; more than 175 as of now.  Apart from the prime selling point of content creation from the comfort of your favourite text editor in [Markdown][], most have a wide gamut of themes to choose from.  You are free to [remix the theme to your taste][site_customizations] however you see fit.  Want to change the line spacing and paragraph alignment?  Sure thing!  Don't like anything?  Ditch them all and whip something new.  Share it with others, perhaps?  You do not have to be a web programmer or designer to customize themes.  I am a C++ programmer but I did not have trouble picking up CSS3; just a few days of tussling did the trick.  
+Many [static site generators][SSG] are coming up these days; 175 and still counting.  Apart from the prime selling point of content creation from the comfort of your favourite text editor in [Markdown][], most have a wide gamut of themes to choose from.  You are free to [remix the theme to your taste][site_customizations] however you see fit.  Want to change the line spacing and paragraph alignment?  Sure thing!  Don't like anything?  Ditch them all and whip up something new.  Share it with others, perhaps?  You do not have to be a web programmer or designer to customize themes; I am a C++ programmer but I had no trouble picking up CSS3; just a few days of tussling did the trick.
 
-You get these advantages in most SSG's but Hugo has one more: it has *no* dependencies from an end-user viewpoint; download and extract it on any machine, and get down to stuff that matters --- content.  I think it gets this by virtue of being authored in [Go][].
+You get these advantages in most SSG's but [Hugo][] has one more: it has *no* dependencies from an end-user viewpoint; download and extract it on any machine, and get down to stuff that matters --- content.  I think it gets this by virtue of being authored in [Go][].
 
 This is a test page I tried to check out Hugo; to verify its fitness as a technical blog generator that supports the following sorely-needed scenarios for this web log.
 

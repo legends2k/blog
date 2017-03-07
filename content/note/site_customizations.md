@@ -11,13 +11,14 @@ I did quite a few things to get this blog up and running the way you see it now.
 
 # Steps I Still Remember
 
-* Install Hugo.
-    + This is fairly simple and painless.
-* Create a dummy site using Hugo's documentation; quite simple.
-* Install the _[Ghostwriter][]_ theme inside the `themes` directory.
+1. Install [Hugo][]; just extract and put in `PATH` --- can't be simpler.
+2. Create a dummy site using [the Quickstart guide][Quickstart]; straight forward.
+3. Install _[Ghostwriter][]_ inside the `themes` directory.
 
 Hugo recommends that customizations be done outside the theme's directory tree to clearly differentiate customizations.  I followed it.
 
+[Hugo]: https://gohugo.io
+[Quickstart]: http://gohugo.io/overview/quickstart/
 [Ghostwriter]: http://themes.gohugo.io/theme/ghostwriter/
 
 ## 1. Syntax Highlighting
@@ -31,7 +32,7 @@ Also, prefer using the Hugo _[shortcode][]_ `{{ <highlight> }}` instead of <code
 [shortcode]: https://gohugo.io/extras/shortcodes/
 
 ## 2. Nice Font
-I really like the font used in *[The Book of Shaders][]* and saw that the font name is **Baskerville**.  Remembered that for custom web fonts, _reveal.js_ used to do this using [Google Fonts][]; luckily it had _Libre Baskerville_, an open version of the face.  Thankfully the site also gives the code to use it and everything started looking great!  Beautiful fonts everywhere! 😁
+I really like the font used in *[The Book of Shaders][]* and saw that the font name is **Baskerville**.  I recalled that for custom web fonts, _reveal.js_ used to do this using [Google Fonts][]; luckily it had _Libre Baskerville_, an open version of the face.  Thankfully the site also gives the code to use it and everything started looking great!  Beautiful fonts everywhere! 😁
 
 [The Book of Shaders]: https://thebookofshaders.com/
 [Google Fonts]: http://fonts.google.com
@@ -58,4 +59,4 @@ _MathJax_ is the go-to solution in browsers.  The _display math_ (MathJax lingo)
 Things like footnote return link text can be configured directly in the site's `config.toml`.  More such options are explained in the configuration page of Hugo's excellent documentation.  When a fraction like is typed out ordinarily as `355/113`, it still shows up like 355/113, which is nice; it does it just with `<sup>` and `<sub>` tags, no CSS or MathJax.  This is due to _Blackfriday_, the underlying markdown rendering engine.
 
 ## 6. Test and Deploy
-Running Hugo with `hugo server` serves the content on-the-fly at `localhost:1313` which can be configured.  When the testing is done and all is well, the final run would be just `hugo` without any parameters, which would generate the content for the entire content inside the `public` directory which needs to be uploaded.
+Running Hugo with `hugo server` serves the content on-the-fly at `localhost:1313`; port can be changed.  When the testing is done and all is well, the final run would be just `hugo` without any parameters; this generates the entire site tree inside the `public` directory which needs to be hosted.

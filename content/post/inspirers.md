@@ -5,7 +5,7 @@ title = "My Inspirers"
 
 +++
 
-I have been inspired by many unknown authors all over the internet and otherwise, but a few lingered on my mind long enough to be listed here.  Not all of them are authors, but they inspired me with some creative work of theirs.
+I have been inspired by many unknown personalities all over the internet and otherwise, but a few linger on my mind consistently to be listed here.  Not all of them are authors but they work inspired me in some way.
 
 ## Kalki R. Krishnamurthy
 [A *great* writer][Kalki], and freedom fighter, who effortlessly balanced content against gripping narration.  He pioneered in writing under a unique genre --- Historical fiction --- by mixing imagination with facts in the right amount and proved that it can be done with [great success][Ponniyin Selvan].  He's the only author I have seen to give evidences in a fictional work.  Though *[Tamil][]* is my mother tongue, I am sure I am unbiased here.
@@ -15,7 +15,7 @@ I have been inspired by many unknown authors all over the internet and otherwise
 [Tamil]: https://en.wikipedia.org/wiki/Tamil_language
 
 ## Joel Spolsky
-Witty, provoking and insightful writer of technical topics.  I like many of his articles, but these are worth mentioning.
+Witty, provoking and insightful writer of technical topics.  I like many of his articles, but these come up readily:
 
 + [Can your programming language do this?][]
 + [Perils of Java Schools][]
@@ -37,7 +37,7 @@ Hacker, writer who defined the defining characteristics of a hacker.  If you are
 [How To Become A Hacker]: http://www.catb.org/esr/faqs/hacker-howto.html
 
 ## Dennis M. Ritchie
-He's creator of the *C* programming language, co-author of *The C Programming Language* and the poster child for the *[Unix Philosophy][]*.  His writings are, to me, the canonical example of clear, concise technical content.  If you haven't read [The Evolution of the Unix Time-sharing system][], do so to see how pipes came into computers and why coroutines are cool.
+He's creator of the *C* programming language, co-author of *The C Programming Language* and the poster child for the *[Unix Philosophy][]*; it shows in his language design.  His writings are, to me, the canonical example of clear, concise technical content.  If you haven't read [The Evolution of the Unix Time-sharing system][], do so to see how pipes came into computers and why coroutines are cool.
 
 [Unix Philosophy]: https://en.wikipedia.org/wiki/Unix_philosophy
 [The Evolution of the Unix Time-sharing system]: https://www.bell-labs.com/usr/dmr/www/hist.html
@@ -55,24 +55,24 @@ The founder of [BetterExplained.com][Better Explained].  If you haven't been to 
 [Why Do We Learn Math?]: https://betterexplained.com/articles/why-do-we-learn-math/
 
 ## Scott H. Young
-This man successfully completed MIT’s 4-year undergraduate computer science curriculum in 12 months, *without taking any classes*.  He also devised the [Feynman technique][] you may use to learn any topic in any domain.  He has written many great articles of which [one stands out][hello, world] as an inspiration.
+This man successfully completed MIT’s 4-year undergraduate computer science curriculum in 12 months, *without taking any classes*.  He also propagandised the [Feynman technique][] you may use to learn any topic in any domain.  He has written many great articles of which [one stands out][hello, world] as an inspiration.
 
 [Feynman technique]: https://www.scotthyoung.com/learnonsteroids/grab/TranscriptFeynman.pdf
 [hello, world]: /post/hello_world#writing-a-powerful-tool
 
 ## Richard Feynman
-He needs no introduction.  [His essays on Physics][Feynman essays] are the go-to literature if you are an amateur physicist.
+He needs no introduction.  [His essays on Physics][Feynman essays] are the go-to literature if you are an amateur physicist.  He devised the Feynman technique for learners venturing into new fields.
 
 [Feynman essays]: http://www.feynmanlectures.info/
 
 ## Carl Sagan
-An astronomer who was behind the SETI project.  I like him more for *[Cosmos][]*.  I always fall for his *[Pale Blue Dot][]*; makes me realise how insignificant humans are in the grand scheme of things and reminds me to make good use of the limited time I have.
+An astronomer behind the SETI project.  I like him more for *[Cosmos][]*; I could really appriciate the cause he was calmly fighting for in it; it's relevent even now that there're re-makes of it.  I always fall for his *[Pale Blue Dot][]*; makes me realise how insignificant humans are in the grand scheme of things and reminds me to make good use of the limited time I have.
 
 [Cosmos]: https://en.wikipedia.org/wiki/Cosmos:_A_Personal_Voyage
 [Pale Blue Dot]: https://en.wikipedia.org/wiki/Pale_Blue_Dot
 
 ## Jerry Seinfeld
-Big fan of his comedies, but as a creator, he freely shares his secret recipe: *[The Seinfeld Technique][]*.
+Big fan of his comedies, but as a creator, he freely shares his secret recipe: *[The Seinfeld Technique][]*.  I have benefited from this technique more than once to develop better habits.
 
 [The Seinfeld Technique]: http://lifehacker.com/281626/jerry-seinfelds-productivity-secret
 
