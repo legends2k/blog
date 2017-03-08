@@ -25,7 +25,7 @@ Hugo recommends that customizations be done outside the theme's directory tree t
 
 This theme uses *[highlight.js][]* for syntax highlighting while I like *[Pygments][]* since the latter means no processing at the client's end; everything needed is preprocessed and only the final rendering is done at the reader's end.  Even after switching to Pygments, it didn't work as expected with this theme's stylesheet.  Debugged the site with Firefox and made a copula hacks to get it working; see `/static/dist/style.css` for the hacks with comments.  For Pygments, make sure `Python` and Pygments (a `pip` install) are installed and is reachable from the command-line.
 
-Also, prefer using the Hugo _[shortcode][]_ `{{ <highlight> }}` instead of <code>```</code> since it can additionally highlight specific line(s).  Also the highlighting theme is *Monokai* as opposed to the default one that comes with Ghostwriter.
+Also, prefer using the Hugo _[shortcode][]_ `{{ <highlight> }}` instead of <code>```</code> since it can additionally highlight specific line(s).  The default of Pygments is *Monokai* as opposed to the dull, light background theme that comes with Ghostwriter.
 
 [highlight.js]: https://highlightjs.org/
 [Pygments]: http://pygments.org/

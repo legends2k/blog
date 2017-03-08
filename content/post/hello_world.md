@@ -28,7 +28,7 @@ My intention is to not just write.  I believe mere words aren't enough to get th
 
 > An incredibly powerful technique for solving problems is by simply writing it down. It seems rather simple, but it can often allow you to solve problems you previously thought were impossible.
 
-It left a strong impression on me.  I've done this unconscionably many times but when he put it out there like that, it solidified in my mind.  I realised how powerful a tool writing is.  Another reason why writing things down is a good thing: it helps others and oneself become conscious of habits and traits ingrained in us.
+It left a strong impression on me.  I've done this unconscionably many times but when he put it out there like that, it solidified in my mind.  I realised how powerful a tool writing is.  Another reason why writing things down is a good thing: it helps others and oneself become conscious of habits and traits ingrained within.
 
 [Scott Young]: /post/inspirers#scott-h-young
 [Scott Young's article]: https://www.scotthyoung.com/blog/2006/02/24/writing-to-solve-personal-problems/
@@ -45,7 +45,7 @@ However, I find it selfish to leave the bread crumbs in comments.  How many peop
 # Open standards and good tools
 A learner should be able to visualise and play with ideas in a tangible way to connect the dots; interesting enough to arouse interest in a subject.  A very good example of this is [Explorable Explanations][].  Content can leverage modern tools to paint a clearer picture and attract beginners too.  These days we see programming books with embedded interpreters for readers to try out the exercise within the comfort of their browsers; physics explanations with playable demos where readers can change parameters to observe corresponding change in a phenomenon.
 
-Such tools are made possible by open technologies like HTML5, JavaScript and SVG, supported by all major browsers.  Atop these, writing a blog is made trivial with many *static site generators*, like [Hugo][], which lets one create rich material without leaving your [favourite text editor][Emacs], for free.  They also do not restrict you to just words like popular blogging platforms; you are free to embed content as rich as games, math equations and vector graphics to express yourself in your own style.  When the idea of starting this site occurred to me, I wrote [a demo page][hugo test] exploring this possibility.
+Such tools are made possible by open technologies like HTML5, JavaScript and SVG, supported by all major browsers.  Atop these, writing a blog is made trivial with many *static site generators*, like [Hugo][], which lets you create rich material without leaving your [favourite text editor][Emacs], for free.  They also do not restrict you to just words like popular blogging platforms; you are free to embed content as rich as games, math equations and vector graphics to express yourself in your own style.  When the idea of starting this site occurred to me, I wrote [a demo page][hugo test] exploring this possibility.
 
 [SO_book_recommendation]: http://stackoverflow.com/q/25094299/#comment39048388_25094363
 [Explorable Explanations]: http://explorableexplanations.com/
@@ -54,8 +54,8 @@ Such tools are made possible by open technologies like HTML5, JavaScript and SVG
 [hugo test]: /note/hello_hugo
 
 # No such thing as a stupid question
-There is a very high probability of errors creeping into the content.  *If a reader is unable to understand something, I'm convinced that it's my ineptitude as a mentor and not the learner's*.  I would really appreciate you pointing out such errors.
+There is a very high probability of errors creeping into the content; worse it might be downright wrong.  *If a reader is unable to understand something, I'm convinced that it's my ineptitude as a explainer and not the reader's*.  It simply establishes the fact that I'm primarily a learner and I'm experimenting with my authoring skills.  In case you notice mistakes, I would really appreciate you pointing it out.
 
-I am also motivated by [many][inspirors], but that is for a different post.
+I am also motivated by [many][inspirors] but that is for a different post.
 
 [inspirors]: /post/inspirers
