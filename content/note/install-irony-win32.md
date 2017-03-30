@@ -161,7 +161,7 @@ Flycheck shows the errors in a separate buffer which keeps getting update as you
 
 # Advantages
 
-Without having a bloated IDE, you get to have both auto-complete (a.k.a. intellisense) and on-the-fly syntax checking.  They are valuable tools when writing code in a project with large code bases, taking lot of time to build.  Also, most IDEs require you to create a project for some single-file, toy, sample code you want to scribble; in out setup you just need to create a new buffer backed by a file on disk i.e. the usual drill for any new file.  Make sure you have the right `.clang_complete` saved in your _Home_ directory (where you have your code lab of dirty files) with the required `include` paths and compiler flags.
+Without having a bloated IDE, you get to have both auto-complete (a.k.a. intellisense) and on-the-fly syntax checking.  They are valuable tools when writing code in a project with large code bases, taking lot of time to build.  Also, most IDEs require you to create a project for some single-file, toy, sample code you want to scribble; in our setup you just need to create a new buffer backed by a file on disk i.e. the usual drill for any new file.  Make sure you have the right `.clang_complete` saved in your _Home_ directory (where you have your code lab of dirty files) with the required `include` paths and compiler flags.
 
 The advantage of Irony is that it uses a proper compiler (Clang) to do this job and hence the results are very reliable.
 
