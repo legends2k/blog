@@ -1,4 +1,4 @@
-+++
+ +++
 tags = ["tech","emacs","c++","intellisense"]
 date = "2017-01-24T17:33:27+05:30"
 description = "Using Irony, Clang & Co"
@@ -6,7 +6,9 @@ title = "Emacs C++ auto-complete setup on Windows"
 
 +++
 
-This article aims to setup auto completion for C and C++ modes in Emacs on Windows with minimal manual building.  We need [Clang][], [Irony][] and some [Company][]; we additionally require [CMake][] and [MinGW][] for building something small.  Although there are many methods of getting this working, this was the most performant and least time-taking solution for me, so I'm documenting it here.  The general installation instructions provided in Irony's `README` works but it asks you to build the complete Clang compiler from source for a single DLL (`libclang.dll`).  I don't know about you but this isn't exactly my idea of fun.  This article skips that and uses Clang's binary directly; this method has some quirks captured below to help others and myself.
+This note is a guide to setup auto completion for C and C++ modes in Emacs on Windows with minimal manual work.  We need [Clang][], [Irony][] and some [Company][]; we additionally require [CMake][] and [MinGW][] for building something small.  Although there are many methods of getting this working, this was the most performant and least time-taking solution for me, so I'm documenting it here.
+
+The general installation instructions provided in Irony's `README` works but it asks you to build the complete Clang compiler from source for a single DLL (`libclang.dll`).  I don't know about you but this isn't exactly my idea of fun.  This article skips that and uses Clang's binary directly; this method has some quirks captured below to help others and myself.
 
 [Clang]: http://clang.llvm.org/
 [Irony]: https://github.com/Sarcasm/irony-mode

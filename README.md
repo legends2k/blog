@@ -31,6 +31,8 @@ are licenced under the [Creative Commons][CC].
 
 # To Do
 
+* Consider moving to CC-BY-SA
+    + Would this also enable one to include CC pictures here?
 * Taxonomy: add **Categories**
 * Show both *Tag*s and *Category*s on a post
 * Show them on the list of posts

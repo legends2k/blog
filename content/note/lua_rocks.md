@@ -24,7 +24,6 @@ title = "Lua Setup on Windows"
     + Make sure Lua and MinGW are of the same arch
     + This contains the binaries (`.exe`s and `.dll`)
     + Put them in the `/bin` directory e.g. `F:\Apps\Lua\bin`
-    + This package does not have the `lua` and `luac` executables; make links if necessary to the versioned ones
     + LuaBinaries is preferred over [Joe DF's Builds][] as it depends on `libgcc_s_dw2-1.dll`; distributed as a separate download
 2. Download `lua-5.3.3_Win32_dllw4_lib.zip` from [LuaForge Lua Binaries project][]
     + This has the includes and libraries (except the `.dll` everything else is needed)
