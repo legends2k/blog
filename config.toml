@@ -1,7 +1,7 @@
 # use / to create a website server locally
 baseurl = "https://legends2k.github.io/"
 languageCode = "en-uk"
-title = "CGrok"
+title = "Bits of Insight"
 theme = "ghostwriter"
 copyright = "Sundaram Ramaswamy"
 footnoteReturnLinkContents = "↩"

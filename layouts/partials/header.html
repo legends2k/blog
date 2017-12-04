@@ -14,11 +14,12 @@
         <link rel="icon" href="/images/pencil-square-o.svg" sizes="any" type="image/svg+xml">
         {{ if .Site.Params.opengraph }}{{ partial "opengraph.html" . }}{{ end }}
         <link rel="stylesheet" href="{{ .Site.BaseURL }}dist/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.5.0/hint.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- include MathJax if requested in frontmatter -->
         {{ if .Params.MathJax }}
             <!-- TeX-AMS-MML_SVG is another option but this one is lighter -->
-            <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js??config=TeX-AMS-MML_HTMLorMML">
              MathJax.Hub.Config({
                  tex2jax: {
                      inlineMath: [['$','$'], ['\\(','\\)']],
@@ -49,54 +50,55 @@
                             </a>
                         <!-- instead of using the site name use Home icon from Font Awesome -->
                         {{ else }}
-                            <a class="button-square button-social hint--top" data-hint="Home" title="Home" href="{{ .Site.BaseURL }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Home" title="Home" href="{{ .Site.BaseURL }}">
                                 <i class="fa fa-home"></i>
                             </a>
                         {{ end }}
-                        <a class="button-square" href="{{ .Site.BaseURL }}index.xml"><i class="fa fa-rss"></i></a>
+                        <a class="button-square hint--top hint--rounded hint--bounce"
+                           aria-label="RSS Feed" title="RSS Feed" href="{{ .Site.BaseURL }}index.xml"><i class="fa fa-rss"></i></a>
                         {{ with .Site.Params.twitter }}
-                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Twitter" title="Twitter" href="{{ . }}">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.gitlab }}
-                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Gitlab" title="Gitlab" href="{{ . }}">
                                 <i class="fa fa-gitlab"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.github }}
-                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Github" title="Github" href="{{ . }}">
                                 <i class="fa fa-github-alt"></i>
                             </a>
                         {{ end }}
                         <!-- add Bitbucket icon to the mix -->
                         {{ with .Site.Params.bitbucket }}
-                            <a class="button-square button-social hint--top" data-hint="Bitbucket" title="Bitbucket" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Bitbucket" title="Bitbucket" href="{{ . }}">
                                 <i class="fa fa-bitbucket"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.stackoverflow }}
-                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Stack Overflow" title="Stack Overflow" href="{{ . }}">
                                 <i class="fa fa-stack-overflow"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.linkedin }}
-                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="LinkedIn" title="LinkedIn" href="{{ . }}">
                                 <i class="fa fa-linkedin"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.gplus }}
-                        <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="{{ . }}">
+                        <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Google+" title="Google+" href="{{ . }}">
                             <i class="fa fa-google-plus"></i>
                         </a>
                         {{ end }}
                         {{ with .Site.Params.flickr }}
-                            <a class="button-square button-social hint--top" data-hint="Flickr" title="Flickr" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Flickr" title="Flickr" href="{{ . }}">
                                 <i class="fa fa-flickr"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.email }}
-                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Email" title="Email" href="mailto:{{ . }}">
                                 <i class="fa fa-envelope"></i>
                             </a>
                         {{ end }}
