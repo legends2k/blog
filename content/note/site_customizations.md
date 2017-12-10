@@ -49,14 +49,14 @@ $$
 \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}
 $$
 
-_MathJax_ is the go-to solution in browsers.  The _display math_ (MathJax lingo) works with no quirks; inline math doesn't work properly by default; I'd to [stuff][hugo_markdown_quirk] to get it working.  I added a custom parameter in the markdown's front matter, which is later used in a partial HTML document to include the [necessary script][hugo_markdown] tag for markdown.  MathJax may work-up `<code>` tags, and the workaround for this is shown in the documentation.  The `TeX-AMS-MML_HTMLorMML` configuration is used, but this should be tested out in all browsers since I remember this getting rendered appallingly in Firefox for the [_2D Transforms 101_][transforms_101] presentation; I'd to resort to `TeX-AMS-MML_SVG` in its case.
+_MathJax_ is the go-to solution in browsers.  The _display math_ (MathJax lingo for `$$…$$`) option works with no quirks; _inline math_ (`$…$`) doesn't work properly by default; I'd to [stuff][hugo_markdown_quirk] to get it working.  I added a custom parameter in the post's front matter, which is later used in a partial HTML template to include the [necessary script tag][hugo_markdown] for the post's generated HTML.  MathJax may work-up the `<code>` tags, and the workaround for this is shown in the documentation.  The `TeX-AMS-MML_HTMLorMML` configuration is used, but this should be tested out in all browsers since I remember this getting rendered appallingly in Firefox for the [_2D Transforms 101_][transforms_101] presentation; I'd to resort to `TeX-AMS-MML_SVG` in its case.
 
 [hugo_markdown_quirk]: http://github.com/spf13/hugo/issues/1666#issuecomment-225316394
 [hugo_markdown]: http://gohugo.io/tutorials/mathjax/
 [transforms_101]: http://legends2k.github.io/2d-transforms-101/
 
 ## 5. Fractions and Footnote return text
-Things like footnote return link text can be configured directly in the site's `config.toml`.  More such options are explained in the configuration page of Hugo's excellent documentation.  When a fraction like is typed out ordinarily as `355/113`, it still shows up like 355/113, which is nice; it does it just with `<sup>` and `<sub>` tags, no CSS or MathJax.  This is due to _Blackfriday_, the underlying markdown rendering engine.
+Things like footnote return link text can be configured directly in the site's `config.toml`.  More such options are explained in the configuration page of Hugo's excellent documentation.  When a fraction is typed out ordinarily like `355/113`, it still shows up like 355/113, which is nice; it does it just with `<sup>` and `<sub>` tags, no CSS or MathJax.  This is due to _Blackfriday_, the underlying Go markdown rendering engine used by Hugo.
 
 ## 6. Test and Deploy
-Running Hugo with `hugo server` serves the content on-the-fly at `localhost:1313`; port can be changed.  When the testing is done and all is well, the final run would be just `hugo` without any parameters; this generates the entire site tree inside the `public` directory which needs to be hosted.
+Running Hugo with `hugo server` serves the content on-the-fly at `localhost:1313`; port can be changed.  When testing is complete and all is well, the final run would be just `hugo` without any parameters; this generates the entire site tree inside the `public` directory which needs to be hosted.

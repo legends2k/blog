@@ -5,8 +5,8 @@ description = "… of a curious hacker"
 
 +++
 
-Open-Source Projects
-=========================
+Open Source
+===========
 
 3D Workouts
 -----------

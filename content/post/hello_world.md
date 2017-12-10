@@ -1,7 +1,7 @@
 +++
 tags = ["meta"]
 date = "2017-02-24T12:36:30+05:30"
-description = "or why I have taken up writing"
+description = "or why I took to writing"
 title = "hello, world"
 
 +++

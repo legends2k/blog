@@ -96,7 +96,7 @@ A table with different alignments:
 # Vector Graphics
 Let's see how an `SVG` shows up with an accompanying caption!
 
-{{< figure src="/images/cub_bez_arc.svg" title="Cubic Bézier Circles" >}}
+{{< figure src="/images/hello_hugo/cub_bez_arc.svg" title="Cubic Bézier Circles" >}}
 
 ## Interactive Demo
 

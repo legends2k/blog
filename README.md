@@ -31,6 +31,7 @@ are licenced under the [Creative Commons][CC].
 
 # To Do
 
+* Tag pages don't show article published date and time
 * Consider moving to CC-BY-SA
     + Would this also enable one to include CC pictures here?
 * Taxonomy: add **Categories**
