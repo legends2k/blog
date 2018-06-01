@@ -1,5 +1,5 @@
 +++
-tags = ["lua", "luarocks", "zerobrane"]
+tags = ["tech", "lua", "package", "ide"]
 date = "2016-09-23T17:00:46+05:30"
 description = "with Lua Rocks and ZeroBrane Studio"
 title = "Lua Setup on Windows"

@@ -1,7 +1,7 @@
 +++
-tags = ["hugo", "static site generator"]
+tags = ["tech", "tools", "writing"]
 date = "2016-07-11T17:00:46+05:30"
-description = "a static site generator's capabilities"
+description = "static site generators and how they can help"
 title = "Hello, Hugo!"
 mathjax = true
 
@@ -108,4 +108,4 @@ Red is the viewer here; green dots are end points of walls. Click and drag one o
 
 An external HTML document, containing JavaScript, is embedded in an `iframe` here.
 
-[^1]: A holoalphabetic sentence using *every* letter of a alphabet at least once.
+[^1]: A sentence using *every* letter of the alphabet at least once.

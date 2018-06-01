@@ -1,5 +1,5 @@
  +++
-tags = ["tech","emacs","c++","intellisense"]
+tags = ["tech","emacs","c++","ide"]
 date = "2017-01-24T17:33:27+05:30"
 description = "Using Irony, Clang & Co"
 title = "Emacs C++ auto-complete setup on Windows"
