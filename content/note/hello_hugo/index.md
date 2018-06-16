@@ -58,7 +58,7 @@ This is an obscure alternative to the famous "*The quick brown fox…*" pangram[
 **ஔ**வை சொன்ன மொழியாம்!  
 அ**ஃ**தே எமக்கு வழியாம்!
 
-ஏனெனில், இப்பாடலில் அனைத்து உயிரெழுத்துக்களும் ஒவ்வொரு அடியின் தொடக்கத்திலும் இடம் பெரும்.
+ஏனெனில் இப்பாடலில் அனைத்து உயிரெழுத்துக்களும் ஒவ்வொரு அடியின் தொடக்கத்திலும் இடம் பெரும்.
 
 `--` gives an `EN DASH` (--), while `---` is an `EM DASH` (---). Fractions, like 9/22, are beautifully rendered too 😃
 
@@ -96,7 +96,7 @@ A table with different alignments:
 # Vector Graphics
 Let's see how an `SVG` shows up with an accompanying caption!
 
-{{< figure src="/images/hello_hugo/cub_bez_arc.svg" title="Cubic Bézier Circles" >}}
+{{< figure src="images/cub_bez_arc.svg" title="Cubic Bézier Circles" >}}
 
 ## Interactive Demo
 

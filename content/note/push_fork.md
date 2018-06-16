@@ -26,12 +26,12 @@ Between your `commit`, `push` to origin and the pull request approval, more comm
 # Steps
 
 1. Make sure you've the upstream as one of your remotes, if not add
-{{< highlight bash >}}
+{{< highlight cfg >}}
 git remote add Upstream git@github.com:user/project.git
 {{< /highlight >}}
 
 1. Pull changes from upstream by rebasing instead of a merge
-{{< highlight bash >}}
+{{< highlight cfg >}}
 git pull --rebase Upstream <branch_name>
 {{< /highlight >}}
 
@@ -40,13 +40,13 @@ git pull --rebase Upstream <branch_name>
     3. This confirms that your change would be the latest commit atop all previous commits in upstream
 
 3. Force push your commit to origin (your fork's remote)
-{{< highlight bash >}}
+{{< highlight cfg >}}
 git push --force origin <branch_name>
 {{< /highlight >}}
     1. Though you'd have earlier pushed to your origin for creating the pull request, you redo it to have these new changes gotten from upstream to be synced into your fork's history
     2. You can verify with the above log command again; both origin and your local `HEAD` should point to the commit you got approval for; upstream should be at the next commit
 4. Push to upstream
-{{< highlight bash >}}
+{{< highlight cfg >}}
 git push Upstream <branch_name>
 {{< /highlight >}}
 

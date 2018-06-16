@@ -118,7 +118,7 @@ While you type out code in a buffer with `c++-mode` enabled, `irony-mode` will g
 
 **Sample `.clang_complete`**
 
-{{< highlight Lua >}}
+{{< highlight cfg >}}
 -std=c++14
 -target
 i686-w64-windows-gnu
