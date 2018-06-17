@@ -48,7 +48,7 @@ Knowing it’s beyond me, why am I still doing it?  Well definitely not for secu
 
 > I don’t want some processor, I didn’t pay for, to drain my laptop power, or steal data for some merchant who wants to sell stuff that I don’t want.
 
-If this makes sense then you should clean your machine too, but at your own risk.  Make sure you read the [Clean ME guides][], check version and compatibilities and proceed cautiously.  Basically, we’re going to do a BIOS firmware update[^6].  Just that it’s not done internally using software but externally with a cheap [BIOS programmer][].  How come re-programming the BIOS firmware shuts the backdoor?  When you cold boot your processor, [it starts with an amnesia][BIOS boot] and so it always starts with the BIOS boot program.  In this program, there’s a hidden kill-switch for the back door: the [_HAP/AltMeDisable_ bit][HAP].  If set, ME will just boot the host and halt.
+If this makes sense then you should clean your machine too, but at your own risk.  Make sure you read the [ME Cleaner guides][], check versions and compatibilities then proceed cautiously.  Basically, we’re going to do a BIOS firmware update[^6].  Just that it’s not done internally using software but externally with a cheap [BIOS programmer][].  How come re-programming the BIOS firmware shuts the backdoor?  When you cold boot your processor, [it starts with an amnesia][BIOS boot] and so it always starts with the BIOS boot program.  In this program, there’s a hidden kill-switch for the back door: the [_HAP/AltMeDisable_ bit][HAP].  If set, ME will just boot the host and halt.
 
 Let’s get on with it!
 
@@ -166,9 +166,11 @@ It will first take a back-up for disaster-recovery.  It'll also see if it could 
 
 Now for the moment of truth!  Disconnet the clip, restart your machine.  The machine should boot in to the OS normally.  That isn't all: make sure you use it for more than 40 mins and if nothing goes wrong, yay!  You've successfully neutralized the backdoor! 🖖
 
-To verify it properly, get the right version of [Intel ME System Tools][ME-Tools]
+On [*nix][Unix-like], `/dev/mei0` would no longer exist.  Also the MEI entry should no longer show up for `lspci`.  A more through way is [`intelmetool -s`][IntelMeTool].
 
-{{< highlight cfg "hl_lines=1" >}}
+For Windows, get the right version of [Intel ME System Tools][ME-Tools]
+
+{{< highlight cfg "hl_lines=20" >}}
 $ MEInfoWin64.exe -FWSTS
 
 Intel(R) MEInfo Version: 11.8.50.3460
@@ -199,7 +201,7 @@ FW Status Register6: 0x40000004
   FPF and ME Config Status:                   Match
 {{< /highlight >}}
 
-Make sure you uninstall any ME-related software[^12]. If you're on Windows, you can also verify that in the _Device Manager_, under _System devices_, the _Intel(R) Management Engine Interface_ no longer shows up.  On [*nix][Unix-like] the MEI entry should no longer show up for `lspci`.
+You can also verify that in the _Device Manager_, under _System devices_, the _Intel(R) Management Engine Interface_ no longer shows up.  Make sure you uninstall any ME-related software[^12].
 
 Finally, be a good team player and [report your success][CleanLog]!
 
@@ -208,6 +210,7 @@ Finally, be a good team player and [report your success][CleanLog]!
 [ME-Tools]: https://www.win-raid.com/t596f39-Intel-Management-Engine-Drivers-Firmware-amp-System-Tools.html
 [Unix-like]: https://en.wikipedia.org/wiki/Unix-like
 [CleanLog]: https://github.com/corna/me_cleaner/issues/3#issuecomment-391503079
+[IntelMeTool]: https://github.com/corna/me_cleaner/wiki/Get-the-status-of-Intel-ME
 
 # References
 
@@ -218,6 +221,7 @@ Finally, be a good team player and [report your success][CleanLog]!
 5. [Sakaki’s EFI Install Guide/Disabling the Intel Management Engine](https://wiki.gentoo.org/wiki/Sakaki%27s_EFI_Install_Guide/Disabling_the_Intel_Management_Engine)
 6. [How to become the sole owner of your PC](https://github.com/ptresearch/me-disablement/blob/master/How%20to%20become%20the%20sole%20owner%20of%20your%20PC.pdf)
 7. [Intel ME Myths and Reality](https://media.ccc.de/v/34c3-8782-intel_me_myths_and_reality)
+8. Me Cleaner’s [external flashing guide](https://github.com/corna/me_cleaner/wiki/External-flashing)
 
 # P.S.
 
