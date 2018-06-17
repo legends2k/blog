@@ -1,10 +1,9 @@
 +++
-tags = [ "hugo", "css3", "typesetting" ]
-date = "2016-08-12T17:00:46+05:30"
-description = "quirks and hacks that got me here"
 title = "Blog – fit and finish"
+description = "quirks and hacks in making this"
+date = "2016-08-12T17:00:46+05:30"
+tags = ["tech", "hugo", "typesetting", "tools"]
 mathjax = true
-
 +++
 
 I did quite a few things to get this blog up and running the way you see it now.

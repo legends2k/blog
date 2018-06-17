@@ -1,8 +1,7 @@
 +++
-tags = ["inspiration", "creators", "bookmark"]
-date = "2017-03-02T22:41:05+05:30"
 title = "My Inspirers"
-
+date = "2017-03-02T22:41:05+05:30"
+tags = ["inspiration", "creators", "bookmark"]
 +++
 
 I have been inspired by many unknown personalities all over the internet and otherwise, but a few linger on my mind consistently to be listed here.  Not all of them are authors but they work inspired me in some way.

@@ -1,7 +1,6 @@
 +++
-date = "2017-02-24T12:14:41+05:30"
 title = "Notes to Self"
-
+date = "2017-02-24T12:14:41+05:30"
 +++
 
 Though programming, writing, cooking, etc. are fun to do, there are many mundane details needed to get the setup up to _dance the dance_.  Many a times I have seen practitioners (programmers, musicians, etc.) abandoning excellent tools only because it's very difficult to get a workable pipeline ready before getting productive; they get turned off and for good reason too.

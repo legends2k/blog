@@ -1,8 +1,7 @@
 +++
-date = "2017-02-24T12:14:41+05:30"
-description = "a.k.a legends2k"
 title = "Sundaram Ramaswamy"
-
+description = "a.k.a legends2k"
+date = "2017-02-24T12:14:41+05:30"
 +++
 
 A graphics programmer who enjoys learning the math behind a domain — how its careful application elegantly solves complex problems.  Open-source contributor passionate about [knowledge 

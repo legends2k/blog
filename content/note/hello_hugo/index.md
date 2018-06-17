@@ -1,10 +1,9 @@
 +++
-tags = ["tech", "tools", "writing"]
-date = "2016-07-11T17:00:46+05:30"
-description = "static site generators and how they can help"
 title = "Hello, Hugo!"
+description = "static site generators and how they can help"
+date = "2016-07-11T17:00:46+05:30"
+tags = ["tech", "tools", "writing"]
 mathjax = true
-
 +++
 
 Many [static site generators][SSG] are coming up these days; 175 and still counting.  Apart from the prime selling point of content creation from the comfort of your favourite text editor in [Markdown][], most have a wide gamut of themes to choose from.  You are free to [remix the theme to your taste][site_customizations] however you see fit.  Want to change the line spacing and paragraph alignment?  Sure thing!  Don't like anything?  Ditch them all and whip up something new.  Share it with others, perhaps?  You do not have to be a web programmer or designer to customize themes; I am a C++ programmer but I had no trouble picking up CSS3; just a few days of tussling did the trick.

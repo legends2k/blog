@@ -1,8 +1,7 @@
 +++
-date = "2017-02-24T12:34:07+05:30"
 title = "Code Lab"
 description = "… of a curious hacker"
-
+date = "2017-02-24T12:34:07+05:30"
 +++
 
 Open Source

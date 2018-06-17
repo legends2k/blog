@@ -1,9 +1,8 @@
 +++
-tags = ["tech", "lua", "package", "ide"]
-date = "2016-09-23T17:00:46+05:30"
-description = "with Lua Rocks and ZeroBrane Studio"
 title = "Lua Setup on Windows"
-
+description = "with Lua Rocks and ZeroBrane Studio"
+date = "2016-09-23T17:00:46+05:30"
+tags = ["tech", "lua", "package", "ide"]
 +++
 
 # Ingredients

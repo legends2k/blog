@@ -1,9 +1,8 @@
 +++
-tags = ["vcs", "git", "sync"]
-date = "2018-04-19T13:57:03-07:00"
-description = "the original origin"
 title = "Git: Pushing to a Fork"
-
+description = "the original origin"
+date = "2018-04-19T13:57:03-07:00"
+tags = ["tech", "vcs", "git", "tools"]
 +++
 
 

@@ -1,8 +1,8 @@
 +++
-tags = ["gcc", "ninja"]
-date = "2017-02-08T16:45:02+05:30"
-description = "Know thy compiler!"
 title = "Useful GCC options"
+description = "Know thy compiler!"
+date = "2017-02-08T16:45:02+05:30"
+tags = ["tech", "gcc", "tools"]
 
 +++
 
