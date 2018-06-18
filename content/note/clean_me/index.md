@@ -5,7 +5,7 @@ date = "2018-05-12T15:00:46-07:00"
 tags = ["tech", "security", "hardware", "tinker"]
 +++
 
-I believe [_resistance is futile_][Borg] if someone is bent on spying on you; there’re both serious and [creative ways][Side-channelling] to go about it.  Talking to your processor, behind your back, isn’t the primary or only means.  Ours is [golden age][Digital Age] where corporates and government agencies stoop low enough to pry into bedrooms.  Did you know that _almost_ all machines[^1] you _own_ have a processor aside from the one you paid for?  It controls your processor (host) and won’t listen to you.
+I believe [_resistance is futile_][Borg] if someone is bent on spying on you; there’re both serious and [creative ways][Side-channelling] to go about it.  Talking to your processor, behind your back, isn’t the primary or only means.  Our’s is a [golden age][Digital Age] where corporates and government agencies stoop low enough to pry into bedrooms.  Did you know that _almost_ all machines[^1] you _own_ have a processor aside from the one you paid for?  It controls your processor (host) and won’t listen to you.
 
 - Unbeknownst to the host, it runs out-of-band, on a separate chip
 - It has unfettered access to any memory region; it runs at [ring][Protection ring] level −3[^8]
@@ -13,7 +13,7 @@ I believe [_resistance is futile_][Borg] if someone is bent on spying on you; th
 - It runs an OS and a TCP/IP server on certain ports bypassing any firewall in the host
     - You would never know even if you’re spied on
 - Can’t be terminated
-    - It controls the hosts boot cycle
+    - It controls the host’s boot cycle
 
 A processor inside your processor, having its own operating system[^7], running services, buried very deep within and can’t be switched completely off -- it’s needed to even bring up your processor during boot.  I’m talking about the [Intel ME][] --- a [backdoor][] that’s built into Intel processors; it’s inner workings known only to Intel who refuses divulging anything about it in the name of security[^4].  What’s that?  Yeah, I too went "I’m lucky! I own an AMD machine".  Well, look up [PSP][]; it’s AMD’s ME.  I think it’s [clear by now][NSA] such 
 
@@ -58,7 +58,7 @@ Let’s get on with it!
 [^6]: Just that it’ll be a non-OEM update this time.
 
 [corna]: https://github.com/corna/me_cleaner
-[Clean ME Guides]: https://github.com/corna/me_cleaner/wiki
+[ME Cleaner guides]: https://github.com/corna/me_cleaner/wiki
 [BIOS programmer]: https://en.wikipedia.org/wiki/Programmer_(hardware)
 [BIOS boot]: http://flint.cs.yale.edu/feng/cos/resources/BIOS/
 [FOSS]: https://en.wikipedia.org/wiki/Free_and_open-source_software
@@ -225,8 +225,9 @@ Finally, be a good team player and [report your success][CleanLog]!
 
 # P.S.
 
-Newer versions of ME[^13] are tougher to clean since they've protection mechanisms.  My older laptop having ME 8 was simpler; I'd to jump through a [few hoops][Dell Clean] logistically.
+This machine has CSME 11 since it is a [Kaby Lake][Kaby Lake].  Processors with older ME versions have much lesser security that this external flashing isn’t needed but is a lot cleaner.  The OEM’s BIOS firmware upgrade utility usually works.  [I had a fun time cleaning my older laptop][Dell Clean] having ME 8.
 
 [^13]: This one was CSME 11, if you'd not noticed thus far.
 
 [Dell Clean]: https://github.com/corna/me_cleaner/issues/3#issuecomment-385616918
+[Kaby Lake]: https://en.wikipedia.org/wiki/Kaby_Lake
