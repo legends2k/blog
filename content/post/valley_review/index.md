@@ -28,9 +28,9 @@ One thing many returning Indians keep praising (almost _bragging_) about US is h
 
 Here, even after giving up seats, people end up getting a decent one.  How about in situations where there's real dearth for resources?  Such is the state in my everyday commutes where I've seen no one offering anything.  Why is that now?  Sometimes [politeness is a luxury](https://www.quora.com/What-is-something-that-needs-to-be-said/answer/Rashmi-Ravishankar) (the link gives real life examples).  In fact there were times when people forgot all about queues and it morphed into a fish market in a jiffy.
 
-{{< figure src="/images/valley_review/metro_no_queue.jpg" title="Look ma, no queues!" alt="People forgetting queues in a popular metro station" caption="Shot when two trains were consecutively delayed; wanting to be punctual blurred out others and the conventional politeness, courtesy, … ." >}}
+{{< figure src="images/metro_no_queue.jpg" title="Look ma, no queues!" alt="People forgetting queues in a popular metro station" caption="Shot when two trains were consecutively delayed; wanting to be punctual blurred out others and the conventional politeness, courtesy, … ." >}}
 
-{{< figure src="/images/valley_review/beating_traffic_lights.jpg" title="Whose turn is it now!" alt="Cars blocking the intersection that's to be kept clear" caption="Cars blocking the intersection that's to be kept clear.  This blocked our lines signalled green." >}}
+{{< figure src="images/beating_traffic_lights.jpg" title="Whose turn is it now!" alt="Cars blocking the intersection that's to be kept clear" caption="Cars blocking the intersection that's to be kept clear.  This blocked our lines signalled green." >}}
 
 This is an example when people openly broke laws when resources were limited[^3].  In India we just notice it often because the difference is well-pronounced but that doesn't change anything.  Oh scalability was a joke!  When many started breaking the rules, it's [jungle law](https://en.wikipedia.org/wiki/Law_of_the_jungle) all around.  In addition, it showed their network's efficiency in handling congestion; the mobile signal went down because there were too many people in the same area (mall).  This was the amount of people I see regularly in a decent mall in India.  With lesser population and more resources it's mostly easy to put on a good show; but scalability starts rearing its ugly head only when it's the other way around.  This is a common problem in engineering; we observe its manifestation both in India and here.  Should we turn a blind eye when it happens here?  If we continue to portray this happens only in India, of course young Indians will stupidly parrot the famous "huh, we live in India, right!?".  I think not telling the truth is doing a disservice.
 
@@ -43,7 +43,7 @@ Americans probably didn't have this problem: there were times when the land they
 ## Opening Up
 People don't tend to talk very much here.  On some of my trips in the metro, for the entire hour, I've sensed pin-drop silence.  This is impossible in India.  It could be a bus, a rick or a car, people keep yapping about something or the other.  We tend to discount this as something pointless and not give lot of value to this.  In the US, people seem to like their privacy and prefer being left alone doing their own thing.  Socializing is still a formal thing properly planned.  A common sight in India that I glaringly miss here: a bunch of people chirping in a tea stall, laughing about nothing, making jokes and probably with little to no money on them.  Sure, they've their problems, but psychological issues usually isn't one of them since they _speak up_.  Don't believe me?  Read on.
 
-{{< figure src="/images/valley_review/silent_metro.jpg" title="Quite full and quiet!" >}}
+{{< figure src="images/silent_metro.jpg" title="Quite full and quiet!" >}}
 
 Here's a relevant excerpt; _§6 The Human Need for Attention_ in _[One Small Step Can Change Your Life: The Kaizen Way](http://a.co/2GpbQEC)_:
 

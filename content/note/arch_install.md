@@ -433,7 +433,7 @@ Running _glxgears_ with and without `optirun` should show the right GPU selected
     - `gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 16'` does the trick for Terminal
     - Customizing font config per-user: `~/.config/fontconfig/fonts.conf`
     - See [here](https://unix.stackexchange.com/questions/106070/changing-monospace-fonts-system-wide) for both options
-* Disable desktop zoom in Xfce4 with _Settings Editor_ → _xfwm4_, uncheck `zoom_desktop`
+* [Disable desktop zoom](https://forum.xfce.org/viewtopic.php?pid=41556#p41556) in Xfce4 with _Settings Editor_ → _xfwm4_, uncheck `zoom_desktop`
 * To make packages from AUR install `base-devel` package, make `sudo` group, add user to it
 
 ```

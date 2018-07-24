@@ -53,8 +53,8 @@ If this makes sense then you should clean your machine too, but at your own risk
 Let’s get on with it!
 
 [^5]: Sorry AMD owners; a consoling factor, however, is apparently PSP is much less capable than ME.
-[^2]: Heck I wouldn’t be blogging about it if that’s the case, would I now?
-[^3]: Another reason is, of course, its [superior engineering][UNIX], better science and execution that stands the test of time, _despite_ unpaid contributors not being paid engineers. Beat that corporates!
+[^2]: Heck! I wouldn’t be blogging about it if that’s the case, would I now?
+[^3]: Another reason is, of course, its [superior engineering][UNIX], better science and execution that stands the test of time, _despite_ contributors not being paid engineers. Beat that corporates!
 [^6]: Just that it’ll be a non-OEM update this time.
 
 [corna]: https://github.com/corna/me_cleaner
