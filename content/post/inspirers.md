@@ -4,7 +4,7 @@ date = "2017-03-02T22:41:05+05:30"
 tags = ["inspiration", "creators", "bookmark"]
 +++
 
-I have been inspired by many unknown personalities all over the internet and otherwise, but a few linger on my mind consistently to be listed here.  Not all of them are authors but they work inspired me in some way.
+I have been inspired by many unknown personalities all over the internet and otherwise, but a few linger on my mind consistently to be listed here.  Not all of them are authors but their works inspired me in some way.
 
 ## Kalki R. Krishnamurthy
 [A *great* writer][Kalki], and freedom fighter, who effortlessly balanced content against gripping narration.  He pioneered in writing under a unique genre --- Historical fiction --- by mixing imagination with facts in the right amount and proved that it can be done with [great success][Ponniyin Selvan].  He's the only author I have seen to give evidences in a fictional work.  Though *[Tamil][]* is my mother tongue, I am sure I am unbiased here.

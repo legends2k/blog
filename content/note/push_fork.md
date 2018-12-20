@@ -10,7 +10,7 @@ tags = ["tech", "vcs", "git", "tools"]
 
 When you fork[^1] a repository in GitHub, from your repository's viewpoint, the one you forked from is called the "[upstream][]"; a term used commonly in the [FOSS][] world for a long time, to denote the original authors (or their repository) of a software.  _Fork_ is a concept introduced by GitHub (the code hosting platform) for separation of concerns; Git (the version control system) itself doesn't have a concept of fork; from its viewpoint, it's just another remote repository.  So both the _upstream_ (original repo at GitHub from where you forked your repo) and _origin_ (your fork at GitHub) are two remotes to your local repo.
 
-Between your `commit`, `push` to origin and the pull request approval, more commits could've gotten pushed to the upstream.  To resolve you sync
+Between your `commit`, `push` to origin and the pull request approval, more commits could've gotten pushed to the upstream.  To resolve, you sync
 
 1. local to upstream
     * bringing your local up to date (the heavy-lifting a.k.a *merge*)

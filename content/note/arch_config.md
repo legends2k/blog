@@ -182,8 +182,19 @@ Running _glxgears_ with and without `optirun` should show the right GPU selected
     - Customizing font config per-user: `~/.config/fontconfig/fonts.conf`
     - See [here](https://unix.stackexchange.com/questions/106070/changing-monospace-fonts-system-wide) for both options
 * [Disable desktop zoom](https://forum.xfce.org/viewtopic.php?pid=41556#p41556) in Xfce4 with _Settings Editor_ → _xfwm4_, uncheck `zoom_desktop`
-* To make packages from AUR install `base-devel` package, make `sudo` group, add user to it
+* Traditionally RTC (h/w clock that doesn’t understand time standards) is set in local time; Windows reads it as local by default.  Linux doesn’t, as it recommends setting it in GMT and let the OS services deal with time zone and DST variations.  Forcing Linux with `timedatectl set-local-rtc 1` is possible.  However, `man timedatectl` warns that it will create problems when changing time zones and DST changes; one has to rely on booting into Windows at least twice annually (in Spring and Fall -- [see here](https://unix.stackexchange.com/q/234689/30580)) for DST adjustments.  Setting RTC in GMT (like macOS) is appropriate; a registry change + restart on Windows will make it read RTC as GMT too.  This is the recommended way of setting time in dual boot machines.  For time sync with NTP, do `timedatectl set-ntp true`.  Do `timedatectl status` to check if everything is OK:
 
+```
+               Local time: Thu 2018-10-18 16:04:49 IST
+           Universal time: Thu 2018-10-18 10:34:49 UTC
+                 RTC time: Thu 2018-10-18 10:34:49
+                Time zone: Asia/Kolkata (IST, +0530)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+```
+
+* To make packages from AUR install `base-devel` package, make `sudo` group, add user to it
 ```
 su
 visudo                      # uncomment sudo group

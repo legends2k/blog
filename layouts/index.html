@@ -2,15 +2,19 @@
 
 <div id="post-index" class="container" itemscope="" itemtype="https://schema.org/Blog">
     <article class="post-container">
-        {{ if .Site.Params.intro }}
-            <header class="post-header">
-                <h1 class="post-title" itemprop="name">{{ .Site.Params.headline }}</h1>
-                <p>{{ .Site.Params.description }}</p>
-            </header>
-        {{ end }}
+        <!-- title & description -->
+        {{ partial "intro.html" . }}
 
+        <!-- intro text -->
         {{ partial "post-content.html" . }}
 
+        <!-- article list -->
+        <ol class="post-list">
+            {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+            {{ range $pag.Pages }}
+            {{ partial "post-stub.html" . }}
+            {{ end }}
+        </ol>
         <div class="post-navigation">
             {{ partial "pagination.html" . }}
         </div>
