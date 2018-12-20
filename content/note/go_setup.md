@@ -51,7 +51,7 @@ It's assumed that you already have `company` installed.
     + Read `go help gopath`
 3. Go get these tools.  On Windows add `-ldflags -H=windowsgui` for `gocode`
 {{< highlight go >}}
-go get -u github.com/nsf/gocode
+go get -u github.com/mdempsky/gocode
 go get github.com/rogpeppe/godef
 go get -u github.com/dougm/goflymake
 go get golang.org/x/tools/cmd/goimports
@@ -115,8 +115,8 @@ Play with [`guru`](https://godoc.org/golang.org/x/tools/cmd/guru) -- looks like 
 # References
 
 1. `go-mode`'s help in Emacs
-2. `$GOPATH/src/github.com/nsf/gocode/emacs-company/README.md`
+2. `$GOPATH/src/github.com/mdempsky/gocode/emacs-company/README.md`
 3. [Configure Emacs as a Go Editor From Scratch](https://tleyden.github.io/blog/2014/05/27/configure-emacs-as-a-go-editor-from-scratch-part-2/)
 4. [goflymake](https://github.com/dougm/goflymake)
-5. [gocode](https://github.com/nsf/gocode)
+5. [gocode](https://github.com/mdempsky/gocode)
 6. [ArchWiki’s Go page](https://wiki.archlinux.org/index.php/Go)

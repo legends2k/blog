@@ -101,9 +101,7 @@ Let's see how an `SVG` shows up with an accompanying caption!
 
 Red is the viewer here; green dots are end points of walls. Click and drag one of them to see where the vision ray from the viewer can go past the walls.
 
-<iframe style="width: 640px; height: 480px; border: 1px solid black; margin-left: auto; margin-right: auto; display: block; box-sizing: border-box;" src="/demos/vision_beyond.html">
-<!-- <iframe style="overflow:hidden;width:640px;height:485px" src="/demos/vision_beyond.html" frameborder="0"> -->
-</iframe><p></p>
+{{< iframe src="/demos/vision_beyond.html" width="640px" height="480px" >}}
 
 An external HTML document, containing JavaScript, is embedded in an `iframe` here.
 
