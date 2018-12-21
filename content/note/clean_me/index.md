@@ -84,7 +84,7 @@ CH341A (Black) is a cheap[^10] USB [SPI chip](https://en.wikipedia.org/wiki/Seri
 
 Connect the programmer's USB to a Linux machine; I used a Xubuntu bootable USB to convert my old Windows 10 laptop.  You're all set hardware-wise.  Run `lsusb` on the terminal and make sure you see something like
 
-{{< highlight cfg  "hl_lines=1" >}}
+{{< highlight cfg >}}
 BUS 008 Device 012: ID 1a86:5512 QinHeng Electronics CH341 in EPP/MEM/I2C mode, EPP/I2C adapter
 {{< /highlight >}}
 

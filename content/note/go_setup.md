@@ -50,7 +50,7 @@ It's assumed that you already have `company` installed.
     + Add entries with a trailing slash
     + Read `go help gopath`
 3. Go get these tools.  On Windows add `-ldflags -H=windowsgui` for `gocode`
-{{< highlight go >}}
+{{< highlight basic >}}
 go get -u github.com/mdempsky/gocode
 go get github.com/rogpeppe/godef
 go get -u github.com/dougm/goflymake

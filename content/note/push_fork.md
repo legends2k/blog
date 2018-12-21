@@ -26,16 +26,16 @@ Between your `commit`, `push` to origin and the pull request approval, more comm
 
 1. Make sure you've the upstream as one of your remotes, if not add
 {{< highlight cfg >}}
-git remote add Upstream git@github.com:user/project.git
+git remote add upstream git@github.com:user/project.git
 {{< /highlight >}}
 
 1. Pull changes from upstream by rebasing instead of a merge
 {{< highlight cfg >}}
-git pull --rebase Upstream <branch_name>
+git pull --rebase upstream <branch_name>
 {{< /highlight >}}
 
     1. To verify you've done this correctly, you can do `git log --oneline -10`
-    2. You should see your commit at `HEAD` followed by the most recent commit in `Upstream/<branch_name>`
+    2. You should see your commit at `HEAD` followed by the most recent commit in `upstream/<branch_name>`
     3. This confirms that your change would be the latest commit atop all previous commits in upstream
 
 3. Force push your commit to origin (your fork's remote)
@@ -46,7 +46,7 @@ git push --force origin <branch_name>
     2. You can verify with the above log command again; both origin and your local `HEAD` should point to the commit you got approval for; upstream should be at the next commit
 4. Push to upstream
 {{< highlight cfg >}}
-git push Upstream <branch_name>
+git push upstream <branch_name>
 {{< /highlight >}}
 
 [^1]: No, not the culinary or chess parlance, silly! The [software meaning](https://en.wikipedia.org/wiki/Fork_(software_development)).

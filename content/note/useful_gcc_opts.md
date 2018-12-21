@@ -8,19 +8,25 @@ tags = ["tech", "gcc", "tools"]
 
 Here are some of the useful, but not widely known, options of GCC that I want to document.
 
-    gcc -dumpspecs
+{{< highlight cfg >}}
+gcc -dumpspecs
+{{< /highlight >}}
 
 Gives the specifications with which GCC was built.
 
-    gcc -fstack-usage
+{{< highlight cfg >}}
+gcc -fstack-usage
+{{< /highlight >}}
 
 Gives the stack usage function-wise for the compiled translation unit; this is helpful in measuring runtime memory usage.  [See the manual][stack_usage] for details on deciphering its output.
 
-    # get macros defined when the language is C++
-    cpp -xc++ -dM /dev/null
+{{< highlight cfg >}}
+# get macros defined when the language is C++
+cpp -xc++ -dM /dev/null
 
-    # get macros defined when the language is C
-    cpp -dM /dev/null
+# get macros defined when the language is C
+cpp -dM /dev/null
+{{< /highlight >}}
 
 [stack_usage]: https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html#index-fstack-usage
 
@@ -34,15 +40,21 @@ Prints the macros defined when the preprocessor was called.  The last command [i
 
 For setting up auto completion in Emacs using Irony, I needed to know the include directories GCC searches.  How do we find them?
 
-    cpp -xc++ -Wp,-v /dev/null
+{{< highlight cfg >}}
+cpp -xc++ -Wp,-v /dev/null
+{{< /highlight >}}
 
 This prints the list of standard include directories.  `g++ -v some.cpp` would give it too, but this is fast & easy; no input file or fake compiler calls.
 
-    g++ -std=c++14 -O3 -c -masm=intel -fverbose-asm -Wa,-adhln=prgm.s prgm.cpp
+{{< highlight basic >}}
+g++ -std=c++14 -O3 -c -masm=intel -fverbose-asm -Wa,-adhln=prgm.s prgm.cpp
+{{< /highlight >}}
 
 will show the disassembly of a compilation unit in Intel syntax *with inter-weaved source listing*.  This one is very popular among optimisation enthusiasts 😃  Here's one more for them:
 
-    g++ -fdump-class-hierarchy my_classes.cpp
+{{< highlight cfg >}}
+g++ -fdump-class-hierarchy my_classes.cpp
+{{< /highlight >}}
 
 This would show object memory layout of classes in the source; includes classes with complex inheritance hierarchies.
 

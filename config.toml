@@ -8,6 +8,8 @@ footnoteReturnLinkContents = "↩"
 googleAnalytics = ""
 disqusShortname = "legends2k"
 paginate =  7
+pygmentsStyle = "dracula"
+pygmentsCodefencesGuessSyntax = true
 
 [Author]
     name = "Sundaram Ramaswamy"

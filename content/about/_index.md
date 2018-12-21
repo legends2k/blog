@@ -7,7 +7,7 @@ date = "2017-02-24T12:14:41+05:30"
 A graphics programmer who enjoys learning the math behind a domain — how its careful application elegantly solves complex problems.  Open-source contributor passionate about [knowledge 
 sharing](https://stackoverflow.com/users/183120/legends2k).  Lives in Emacs, loves the command-line.
 
-I have enjoyed working on an [array of projects](/projects).
+I have enjoyed working on an [array of projects](/projects).  Here’s [my CV](https://bbcdn.githack.com/rmsundaram/tryouts/raw/bba90197e2958d08cc11da31aca34237e5f29418/Misc/resume/resume.html).
 
 I can be reached at _&#108;&#x65;&#x67;&#x65;&#110;&#100;&#x73;&#50;&#x6b;&#64;&#x79;&#x61;&#104;&#x6f;&#x6f;&#46;&#x63;&#x6f;&#x6d;_.
 

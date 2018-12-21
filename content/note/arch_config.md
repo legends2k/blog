@@ -8,9 +8,9 @@ draft = true
 
 # Network
 
-Once inside the newly installed Arch, I noticed that there's no network.  To enable redo _§2 Wireless Network_ above.  I did it only to realize that for _netctl_ to hook to a WPA-secured network, `wpa_supplicant` is needed but absent in the installed system.  Since there's no network, I'd to reboot into the installation USB, setup network and install it from there to the new OS by chrooting
+Once inside the newly installed Arch machine, I noticed that there's no network.  To enable redo _§2 Wireless Network_ above.  I did it only to realize that for _netctl_ to hook to a WPA-secured network, `wpa_supplicant` is needed but absent in the installed system.  Since there's no network, I'd to reboot into the installation USB, setup network and install it from there to the new OS by chrooting
 
-```
+{{< highlight basic >}}
 root@archiso / # mount /dev/lvmg1/root /mnt
 root@archiso / # mount /dev/nvme0n1p5 /mnt/boot
 root@archiso / # mount /dev/lvmg1/home /mnt/home
@@ -20,21 +20,23 @@ root@archiso / # arch-chroot /mnt
 [root@archiso /]# pacman -S wpa_supplicant
 [root@archiso /]# exit
 root@archiso / # reboot
-```
+{{< /highlight >}}
 
 To permanently enable a network on boot, enable the service
 
-```
+{{< highlight basic >}}
 netctl enable infoprobe
-```
+{{< /highlight >}}
 
 If on every boot you get this with a long wait
 
-> [***      ] A start job is running for dhcpcd on wlp3s0 (14 s / 1min 30s). 
+{{< highlight basic >}}
+[***      ] A start job is running for dhcpcd on wlp3s0 (14 s / 1min 30s).
+{{< /highlight >}}
 
 As [discussed in the forums](https://bbs.archlinux.org/viewtopic.php?id=213363) set `/etc/systemd/system/systemd-user-sessions.service`
 
-```
+{{< highlight cfg >}}
 [Unit]
 Description=Permit User Sessions
 Documentation=man:systemd-user-sessions.service(8)
@@ -45,16 +47,16 @@ Type=oneshot
 RemainAfterExit=yes
 ExecStart=/usr/lib/systemd/systemd-user-sessions start
 ExecStop=/usr/lib/systemd/systemd-user-sessions stop
-```
+{{< /highlight >}}
 
 # Enlisting Windows
 
 Make sure you've the `os-prober` package installed.  Mount the EFI partition and re-run GRUB config maker
 
-```
+{{< highlight basic >}}
 mount /dev/nvme0n1p1 /boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
-```
+{{< /highlight >}}
 
 It should list Windows as one of the options now.
 
@@ -62,17 +64,17 @@ It should list Windows as one of the options now.
 
 To have Xfce up and running, we need a display system (_Xorg_; Xfce can’t run atop _Wayland_ yet) and a display manager (_LXDM_)
 
-```
+{{< highlight basic >}}
 pacman -Syy
 pacman -S --needed xorg xorg-server xfce4 xfce4-goodies lxdm xf86-input-synaptics
-```
+{{< /highlight >}}
 
 Once done, enable (for future boots) and start the display manager
 
-```
+{{< highlight basic >}}
 systemctl enable lxdm.service
 systemctl start lxdm.service
-```
+{{< /highlight >}}
 
 For the first run, make sure to set the _Session_ and _Locale_; not doing so led to a login screen loop.
 
@@ -80,9 +82,9 @@ For the first run, make sure to set the _Session_ and _Locale_; not doing so led
 
 I got infinite waits every time I shutdown due to Nouveau drivers for the Nvidia; for this reason I disabled `lxdm.service` and operated from the terminal.  First do
 
-```
+{{< highlight basic >}}
 lspci -k | grep -A 2 -E "(VGA|3D)"
-```
+{{< /highlight >}}
 
 to be sure of the graphic devices you have.
 
@@ -90,75 +92,75 @@ to be sure of the graphic devices you have.
 
 To get Intel graphics working
 
-```
+{{< highlight basic >}}
 pacman -S --needed xf86-video-intel mesa mesa-demos
-```
+{{< /highlight >}}
 
 With Skylake and newer processors (Kabylake, …) we can enable `i915` module for [early KMS start](https://wiki.archlinux.org/index.php/Kernel_mode_setting#Early_KMS_start) in `/etc/mkinitcpio.conf` and run `mkinitcpio -p linux`
 
-```
+{{< highlight cfg >}}
 # MODULES
 # …
 MODULES=(i915)
-```
+{{< /highlight >}}
 
 Also enable GuC, HuC and FBC by setting `/etc/modprobe.d/i915.conf`
 
-```
+{{< highlight basic >}}
 options i915 enable_guc=-1 enable_fbc=1
-```
+{{< /highlight >}}
 
 Screen tearing when scrolling large walls of text in Firefox is a common occurrence.  To fix this set `/etc/X11/xorg.conf.d/20-intel.conf`
 
-```
+{{< highlight basic >}}
 Section "Device"
     Identifier "Intel Graphics"
     Driver "intel"
     Option "TearFree" "true"
 EndSection
-```
+{{< /highlight >}}
 
 The Intel device needs only these but still I was unable to `startx` or `systemctl start lxdm.service`; even if it shows up, it usually hung during power down sequence.  All because the Nvidia device was preferred over Intel's and its drivers are broken.
 
 ## Nvidia
 
-Switching between Nouveau and proprietary drivers (both `nvidia` and `nvidia-lts`) I tried mucking around with `/etc/X11/xorg.conf`, created and tweaked `/etc/X11/xorg.conf.d/20-nvidia.conf`, ran `nvidia-xconfig` and `nvidia-settings`, , but until I got [Bumblebee](https://bumblebee-project.org/) nothing worked for me.
+Switching between Nouveau and proprietary drivers (both `nvidia` and `nvidia-lts`), mucking around with `/etc/X11/xorg.conf`, creating and tweaking `/etc/X11/xorg.conf.d/20-nvidia.conf`, running `nvidia-xconfig` and `nvidia-settings` --- none of these worked!  Enter [Bumblebee](https://bumblebee-project.org/) and voilà!.
 
-Remove all nouveau-related and install Nvidia supplied packages.  Install Bumblebee and friends:
+Remove all nouveau-related and install Nvidia-supplied packages.  Install Bumblebee and friends:
 
-```
+{{< highlight basic >}}
 pacman -Rs nouveau xf86-video-nouveau libvdpau
 pacman -S nvidia nvidia-utils
 pacman -S bumblebee primus bbswitch
-```
+{{< /highlight >}}
 
 In order to use Bumblebee, add user to the `bumblebee` group
 
-```
+{{< highlight basic >}}
 gpasswd -a root bumblebee
-```
+{{< /highlight >}}
 
 Start service to see if things work as expected and enable it for persistence
 
-```
+{{< highlight basic >}}
 systemctl start bumblebeed.service
 systemctl enable bumblebeed.service
-```
+{{< /highlight >}}
 
 Once all the setting up is done, do
 
-```
+{{< highlight basic >}}
 glxinfo | grep "OpenGL Renderer"
 glxgears -info
 optirun glxgears -info
-```
+{{< /highlight >}}
 
 Running _glxgears_ with and without `optirun` should show the right GPU selected for running the demo.
 
 # Draft
 
 * Pulseaudio
-* Bluebooth - bluez, blueman
+* Bluebooth - bluez, blueman-applet
     - Auto Power ON: [disable in Power Manager plug-in](https://www.linux.com/forums/networking/solved-bluez-543-have-bluetooth-disabled-boot)
         - TODO: update this in [Arch Wiki](https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot)
     - Obex push folder: default says `Root` which is `~/.cache/obex`, set it to something meaningful in _Local services_ -> _Transfer_
@@ -184,7 +186,7 @@ Running _glxgears_ with and without `optirun` should show the right GPU selected
 * [Disable desktop zoom](https://forum.xfce.org/viewtopic.php?pid=41556#p41556) in Xfce4 with _Settings Editor_ → _xfwm4_, uncheck `zoom_desktop`
 * Traditionally RTC (h/w clock that doesn’t understand time standards) is set in local time; Windows reads it as local by default.  Linux doesn’t, as it recommends setting it in GMT and let the OS services deal with time zone and DST variations.  Forcing Linux with `timedatectl set-local-rtc 1` is possible.  However, `man timedatectl` warns that it will create problems when changing time zones and DST changes; one has to rely on booting into Windows at least twice annually (in Spring and Fall -- [see here](https://unix.stackexchange.com/q/234689/30580)) for DST adjustments.  Setting RTC in GMT (like macOS) is appropriate; a registry change + restart on Windows will make it read RTC as GMT too.  This is the recommended way of setting time in dual boot machines.  For time sync with NTP, do `timedatectl set-ntp true`.  Do `timedatectl status` to check if everything is OK:
 
-```
+{{< highlight basic >}}
                Local time: Thu 2018-10-18 16:04:49 IST
            Universal time: Thu 2018-10-18 10:34:49 UTC
                  RTC time: Thu 2018-10-18 10:34:49
@@ -192,26 +194,27 @@ Running _glxgears_ with and without `optirun` should show the right GPU selected
 System clock synchronized: yes
               NTP service: active
           RTC in local TZ: no
-```
+{{< /highlight >}}
 
 * To make packages from AUR install `base-devel` package, make `sudo` group, add user to it
-```
+
+{{< highlight basic >}}
 su
 visudo                      # uncomment sudo group
 groupadd sudo               # if not already existing
 gpasswd -a sundaram sudo
-```
+{{< /highlight >}}
 
 `makepkg -si` needs `sudo` to install the built package.
 
 1. To enable Tamil in browser (and other interfaces), I’d to do
 
-```
+{{< highlight basic >}}
 pacman -S firefox-i18n-ta 
 git clone https://aur.archlinux.org/ttf-tamil.git
 pacman -S base-devel
 makepkg -si
-```
+{{< /highlight >}}
 
 2. Install `udisks2` for auto-mounting NTFS partitions and removable (USB) disks.  To allow users of group `sudo` to mount NTFS drives (with write permissions) without asking for `root` password, [enable the group in _polkit_](https://unix.stackexchange.com/a/207667).  I like using _udisks2_ over `/etc/fstab`; the former is intelligent, has permissions and mount points that are user-based; the latter is plain hard-coding.  A recommended GUI, if needed, is [_udiskie_](https://github.com/coldfix/udiskie).
 3. For screenshots, Xfce has `xfce4-screenshooter` which has to be hooked to <kbd>PrintScr</kbd> through `xfce4-keyboard-settings` under the _Application Shortcuts_ tab.
