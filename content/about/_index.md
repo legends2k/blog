@@ -9,6 +9,9 @@ sharing](https://stackoverflow.com/users/183120/legends2k).  Lives in Emacs, lov
 
 I have enjoyed working on an [array of projects](/projects).
 
+I can be reached at _&#108;&#x65;&#x67;&#x65;&#110;&#100;&#x73;&#50;&#x6b;&#64;&#x79;&#x61;&#104;&#x6f;&#x6f;&#46;&#x63;&#x6f;&#x6d;_.
+
+
 Repertoire
 ==========
 **Languages**: C++ (14), C, C#, Lua, JavaScript, Python, GLSL  

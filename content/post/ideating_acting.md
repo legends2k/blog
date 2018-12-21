@@ -42,6 +42,8 @@ Do we need more current across our existing pathways or new pathways themselves?
 
 Newer alternative pathway is needed to steer away from taking the old route.  For that good ol’ _action_ is needed!  When I suggest people to write a happiness log, people go, "I know I can think of these positive thoughts, why record them everyday?  It seems silly to write down what I already know".  Well, there’s our problem.  Knowing is not enough, doing is.  Writing a log is perhaps silly but what it does to your brain isn’t.
 
+> An ounce of experience is worth a ton of theory.
+
 Wanna lower your anger after identifying what pushes your buttons?  Write[^4] and stick a big wall poster.  No, that poster isn’t gonna calm you down.  What does?  The more you see it, the more your subconscious realizes that you’re serious enough to change something that you’ve shown it in action.  _The poster is a symbol of your action_; a commitment beacon.
 
 Motivation speakers, at least the more practical ones, suggest to make flash cards, write small logs of change every day, etc.  When you do these small action everyday, incrementally, you change yourself without exerting a lot of effort: a lot of change intimidates your brain and you get burned out.  So the two key takeaways
@@ -51,6 +53,21 @@ Motivation speakers, at least the more practical ones, suggest to make flash car
 
 In a couple of weeks, you should see something tangible as a product of your incremental changes; this puts you in a virtuous feedback loop.  You’re well on your way to changing/re-programming yourself 👍
 
+# Bottom line
+
+Most of humanity keeps ideating but little gets done; most keep talking but seldom listen.
+
+> Wanna be a great driver, drive more![^5]
+> Aspire becoming a great talker[^6], listen more!
+
+Perhaps this is one of the reason why Zen recommends listening over talking, doing to thinking.  Know this [title](https://www.quora.com/What-does-if-you-meet-the-Buddha-on-the-road-kill-him-mean)?
+
+> If you meet the Buddha on the road, kill him!
+
+In order to see the Buddha, you have to _be_ the Buddha.  If you aren't the Buddha, you can't really understand the Buddha.
+
+Talking, reading and thinking about something doesn’t get you there; doing will.
+
 [^1]: Kids are fairly adaptable since their minds are fresh: a great advantage -- the beginner’s mind.
 
 [^2]: Without being mindful about driving; sometimes called _auto-piloting_.
@@ -58,7 +75,8 @@ In a couple of weeks, you should see something tangible as a product of your inc
 [^3]: There are some ways around this but are very demanding: _mind sculpting_, a fairly recent technique.  Suppose you want to fix anger; you come up all the possible situations in which you’d react; now imagine yourself calm in when you’re in those.  Without imagining the situations, you’d still end up acting angry since the mind wasn’t trained in the right setting.
 
 [^4]: Don’t print it or, worse, buy one.
-
+[^5]: As opposed to reading, thinking or talking about driving.
+[^6]: conversationalist
 
 [beginner’s mind]: https://en.wikipedia.org/wiki/Shoshin
 [Neural pathway]: https://en.wikipedia.org/wiki/Neural_pathway
