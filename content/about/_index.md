@@ -19,7 +19,7 @@ Repertoire
 **Packages**: GIMP, Blender, 3ds Max  
 **Platforms**: Linux / Cygwin, Windows
 
-Work Experience (10+ years)
+Work Experience (12+ years)
 ===============
 
 * Software Design Engineer II, **Microsoft** (2010 — Present)
