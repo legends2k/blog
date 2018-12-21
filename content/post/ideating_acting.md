@@ -7,13 +7,13 @@ tags = ["psychology", "kaizen", "mind"]
 
 # Ideas
 
-When we’re young, people tell us how to talk, how to socialize, how to deal with money matters, etc.  It’s done to the point where it’s preachy and rightly so.  Why?  More than what you say, kids pick up what you _do_.  Words don’t mean much to them; [actions speak much louder][AJCronin] indeed.
+Young people are constantly bombareded with free advice by the elderly: people tell them how to talk, how to socialize, how to deal with money matters, etc.  It’s done to the point where it’s felt as preachy and rightly so.  Why?  More than what you say, kids pick up what you _do_.  Words don’t mean much to them; [actions speak much louder][AJCronin] indeed.
 
-When we’re adults, we read motivational text, watch TED talks, discuss our problems with our friends and get ideas/free advice all the time on how to tackle.
+Even as adults, many read motivational text, watch TED talks, discuss our problems with our friends and get ideas/free advice all the time on how to tackle.
 
-You want to take the stairs to your work floor everyday.  You make a pact with yourself; next day you get reminded of the pact while the elevator door dings.  So what’s missing?
+Now how useful are these ideas?  Say you want to take the stairs to your work floor everyday.  You make a pact with yourself; next day you get reminded of the pact while the elevator door dings.  So what’s missing?
 
-We get a lot of ideas and tips.  In this information age, they’re abundant to the point of becoming boring.  Yet, why don’t we all end up showing them in action?  Let aside _all_, not even _many_.  Majority of adults (and some kids[^1]), find it hard to change a habit?
+We get a lot of ideas and tips.  In this information age, they’re abundant to the point of becoming boring.  Yet, why don’t we all end up showing them in action?  Let aside _all_, not even _many_.  Majority of adults (and some kids[^1]), find it hard to change even one habit?
 
 > Invariably, we’re fed with ideas; when [armchair theorizing][] they sound great too.  When it comes to doing it, at that moment, it’s a totally different ball game.
 
@@ -24,9 +24,9 @@ Everyone knows what to do.  How to do, however, has eluded us.
 
 # The Mind
 
-It’s great to have a [beginner’s mind][]; while an expert’s busy explaining how _new_ is actually _old_, a beginner accepts _new_ as it is; works with it.  However, it’s just plain reality that most of us don’t have a beginner’s mind and we’ve habits.  How then do we effect change then?  Let’s see how the mind works at a coarse level to understand behaviours.
+It’s great to have a [beginner’s mind][]; while an expert’s busy explaining how _new_ is actually _old_, a beginner accepts _new_ as it is; works with it.  However, it’s just plain reality that most of us don’t have a beginner’s mind and we’ve habits.  How, then, do we effectively change them?  Let’s see how the mind works at a coarse level to understand behaviours.
 
-[Neural pathway][]s are formed when you do a new _action_; bits of technique, from the new experience, is learnt.  As you continue doing similar actions, the pathways become stronger and denser; more connections are made to other parts of your cortex.  Once these pathways are quite established, it’s like a freeway to involuntary action.  Speaking while driving[^2], anyone?  Yes, that’s _[muscle memory][]_.  It’s not just committed to memory but is autonomous.  And this isn’t a good thing when the pathway is to reach for another cigarette.
+[Neural pathway][]s are formed when you do a new _action_; bits of technique, from the new experience, is learnt.  As you continue doing similar actions, the pathways become stronger and denser; more connections are made to other parts of your cortex.  Once these pathways are quite established, it’s like a freeway to involuntary action.  Speaking while driving[^2], anyone?  Yes, that’s _[muscle memory][]_.  It’s not just committed to memory but is autonomous.  And this isn’t a good thing when the pathway is abetting one to reach for another cigarette.
 
 > Your conscious brain acts ~~nice~~ prude when you think consciously, _but_ your subconscious, the final authority, isn’t as nice.
 
@@ -55,18 +55,17 @@ In a couple of weeks, you should see something tangible as a product of your inc
 
 # Bottom line
 
-Most of humanity keeps ideating but little gets done; most keep talking but seldom listen.
-
-> Wanna be a great driver, drive more![^5]
-> Aspire becoming a great talker[^6], listen more!
-
-Perhaps this is one of the reason why Zen recommends listening over talking, doing to thinking.  Know this [title](https://www.quora.com/What-does-if-you-meet-the-Buddha-on-the-road-kill-him-mean)?
+Most of humanity keeps ideating but little gets done; most keep talking but few are listened to.  Perhaps this is one of the reasons Zen recommends listening over talking, doing to thinking.  Know this [title](https://www.quora.com/What-does-if-you-meet-the-Buddha-on-the-road-kill-him-mean)?
 
 > If you meet the Buddha on the road, kill him!
 
-In order to see the Buddha, you have to _be_ the Buddha.  If you aren't the Buddha, you can't really understand the Buddha.
+In order to see the Buddha, you have to _be_ the Buddha.  If you aren't the Buddha, you can't really understand the Buddha[^5].
 
-Talking, reading and thinking about something doesn’t get you there; doing will.
+> Wanna be a great driver, drive more[^6].
+>
+> Wanna be a great talker, listen more!
+
+Talking, reading or thinking about something won’t get you there; doing will[^7].
 
 [^1]: Kids are fairly adaptable since their minds are fresh: a great advantage -- the beginner’s mind.
 
@@ -75,8 +74,9 @@ Talking, reading and thinking about something doesn’t get you there; doing wil
 [^3]: There are some ways around this but are very demanding: _mind sculpting_, a fairly recent technique.  Suppose you want to fix anger; you come up all the possible situations in which you’d react; now imagine yourself calm in when you’re in those.  Without imagining the situations, you’d still end up acting angry since the mind wasn’t trained in the right setting.
 
 [^4]: Don’t print it or, worse, buy one.
-[^5]: As opposed to reading, thinking or talking about driving.
-[^6]: conversationalist
+[^5]: Title cheekily warns about imposters who just _talk_ but don’t meditate.
+[^6]: As opposed to read, think or talk about driving.
+[^7]: This applies even to problems of much bigger scale.  Worried about global warming?  Worrying won’t improve the situation one bit; though a small act, however miniscule, would still improve it by some infinitesimally small delta.
 
 [beginner’s mind]: https://en.wikipedia.org/wiki/Shoshin
 [Neural pathway]: https://en.wikipedia.org/wiki/Neural_pathway
