@@ -48,6 +48,7 @@ Without network access modern linux installations are an exercise in pain.  I di
 5. Edit parameters in copied file as per network
     * Use `wpa_passphrase` to get the hex passphrase to put in netctl's profile
     * Make sure you run `wpa_passphrase` with the correct SSID
+    * Set custom DNS servers for _netctl_ to write to `/etc/resolv.conf`
 
 {{< highlight cfg >}}
 Description='A simple WPA encrypted wireless connection'
@@ -60,6 +61,7 @@ IP=dhcp
 ESSID='InfoProbe'
 Key=\72ac...
 Hidden=yes
+DNS=('1.1.1.1' '1.0.0.1')
 {{< /highlight >}}
 
 1. `netctl start wireless-wpa`

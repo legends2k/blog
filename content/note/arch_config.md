@@ -8,7 +8,7 @@ draft = true
 
 # Network
 
-Once inside the newly installed Arch machine, I noticed that there's no network.  To enable redo _§2 Wireless Network_ above.  I did it only to realize that for _netctl_ to hook to a WPA-secured network, `wpa_supplicant` is needed but absent in the installed system.  Since there's no network, I'd to reboot into the installation USB, setup network and install it from there to the new OS by chrooting
+Once inside the newly installed Arch machine, I noticed that there's no network.  To enable, I’d redo what I did during install (see _Arch Linux Installation_, [_§2 Wireless Network_]({{< relref "arch_install#wireless-network" >}})).  I did it only to realize, for _netctl_ to hook to a WPA-secured network, `wpa_supplicant` is needed but absent in the installed system.  Since there's no network, I'd to reboot into the installation USB, setup network and install it from there to the new OS by chrooting
 
 {{< highlight basic >}}
 root@archiso / # mount /dev/lvmg1/root /mnt
@@ -49,6 +49,12 @@ ExecStart=/usr/lib/systemd/systemd-user-sessions start
 ExecStop=/usr/lib/systemd/systemd-user-sessions stop
 {{< /highlight >}}
 
+According to Arch Wiki’s [domain name resolution](https://wiki.archlinux.org/index.php/Domain_name_resolution#Lookup_utilities)
+
+> The `Glibc` resolver provides only the most basic necessities, it does not cache queries nor provides any security features. If you require more functionality, use another resolver.
+
+However, another statement admonitioned that a router usually does this caching at the network-level, so I didn’t bother setting up a more robust resolver.
+
 # Enlisting Windows
 
 Make sure you've the `os-prober` package installed.  Mount the EFI partition and re-run GRUB config maker
@@ -58,14 +64,14 @@ mount /dev/nvme0n1p1 /boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 {{< /highlight >}}
 
-It should list Windows as one of the options now.
+It should list _Windows_ as an option now.
 
 # Desktop Environment
 
-To have Xfce up and running, we need a display system (_Xorg_; Xfce can’t run atop _Wayland_ yet) and a display manager (_LXDM_)
+To have _Xfce_ up and running, we need a display system (_Xorg_; Xfce can’t run atop _Wayland_ yet) and a display manager (_LXDM_)
 
 {{< highlight basic >}}
-pacman -Syy
+pacman -Syu
 pacman -S --needed xorg xorg-server xfce4 xfce4-goodies lxdm xf86-input-synaptics
 {{< /highlight >}}
 
@@ -80,13 +86,11 @@ For the first run, make sure to set the _Session_ and _Locale_; not doing so led
 
 # Display
 
-I got infinite waits every time I shutdown due to Nouveau drivers for the Nvidia; for this reason I disabled `lxdm.service` and operated from the terminal.  First do
+I got infinite waits every time I tried `poweroff -n` due to Nouveau drivers for Nvidia; for this reason I disabled `lxdm.service` and operated from the terminal.  To list the graphics devices you’ve, do
 
 {{< highlight basic >}}
 lspci -k | grep -A 2 -E "(VGA|3D)"
 {{< /highlight >}}
-
-to be sure of the graphic devices you have.
 
 ## Intel
 
@@ -96,7 +100,7 @@ To get Intel graphics working
 pacman -S --needed xf86-video-intel mesa mesa-demos
 {{< /highlight >}}
 
-With Skylake and newer processors (Kabylake, …) we can enable `i915` module for [early KMS start](https://wiki.archlinux.org/index.php/Kernel_mode_setting#Early_KMS_start) in `/etc/mkinitcpio.conf` and run `mkinitcpio -p linux`
+With Skylake and its successors (Kabylake, …) we can enable `i915` module for [early KMS start](https://wiki.archlinux.org/index.php/Kernel_mode_setting#Early_KMS_start) in `/etc/mkinitcpio.conf` and run `mkinitcpio -p linux`
 
 {{< highlight cfg >}}
 # MODULES
@@ -104,13 +108,13 @@ With Skylake and newer processors (Kabylake, …) we can enable `i915` module fo
 MODULES=(i915)
 {{< /highlight >}}
 
-Also enable GuC, HuC and FBC by setting `/etc/modprobe.d/i915.conf`
+Enable GuC, HuC and FBC in `/etc/modprobe.d/i915.conf`
 
 {{< highlight basic >}}
 options i915 enable_guc=-1 enable_fbc=1
 {{< /highlight >}}
 
-Screen tearing when scrolling large walls of text in Firefox is a common occurrence.  To fix this set `/etc/X11/xorg.conf.d/20-intel.conf`
+Screen tearing when scrolling large walls of text in Firefox is a common occurrence.  To fix this set `/etc/X11/xorg.conf.d/20-intel.conf` to
 
 {{< highlight basic >}}
 Section "Device"
@@ -120,11 +124,11 @@ Section "Device"
 EndSection
 {{< /highlight >}}
 
-The Intel device needs only these but still I was unable to `startx` or `systemctl start lxdm.service`; even if it shows up, it usually hung during power down sequence.  All because the Nvidia device was preferred over Intel's and its drivers are broken.
+The Intel device needs only these but still I couldn’t `startx` or `systemctl start lxdm.service`; even if stuff shows up, it usually hung during power down sequence.  All because the Nvidia device was preferred over Intel's and its drivers were broken.
 
 ## Nvidia
 
-Switching between Nouveau and proprietary drivers (both `nvidia` and `nvidia-lts`), mucking around with `/etc/X11/xorg.conf`, creating and tweaking `/etc/X11/xorg.conf.d/20-nvidia.conf`, running `nvidia-xconfig` and `nvidia-settings` --- none of these worked!  Enter [Bumblebee](https://bumblebee-project.org/) and voilà!.
+Switching between Nouveau and proprietary drivers (both `nvidia` and `nvidia-lts`), mucking around with `/etc/X11/xorg.conf`, creating and tweaking `/etc/X11/xorg.conf.d/20-nvidia.conf`, running `nvidia-xconfig` and `nvidia-settings` --- none of these worked!  Enter [Bumblebee](https://bumblebee-project.org/) and voilà!
 
 Remove all nouveau-related and install Nvidia-supplied packages.  Install Bumblebee and friends:
 
@@ -134,20 +138,31 @@ pacman -S nvidia nvidia-utils
 pacman -S bumblebee primus bbswitch
 {{< /highlight >}}
 
-In order to use Bumblebee, add user to the `bumblebee` group
+Make sure at least these entries are set right in `/etc/bumblebee/bumblebee.conf`:
+
+{{< highlight cfg >}}
+[bumblebeed]
+ServerGroup=bumblebee
+Driver=nvidia
+
+[driver-nvidia]
+KernelDriver=nvidia
+{{< /highlight >}}
+
+In order to use Bumblebee, add user to `bumblebee` group
 
 {{< highlight basic >}}
 gpasswd -a root bumblebee
 {{< /highlight >}}
 
-Start service to see if things work as expected and enable it for persistence
+Start the _Bumblebee_ service to see if things work as expected; enable for service start across reboots.
 
 {{< highlight basic >}}
 systemctl start bumblebeed.service
 systemctl enable bumblebeed.service
 {{< /highlight >}}
 
-Once all the setting up is done, do
+Once all the setting up is done, you could choose between the GPUs when running a process.  `optirun` the process to choose Nvidia; the default would be Intel:
 
 {{< highlight basic >}}
 glxinfo | grep "OpenGL Renderer"
@@ -155,7 +170,22 @@ glxgears -info
 optirun glxgears -info
 {{< /highlight >}}
 
-Running _glxgears_ with and without `optirun` should show the right GPU selected for running the demo.
+Running _glxgears_ with and without `optirun` should show the right GPU selected for the demo running.
+
+Once in a while, I get this error when I `optirun` something
+
+{{< highlight basic >}}
+[  146.868249] [ERROR]Cannot access secondary GPU - error: [XORG] (EE) NVIDIA(GPU-0): Failed to initialize the NVIDIA GPU at PCI:1:0:0.  Please
+[  146.868250] [ERROR]Aborting because fallback start is disabled.
+{{< /highlight >}}
+
+I found the [fix in Arch Wiki](https://wiki.archlinux.org/index.php/Bumblebee#Failed_to_initialize_the_NVIDIA_GPU_at_PCI:1:0:0_(Bumblebee_daemon_reported:_error:_[XORG]_(EE)_NVIDIA(GPU-0)))
+
+{{< highlight basic >}}
+su
+echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
+echo 1 > /sys/bus/pci/rescan
+{{< /highlight >}}
 
 # Draft
 
@@ -225,13 +255,14 @@ makepkg -si
     + Set `BATT_HD_POWERMGMT=200` and `LM_AC_HD_POWERMGMT=240` in `/etc/laptop-mode/laptop-mode.conf`.  Verify if this is in action with `hdparm -B /dev/sda`
 5. For natural scrolling with laptop’s touchpad, similar to iPad, enabling _Reverse scroll direction_ under _Mouse and Touchpad_ settings fixes in most places except in _Terminal_.
 6. _Edit with Emacs_ to use `emacsclient` see https://emacs.stackexchange.com/q/14055/4106
-
+7. Yay pacman wrapper
 # Issues
 
 1. Log out and in mouse cursor frozen
 2. Screen locker with tty security but also works with Xfce4
 3. Scroll neutralizing at all places
 
+For the first run, make sure to set the _Session_ and _Locale_; not doing so led to a loop.
 
 # References
 
