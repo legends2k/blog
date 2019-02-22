@@ -1,11 +1,13 @@
 +++
-title = "Git Concepts"
-description = "Summary of my ‘Aha!’ moments"
+title = "I Git it!"
+description = "Summary of my ‘Aha!’ moments with Git"
 date = 2019-02-20T19:56:56+05:30
 tags = ["tech", "vcs", "tools"]
 +++
 
-Basics like initializing (a repository), staging and commiting files aren’t explained here; they simply make sense; no ‘Aha!’s there.  Moving references, branching and merging, coupled with Git’s arcane names are the confusing parts.
+Basics like initializing (a repository), staging and commiting files aren’t explained here; they simply make sense; no ‘Aha!’s there.  Moving references, branching and merging --- coupled with Git’s arcane command names --- are the confusing parts.
+
+# Basics
 
 - Git is a distributed VCS; each repo can be both a server/client
 - Honestly, `git` (sub)commands are just graph manipulating commands
@@ -81,20 +83,6 @@ Subcommands that affect moving remote refs:
 - `push`
 
 Commands like `cherry-pick` seem to work atop one of these.
-
-# Rebase
-
-`rebase`  seems to have a scary reputation on the web, with good reason of course, since it’s infamous for rewriting history; something your teammates mightn’t take kindly.  However, when you’re doing this only within your repo, before pushing elsewhere, it’s a great tool.
-
-The crux of a `rebase`: consider a subgraph’s root node; what `rebase` does is, it moves this root’s parent pointer from one node to another; thereby _rebasing_ the entire subgraph to a new parent.
-
-When pulling from a repository, you might know that your changes are unrelated to what lurks in the merged-into branch.  In this case, to avoid a merge commit and have a linear commit history, you’d pass `--rebase` since the default strategy of `pull` is to merge.
-
-{{< highlight basic >}}
-git pull --rebase origin master
-{{< /highlight >}}
-
-Interactive rebase is quite useful too.  I frequently use it to amend, fix, reword or squash commits.
 
 # Checkout vs Reset
 
@@ -203,6 +191,19 @@ git reset master~3
 
 [Reset Demystified]: https://www.git-scm.com/book/en/v2/Git-Tools-Reset-Demystified
 
+# Rebase
+
+`rebase`  seems to have a scary reputation on the web, with good reason of course, since it’s infamous for rewriting history; something your teammates mightn’t take kindly.  However, when you’re doing this only within your repo, before pushing elsewhere, it’s a great tool.
+
+The crux of a `rebase`: consider a subgraph’s root node; what `rebase` does is, it moves this root’s parent pointer from one node to another; thereby _rebasing_ the entire subgraph to a new parent.
+
+When pulling from a repository, you might know that your changes are unrelated to what lurks in the merged-into branch.  In this case, to avoid a merge commit and have a linear commit history, you’d pass `--rebase` since the default strategy of `pull` is to merge.
+
+{{< highlight basic >}}
+git pull --rebase origin master
+{{< /highlight >}}
+
+Interactive rebase is quite useful too.  I frequently use it to amend, fix, reword or squash commits.
 
 # Learn by Doing
 
