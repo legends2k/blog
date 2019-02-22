@@ -26,13 +26,14 @@ Being a Emacs junkie one of the first things I do when I start using a new envir
 dumpkeys | head -1 > keys.map
 echo 'keycode 58 = Control' >> keys.map
 loadkeys keys.map
+rm keys.map
 {{< /highlight >}}
 
 Once we’ve a desktop environment setup, this can be made permanent with [`.Xmodmap`](https://bitbucket.org/rmsundaram/tryouts/src/dev/Misc/config/.Xmodmap).
 
 # Wireless Network
 
-Without network access modern linux installations are an exercise in pain.  I didn't have an ethernet cable so I had to get wi-fi up:
+Without internet access modern linux installations are an exercise in pain.  I didn't have an ethernet cable so I had to get wi-fi up:
 
 1. If `ping` fails, disable _dhcpcd_ service with `systemctl stop dhcpcd@` (press <kbd>TAB</kbd>)
 2. Check wireless interface creation with `iw dev`; it should list the interface name e.g. `wlp3s0`
@@ -171,7 +172,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 {{< /highlight >}}
 
-Make sure to install packages that would be needed for network access in the installed system now; specifically `wpa_supplicant` since the new system wouldn't have network access and will not contain this package either.  This is a dependency for _netctl_.
+Make sure to install packages that would be needed for network access in the installed system now; specifically `wpa_supplicant` since the new system wouldn't have network access and will not contain this package either.  This is a dependency for `netctl`.
 
 ## Time
 
@@ -228,7 +229,7 @@ nano /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 {{< /highlight >}}
 
-The suggested _os-prober_ , which makes GRUB look for other OSs, didn't find Windows. Apparently, the EFI partition should be mounted to `/mnt/boot` _before_ pacstrapping as this is where the kernel and bootloader are installed to.  If you get `lvmetad` errors, you may safely ignore them.  Once inside the new Arch, os-prober should work fine.
+The suggested `os-prober` package, which makes GRUB look for other OSs, didn't find Windows. Apparently, the EFI partition should be mounted to `/mnt/boot` _before_ pacstrapping as this is where the kernel and bootloader are installed to.  If you get `lvmetad` errors, you may safely ignore them.  Probing should work inside the new Arch.
 
 # Reboot
 

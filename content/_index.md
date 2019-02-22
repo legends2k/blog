@@ -1,10 +1,11 @@
 +++
-title = "Sundaram Ramaswamy"
+title = "Bits of Insight"
 description = "a.k.a legends2k"
 date = "2017-02-24T12:14:41+05:30"
 +++
 
-<!-- the title and description here are ignored by layouts/index.html -->
+<!-- title and description above are ignored by /layouts/index.html -->
+<!-- title is used in building <title> element by /layouts/partials/header.html -->
 
 Giving form to thoughts make them powerful; without form ideas are quite useless.  Mere ponderings or musings may seem to give clarity in the short run but they do not build the kind of intuition one needs to finally get insights.  More often, without concretising, they lead to magical thinking abeted by perceptive and cognitive errors.
 

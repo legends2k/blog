@@ -2,7 +2,7 @@
 title = "Git: Pushing to a Fork"
 description = "the original origin"
 date = "2018-04-19T13:57:03-07:00"
-tags = ["tech", "vcs", "git", "tools"]
+tags = ["tech", "vcs", "tools"]
 +++
 
 
