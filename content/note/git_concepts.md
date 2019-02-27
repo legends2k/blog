@@ -5,7 +5,7 @@ date = 2019-02-20T19:56:56+05:30
 tags = ["tech", "vcs", "tools"]
 +++
 
-Basics like initializing (a repository), staging and commiting files aren’t explained here; they simply make sense; no ‘Aha!’s there.  Moving references, branching and merging --- coupled with Git’s arcane command names --- are the confusing parts.
+Basics like initializing (a repository), staging and commiting files aren’t explained here; they simply make sense; no ‘Aha!’s there.  Moving references, branching and merging --- coupled with Git’s arcane command names[^3] --- are the confusing parts.
 
 # Basics
 
@@ -86,11 +86,13 @@ Commands like `cherry-pick` seem to work atop one of these.
 
 # Checkout vs Reset
 
-To understand both commands, you need to understand `HEAD`[^1].  Most people know about working tree and stating area though.
+To understand both commands, you first need to understand `HEAD`[^1].  Most people know about working tree and stating area but not `HEAD`.
 
-`HEAD` references the currently checked out commit; your working tree will mostly be from this snapshot i.e. the commit pointed to by `HEAD`.  [Pro Git][Reset Demystified] summarizes this nicely
+[`HEAD`][HEAD definition SO] references the currently checked out commit; your working tree will mostly be from this snapshot i.e. the commit pointed to by `HEAD`.  [Pro Git][Reset Demystified] summarizes this nicely
 
-> `HEAD` will be the parent of the next commit that is created
+> `HEAD` will be the parent of the next commit that is created.
+
+[HEAD definition SO]: https://stackoverflow.com/q/5772192/183120
 
 ## Checkout
 
@@ -123,7 +125,7 @@ C1 <-- C2 <-- C3 <-- C4 <-- C5 <-- master
                             HEAD
 {{< /highlight >}}
 
-> Now, when `HEAD` is moved by `reset`, if it’s attached to a branch, that reference will move along with `HEAD`.
+> When `HEAD` is moved by `reset`, if it’s attached to a branch, that reference will move along with `HEAD`.
 
 {{< highlight basic >}}
 git reset --hard C3
@@ -131,7 +133,7 @@ git reset --hard C3
 
 would move _both_ `HEAD` and `master` to `C3`[^2].  `HEAD` would continue to be attached.  Now if it weren’t attached, it’ll only move `HEAD` leaving `master` behind, hence the _detached_ `HEAD` state.
 
-There’re a couple of ways to identify if `HEAD` is detached.  `git status`’s very first line will tell you:
+There’re a couple of ways to identify if `HEAD` is detached.  `git status`’s very first line will tell you:
 
 {{< highlight basic >}}
 > git status
@@ -141,7 +143,7 @@ On branch master
 # HEAD detached at 847fe59
 {{< /highlight >}}
 
-Another way is to use `git log`; I learnt from this actually.
+Another way is to use `git log`; I learnt from this actually.
 
 {{< highlight basic >}}
 > git log --oneline --all -5
@@ -187,27 +189,44 @@ git checkout HEAD~2
 git checkout master
 # move back master by 3
 git reset master~3
+# move master forward/backward with commit ID
+git reset f08ad6
 {{< /highlight >}}
 
 [Reset Demystified]: https://www.git-scm.com/book/en/v2/Git-Tools-Reset-Demystified
 
 # Rebase
 
-`rebase`  seems to have a scary reputation on the web, with good reason of course, since it’s infamous for rewriting history; something your teammates mightn’t take kindly.  However, when you’re doing this only within your repo, before pushing elsewhere, it’s a great tool.
+`rebase`  seems to have a scary reputation on the web, with good reason of course, since it’s infamous for rewriting history; something your teammates mightn’t take kindly.  However, when you’re doing this only within your repo, before pushing, it’s a great tool.
 
-The crux of a `rebase`: consider a subgraph’s root node; what `rebase` does is, it moves this root’s parent pointer from one node to another; thereby _rebasing_ the entire subgraph to a new parent.
+> The crux of a `rebase`: given a subgraph’s root node, `rebase` changes its parent pointer from one node to another; thereby _rebasing_ the entire subgraph to a new parent.
 
-When pulling from a repository, you might know that your changes are unrelated to what lurks in the merged-into branch.  In this case, to avoid a merge commit and have a linear commit history, you’d pass `--rebase` since the default strategy of `pull` is to merge.
+Interactive rebase (`rebase -i`) is quite useful.  I frequently use it to amend (not just the recent commit), fix, reword, edit, drop or squash commits.  During an interactive rebase, one can even create multiple commits as usual and continue with the rebase; things will be taken care of!  This is normal when [dividing][divide commit] a commit into smaller parts.
+
+[divide commit]: https://stackoverflow.com/q/6217156/183120
+
+## pull = fetch + ~~merge~~ rebase? 🤔
+
+When pulling from a remote branch, you might know that your changes are unrelated to the ones coming down.  In this case, to avoid a merge commit and have a linear commit history, you’d pass `--rebase` do override the default merge strategy of `pull`: merge.
 
 {{< highlight basic >}}
 git pull --rebase origin master
 {{< /highlight >}}
 
-Interactive rebase is quite useful too.  I frequently use it to amend, fix, reword or squash commits.
+`git pull` is just `git fetch` followed by `git merge` which creates a new merge commit.  `git pull --rebase`, however, is `git fetch` and `git rebase`; it pulls commits from remote to your current branch and then replay your commits atop your current branch’s tip -- this works if there’re no merge conflicts; otherwise you’ve to resolve conflicts as you’d normally.  The resolution (changes) become a part of one of your commits where rebase halted; you’d end up [re-writing your commit][rebase conflict].  However, you don’t have to force push your changes to the remote since the resolution just happened in your local commits.  Rewriting of (commit) history, as long as it is not public, is OK 😉
+
+A counter point to pull-with-rebase: if you want logical separation of a set of commits, say for a completely new feature, then rebase --- which makes them inline, muddled with unrelated history --- isn’t the right tool; use `merge` instead.
+
+> Use `git pull --rebase` when your changes do not deserve a separate branch.
+
+seems to be the appropriate answer to [when should I `git pull --rebase`][when pull rebase].
+
+[rebase conflict]: https://stackoverflow.com/a/35025978/183120
+[when pull rebase]: https://stackoverflow.com/q/2472254/183120
 
 # Learn by Doing
 
-[try.github.io][] for good try-it-yourself resources.
+[try.github.io][] for good DIY resources.
 
 - [Visualizing Git][] -- lets you visualize your git commands
 - [Visualizing Git Concepts with D3][] -- explains commands with interactive images
@@ -222,10 +241,19 @@ Interactive rebase is quite useful too.  I frequently use it to amend, fix, rewo
 
 1. [Think like a Git][]
 2. [Pro Git][]
+3. [Git Tutorials by Atlassian][]
+4. [Git Ready][]
 
 [Think like a Git]: http://think-like-a-git.net/
 [Refs]: http://think-like-a-git.net/sections/graphs-and-git/references.html
 [Pro Git]: https://git-scm.com/book/en/v2
+[Git Tutorials by Atlassian]: https://www.atlassian.com/git/tutorials
+[Git Ready]: http://gitready.com/
 
 [^1]: case-sensitive
 [^2]: using `C3` for readability; substitute with proper commit ID
+[^3]: I use [Magit][] to interact with Git but knowing them helps
+
+
+[Magit]: https://magit.vc/
+
