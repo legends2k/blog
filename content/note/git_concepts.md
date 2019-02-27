@@ -197,13 +197,16 @@ git reset f08ad6
 
 # Rebase
 
-`rebase`  seems to have a scary reputation on the web, with good reason of course, since it’s infamous for rewriting history; something your teammates mightn’t take kindly.  However, when you’re doing this only within your repo, before pushing, it’s a great tool.
+`rebase`  seems to have a scary reputation on the web, with good reason of course.  It’s infamous for rewriting history; something your teammates mightn’t take kindly.  However, when you’re doing this only locally, within your repo, before pushing, it’s a great tool.
 
 > The crux of a `rebase`: given a subgraph’s root node, `rebase` changes its parent pointer from one node to another; thereby _rebasing_ the entire subgraph to a new parent.
+
+Take note, a commit is not just its contents but also includes its parent(s).  So any kind of rebase entails --- since the parent/lineage changed --- [change of commit ID][rebase ID change] for the same commit contents.
 
 Interactive rebase (`rebase -i`) is quite useful.  I frequently use it to amend (not just the recent commit), fix, reword, edit, drop or squash commits.  During an interactive rebase, one can even create multiple commits as usual and continue with the rebase; things will be taken care of!  This is normal when [dividing][divide commit] a commit into smaller parts.
 
 [divide commit]: https://stackoverflow.com/q/6217156/183120
+[rebase ID change]: https://stackoverflow.com/a/4629407/183120
 
 ## pull = fetch + ~~merge~~ rebase? 🤔
 
