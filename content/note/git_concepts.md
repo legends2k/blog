@@ -58,11 +58,11 @@ D---E---F---G
 
 - Plainly, [references][Refs] are "meaningful" names to some commits
   - Branches and tags are references too
-    - Creating a branch is a way to "nail down" part of the graph that you want to return to later `[reachability]`
+    - Creating a branch is a way to "nail down" part of the graph that you want to return to later ([reachability][])
 - They facilitate easy git-speak with your friends/colleagues 😜
 - [Internally][ref-internal] just a 40-byte file containing a commit ID
   - They’re specific to a single repository
-  - Remote references point to commits in remote repositories
+  - Remote references are local, remote-tracking references to a commit in a remote repository [^4]
 - There’re many more ways of referring to commits: `man gitrevisions` is your friend
 
 [ref-internal]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
@@ -252,11 +252,11 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when p
 [Pro Git]: https://git-scm.com/book/en/v2
 [Git Tutorials by Atlassian]: https://www.atlassian.com/git/tutorials
 [Git Ready]: http://gitready.com/
+[Magit]: https://magit.vc/
+[branch]: https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefbranchabranch
+[remote branches]: https://stackoverflow.com/q/7642273/183120
 
-[^1]: case-sensitive
+[^1]: Case-sensitive!  _HEAD_ will be the parent of a new commit in working tree, while a branch’s _head_ means its tip; see [glossary][branch].
 [^2]: using `C3` for readability; substitute with proper commit ID
 [^3]: I use [Magit][] to interact with Git but knowing them helps
-
-
-[Magit]: https://magit.vc/
-
+[^4]: Remote-tracking branches (`origin/master`) are different from remote branches (`origin master`); former is updated with `fetch`.  See [this][remote branches].
