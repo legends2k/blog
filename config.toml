@@ -10,6 +10,7 @@ disqusShortname = "legends2k"
 paginate =  7
 pygmentsStyle = "dracula"
 pygmentsCodefencesGuessSyntax = true
+enableGitInfo = true
 
 [Author]
     name = "Sundaram Ramaswamy"
@@ -33,6 +34,8 @@ pygmentsCodefencesGuessSyntax = true
     shareFacebook = true
     shareGooglePlus = true
     shareLinkedIn = true
+    readingTime = false
+    readingTimeText = ""
 
 [[menu.main]]
     name = "Articles"

@@ -2,7 +2,7 @@
 <html{{ if .Site.Params.opengraph }} prefix="og: http://ogp.me/ns#"{{ end }}>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{{ .Title }} &middot; {{ .Site.Author.name }}</title>
         <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
         <meta name="HandheldFriendly" content="True">
@@ -52,50 +52,50 @@
                             </a>
                         <!-- instead of using the site name use Home icon from Font Awesome -->
                         {{ else }}
-                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Home" title="Home" href="{{ .Site.BaseURL }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Home" title="Home" href="{{ .Site.BaseURL }}" rel="me">
                                 <i class="fa fa-home"></i>
                             </a>
                         {{ end }}
                         <a class="button-square hint--top hint--rounded hint--bounce"
                            aria-label="RSS Feed" title="RSS Feed" href="{{ .Site.BaseURL }}index.xml"><i class="fa fa-rss"></i></a>
                         {{ with .Site.Params.twitter }}
-                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Twitter" title="Twitter" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Twitter" title="Twitter" href="{{ . }}" rel="me">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.gitlab }}
-                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Gitlab" title="Gitlab" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Gitlab" title="Gitlab" href="{{ . }}" rel="me">
                                 <i class="fa fa-gitlab"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.github }}
-                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Github" title="Github" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Github" title="Github" href="{{ . }}" rel="me">
                                 <i class="fa fa-github-alt"></i>
                             </a>
                         {{ end }}
                         <!-- add Bitbucket icon to the mix -->
                         {{ with .Site.Params.bitbucket }}
-                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Bitbucket" title="Bitbucket" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Bitbucket" title="Bitbucket" href="{{ . }}" rel="me">
                                 <i class="fa fa-bitbucket"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.stackoverflow }}
-                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Stack Overflow" title="Stack Overflow" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Stack Overflow" title="Stack Overflow" href="{{ . }}" rel="me">
                                 <i class="fa fa-stack-overflow"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.linkedin }}
-                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="LinkedIn" title="LinkedIn" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="LinkedIn" title="LinkedIn" href="{{ . }}" rel="me">
                                 <i class="fa fa-linkedin"></i>
                             </a>
                         {{ end }}
                         {{ with .Site.Params.gplus }}
-                        <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Google+" title="Google+" href="{{ . }}">
+                        <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Google+" title="Google+" href="{{ . }}" rel="me">
                             <i class="fa fa-google-plus"></i>
                         </a>
                         {{ end }}
                         {{ with .Site.Params.flickr }}
-                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Flickr" title="Flickr" href="{{ . }}">
+                            <a class="button-square hint--top hint--rounded hint--bounce" aria-label="Flickr" title="Flickr" href="{{ . }}" rel="me">
                                 <i class="fa fa-flickr"></i>
                             </a>
                         {{ end }}
