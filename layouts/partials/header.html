@@ -7,7 +7,7 @@
         <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        {{ .Hugo.Generator }}
+        {{ hugo.Generator }}
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Favicon -->
@@ -33,9 +33,11 @@
              });
             </script>
         {{ end }}
-        {{ if .RSSLink }}
-            <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml">
-        {{ end }}
+        <!-- Generate RSS link tag -->
+        <!-- https://gohugo.io/templates/rss/#reference-your-rss-feed-in-head -->
+        {{ range .AlternativeOutputFormats -}}
+            {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+        {{ end -}}
     </head>
     <body>
         {{ template "_internal/google_analytics.html" . }}
