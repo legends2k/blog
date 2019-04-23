@@ -290,17 +290,28 @@ The default Obex push directory is set to `~/.cache/obex`, named `Root`; change 
 yay -S --needed laptop-mode-tools hdparm cpupower
 {{< /highlight >}}
 
-Start with `sudo systemctl enable laptop-mode.service`
+Start with `sudo systemctl enable laptop-mode.service`.  Then set the following parameters in respective files
 
-+ In `/etc/laptop-mode/conf.d/intel-sata-powermgmt.conf` set `CONTROL_INTEL_SATA_POWER="1"`
-+ In `/etc/laptop-mode/conf.d/lcd-brightness.conf`, set `BRIGHTNESS_OUTPUT="/sys/class/backlight/intel_backlight/brightness"` and `CONTROL_BRIGHTNESS=1`
-+ Set `BATT_HD_POWERMGMT=200` and `LM_AC_HD_POWERMGMT=240` in `/etc/laptop-mode/laptop-mode.conf`.  Verify if this is in action with `hdparm -B /dev/sda`
+{{< highlight cfg >}}
+# /etc/laptop-mode/conf.d/intel-sata-powermgmt.conf
+CONTROL_INTEL_SATA_POWER="1"
+
+# /etc/laptop-mode/conf.d/lcd-brightness.conf
+BRIGHTNESS_OUTPUT="/sys/class/backlight/intel_backlight/brightness"
+CONTROL_BRIGHTNESS=1
+
+# /etc/laptop-mode/laptop-mode.conf
+BATT_HD_POWERMGMT=200
+LM_AC_HD_POWERMGMT=240
+{{< /highlight >}}
+
+Verify if last setting is in action with `hdparm -B /dev/sda`.
 
 # Mount Removable Drives
 
 If you’re dual booting, mounting NTFS partitions/disks is common; and then there’re USB drives too.  Though `/etc/fstab` is the traditional route for NTFS mounting, I don’t like this approach since this assumes you always need these drives.  Also you need empty directories ready to use as mount points for these drives.  It’d be good to do this automatically, on demand.
 
-Enter [`udisks2`][udisks2] -- [the most recommended approach][udisk recommendation]; many desktop environments seem to use it too.  The  `fstab` approach is plain hard-coding while `udisks2` is intelligent: respects per-user or group permissions; mount points are user-based too; having a [common mount point][] is also possible.  Install `udisks2` for conveniently mounting NTFS partitions and removable (USB) disks from the command-line or in [Thunar][].
+Enter [`udisks2`][udisks2] -- [the most-recommended approach][udisk recommendation]; many desktop environments seem to use it too.  This approach is intelligent compared to `fstab`’s plain hard-coding; respects per-user or group permissions; mount points are user-based too; having a [common mount point][] is also possible.  Install `udisks2` for conveniently mounting NTFS partitions and removable (USB) disks from the command-line or in [Thunar][].
 
 {{< highlight basic >}}
 yay -S --needed udisks2
@@ -459,7 +470,6 @@ pacman -S --needed ttf-tamil firefox-i18n-ta
 
 1. Log out and in mouse cursor frozen
 2. Screen locker with tty security but also works with Xfce4
-  + xlockmore/xflock4 doesn’t work -- even when entering the correct password, it says _failed attempt_!
 3. Scroll neutralizing at all places
 
 For the first run, make sure to set the _Session_ and _Locale_; not doing so led to a loop.
