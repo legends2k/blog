@@ -27,6 +27,9 @@ We hit a lot of roadblocks which we short-circuited swiftly
 5. Primitive geometry shapes-based level to hand-drawn map/level
 6. Build Emscripten version
   + Fix 3 issues in Raylib `emsdk` build
+    + Build issues with raylib scripts
+    + VAO supported enabled for `PLATFORM_WEB` led to exceptions
+    + Game pad not checked for before API calls are made
   + Fix issues in heist code
 7. Minimal text framework to show help text
 8. About screen

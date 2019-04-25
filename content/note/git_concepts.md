@@ -11,10 +11,10 @@ Basics like initializing (a repository), staging and commiting files aren’t ex
 
 - Git is a distributed VCS; each repo can be both a server/client
 - Honestly, `git` (sub)commands are just graph manipulating commands
-- Every codebase is made of a graph; each commit is a node with edges to parent(s)
+- Every codebase is made of a graph; each commit is a node with edges to parent(s)[^5]
   - Git diagrams often have arrows backwards (←) for this reason
 - Git stores [snapshots not differences][] i.e. entire file contents --- as a blob
-  - Every commit is a complete [snapshot of tracked repo contents + (0 or more) parent ID(s)][commit composition] identified with a 40-byte SHA1-digested hash
+  - Every commit is a complete [snapshot of tracked repo contents + (0 or more) parent ID(s)][commit composition] identified with a 40-byte [SHA-1][] hash
   - This way, the exact state of your project can be referred to, copied, or restored at any time
 
 > "finally figuring out that git commands are strangely named graph manipulation commands -- creating/deleting nodes, moving around pointers"
@@ -22,11 +22,12 @@ Basics like initializing (a repository), staging and commiting files aren’t ex
 
 - Nodes of the graph are created by your commits
 - Nodes are never really deleted in the traditional sense; they’re made unreachable (see below)
-  - These unreachable nodes eventually get garbage collected by Git
-- A commit’s parent(s) --- merge commits have more than one parent --- form the edges of the graph
+  - These unreachable nodes eventually get [garbage collected][gc] by Git
 
 [snapshots not differences]: https://git-scm.com/book/en/v1/Getting-Started-Git-Basics#_snapshots_not_differences
-[commit composition]: http://think-like-a-git.net/sections/graphs-and-git/references.html
+[commit composition]: http://think-like-a-git.net/sections/graphs-and-git.html
+[SHA-1]: https://en.wikipedia.org/wiki/SHA-1
+[gc]: http://think-like-a-git.net/sections/graphs-and-git/garbage-collection.html
 
 # Reachablity
 
@@ -38,9 +39,11 @@ D---E---F---G
       H---I
 {{< /highlight >}}
 
-- An important (linked-list) concept that applies to Git too
-  - If `void* first` is lost, the list, too, is lost
-- Since a commit also has (1+) parent commits (except root), following the chain of parents will eventually take you back to the beginning of the project
+An important (linked-list) concept that applies to Git too.
+
+> If `void* first` is lost, the list, too, is lost.
+
+- Since a commit also has parent commit(s) (except root), following the chain of parents will eventually take you back to the beginning of the project
 - In a well-branched graph, depending on the leaf node you start from, [different parts of the graph will be _reachable_][reachability]
 - [Commit X is "reachable" from commit Y if commit X is an ancestor of commit Y][reachability-pro-git]
   - In the above example, `A`, `B` and `C` are unreachable from `G`, so are `F` and `G` when starting from `C` or `B` or `A`
@@ -51,22 +54,23 @@ D---E---F---G
 [reachability-pro-git]: https://git-scm.com/docs/user-manual#understanding-reachability
 [gc-man-page]: https://git-scm.com/docs/git-gc
 
-# Refs
+# References
 
 > "References make commits reachable"
 >   -- [Think like a Git][references-commits]
 
 - Plainly, [references][Refs] are "meaningful" names to some commits
+  - They facilitate easy git-speak with your friends/colleagues 😜
   - Branches and tags are references too
-    - Creating a branch is a way to "nail down" part of the graph that you want to return to later ([reachability][])
-- They facilitate easy git-speak with your friends/colleagues 😜
-- [Internally][ref-internal] just a 40-byte file containing a commit ID
+- Creating a branch is a way to "nail down" part of the graph that you want to return to later ([reachability][])
+- Just a reference-named [file containing a 40-byte commit ID][ref-internal]
   - They’re specific to a single repository
   - Remote references are local, remote-tracking references to a commit in a remote repository [^4]
 - There’re many more ways of referring to commits: `man gitrevisions` is your friend
 
-[ref-internal]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
 [references-commits]: http://think-like-a-git.net/sections/experimenting-with-git.html
+[Refs]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
+[ref-internal]: http://think-like-a-git.net/sections/graphs-and-git/references.html
 
 ## Commands Affecting Refs
 
@@ -82,11 +86,11 @@ Subcommands that affect moving remote refs:
 - `fetch`
 - `push`
 
-Commands like `cherry-pick` seem to work atop one of these.
+Commands like `pull`, `cherry-pick`, … work atop these.
 
 # Checkout vs Reset
 
-To understand both commands, you first need to understand `HEAD`[^1].  Most people know about working tree and stating area but not `HEAD`.
+To understand both commands, you first need to understand `HEAD`[^1].  Most people know about the working tree and stating area but not `HEAD`.
 
 [`HEAD`][HEAD definition SO] references the currently checked out commit; your working tree will mostly be from this snapshot i.e. the commit pointed to by `HEAD`.  [Pro Git][Reset Demystified] summarizes this nicely
 
@@ -131,7 +135,7 @@ C1 <-- C2 <-- C3 <-- C4 <-- C5 <-- master
 git reset --hard C3
 {{< /highlight >}}
 
-would move _both_ `HEAD` and `master` to `C3`[^2].  `HEAD` would continue to be attached.  Now if it weren’t attached, it’ll only move `HEAD` leaving `master` behind, hence the _detached_ `HEAD` state.
+would move _both_ `HEAD` and `master` to `C3`[^2].  `HEAD` would continue to be attached.  Now if it weren’t attached, it’ll only move `HEAD` leaving `master` behind, hence the _detached_ `HEAD` state[^6].
 
 There’re a couple of ways to identify if `HEAD` is detached.  `git status`’s very first line will tell you:
 
@@ -201,7 +205,7 @@ git reset f08ad6
 
 > The crux of a `rebase`: given a subgraph’s root node, `rebase` changes its parent pointer from one node to another; thereby _rebasing_ the entire subgraph to a new parent.
 
-Take note, a commit is not just its contents but also includes its parent(s).  So any kind of rebase entails --- since the parent/lineage changed --- [change of commit ID][rebase ID change] for the same commit contents.
+Take note, a commit is not just its contents but also includes its parent(s).  So any kind of rebase entails --- since the parent/lineage is changed --- a [change of commit ID][rebase ID change] for the same commit contents.
 
 Interactive rebase (`rebase -i`) is quite useful.  I frequently use it to amend (not just the recent commit), fix, reword, edit, drop or squash commits.  During an interactive rebase, one can even create multiple commits as usual and continue with the rebase; things will be taken care of!  This is normal when [dividing][divide commit] a commit into smaller parts.
 
@@ -248,7 +252,6 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when p
 4. [Git Ready][]
 
 [Think like a Git]: http://think-like-a-git.net/
-[Refs]: http://think-like-a-git.net/sections/graphs-and-git/references.html
 [Pro Git]: https://git-scm.com/book/en/v2
 [Git Tutorials by Atlassian]: https://www.atlassian.com/git/tutorials
 [Git Ready]: http://gitready.com/
@@ -257,6 +260,8 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when p
 [remote branches]: https://stackoverflow.com/q/7642273/183120
 
 [^1]: Case-sensitive!  _HEAD_ will be the parent of a new commit in working tree, while a branch’s _head_ means its tip; see [glossary][branch].
-[^2]: using `C3` for readability; substitute with proper commit ID
-[^3]: I use [Magit][] to interact with Git but knowing them helps
-[^4]: Remote-tracking branches (`origin/master`) are different from remote branches (`origin master`); former is updated with `fetch`.  See [this][remote branches].
+[^2]: Using `C3` for readability; substitute with proper commit ID.
+[^3]: [Magit][] -- Git porcelain for Emacs -- shields me mostly but knowing them helps.
+[^4]: Remote-tracking branches (`origin/master`) are [different][remote branches] from remote branches (`origin master`); former is local, updated by `fetch`ing from the latter.
+[^5]: Merge commits have more than one parent.
+[^6]: Refer `man git-checkout`; _§DETACHED HEAD_ details with nice ASCII art ✨.
