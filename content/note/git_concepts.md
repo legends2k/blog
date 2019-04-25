@@ -47,7 +47,7 @@ An important (linked-list) concept that applies to Git too.
 - In a well-branched graph, depending on the leaf node you start from, [different parts of the graph will be _reachable_][reachability]
 - [Commit X is "reachable" from commit Y if commit X is an ancestor of commit Y][reachability-pro-git]
   - In the above example, `A`, `B` and `C` are unreachable from `G`, so are `F` and `G` when starting from `C` or `B` or `A`
-- The `gc` subcommand walks through the graph, building a list of every commit it can reach; removes unreachable ones
+- The `gc` subcommand[^8] walks the graph, building a list of every commit it can reach; removes unreachable ones[^7]
   - Will clear-up disk space; no good reason to run it often
   - Some Git subcommands [may run it automatically][gc-man-page] too!
 [reachability]: http://think-like-a-git.net/sections/graph-theory/reachability.html
@@ -62,8 +62,8 @@ An important (linked-list) concept that applies to Git too.
 - Plainly, [references][Refs] are "meaningful" names to some commits
   - They facilitate easy git-speak with your friends/colleagues 😜
   - Branches and tags are references too
-- Creating a branch is a way to "nail down" part of the graph that you want to return to later ([reachability][])
-- Just a reference-named [file containing a 40-byte commit ID][ref-internal]
+- Creating a ~~branch~~ reference is a way to "nail down" part of the graph that you want to return to later ([reachability][])
+- References are just reference-named [files containing a 40-byte commit ID][ref-internal]
   - They’re specific to a single repository
   - Remote references are local, remote-tracking references to a commit in a remote repository [^4]
 - There’re many more ways of referring to commits: `man gitrevisions` is your friend
@@ -92,7 +92,7 @@ Commands like `pull`, `cherry-pick`, … work atop these.
 
 To understand both commands, you first need to understand `HEAD`[^1].  Most people know about the working tree and stating area but not `HEAD`.
 
-[`HEAD`][HEAD definition SO] references the currently checked out commit; your working tree will mostly be from this snapshot i.e. the commit pointed to by `HEAD`.  [Pro Git][Reset Demystified] summarizes this nicely
+[`HEAD`][HEAD definition SO] references the currently checked out commit; your working tree will mostly be from this snapshot -- the commit pointed to by `HEAD`.  [Pro Git][Reset Demystified] summarizes this nicely
 
 > `HEAD` will be the parent of the next commit that is created.
 
@@ -116,7 +116,7 @@ When you checkout a branch (reference to a commit/node) e.g. `topic`, `HEAD` wil
 
 Plainly, `reset` moves `HEAD` around.  It’s used to move `HEAD` to a given commit.  There’re different flavours of doing this --- depending on what happens to the index and working tree (`--hard`, `--soft`, `--mix` …) --- but the crux is to move `HEAD`.
 
-When moving, `HEAD` will also move the branch reference along with it, if it’s _attached_.
+When moving, `HEAD` will also move the branch reference along with it, _if it’s attached_.
 
 ### Detached `HEAD`
 
@@ -157,7 +157,7 @@ Another way is to use `git log`; I learnt from this actually.
 847fe59 (HEAD, master) Initial commit
 {{< /highlight >}}
 
-Note that when `HEAD` is attached, you see an arrow (→) pointing to the branch it’s attached to.  However, in the detached state they’re list as independent items.
+Notice that when `HEAD` is attached, you see an arrow (→) pointing to the branch it’s attached to.  However, in the detached state they’re listed as independent items.
 
 ### Attach/Detaching `HEAD`
 
@@ -265,3 +265,5 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when p
 [^4]: Remote-tracking branches (`origin/master`) are [different][remote branches] from remote branches (`origin master`); former is local, updated by `fetch`ing from the latter.
 [^5]: Merge commits have more than one parent.
 [^6]: Refer `man git-checkout`; _§DETACHED HEAD_ details with nice ASCII art ✨.
+[^7]: `git reflog` shows these otherwise unreachable commits.  You’ve time until `git gc` is run to make a commit reachable by adding a reference to it.
+[^8]: Not to be confused with `git clean` which removes untracked files from the working tree.
