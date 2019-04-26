@@ -220,13 +220,13 @@ When pulling from a remote branch, you might know that your changes are unrelate
 git pull --rebase origin master
 {{< /highlight >}}
 
-`git pull` is just `git fetch` followed by `git merge` which creates a new merge commit.  `git pull --rebase`, however, is `git fetch` and `git rebase`; it pulls commits from remote to your current branch and then replay your commits atop your current branch’s tip -- this works if there’re no merge conflicts; otherwise you’ve to resolve conflicts as you’d normally.  The resolution (changes) become a part of one of your commits where rebase halted; you’d end up [re-writing your commit][rebase conflict].  However, you don’t have to force push your changes to the remote since the resolution just happened in your local commits.  Rewriting of (commit) history, as long as it is not public, is OK 😉
+`git pull` is just `git fetch` followed by `git merge` which creates a new merge commit.  `git pull --rebase`, however, is `git fetch` and `git rebase`; it pulls commits from remote to your current branch and then replay your commits atop your current branch’s tip -- this works if there’re no merge conflicts; otherwise you’ve to resolve conflicts as you’d normally.  The resolution (changes) become a part of one of your commits where rebase halted; you’d end up [re-writing your commit][rebase conflict].  However, you don’t have to force push your changes to the remote since the resolution just happened in your local commits.  Rewriting (commit) history, as long as it is not public, is OK 😉
 
 A counter point to pull-with-rebase: if you want logical separation of a set of commits, say for a completely new feature, then rebase --- which makes them inline, muddled with unrelated history --- isn’t the right tool; use `merge` instead.
 
-> Use `git pull --rebase` when your changes do not deserve a separate branch.
+> Use `git pull --rebase` when your changes do not deserve a separate branch.
 
-seems to be the appropriate answer to [when should I `git pull --rebase`][when pull rebase].
+seems to be the appropriate answer to [when should I `git pull --rebase`][when pull rebase].
 
 [rebase conflict]: https://stackoverflow.com/a/35025978/183120
 [when pull rebase]: https://stackoverflow.com/q/2472254/183120
@@ -264,6 +264,6 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when p
 [^3]: [Magit][] -- Git porcelain for Emacs -- shields me mostly but knowing them helps.
 [^4]: Remote-tracking branches (`origin/master`) are [different][remote branches] from remote branches (`origin master`); former is local, updated by `fetch`ing from the latter.
 [^5]: Merge commits have more than one parent.
-[^6]: Refer `man git-checkout`; _§DETACHED HEAD_ details with nice ASCII art ✨.
+[^6]: Refer `man git-checkout`; _§DETACHED HEAD_ details it with nice ASCII art ✨.
 [^7]: `git reflog` shows these otherwise unreachable commits.  You’ve time until `git gc` is run to make a commit reachable by adding a reference to it.
 [^8]: Not to be confused with `git clean` which removes untracked files from the working tree.

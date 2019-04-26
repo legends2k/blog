@@ -2,8 +2,8 @@
 title = "Arch Linux Configuration"
 description = "Desktop environment, dual GPU and stuff"
 date = "2018-05-27T17:00:46-07:00"
+publishdate = "2019-04-26T11:31:00+05:30"
 tags = ["tech", "tools", "linux"]
-draft = true
 +++
 
 # Network
@@ -217,7 +217,7 @@ echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
 echo 1 > /sys/bus/pci/rescan
 {{< /highlight >}}
 
-This doesn’t work very consistently though.
+However, since Linux kernel version 5 I didn’t have to do this once!
 
 [Bumblebee]: https://bumblebee-project.org/
 [failed GPU init]: https://wiki.archlinux.org/index.php/Bumblebee#Failed_to_initialize_the_NVIDIA_GPU_at_PCI:1:0:0_(Bumblebee_daemon_reported:_error:_[XORG]_(EE)_NVIDIA(GPU-0))
@@ -383,7 +383,7 @@ A recommended GUI, if needed, is [udiskie](https://github.com/coldfix/udiskie).
 [common mount point]: https://wiki.archlinux.org/index.php/Udisks#Mount_to_/media_(udisks2)
 [polkit sudo mount]: https://unix.stackexchange.com/a/207667
 
-# Package Management - Yay!
+# Package Management, yay!
 
 Many essential packages live in [AUR][], the unofficial Arch repository; just the official repositories won’t cut it.  The default package manager client `pacman` works only with official repos.  Many famous [AUR helpers][] and [pacman wrappers][] have been written hence.  The former deals only with AUR packages, while letting `pacman` work with the official repo packages; the latter is more wholesome.  Pacman wrappers take care of both official and AUR repos; effectively letting the user deal with both transparently e.g. `yay -Syu` updates all packages irrespective of their repo.
 
@@ -418,6 +418,10 @@ I [found][Package Mapping] a couple of useful tricks as (my machine’s) admin:
 extra/emacs
 community/emacs-nox
 {{< /highlight >}}
+* List installed packages with [fzf][]; a panel shows highlighted package’s details
+{{< highlight basic >}}
+> yay -Qq | fzf --preview 'yay -Qil {}' --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'
+{{< /highlight >}}
 
 
 [AUR]: https://aur.archlinux.org/
@@ -426,53 +430,161 @@ community/emacs-nox
 [Yay]: https://github.com/Jguer/yay
 [Go]: https://golang.org/
 [Package Mapping]: https://bbs.archlinux.org/viewtopic.phpid=90635
+[fzf]: https://github.com/junegunn/fzf
 
-# Draft
+# Fonts
 
-* Archive manager
-    - Install packages: `p7zip`, `unzip`, `unrar`
-    - GUI `xarchiver` which should integrate with Thunar; [issue](https://github.com/ib/xarchiver/issues/62) of preferences not persistant, fixed by a workaround
+I’m a [Tamilian][tamils] and a programmer.  Since most of my consumption is textual data, I’ve strong tastes in fonts.  First for greater unicode coverage I followed Emacs’ [unicode-fonts][] recommendation of at least installing
+
+* DejaVu Sans
+* Symbola
+* Quivira
+* Noto TTFs
+
+{{< highlight basic >}}
+yay -S --needed ttf-dejavu  ttf-symbola noto-fonts
+{{< /highlight >}}
+
+[Quivira][] wasn’t in the Arch repos; installed manually by copying into `${HOME}/.local/share/fonts`.
+
+Noto has excellent coverage across languages.  With these my missing-glyph agonies were gone.
+
+## Tamil
+
+To have Tamil rendered in Firefox (both content and UI like menu, etc.)
+
+{{< highlight basic >}}
+yay -S --needed ttf-tamil firefox-i18n-ta
+{{< /highlight >}}
+
+Looks beautiful 😇 அருமை அருமை!
+
+## Monospace
+
+I seem to be partial to fonts with curves.  I’m a fan of [Mononoki][] and Ubuntu Mono.
+
+{{< highlight basic >}}
+yay -S --needed ttf-ubuntu-font-family ttf-mononoki
+{{< /highlight >}}
+
+This starts showing up inside the browser --- for code snippets --- too!
+
+[Nerd Fonts][] is a project that lets you impregnate your favourite font with glyphs from icon packages like [Font Awesome][], [Devicons][], ….  It’s useful if you’re used to using these special icons.  Most popular fonts don’t need anything manual -- the legwork is already done; just download!  I removed `ttf-mononoki` and installed _mononoki Nerd Font_ manually.
+
+## Xfce4 Settings
+
+To see available fonts, install `fontconfig` and do `fc-list`.
+
+Under _Appearance_ set
+
+* **Default Font**: Noto Sans 12
+* **Default Monospace Font**: mononoki 13
+
+However, for monospace this wasn’t enough 🤦.  For instance, Terminal and Mousepad ignores it.  I don’t want to override for each app manually either.
+
+{{< highlight basic >}}
+gsettings set org.gnome.desktop.interface monospace-font-name 'mononoki 13'
+{{< /highlight >}}
+
+does it!  This also fixes the inline code face used by Emacs’ `markdown-mode` 😮
+
+Another option is to customize font setting per user by fixing `{HOME}/.config/fontconfig/fonts.conf`.  I did this too for good measure.
+
+{{< highlight basic >}}
+<match target="pattern">
+  <test name="family" qual="any">
+    <string>monospace</string>
+  </test>
+  <edit binding="strong" mode="prepend" name="family">
+    <string>mononoki</string>
+  </edit>
+</match>
+{{< /highlight >}}
+
+I got both of these from [Unix.StackExchange][monospace-everywhere].
+
+[tamils]: https://en.wikipedia.org/wiki/Tamils
+[unicode-fonts]: https://github.com/rolandwalker/unicode-fonts
+[Quivira]: http://www.quivira-font.com/files/Quivira.ttf
+[Mononoki]: https://madmalik.github.io/mononoki/
+[monospace-everywhere]: https://unix.stackexchange.com/questions/106070/changing-monospace-fonts-system-wide
+[Nerd Fonts]: https://nerdfonts.com/
+[Font Awesome]: https://fontawesome.com/
+[Devicons]: http://vorillaz.github.io/devicons
+
+# User land
+
+Miscellaneous user land customizations and tune-ups:
+
+* Archive Manager
+    - `yay -S --needed p7zip unzip unrar`
+    - `xarchiver` GUI integrates well with Thunar
 * Lock screen
     - `xlockmore` works fine, just be aware that switching to TTY (with Ctrl + Alt + 2, ...) is still possible with it
     - Integrates seamlessly with `xflock4` a script (`/usr/bin/xflock4`) which tries different lockers
     - Other lockers have issues
-        - Don’t work (e.g. _gnome-screensaver_)
-        - Is not in the official repos (e.g. _sflock_ and also didn’t work)
-        - Only `root` can unlock (e.g. _physlock_)
-        - Need a DM (e.g. _light-lock_)
-- Install at least DejaVu Sans, Symbola, Quivira and Noto TTFs as recommended by [unicode-fonts](https://github.com/rolandwalker/unicode-fonts) for good Unicode coverage
-* Install fontconfig and use `fc-list` to see fonts available
-* `yay -S --needed fontconfig ttf-dejavu ttf-symbola ttf-tamil ttf-ubuntu-font-family noto-fonts ttf-mononoki`
-    * Install fonts not any repo by copying into `${HOME}/.local/share/fonts` e.g. Quivira
-* Noto Sans and Mononoki are good system-wide regular and mono fonts -- set in _Appearance_
-* Setting system-wide monospace font through _Appearance_ setting alone isn’t enough; it fixes neither Terminal nor Mousepad’s fonts; overriding each manually seems silly
-    - `gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 16'` does the trick for Terminal
-      - This also seems to fix `markdown-mode`’s inline code face
-    - Customizing font config per-user: `~/.config/fontconfig/fonts.conf`
-    - See [here](https://unix.stackexchange.com/questions/106070/changing-monospace-fonts-system-wide) for both options
+        - `gnome-screensaver`, `sflock` -- didn’t work
+        - `physlock` -- only `root` can unlock
+        - `light-lock` -- needs a display manager
+* Screenshots
+    - `xfce4-screenshooter`; had to be hooked to <kbd>PrintScr</kbd> through `xfce4-keyboard-settings` under the _Application Shortcuts_ tab
+* Preferred Applications
+    - `xdg-utils` (a dependency of packages like `mpv`, `blender`, etc.)
+        - `xdg-open` opens file with preferred application from terminal
+    - Another option: `perl-file-mimeinfo`
+    - Xfce4 has _MIME Type Editor_ whose settings both MC and Thunar respect
+        - When something unassociated is opened in Thunar, what you choose gets updated here only
+* Xfce4 Terminal Colour Scheme
+    - Pick-up from [iTerm2 Color Schemes][]
+    - Copy to `${HOME}/.local/share/xfce4/terminal/colorschemes`
+* Thunar + Emacs
+    - _Edit with Emacs_ from Thunar by making a `emacs.desktop`; see [Emacs.StackExchange][emacs.desktop]
+* Cloud Sync
+    - [rclone][] syncs to remote drives; all popular cloud storage services are supported.
+    - You also make it a [VFS][cloud-vfs]!
+* Books
+    - PDF: [Evince][]
+    - CHM: [xCHM][]
+    - ePub: [Bookworm][]
+* Images
+    - Command line: [feh]
+    - GUI: [Ristretto][], part of `xfce4-goodies`
+* Media
+    - Per-file A/V playback: [mpv][]
+    - Console music player/library: [Music on Console][]
+    - Conversion: [ffmpeg][]
+    - Encoding: [Handbrake][]
 
-1. To enable Tamil in browser (and other interfaces), I’d to do
-
-{{< highlight basic >}}
-pacman -S --needed ttf-tamil firefox-i18n-ta
-{{< /highlight >}}
-
-1. For screenshots, Xfce has `xfce4-screenshooter` which has to be hooked to <kbd>PrintScr</kbd> through `xfce4-keyboard-settings` under the _Application Shortcuts_ tab.
-2. _Edit with Emacs_ to use `emacsclient` see https://emacs.stackexchange.com/q/14055/4106
-3. Install Xfce4 terminal colour scheme into `${HOME}/.local/share/xfce4/terminal/colorschemes`; pick-up from [iTerm2 Color Schemes](https://iterm2colorschemes.com/)
-4. Use `rclone` package to sync remote drives like OneDrive.  [Make it a VFS](https://www.everything-linux-101.com/blog/mount-onedrive-in-linux/) too!
-5. Opening files in preferred app: `xdg-utils` (a dependency of packages like `mpv`, `blender`, etc.) has the command `xdg-open` useful to open file with preferred application from terminal; another option is to use `perl-file-mimeinfo`.  Xfce4 has _MIME Type Editor_ whose settings both MC and Thunar respects.  When something is unassociated and opened in Thunar, what you choose gets updated here only.
-6. mpv for A/V playback, Handbrake for encoding and ffmpeg for conversions
-7. evince for PDF, xCHM for CHMs and Bookworm for ePubs
-8. Ristretto, part of `xfce4-goodies`, for image viewing; feh for quick command-line image viewing.
+[iTerm2 Color Schemes]: https://iterm2colorschemes.com/
+[emacs.desktop]: https://emacs.stackexchange.com/q/14055/4106
+[cloud-vfs]: https://www.everything-linux-101.com/blog/mount-onedrive-in-linux/
+[feh]: https://feh.finalrewind.org/
+[Bookworm]: https://babluboy.github.io/bookworm/
+[xCHM]: https://github.com/rzvncj/xCHM
+[Evince]: https://wiki.gnome.org/Apps/Evince
+[rclone]: https://rclone.org/
+[Ristretto]: https://docs.xfce.org/apps/ristretto/start
+[mpv]: https://mpv.io/
+[Music on Console]: https://moc.daper.net/
+[ffmpeg]: https://ffmpeg.org/
+[Handbrake]: https://handbrake.fr/
 
 # Issues
 
-1. Log out and in mouse cursor frozen
-2. Screen locker with tty security but also works with Xfce4
-3. Scroll neutralizing at all places
+1. Log out and in; mouse cursor is frozen!
+2. Reverse scrolling in Xfce4 Terminal.
 
-For the first run, make sure to set the _Session_ and _Locale_; not doing so led to a loop.
+# Epilogue
+
+Phew!  What a long post!  Despite those petty issues, it’s an _amazingly productive and stable_ setup.
+
+> I find excuses to use this environment; smooth and pleasant!
+
+I hope this helps someone trying to figure out stuff in Arch or Linux in general. If you’ve tips or suggestions to share, you’re most welcome!
+
+Thanks to all those who report issues, document fixes, share and help unknown people in open forums like StackExchange, GitHub, Reddit, ….
+
+Hat tip to all developers/creators who’ve worked to create this synergy ☯.
 
 # References
 
@@ -482,4 +594,3 @@ For the first run, make sure to set the _Session_ and _Locale_; not doing so led
 4. [GRUB](https://wiki.archlinux.org/index.php/GRUB#Check_for_an_EFI_System_Partition) on Arch Linux Wiki
 5. [Dual-boot with Windows](https://wiki.archlinux.org/index.php/Dual_boot_with_Windows#UEFI_systems)
 6. [Pick A Suitable Desktop Environment For Arch Linux](https://www.2daygeek.com/install-xfce-mate-kde-gnome-cinnamon-lxqt-lxde-budgie-deepin-enlightenment-desktop-environment-on-arch-linux/)
-
