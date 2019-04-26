@@ -55,7 +55,7 @@ According to Arch Wiki’s [domain name resolution][]
 
 However, another statement admonitions that a router usually does this caching at the network-level, so you can skip setting up a more robust resolver.
 
-[§2 Wireless Network]: {{< relref "arch_install#wireless-network" >}}
+[§2 Wireless Network]: {{< relref "arch_install.md#wireless-network" >}}
 [dhcp_job]: https://bbs.archlinux.org/viewtopic.php?id=213363
 [domain name resolution]: https://wiki.archlinux.org/index.php/Domain_name_resolution#Lookup_utilities
 
@@ -405,7 +405,7 @@ cd yay/
 makepkg -si    # this needs sudo to install built pacakge
 {{< /highlight >}}
 
-I [found][Package Mapping] a couple of useful tricks as (my machine’s) admin:
+I [found][Package Mapping] a few useful tricks as (my machine’s) admin:
 
 * Map an existing file back to its (installed) package: `pacman -Qo FILE-PATH`
 {{< highlight basic >}}
@@ -490,7 +490,7 @@ does it!  This also fixes the inline code face used by Emacs’ `markdown-mode` 
 
 Another option is to customize font setting per user by fixing `{HOME}/.config/fontconfig/fonts.conf`.  I did this too for good measure.
 
-{{< highlight basic >}}
+{{< highlight xml >}}
 <match target="pattern">
   <test name="family" qual="any">
     <string>monospace</string>

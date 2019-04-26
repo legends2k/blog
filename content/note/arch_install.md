@@ -261,7 +261,7 @@ Failed unmounting /var
 
 This also seems to be [a non-issue](https://bbs.archlinux.org/viewtopic.php?pid=1204644#p1204644).
 
-This completes my Arch Linux installation process.  The newly installed Arch now has be configured and maintained 😊.  In the follow-up article, I’ll cover
+This completes my Arch Linux installation process.  The newly installed Arch now has be configured and maintained 😊.  The [Arch Linux Configuration][] article covers
 
 * Xfce4 desktop environment
 * Dual GPU set up
@@ -272,3 +272,5 @@ This completes my Arch Linux installation process.  The newly installed Arch now
 * Laptop Mode Tools
 
 and more.
+
+[Arch Linux Configuration]: {{< relref "arch_config.md" >}}
