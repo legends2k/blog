@@ -150,13 +150,36 @@ mount /dev/nvme0n1p1 /mnt/boot/efi
 
 `genfstab` is a Arch script that setups up `/etc/fstab` as per the current mounts; it would later detect mounted file systems and swap space.  Since we're on a UEFI + GPT boot scheme, mount the EFI partition too for `genfstab` and `os-prober` to pick up Windows for GRUB to list Windows too.  This is the same partition as used by Windows for booting, mounted as `/mnt/boot/efi`.  Same goes for other Windows partitions that needs to be listed in `fstab` for auto-mounting in the new OS.  Otherwise it has to be [done manually](https://wiki.archlinux.org/index.php/Fstab) with Emacs and `lsblk -f` or `blkid`.
 
+#### Reserved Space
+
+I came to know that on ext4 [Linux silently reserves][ext4-reserve] 5% of system partitions for the root user; to be able to log in, if a regular user fills up the drive.  [See the reservation][tunefs] thus
+
+{{< highlight basic >}}
+> sudo tune2fs -l /dev/sda5 | egrep "Reserved block count|Block size" | paste -sd\ | awk '{print ($4 * $7 / ( 1024 * 1024 ) ), "MiB"}'
+204.797 MiB
+{{< /highlight >}}
+
+You can change this with `tune2fs -m <percentage> <device>`; mine’s too petty to change.
+
+[ext4-reserve]: https://unix.stackexchange.com/q/7950/30580
+[tunefs]: https://superuser.com/q/444269/50345
+
 # Base Install
 
-Before proceeding, it might be a good idea to fix the order of mirrors in `/etc/pacman.d/mirrorlist` since it's copied to the installed system as-is.
+Before proceeding, it might be a good idea to fix the order of mirrors in `/etc/pacman.d/mirrorlist` since it's copied to the installed system as-is.  Instead of doing this manually, you might prefer using [`reflector`][]; it retrieves latest mirror list based on country:
+
+{{< highlight basic >}}
+pacman -S --needed reflector
+reflector --verbose --country IN -l10 --sort rate --save /etc/pacman.d/mirrorlist
+{{< /highlight >}}
+
+Once satisfied with `mirrorlist`, proceed with the base installation:
 
 {{< highlight basic >}}
 pacstrap /mnt base
 {{< /highlight >}}
+
+[`reflector`]: https://www.ostechnix.com/retrieve-latest-mirror-list-using-reflector-arch-linux/
 
 # System Config
 

@@ -6,7 +6,7 @@ tags = []
 draft = true
 +++
 
-I had a great experience participating in Alakajam Feb 2019: a three-day code jam.  Here I document it along with the road blocks we hit and how we crossed them.
+I had a great experience participating in a three-day code jam, Alakajam Feb 2019.  Here I document it along with the road blocks we hit and how we crossed them.
 
 # Crossed Hurdles
 

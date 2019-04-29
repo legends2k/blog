@@ -538,16 +538,16 @@ Miscellaneous user land customizations and tune-ups:
     - Pick-up from [iTerm2 Color Schemes][]
     - Copy to `${HOME}/.local/share/xfce4/terminal/colorschemes`
 * Thunar + Emacs
-    - _Edit with Emacs_ from Thunar by making a `emacs.desktop`; see [Emacs.StackExchange][emacs.desktop]
+    - _Edit with Emacs_ from Thunar by making a `emacs.desktop`; thanks [Emacs.StackExchange][emacs.desktop]
 * Cloud Sync
     - [rclone][] syncs to remote drives; all popular cloud storage services are supported.
-    - You also make it a [VFS][cloud-vfs]!
+    - You can also make it a [VFS][cloud-vfs]!
 * Books
     - PDF: [Evince][]
     - CHM: [xCHM][]
     - ePub: [Bookworm][]
 * Images
-    - Command line: [feh]
+    - CLI: [feh]
     - GUI: [Ristretto][], part of `xfce4-goodies`
 * Media
     - Per-file A/V playback: [mpv][]

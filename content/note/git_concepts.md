@@ -110,32 +110,38 @@ When you `checkout` a `file` from `HEAD`, what you do is get a clean copy of `fi
 git checkout topic
 {{< /highlight >}}
 
-When you checkout a branch (reference to a commit/node) e.g. `topic`, `HEAD` will be moved to that branch and hence the entire working tree, not just a file, will be from the snapshot of the commit that branch is pointing to.
+When you checkout a branch (reference to a commit/node) e.g. `topic`, `HEAD` will be set to its tip commit and hence the entire working tree, not just a file, will be from the commit that branch is pointing to.
 
 ## Reset
 
 Plainly, `reset` moves `HEAD` around.  It’s used to move `HEAD` to a given commit.  There’re different flavours of doing this --- depending on what happens to the index and working tree (`--hard`, `--soft`, `--mix` …) --- but the crux is to move `HEAD`.
 
-When moving, `HEAD` will also move the branch reference along with it, _if it’s attached_.
+But isn’t that what `checkout` does too?  Yes, but with a difference.  Quoting [Pro Git][reset-demystified], with my emphasis
+
+> reset will [...] move what HEAD points to. This isn’t the same as changing HEAD itself (which is what checkout does); **reset moves the branch that HEAD is pointing to**[^9].
+
+**Caveat**: with `reset`, `HEAD` moves the branch reference along with it, _only if it’s attached_.
+
+[reset-demystified]: https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified#_step_1_move_head
 
 ### Detached `HEAD`
 
 Whoa! Slow down there, cowboy.  Before talking about detached, what’s the attached state of `HEAD`?  We already know that `HEAD` is just a reference to a commit.  Say this commit also has another reference pointing to it: a branch name.
+
+> When `HEAD` is moved by `reset`, if it’s attached to a branch, that reference too will move with `HEAD`.
 
 {{< highlight basic >}}
 C1 <-- C2 <-- C3 <-- C4 <-- C5 <-- master
                              ^
                              |
                             HEAD
-{{< /highlight >}}
 
-> When `HEAD` is moved by `reset`, if it’s attached to a branch, that reference will move along with `HEAD`.
-
-{{< highlight basic >}}
 git reset --hard C3
 {{< /highlight >}}
 
-would move _both_ `HEAD` and `master` to `C3`[^2].  `HEAD` would continue to be attached.  Now if it weren’t attached, it’ll only move `HEAD` leaving `master` behind, hence the _detached_ `HEAD` state[^6].
+This would move _both_ `HEAD` and `master` to `C3`[^2].  `HEAD` would continue to be attached.  Now if it weren’t attached, it’ll only move `HEAD` leaving `master` behind, hence the _detached_ `HEAD` state[^6].
+
+In its detached state, `HEAD` refers to a specific commit as opposed to referring to a named branch.  Like Git’s diagnostic message says, it’s useful to poke around and inspect the code base at a particular commit.  Making a new commit now would mean a commit only pointed to by `HEAD`.
 
 There’re a couple of ways to identify if `HEAD` is detached.  `git status`’s very first line will tell you:
 
@@ -167,7 +173,7 @@ How do we attach or detach `HEAD` to a reference?  Both are done with `checkout`
 > git checkout master
 {{< /highlight >}}
 
-_When you checkout a commit by using anything other than a branch name (commit ID, HEAD~1, branch~3, HEAD^^, etc.), you’d detach `HEAD`_ i.e. Git wouldn’t know what to associate `HEAD` with.  When you want to poke around and see how the repository looked like at a particular unnamed commit (except for its commit ID), this is what you would normally do.
+_When you checkout a commit using anything other than a branch name, you’d detach `HEAD`_ e.g. commit ID, `HEAD~1, branch~3, HEAD{5}, HEAD^^`, etc.  Since it wouldn’t know what to associate `HEAD` with, Git detaches `HEAD`.  When you want to inspect the code base at a particular unnamed -- except for its commit ID -- commit, this is what you normally do.
 
 {{< highlight basic >}}
 > git checkout lk3nw7ef
@@ -175,7 +181,9 @@ _When you checkout a commit by using anything other than a branch name (commit I
 
 Here, it doesn’t matter if this commit has other branch references to it.  Since you referred to it using the raw commit ID, Git takes it as a cue to detach `HEAD`.
 
-I highly recommend playing around in [Visualizing Git][] with `checkout`, `reset`; get your hands dirty with the whole attach/detach business.  Here’s a small snippet to get you started; see what happens as each command gets executed:
+## Practise
+
+I highly recommend playing around in [Visualizing Git][] with `checkout`, `reset`; also get your hands dirty with the whole attach/detach business.  Here’s a small snippet to get you started; see what happens as each command gets executed:
 
 {{< highlight basic >}}
 git commit
@@ -267,3 +275,4 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when 
 [^6]: Refer `man git-checkout`; _§DETACHED HEAD_ details it with nice ASCII art ✨.
 [^7]: `git reflog` shows these otherwise unreachable commits.  You’ve time until `git gc` is run to make a commit reachable by adding a reference to it.
 [^8]: Not to be confused with `git clean` which removes untracked files from the working tree.
+[^9]: _Pro Git_ is explaining `reset`’s internals here, so it may sound like it won’t move `HEAD` but only the branch, but rest assured that it moves both.
