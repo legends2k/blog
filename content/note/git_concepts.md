@@ -39,9 +39,9 @@ D---E---F---G
       H---I
 {{< /highlight >}}
 
-An important (linked-list) concept that applies to Git too.
+An important (linked-list) concept that applies to Git (too)
 
-> If `void* first` is lost, the list, too, is lost.
+> If the first node is lost, the list, too, is lost.
 
 - Since a commit also has parent commit(s) (except root), following the chain of parents will eventually take you back to the beginning of the project
 - In a well-branched graph, depending on the leaf node you start from, [different parts of the graph will be _reachable_][reachability]
@@ -118,7 +118,7 @@ Plainly, `reset` moves `HEAD` around.  It’s used to move `HEAD` to a given com
 
 But isn’t that what `checkout` does too?  Yes, but with a difference.  Quoting [Pro Git][reset-demystified], with my emphasis
 
-> reset will [...] move what HEAD points to. This isn’t the same as changing HEAD itself (which is what checkout does); **reset moves the branch that HEAD is pointing to**[^9].
+> reset will [...] move what `HEAD` points to. This isn’t the same as changing `HEAD` itself (which is what checkout does); **reset moves the branch that HEAD is pointing to**[^9].
 
 **Caveat**: with `reset`, `HEAD` moves the branch reference along with it, _only if it’s attached_.
 
