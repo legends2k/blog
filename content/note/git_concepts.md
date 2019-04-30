@@ -118,7 +118,7 @@ Plainly, `reset` moves `HEAD` around.  It’s used to move `HEAD` to a given com
 
 But isn’t that what `checkout` does too?  Yes, but with a difference.  Quoting [Pro Git][reset-demystified], with my emphasis
 
-> reset will [...] move what `HEAD` points to. This isn’t the same as changing `HEAD` itself (which is what checkout does); **reset moves the branch that HEAD is pointing to**[^9].
+> reset will [...] move what `HEAD` points to. This isn’t the same as changing `HEAD` itself (which is what checkout does); **reset moves the branch that `HEAD` is pointing to**[^9].
 
 **Caveat**: with `reset`, `HEAD` moves the branch reference along with it, _only if it’s attached_.
 
@@ -267,7 +267,7 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when 
 [branch]: https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefbranchabranch
 [remote branches]: https://stackoverflow.com/q/7642273/183120
 
-[^1]: Case-sensitive!  _HEAD_ will be the parent of a new commit in working tree, while a branch’s _head_ means its tip; see [glossary][branch].
+[^1]: Case-sensitive!  `HEAD` will be the parent of a new commit in working tree, while a branch’s _head_ means its tip; see [glossary][branch].
 [^2]: Using `C3` for readability; substitute with proper commit ID.
 [^3]: [Magit][] -- Git porcelain for Emacs -- shields me mostly but knowing them helps.
 [^4]: Remote-tracking branches (`origin/master`) are [different][remote branches] from remote branches (`origin master`); former is local, updated by `fetch`ing from the latter.
