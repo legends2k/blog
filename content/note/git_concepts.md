@@ -90,6 +90,10 @@ Commands like `pull`, `cherry-pick`, … work atop these.
 
 # Checkout vs Reset
 
+Before getting into the details, here’s [the gist][checkout-vs-reset]
+
+> `checkout` mostly operates on the working tree, while `reset` operates on index.
+
 To understand both commands, you first need to understand `HEAD`[^1].  Most people know about the working tree and stating area but not `HEAD`.
 
 [`HEAD`][HEAD definition SO] references the currently checked out commit; your working tree will mostly be from this snapshot -- the commit pointed to by `HEAD`.  [Pro Git][Reset Demystified] summarizes this nicely
@@ -97,6 +101,7 @@ To understand both commands, you first need to understand `HEAD`[^1].  Most peop
 > `HEAD` will be the parent of the next commit that is created.
 
 [HEAD definition SO]: https://stackoverflow.com/q/5772192/183120
+[checkout-vs-reset]: https://stackoverflow.com/q/3639342
 
 ## Checkout
 
@@ -114,7 +119,7 @@ When you checkout a branch (reference to a commit/node) e.g. `topic`, `HEAD` wil
 
 ## Reset
 
-Plainly, `reset` moves `HEAD` around.  It’s used to move `HEAD` to a given commit.  There’re different flavours of doing this --- depending on what happens to the index and working tree (`--hard`, `--soft`, `--mix` …) --- but the crux is to move `HEAD`.
+Plainly, `reset` moves `HEAD` around.  It’s used to move `HEAD` to a given commit.  There’re different flavours of doing this --- depending on what happens to the index[^10] and working tree (`--hard`, `--soft`, `--mix` …) --- but the crux is to move `HEAD`.
 
 But isn’t that what `checkout` does too?  Yes, but with a difference.  Quoting [Pro Git][reset-demystified], with my emphasis
 
@@ -266,6 +271,7 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when 
 [Magit]: https://magit.vc/
 [branch]: https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefbranchabranch
 [remote branches]: https://stackoverflow.com/q/7642273/183120
+[index internals]: https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified#_the_index
 
 [^1]: Case-sensitive!  `HEAD` will be the parent of a new commit in working tree, while a branch’s _head_ means its tip; see [glossary][branch].
 [^2]: Using `C3` for readability; substitute with proper commit ID.
@@ -276,3 +282,4 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when 
 [^7]: `git reflog` shows these otherwise unreachable commits.  You’ve time until `git gc` is run to make a commit reachable by adding a reference to it.
 [^8]: Not to be confused with `git clean` which removes untracked files from the working tree.
 [^9]: _Pro Git_ is explaining `reset`’s internals here, so it may sound like it won’t move `HEAD` but only the branch, but rest assured that it moves both.
+[^10]: I thought index is empty until something’s staged.  However, [Pro Git][index internals] clarifies that index actually has "_all_ the file contents that were last checked out into your working directory!"  Don’t believe me?  Try `git ls-files -s`.  You’ve to grok this to get why `git reset --mixed` works the way it does.
