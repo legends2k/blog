@@ -5,5 +5,10 @@
         {{ with .Params.featured }}
             <span class="post-stub-tag">Featured</span>
         {{ end }}
+        <div class="post-stub-tag-list">
+            {{ range $index, $tag := .Params.tags }}
+                <span class="post-stub-tag-item">{{ . }}</span>
+            {{ end }}
+        </div>
     </a>
 </li>

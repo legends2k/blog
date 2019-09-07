@@ -491,6 +491,7 @@ blockquote ::-moz-selection {
 
 .post-stub-date {
     display: inline-block;
+    float: right;
     font-size: 80%;
     color: darkgray;
 }
@@ -498,6 +499,17 @@ blockquote ::-moz-selection {
     border-bottom: 1px dotted #303030;
     margin: 0;
     position: relative;
+}
+div.post-stub-tag-list {
+    line-height: 0;
+    margin-top: 3mm;
+}
+.post-stub-tag-item {
+    color: #FF9994;
+    letter-spacing: 0.2mm;
+    font-size: 0.8em;
+    font-style: italic;
+    padding: 2px 7px;
 }
 .post-stub:first-child {
     padding-top: 0;

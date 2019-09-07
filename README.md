@@ -31,6 +31,8 @@ are licenced under the [Creative Commons][CC].
 
 # To Do
 
+* Create a site map with all sections and their articles as a
+  simple searchable list
 * Tag pages doesn’t show article’s published date and time
 * Post/note index page doesn’t show tags of posts in the list
 * Consider moving to CC-BY-SA
