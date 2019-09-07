@@ -38,7 +38,7 @@ enableGitInfo = true
     readingTimeText = ""
 
 [[menu.main]]
-    name = "Articles"
+    name = "Posts"
     url = "/post/"
     weight = 1
 
