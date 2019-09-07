@@ -7,17 +7,14 @@
 
         <!-- intro text -->
         {{ partial "post-content.html" . }}
-
+        <h1>Recent Works</h1>
         <!-- article list -->
         <ol class="post-list">
-            {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
-            {{ range $pag.Pages }}
-            {{ partial "post-stub.html" . }}
+            {{ $pag := .Paginate (.Site.RegularPages) }}
+            {{ range first 7 $pag.Pages.ByLastmod.Reverse }}
+                {{ partial "post-stub.html" . }}
             {{ end }}
         </ol>
-        <div class="post-navigation">
-            {{ partial "pagination.html" . }}
-        </div>
     </article>
 </div>
 

@@ -4,8 +4,9 @@ description = "a.k.a legends2k"
 date = "2017-02-24T12:14:41+05:30"
 +++
 
-A graphics programmer who enjoys learning the math behind a domain — how its careful application elegantly solves complex problems.  Open-source contributor passionate about [knowledge 
-sharing](https://stackoverflow.com/users/183120/legends2k).  Lives in Emacs, loves the command-line.
+I’m a graphics programmer; I enjoy learning the math behind a domain — how its careful application elegantly solves complex problems.  I’m also an open-source contributor passionate about [knowledge sharing](https://stackoverflow.com/users/183120/legends2k).
+
+> I live in Emacs and love the command-line.
 
 I have enjoyed working on an [array of projects](/projects).  Here’s [my CV](https://bbcdn.githack.com/rmsundaram/tryouts/raw/bba90197e2958d08cc11da31aca34237e5f29418/Misc/resume/resume.html).
 
@@ -14,15 +15,16 @@ I can be reached at _&#108;&#x65;&#x67;&#x65;&#110;&#100;&#x73;&#50;&#x6b;&#64;&
 
 Repertoire
 ==========
-**Languages**: C++ (14), C, C#, Lua, JavaScript, Python, GLSL  
+**Languages**: C++ (14), C, Go, Rust, Lua, JavaScript, Python, GLSL  
 **Tools**: OpenGL, Direct3D, Direct2D, Boost, GTK+, Qt, GCC, VC++, Valgrind, Bash
 **Packages**: GIMP, Blender, 3ds Max  
 **Platforms**: Linux / Cygwin, Windows
 
-Work Experience (12+ years)
+Work Experience (13+ years)
 ===============
 
-* Software Design Engineer II, **Microsoft** (2010 — Present)
+* Senior Software Design Engineer, **Microsoft** (2018 — Present)
+* Software Design Engineer II, **Microsoft** (2010 — 2018)
 * Software Engineer I, **Electronic Arts Mobile** (2008 — 2010)
 * Software Engineer, **Aricent** (2006 — 2008)
 
@@ -30,7 +32,9 @@ Work Experience (12+ years)
 Education
 =========
 
-**Bachelor of Engineering** in *Computer Science* (2002 — 2006); awarded *First Class with Distinction* by Anna University, Chennai, India.
+**Bachelor of Engineering** in *Computer Science* (2002 — 2006); awarded *First Class with Distinction* by [Anna University][], Chennai, India.
+
+[Anna University]: https://en.wikipedia.org/wiki/Anna_University
 
 
 Web Presence
