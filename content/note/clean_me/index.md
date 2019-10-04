@@ -110,7 +110,7 @@ It should be able to auto-detect the chip and give you a full dump of the chip c
 
 If there're multiple SPI chips on your motherboard, make sure you get the right one i.e. the BIOS image you get from your OEM should have around the same size as the dump you just made.
 
-{{< figure src="images/bios_chip.jpg" title="Eeny, meeny, miny, moe" alt="1 MiB Winbond EEPROM chip (left-bottom) – also an 8-pin SPI chip – was a red herring.  8 MiB GigaDevice GD25Q64(B) BIOS chip (centre) was the one." caption="1 MiB Winbond EEPROM chip (left-bottom) – also an 8-pin SPI chip – was a red herring.  8 MiB GigaDevice GD25Q64(B) BIOS chip (centre) was the one." >}}
+{{< figure src="images/bios_chip.jpg" title="Eeny, meeny, miny, moe" alt="1 MiB Winbond EEPROM chip (left-bottom) was a red herring.  8 MiB GigaDevice GD25Q64(B) BIOS chip (centre) was the one." caption="1 MiB Winbond EEPROM chip (left-bottom) was a red herring.  8 MiB GigaDevice GD25Q64(B) BIOS chip (centre) was the one." >}}
 
 Run `me_cleaner` on the dump to verify it:
 

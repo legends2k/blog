@@ -15,10 +15,12 @@ I can be reached at _&#108;&#x65;&#x67;&#x65;&#110;&#100;&#x73;&#50;&#x6b;&#64;&
 
 Repertoire
 ==========
-**Languages**: C++ (14), C, Go, Rust, Lua, JavaScript, Python, GLSL  
+
+**Languages**: C++ (17), C, Go, Rust, Lua, JavaScript, Python, Perl, GLSL  
 **Tools**: OpenGL, Direct3D, Direct2D, Boost, GTK+, Qt, GCC, VC++, Valgrind, Bash
 **Packages**: GIMP, Blender, 3ds Max  
 **Platforms**: Linux / Cygwin, Windows
+
 
 Work Experience (13+ years)
 ===============
@@ -40,7 +42,7 @@ Education
 Web Presence
 ============
 
-* [StackOverflow](https://stackoverflow.com/users/183120/legends2k): Active member with over 14k reputation and a silver badge in C++  
+* [StackOverflow](https://stackoverflow.com/users/183120/legends2k): Active member with over 20k reputation and a silver badge in C++  
 Top tags: C++, 3D, OpenGL, Math, Geometry
 * [BitBucket](https://bitbucket.org/rmsundaram/tryouts/overview): C++ and 3D Workouts portfolio 
 * [GitHub](https://github.com/legends2k)
@@ -49,8 +51,10 @@ Top tags: C++, 3D, OpenGL, Math, Geometry
     + [StackOverflow Careers](http://stackoverflow.com/story/legends2k)
 * [Flickr](http://www.flickr.com/legends2k)
 
+
 Disclaimer
 ==========
+
 The information in this weblog is provided “AS IS” with no warranties, and confers no rights.
 
 This weblog does not represent the thoughts, intentions, plans or strategies of my employer. It is solely my opinion.

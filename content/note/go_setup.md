@@ -46,7 +46,7 @@ It's assumed that you already have `company` installed.
 2. Set `$GOPATH`
     + It can have multiple entries like `$PATH`
     + First one’s where packages are downloaded by `go get`
-    + Source code is search in all entries
+    + Source code is searched in all entries
     + Add entries with a trailing slash
     + Read `go help gopath`
 3. Go get these tools.  On Windows add `-ldflags -H=windowsgui` for `gocode`
@@ -60,11 +60,11 @@ go get golang.org/x/tools/cmd/godoc
 4. Install aforementioned Emacs packages
 5. If `$GOPATH/bin` isn’t part of `$PATH` at least make it part of Emacs' `exec-path`
 {{< highlight lisp >}}
-(add-to-list 'exec-path (concat (getenv "GOPATH") "bin") t)
+(add-to-list 'exec-path (concat (file-name-as-directory (getenv "GOPATH")) "bin") t)
 {{< /highlight >}}
 6. Append to `.emacs`:
 {{< highlight lisp >}}
-(add-to-list 'load-path (concat (getenv "GOPATH") "src/github.com/dougm/goflymake"))
+(add-to-list 'load-path (concat (file-name-as-directory (getenv "GOPATH")) "src/github.com/dougm/goflymake"))
 (require 'go-flymake)
 ; Use goimports instead of go-fmt for formatting with intelligent package addition/removal
 (setq gofmt-command "goimports")

@@ -1,6 +1,6 @@
 +++
 title = "Arch Linux Configuration"
-description = "Desktop environment, dual GPU and stuff"
+description = "Display, Audio, Bluetooth and tools"
 date = "2018-05-27T17:00:46-07:00"
 publishdate = "2019-04-26T11:31:00+05:30"
 tags = ["tech", "tools", "linux"]

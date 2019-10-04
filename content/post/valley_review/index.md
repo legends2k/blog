@@ -47,9 +47,9 @@ People don't tend to talk very much here.  On some of my trips in the metro, for
 
 Here's a relevant excerpt; _§6 The Human Need for Attention_ in _[One Small Step Can Change Your Life: The Kaizen Way](http://a.co/2GpbQEC)_:
 
-> Some cultures have ritualized it [human need for attention]; some cultures seemed to have built it in.  I don't know if they did it by design or by accident.  For e.g. a family of 4 in Tokyo, lives in about 1200 sq ft; some of you have bigger rooms than that in a hotel.  Now, do you think in that space you're getting a lot of attention?  You bet.  I don't know about you but as a teenager, I was convinced, somewhere in the constitution, was the inalienable right to my own bedroom with a lock on the door.  While we treasure that kind of privacy, the body has other needs that compete with it.
->
-> ~ Dr. Rober Maurer, Ph. D., Director of Behavioral Sciences for the Family Practice Residency Program at Santa Monica UCLA Medical Center
+> Some cultures have ritualized it [human need for attention]; some cultures seemed to have built it in. [ … ]  I don't know about you but as a teenager, I was convinced, somewhere in the constitution, was the inalienable right to my own bedroom with a lock on the door.  While we treasure that kind of privacy, the body has other needs that compete with it.\
+> \
+> — Dr. Robert Maurer, Director of Behavioral Sciences at UCLA Medical Center
 
 Research shows that the mark of the most successful, healthy minds is opening up when there's an issue; the one quality that's very important as a human is when you're troubled, you admit it, first to yourself, and reach out for help; share it with someone, you suddenly see it almost halved or gone.  In India, the opportunities to open up and the amount of friends you could make[^4] are numerous.  They don't differentiate with categories like friends, acquaintances, colleagues, room-mates, etc.   You're either a friend or not.  You go out to tea with someone twice, you're already their _dhosth_[^5].  Here I've worked for a year in a very small, closely-knit office of 20, unlike in India where there were more than a thousand employees, and I don't know even one personally well.  They strictly maintain their professional relationship.
 
