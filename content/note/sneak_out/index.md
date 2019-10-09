@@ -19,7 +19,7 @@ I’m a person with a decent degree of [analysis paralysis][].  A code jam was t
 
 # Hurdles Crossed
 
-We hit a lot of roadblocks which we swiftly hurdled.  Normally I’d have spent days or weeks to "solve it perfectly" -- a fool’s errand.  A game jam makes you realize that the clock is constantly ticking and don’t have that kind of time.
+We hit a lot of roadblocks which we swiftly hurdled.  Normally I’d have spent days or weeks to "solve it perfectly" -- a fool’s errand.  A game jam makes you realize that the clock is constantly ticking and you don’t have that kind of time.
 
 ## Scope Minimization
 
@@ -41,9 +41,11 @@ This is the most important step in the entire process.  When you approach a new 
 
 1. Help text
 2. About screen
-3. Balance game to be not too hard / too easy
+3. Game balance (tweak b/w too hard vs too easy)
 
-These are absolutely needed to call something a game instead of a tech demo.  *When there’s a good-to-have feature vs showing help for existing feature, choose the latter*.  I find it odd to even state this, but many developers hastily or naively overlook.
+These are absolutely needed to call something a game rather than a tech demo.  *When there’s a good-to-have feature vs showing help for an existing feature, choose the latter*.  I find it odd to even state this, but many developers naively overlook this because it isn’t as _fun_ from a programming viewpoint; the [ROI][] however is inversely proportional 😉.
+
+[ROI]: https://en.wikipedia.org/wiki/Return_on_investment
 
 ## Technical Issues
 
@@ -53,20 +55,21 @@ These are absolutely needed to call something a game instead of a tech demo.  *W
     + Writing geometry-based picking for a game jam is an overkill!
     + Issues with inverted-Y and alpha (buildings) in reading texture
 3. **Drawing**
-    + raylib 2.0 has no Bézier curve drawing
+    + raylib 2.0 doesn’t offer Bézier curves
     + raylib expects filled figure points ordered counter-clockwise
-4. **JavaScript to C++ Porting** ([FoV][] code)
+4. **Porting JavaScript to C++** ([FoV][] code)
     + Functions returning `undefined` replaced with `std::optional`
     + Multiple return values with [structured bindings (C++17)][structured bindings]
     + Functor of `Array.sort` vs `std::sort` (`< 0` vs `bool`)
-5. **raylib’s `emsdk` Building**
-    + Issues in raylib’s [Emscripten] scripts
-    + Enabling VAO supported for `PLATFORM_WEB` led to exceptions
-    + Game pad not checked before respective API calls
+5. **Building raylib for WebAssembly**
+    + Issues in [Emscripten] build scripts
+    + Exceptions in enabling VAO support and [querying game pads][gamepad_api] without sampling game pad data -- [now fixed][raylib-emsdk-fixes]
 
 [FoV]: https://legends2k.github.io/2d-fov/
 [structured bindings]: https://skebanga.github.io/structured-bindings/
 [Emscripten]: https://emscripten.org/
+[raylib-emsdk-fixes]: https://github.com/raysan5/raylib/commit/0c567cd259285fb33b3e2ab514c48322da0a0000#diff-9fb9786d0a4c67039ae8e8af40475bca
+[gamepad_api]: https://emscripten.org/docs/api_reference/html5.h.html#c.emscripten_get_num_gamepads
 
 # Developer Art
 
@@ -80,11 +83,13 @@ Characters were drawn with code; cobbling a triangle to a circle did the trick. 
 
 Game jams and code jams are great exercises -- not just technically but (project) managerially too!  Most of my learnings were in this area.  Of course, depending on your existing skills, you may learn more technically.
 
-Participating in a jam is a very refreshing and rewarding experience.  Highly recommended to break the vicious loop of not finishing started projects.
+Participating in a jam is a very refreshing and rewarding experience.  Highly recommended to break the vicious loop of not [finishing started projects][finish-game].
 
 
 [Krita]: https://www.krita.org/
 [map-background]: https://pixabay.com/illustrations/paper-parchment-frame-worn-file-473630/
+[finish-game]: https://makegames.tumblr.com/post/1136623767/finishing-a-game
+
 
 [^1]: A friend/colleague of mine and me.
 [^2]: [Here’s a shorter post][release-post] I wrote immediately after the jam.
