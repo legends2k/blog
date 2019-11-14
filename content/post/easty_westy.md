@@ -1,11 +1,11 @@
 +++
 tags = ["philosophy"]
 date = "2017-10-12T20:22:41+05:30"
-title = "Ideating and/vs Making"
+title = "Easty and Westy"
 draft = true
 +++
 
-Ideating and/vs Making
+Easty and Westy
 ======================
 
 Say you have a dream of making something; it might be a product, a game or art.  I've seen predominantly two approaches taken.  One is to just work on the _stuff that matters_ and rapidly getting closer to what you envisioned in your head; the end product.  The emphasis here is specifically not worrying about schedule, design, procedure --- the things that don't actually go into the deliverable, but might make your head feel better.  The other approach is to form detailed plans --- design documents, work schedules, tests --- and then working in a _one step forward, two steps backwards_ way; execute one item from the to-do list, check if things are fine, verify assumptions -- repeat.  For easier reference, let's call the former _Easty_ and the latter _Westy_.

@@ -31,6 +31,7 @@ are licenced under the [Creative Commons][CC].
 
 # To Do
 
+* Add tool tip for footnote link with its footnotes as content
 * Add a subheading for footnotes at post-end
 * Create a site map with all sections and their articles as a
   simple searchable list
