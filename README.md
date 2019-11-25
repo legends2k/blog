@@ -10,7 +10,7 @@ Contents of this blog authored by me
 * `static`
 * `layouts`
 
-are licenced under the [Creative Commons][CC].
+are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 
 [CC]: http://creativecommons.org/licenses/by-nc-sa/4.0/
 
