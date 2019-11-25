@@ -32,10 +32,8 @@ are licenced under the [Creative Commons][CC].
 # To Do
 
 * Update _Projects_ page with _Spirit of C++_ and path finding
-* Make footnote as tool tip for hypertext
+* Make footnote as tool tip for hypertext using title attribute
 * Create a site map with all sections articles as a one page searchable list
-* Inline code that’s also a link isn’t discoverable
-* Add a subheading for footnotes at post-end
 * Move to [Utterances](https://utteranc.es/) instead of Disqus for comments
 * Tag pages doesn’t show article’s published date and time
 * Post/note index page doesn’t show tags of posts in the list

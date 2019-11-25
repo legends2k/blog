@@ -1,6 +1,6 @@
 +++
 title = "C++ Primer"
-description = "solving “you don’t know what you don’t know"
+description = "solving “you don’t know what you don’t know”"
 date = "2018-09-06T17:00:46-07:00"
 tags = ["tech", "language"]
 +++
