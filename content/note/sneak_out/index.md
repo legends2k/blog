@@ -2,7 +2,7 @@
 title = "First game jam experience!"
 description = "Alakajam Feb 2019"
 date = 2019-02-26T20:54:34+05:30
-tags = ["tech", "self", "software"]
+tags = ["tech", "self", "gamedev"]
 +++
 
 I had a great first experience participating in a game jam -- [5th Alakajam][alakajam-unranked].  A three-day game jam where we[^1] wrote a primitive, real-time tactical strategy game: [Sneak Out][sneak-out-alakajam].  The game is playable within a browser, thanks to [raylib][] and WebAssembly.

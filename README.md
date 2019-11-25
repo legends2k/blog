@@ -31,10 +31,12 @@ are licenced under the [Creative Commons][CC].
 
 # To Do
 
-* Add tool tip for footnote link with its footnotes as content
+* Update _Projects_ page with _Spirit of C++_ and path finding
+* Make footnote as tool tip for hypertext
+* Create a site map with all sections articles as a one page searchable list
+* Inline code that’s also a link isn’t discoverable
 * Add a subheading for footnotes at post-end
-* Create a site map with all sections and their articles as a
-  simple searchable list
+* Move to [Utterances](https://utteranc.es/) instead of Disqus for comments
 * Tag pages doesn’t show article’s published date and time
 * Post/note index page doesn’t show tags of posts in the list
 * Taxonomy: add **Categories**

@@ -1,8 +1,8 @@
  +++
-title = "Emacs C++ auto-complete setup on Windows"
+title = "Emacs C++ auto-complete on Windows"
 description = "Using Irony, Clang & Co"
 date = "2017-01-24T17:33:27+05:30"
-tags = ["tech","emacs","c++","ide", "tools"]
+tags = ["tech","emacs","language", "tools"]
 +++
 
 This note is a guide to setup auto completion for C and C++ modes in Emacs on Windows with minimal manual work.  We need [Clang][], [Irony][] and some [Company][]; we additionally require [CMake][] and [MinGW][] for building something small.  Although there are many methods of getting this working, this was the most performant and least time-taking solution for me, so I'm documenting it here.

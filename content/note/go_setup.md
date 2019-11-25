@@ -1,8 +1,8 @@
 +++
-title = "Go Setup"
+title = "Emacs Go Setup"
 description = "Make Emacs your Go IDE"
 date = "2018-06-17T07:00:43-07:00"
-tags = ["tech", "ide", "tools", "go", "emacs"]
+tags = ["tech", "language", "tools", "emacs"]
 +++
 
 An IDE at least should do

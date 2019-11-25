@@ -7,11 +7,12 @@ tags = ["inspiration", "creators", "bookmark"]
 I have been inspired by many unknown personalities all over the internet and otherwise, but a few linger on my mind consistently to be listed here.  Not all of them are authors but their works inspired me in some way.
 
 ## Kalki R. Krishnamurthy
-[A *great* writer][Kalki], and freedom fighter, who effortlessly balanced content against gripping narration.  He pioneered in writing under a unique genre --- Historical fiction --- by mixing imagination with facts in the right amount and proved that it can be done with [great success][Ponniyin Selvan].  He's the only author I have seen to give evidences in a fictional work.  Though *[Tamil][]* is my mother tongue, I am sure I am unbiased here.
+[A *great* writer][Kalki], and freedom fighter, who effortlessly balanced content against gripping narration.  He pioneered in writing under a unique genre --- [Historical Fiction][] --- by mixing imagination with facts in the right amount and proved that it can be done with [great success][Ponniyin Selvan].  He's the only author I have seen to give evidences in a fictional work.  Though *[Tamil][]* is my mother tongue, I am sure I am unbiased here.
 
 [Kalki]:https://en.wikipedia.org/wiki/Kalki_Krishnamurthy
 [Ponniyin Selvan]: https://en.wikipedia.org/wiki/Ponniyin_Selvan
 [Tamil]: https://en.wikipedia.org/wiki/Tamil_language
+[Historical Fiction]: https://en.wikipedia.org/wiki/Historical_fiction
 
 ## Joel Spolsky
 Witty, provoking and insightful writer of technical topics.  I like many of his articles, but these come up readily:

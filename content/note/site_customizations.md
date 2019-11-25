@@ -2,7 +2,7 @@
 title = "Blog – fit and finish"
 description = "quirks and hacks in making this"
 date = "2016-08-12T17:00:46+05:30"
-tags = ["tech", "hugo", "typesetting", "tools"]
+tags = ["tech", "writing", "tools"]
 mathjax = true
 +++
 
