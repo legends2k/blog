@@ -11,7 +11,7 @@
         <!-- article list -->
         <ol class="post-list">
             {{ $pag := .Paginate (.Site.RegularPages) }}
-            {{ range first 7 $pag.Pages.ByLastmod.Reverse }}
+            {{ range first 7 $pag.Pages.ByPublishDate.Reverse }}
                 {{ partial "post-stub.html" . }}
             {{ end }}
         </ol>

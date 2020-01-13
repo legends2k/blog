@@ -8,4 +8,4 @@
 {{ else if ne ($.PublishDate.Format "2006-01-02") "0001-01-01" }}
   {{ $date = .PublishDate }}
 {{ end }}
-<time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="date{{ $caption }}">{{ $caption }} {{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) $date }}</time>
+<time datetime="{{ $date.Format "2006-01-02" }}" itemprop="date{{ $caption }}">{{ $caption }} {{ dateFormat (default "Jan 2, 2006" .Site.Params.dateFormat) $date }}</time>
