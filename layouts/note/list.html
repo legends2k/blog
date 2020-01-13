@@ -6,16 +6,7 @@
 
         {{ partial "page-content.html" . }}
 
-        <ol class="post-list">
-            {{ $pag := .Paginate .RegularPages }}
-            {{ range $pag.Pages }}
-                {{ partial "post-stub.html" . }}
-            {{ end }}
-        </ol>
-
-        <div class="post-navigation">
-            {{ partial "pagination.html" . }}
-        </div>
+        {{ partial "article-list.html" . }}
     </article>
 </div>
 
