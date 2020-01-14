@@ -1,6 +1,6 @@
 +++
 title = "Code Lab"
-description = "… of a curious hacker"
+description = "of a curious hacker"
 date = "2017-02-24T12:34:07+05:30"
 +++
 
@@ -10,7 +10,7 @@ Open Source
 3D Workouts
 -----------
 Multiple mid-sized projects to understand 3D math and graphics concepts from ground up using no high-level libraries.  Right from primitives to collision detection to spatial data structures to frustum culling everything was implemented manually from scratch.
-  
+
 **Highlights**:
 
 * Free-look (6 DoF) camera using matrices, quaternions (independently) and no `gluLookAt`.
@@ -84,4 +84,3 @@ DirectShow Filters
 Authored source filters for A/V codecs like A-Law, μ-Law, H.264 and for progressive downloading of (YouTube) videos on Windows Media Player.
 
 **Used**: C++, DirectShow ♦ WindowsMobile
-

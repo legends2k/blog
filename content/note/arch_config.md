@@ -2,9 +2,11 @@
 title = "Arch Linux Configuration"
 description = "Display, Audio, Bluetooth and tools"
 date = "2018-05-27T17:00:46-07:00"
-publishdate = "2019-04-26T11:31:00+05:30"
+publishDate = "2019-04-26T11:31:00+05:30"
 tags = ["tech", "tools", "linux"]
 +++
+
+See [_Arch Linux Installation_](/note/arch_install) for installation notes.
 
 # Network
 
@@ -588,9 +590,9 @@ Hat tip to all developers/creators who’ve worked to create this synergy ☯.
 
 # References
 
-1. Arch Linux Installation Guide
+1. [Installation guide -- ArchWiki](https://wiki.archlinux.org/index.php/Installation_guide)
 2. [Installing Arch Linux with LVM](https://gilyes.com/Installing-Arch-Linux-with-LVM/) by George Ilyes
-3. [Multi HDD/SSD Partitioning Scheme](https://wiki.debian.org/Multi HDD/SSD Partition Scheme)
+3. [Multi HDD/SSD Partitioning Scheme](https://wiki.debian.org/Multi%20HDD/SSD%20Partition%20Scheme)
 4. [GRUB](https://wiki.archlinux.org/index.php/GRUB#Check_for_an_EFI_System_Partition) on Arch Linux Wiki
 5. [Dual-boot with Windows](https://wiki.archlinux.org/index.php/Dual_boot_with_Windows#UEFI_systems)
 6. [Pick A Suitable Desktop Environment For Arch Linux](https://www.2daygeek.com/install-xfce-mate-kde-gnome-cinnamon-lxqt-lxde-budgie-deepin-enlightenment-desktop-environment-on-arch-linux/)

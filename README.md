@@ -31,7 +31,6 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 
 # To Do
 
-* Show both _Published_ and _Updated_ in post
 * Update _Projects_ page with _Spirit of C++_ and path finding
 * Make footnote as tool tip for hypertext using title attribute
 * Create a site map with all sections articles as a one page searchable list

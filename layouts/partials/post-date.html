@@ -1,11 +1,14 @@
-{{ $caption := "Published" }}
-{{ if ne .Date .Lastmod }}
-  {{ $caption = "Updated" }}
-{{ end }}
-{{ $date := .Date }}
-{{ if ne .Date .Lastmod }}
-  {{ $date = .Lastmod }}
-{{ else if ne ($.PublishDate.Format "2006-01-02") "0001-01-01" }}
-  {{ $date = .PublishDate }}
-{{ end }}
-<time datetime="{{ $date.Format "2006-01-02" }}" itemprop="date{{ $caption }}">{{ $caption }} {{ dateFormat (default "Jan 2, 2006" .Site.Params.dateFormat) $date }}</time>
+<p class="post-date">
+    Published <time datetime="{{ .PublishDate.Format "2006-01-02" }}" itemprop="datePublished">{{ dateFormat (default "Jan 2, 2006" .Site.Params.dateFormat) .PublishDate }}</time>
+    <span>by</span>
+    <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+        <span itemprop="name">
+            <a href="{{ .Params.profile | default .Site.Author.profile | default "#" }}" itemprop="url" rel="author">{{ .Params.author | default .Site.Author.name }}</a>
+        </span>
+    </span>
+    {{ if lt .PublishDate .Lastmod }}
+    <span class="post-update-date">
+        Updated <time datetime="{{ .PublishDate.Format "2006-01-02" }}" itemprop="datePublished">{{ dateFormat (default "Jan 2, 2006" .Site.Params.dateFormat) .Lastmod }}</time>
+    </span>
+    {{ end }}
+</p>
