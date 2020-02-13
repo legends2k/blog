@@ -4,7 +4,7 @@ This is the source / content for my blog at [legends2k.github.io][blog] that is 
 [Hugo]: http://gohugo.io
 
 # Licence
-Contents of this blog authored by me 
+Contents of this blog (authored by me)
 
 * `content` 
 * `static`

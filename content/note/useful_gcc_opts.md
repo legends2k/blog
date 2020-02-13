@@ -98,6 +98,24 @@ If you’re a C or C++ programmer, you should definitely try the sanitizers GCC 
 * Thread sanitizer (`-fsanitize=thread`)
 * Undefined Behaviour sanitizer (`-fsanitize=undefined`)
 
+# Header Dependency Tree
+
+There’re times when multiple headers with interlinked dependencies are a problem.  It’d be easier to understand why a definition is deemed missing by the compiler, despite including a header you _think_ should’ve made it visible.  These preprocessor options are your friends:
+
+* `-M` show dependencies for all headers
+* `-MM` show dependencies for non-system headers
+* `-H` show dependencies as a hierarchy
+
+{{< highlight basic >}}
+> g++ -Wall -stc=c++17 -pedantic -H test.cpp
+
+. /…/XcodeDefault.xctoolchain/usr/include/c++/v1/cmath
+.. /…/XcodeDefault.xctoolchain/usr/include/c++/v1/__config
+.. /…/XcodeDefault.xctoolchain/usr/include/c++/v1/math.h
+... /…/XcodeDefault.xctoolchain/usr/include/c++/v1/__config
+... /…/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/math.h
+{{< /highlight >}}
+
 What interesting GCC options do you know?
 
 [instrumentation]: https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html
