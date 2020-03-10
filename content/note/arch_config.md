@@ -436,7 +436,7 @@ community/emacs-nox
 
 # Fonts
 
-I’m a [Tamilian][tamils] and a programmer.  Since most of my consumption is textual data, I’ve strong tastes in fonts.  First for greater unicode coverage I followed Emacs’ [unicode-fonts][] recommendation of at least installing
+I’m a [Tamilian][Tamils] and a programmer.  Since most of my consumption is textual data, I’ve strong tastes in fonts.  First for greater unicode coverage I followed Emacs’ [unicode-fonts][] recommendation of at least installing
 
 * DejaVu Sans
 * Symbola
@@ -505,7 +505,7 @@ Another option is to customize font setting per user by fixing `{HOME}/.config/f
 
 I got both of these from [Unix.StackExchange][monospace-everywhere].
 
-[tamils]: https://en.wikipedia.org/wiki/Tamils
+[Tamils]: https://en.wikipedia.org/wiki/Tamils
 [unicode-fonts]: https://github.com/rolandwalker/unicode-fonts
 [Quivira]: http://www.quivira-font.com/files/Quivira.ttf
 [Mononoki]: https://madmalik.github.io/mononoki/

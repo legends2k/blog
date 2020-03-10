@@ -50,6 +50,7 @@ An important (linked-list) concept that applies to Git (too)
 - The `gc` subcommand[^8] walks the graph, building a list of every commit it can reach; removes unreachable ones[^7]
   - Will clear-up disk space; no good reason to run it often
   - Some Git subcommands [may run it automatically][gc-man-page] too!
+
 [reachability]: http://think-like-a-git.net/sections/graph-theory/reachability.html
 [reachability-pro-git]: https://git-scm.com/docs/user-manual#understanding-reachability
 [gc-man-page]: https://git-scm.com/docs/git-gc
