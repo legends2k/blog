@@ -4,12 +4,9 @@ languageCode = "en-uk"
 title = "Bits of Insight"
 theme = "ghostwriter"
 copyright = "Sundaram Ramaswamy"
-footnoteReturnLinkContents = "↩"
 googleAnalytics = ""
 disqusShortname = "legends2k"
 paginate =  7
-pygmentsStyle = "dracula"
-pygmentsCodefencesGuessSyntax = true
 enableGitInfo = true
 
 [Author]
@@ -56,6 +53,13 @@ enableGitInfo = true
     name = "About"
     url = "/about/"
     weight = 4
+
+[markup]
+    footnoteReturnLinkContents = "↩"
+
+[markup.highlight]
+    style = "dracula"
+    tabWidth = 2
 
 # “date” usually means (article’s file) creation date i.e. when the idea was
 # first convinced, “lastmod” almost always comes from Git, set “pushlishDate”
