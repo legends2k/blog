@@ -10,7 +10,7 @@ See [_Arch Linux Installation_](/note/arch_install) for installation notes.
 
 # Network
 
-In the newly installed Arch you might notice that there's no network connectivity.  To enable do what you did during installation (see _Arch Linux Installation_, [§2 Wireless Network][]).  I did it only to realize, for `netctl` to hook to a WPA-secured network, the `wpa_supplicant` package is needed but was absent on the installed system.  To connect to the internet, you need a package from the internet!?  To get out of this Catch 22 situation, I'd to reboot from the installation USB, setup network and install `wpa_supplicant` to the new OS by chrooting
+In the newly installed Arch you might notice that there's no network connectivity.  To enable do what you did during installation (see _Arch Linux Installation_, [§2 Wireless Network][]).  I did it only to realize, for `netctl` to hook to a WPA-secured network, the `wpa_supplicant` package is needed but was absent on the installed system.  To connect to the internet, you need a package from the internet!?  To get out of this [Catch-22][] situation, I'd to reboot from the installation USB, setup network and install `wpa_supplicant` to the new OS by chrooting
 
 {{< highlight basic >}}
 root@archiso / # mount /dev/lvmg1/root /mnt
@@ -57,9 +57,48 @@ According to Arch Wiki’s [domain name resolution][]
 
 However, another statement admonitions that a router usually does this caching at the network-level, so you can skip setting up a more robust resolver.
 
+[Catch-22]: https://en.wikipedia.org/wiki/Catch-22_(logic)
 [§2 Wireless Network]: {{< relref "arch_install.md#wireless-network" >}}
 [dhcp_job]: https://bbs.archlinux.org/viewtopic.php?id=213363
 [domain name resolution]: https://wiki.archlinux.org/index.php/Domain_name_resolution#Lookup_utilities
+
+## Ethernet
+
+To use an ethernet connection too you need a profile.  However, I noticed that on every reboot the interface name kept changing between `enp4s0` and `eth0`.  [ArchLinux documents][interface-name] this too!  Basically create a rule file (`/etc/udev/rules.d/10-network.rules`) with the MAC address mapped to a name
+
+{{< highlight basic >}}
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="fe:ed:f0:0d:ba:cc", NAME="eth0"
+{{< /highlight >}}
+
+Check if the interface name is stable (`ip link`) after this change.
+
+Check if the interface is down (`cat /sys/class/net/eth0/operstate`), else take it down: `ip link set dev eth0 down`.  Create a profile for the wired network by copying from `/etc/netctl/examples/ethernet-dhcp`.  Fix the interface name to match the one you named.
+
+{{< highlight cfg >}}
+Interface=eth0
+Connection=ethernet
+IP=dhcp
+DNS=('1.1.1.1' '1.0.0.1')
+{{< /highlight >}}
+
+Start/switch to this profile as you normally would: `netctl switch-to wired`.
+
+[interface-name]: https://wiki.archlinux.org/index.php/Network_configuration#Change_interface_name
+
+## Auto-Switching
+
+To automatically configure your ethernet device on cable un/plug, install `ifplugd` and enable the service.  Likewise to automatically start/stop profiles as you move from a wireless network’s range into another, you need to enable another service.
+
+{{< highlight bash >}}
+netctl disable infoprobe  # disable any earlier enabled profile
+
+systemctl enable netctl-ifplugd@eth0.service
+systemctl enable netctl-auto@wlp3s0.service
+{{< /highlight >}}
+
+Refer [Special systemd units][systemd-special-nw] for details.
+
+[systemd-special-nw]: https://wiki.archlinux.org/index.php/Netctl#Special_systemd_units
 
 # Resurrecting Windows
 
