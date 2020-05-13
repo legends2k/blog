@@ -569,6 +569,10 @@ public:
 - When a destructor fails? [Call Aunt Tilda](https://isocpp.org/wiki/faq/exceptions#dtors-shouldnt-throw)
     - Seriously, never throw an exception from a destructor
     - Disrupts stack unwind sequence and aborts the program
+- Some projects turn off exceptions for various reasons including
+    - Legacy _C_ code interfacing that doesn’t have exceptions
+    - Performance (common in [game engines](https://stackoverflow.com/a/943169/183120))
+
 
 # Commonly used `std::` facilities
 
@@ -638,4 +642,4 @@ scope.
 
 [^1]: [Use sorted vector instead of set](http://lafstern.org/matt/col1.pdf), if `find` calls outnumber `insert`; it’d be lot faster — Matt Austern.
 
-[^2]: [Robin hood hashing](https://github.com/martinus/robin-hood-hashing) is faster than what usually comes with `std::unordered_map`.
+[^2]: [Robin Hood hashing](https://cs.uwaterloo.ca/research/tr/1986/CS-86-14.pdf) is faster than what usually comes with `std::unordered_map`.  People suggest that [it should be your default hashing implementation](https://www.sebastiansylvan.com/post/robin-hood-hashing-should-be-your-default-hash-table-implementation/).  [`robin_hood::unordered_map`](https://github.com/martinus/robin-hood-hashing) is a handy drop-in replacement.
