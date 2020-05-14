@@ -247,39 +247,11 @@ seems to be the appropriate answer to [when should I `git pull --rebase`][when 
 [rebase conflict]: https://stackoverflow.com/a/35025978/183120
 [when pull rebase]: https://stackoverflow.com/q/2472254/183120
 
-# `show`time!
+# See Also
 
-The easiest way to see the diff introduced by a reference is not `git diff`!
+I get surprised by Git commands every now and then, I document the [obscure but useful ones][git-nuances]!
 
-{{< highlight basic >}}
-git show REF
-{{< /highlight >}}
-
-Of course, you can control the amount of information thrown at you with the usual options `show` shares with `log`: `--name-status`, `--shortstat`, `--stat`, `--summary`, etc.
-
-`show` can also give you a file’s clean copy from a commit --- very handy:
-
-{{< highlight basic >}}
-git show REF:some/path/from/repo/root/README.md > README_copy.md
-{{< /highlight >}}
-
-## `..` vs `... diff`erences
-
-`git diff REF-1..REF-2` = diff [(`REF-1`, `REF-2`\]][intervals].  Why?  Since a diff-ing utility just takes a pair of file sets, these references simply denote the repository at a given state i.e. difference between the code base after committing `REF-1` and after committing `REF-2`.  This diffs the repository at _two points_.
-
-`git diff REF-1...REF-2` = `git diff $(git merge-commit REF-1 REF-2)..REF-2` i.e. difference between the common ancestor[^11] of both references and `REF-2`.  `REF-1` is usually `HEAD` and `REF-2` is commonly a branch head, so this shows work done in that branch.  _Memory aid_: triple dots ≈ range of commits.
-
-However, the [meanings feel reversed for `git log`][log-dots]! 🤦 Also `A..B` and `A B` mean the same in `diff` while not in `log`!
-
-{{< highlight bash >}}
-git log A...B  # show A-only and B-only commits
-git log A..B   # show B-only commits
-git log A B    # show A ∪ B commits
-{{< /highlight >}}
-
-
-[intervals]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Including_or_excluding_endpoints
-[log-dots]: https://stackoverflow.com/a/7256391/183120
+[git-nuances]: {{< relref "git_nuances.md" >}}
 
 # Learn by Doing
 
@@ -320,4 +292,3 @@ git log A B    # show A ∪ B commits
 [^8]: Not to be confused with `git clean` which removes untracked files from the working tree.
 [^9]: _Pro Git_ is explaining `reset`’s internals here, so it may sound like it won’t move `HEAD` but only the branch, but rest assured that it moves both.
 [^10]: I thought index is empty until something’s staged.  However, [Pro Git][index internals] clarifies that index actually has "_all_ the file contents that were last checked out into your working directory!"  Don’t believe me?  Try `git ls-files -s`.  You’ve to grok this to get why `git reset --mixed` works the way it does.
-[^11]: `git merge-base REF-1 REF-2` gives the common commit
