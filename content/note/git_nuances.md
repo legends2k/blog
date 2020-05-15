@@ -13,7 +13,7 @@ A decent understanding of [basic Git concepts][git-concepts] is a perquisite.
 
 # `show` time!
 
-The easiest way to see the diff introduced by a [reference][git-concepts] is not `git diff`!
+The easiest way to see the diff introduced by a [reference][git-concepts-ref] is not `git diff`!
 
 {{< highlight basic >}}
 git show REF
@@ -29,6 +29,7 @@ git show REF:path/to/a/file > file_copy
 
 `show` is a versatile command that can explain _any_ [Git object][git-object], not just references.
 
+[git-concepts-ref]: {{< relref "git_concepts.md#references" >}}
 [git-object]: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
 
 # Man’s search for ~~meaning~~ config 😛
