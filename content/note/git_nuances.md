@@ -79,31 +79,42 @@ lists only tracked files of the repository; it optionally takes a [pathspec][] a
 
 # Pull another branch
 
-Contrary to popular belief, [`git pull` can be run on a branch that’s not current][pull-non-HEAD].  Say `HEAD` is attached to `master`, you can still pull in changes for `topic` branch from a remote.
+Contrary to popular belief, [`git pull` can be run on a branch that’s not current][pull-non-HEAD].  Say `HEAD` is attached to `master`, you can still pull in changes to `my-topic` branch from a remote.
 
 {{< highlight basic >}}
-git fetch origin topic:topic
+git fetch origin my-topic:my-topic
 {{< /highlight >}}
 
 [pull-non-HEAD]: https://stackoverflow.com/a/42902058/183120
 
 # Please [mind the dots][mind-gap]
 
-`git diff A..B` = diff [(`A`, `B`\]][intervals] i.e. the diff includes changes made by `B` but not by `A`.  Since a diff-ing utility just takes a pair of file sets, with these references we simply denote the repository at different states -- after committing `A` and after committing `B`.  This diffs the repository at _two points_.  `git diff A B` is a nicer way of saying the same thing.
+`git diff A..B` = diff [(`A`, `B`\]][intervals] i.e. the diff includes changes made by `B` but not by `A`.  Since a diff-ing utility just takes a pair of file sets, with these references we simply denote the repository at different states -- after committing `A` and after committing `B`.  This diffs the repository at _two points_.
+
+{{< highlight bash >}}
+git diff A B    # same as below; only nicer
+git diff A..B   # diff commits A and B
+git diff A...B  # diff commits ancestor(A, B) and B
+{{< /highlight >}}
 
 `git diff A...B` = `git diff $(git merge-base A B) B` i.e. difference between the common ancestor of both references and `B`.  `A` is usually `HEAD` and `B` is commonly a branch head, so this shows work done independently in a branch.  _Memory aid_: triple dots ≈ branch.
 
-However, the [meanings feel reversed for `git log`][log-dots]! 🤦 Also `A..B` and `A B` mean the same in `diff` while not in `log`!
+However, the [meanings feel reversed for `git log`][log-dots]!  🤦  Also `A..B` and `A B` mean the same in `diff` while not in `log`!  Before reading `log`’s nuances, remember that `log` operates on a range of commits while diff only does on two.  Also [Gitolite’s nice observation][triple-dot] might help you internalise `...` better:
+
+> `...` somehow involves the common ancestor for both `diff` and `log`
 
 {{< highlight bash >}}
-git log A...B  # show A-only and B-only commits
-git log A..B   # show B-only commits
-git log A B    # show A ∪ B commits
+git log A B    # (1) show A ∪ B commits (till root)
+git log A..B   # (2) show B-only commits
+git log A...B  # (3) show A-only and B-only commits
 {{< /highlight >}}
+
+`log` takes a commit and lists all the way to its root, unless an end point is given.  This explains (1); for (2) since `A` wouldn’t be reachable from `B` it stops at the common ancestor.  (3) has `...` so it involves the common ancestor; since both `A` and `B` can be reached from it, it lists both’s history up-to the ancestor.
 
 [Pro Git v2 explains][pro-git-log] these in `git log`’s context.
 
 [pro-git-log]: https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection
+[triple-dot]: https://gitolite.com/tips-2.html#how-to-remember-what-...-does
 
 # Overloaded `checkout`
 
