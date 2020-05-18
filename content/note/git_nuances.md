@@ -7,13 +7,13 @@ tags = ["tech", "vcs", "tools"]
 
 Git has its oddities with unusual commands and flags.  I keep learning something new every now and then.
 
-A decent understanding of [basic Git concepts][git-concepts] is a perquisite.
+A decent understanding of [basic Git concepts][git-concepts] is a prerequisite.
 
 [git-concepts]: {{< relref "git_concepts.md" >}}
 
 # `show` time!
 
-The easiest way to see the diff introduced by a [reference][git-concepts-ref] is not `git diff`!
+The easiest way to see the diff introduced by a [reference][git-concepts-ref] (fancy name for commit) is not `git diff`!
 
 {{< highlight basic >}}
 git show REF
@@ -34,7 +34,7 @@ git show REF:path/to/a/file > file_copy
 
 # Man’s search for ~~meaning~~ config 😛
 
-Ever been annoyed by a Git setting you didn’t set and didn’t know where it comes from?
+Ever been annoyed by a Git setting you didn’t set; clueless about where it’s coming from?
 
 {{< highlight cfg >}}
 git config --show-origin  --list
@@ -44,7 +44,7 @@ file:/Users/my_user/.gitconfig      user.name=John Q. Public
 file:/tmp/Cool_Project/.gitconfig   core.pager=less --quit-if-one-screen --no-init
 {{< /highlight >}}
 
-will list all the settings along with the corresponding `.gitconfig` file it’s coming from.
+lists all settings along with the corresponding `.gitconfig` it’s coming from.
 
 # You're on stage!
 
@@ -99,7 +99,7 @@ git diff A...B  # diff commits ancestor(A, B) and B
 
 `git diff A...B` = `git diff $(git merge-base A B) B` i.e. difference between the common ancestor of both references and `B`.  `A` is usually `HEAD` and `B` is commonly a branch head, so this shows work done independently in a branch.  _Memory aid_: triple dots ≈ branch.
 
-However, the [meanings feel reversed for `git log`][log-dots]!  🤦  Also `A..B` and `A B` mean the same in `diff` while not in `log`!  Before reading `log`’s nuances, remember that `log` operates on a range of commits while diff only does on two.  Also [Gitolite’s nice observation][triple-dot] might help you internalise `...` better:
+However, the [meanings feel reversed for `git log`][log-dots]!  🤦  Also `A..B` and `A B` mean the same in `diff` while not in `log`!  Before reading `log`’s nuances, remember that `log` operates on a range of commits while `diff` only does on two.  [Gitolite’s nice observation][triple-dot] might also help you internalise `...` better:
 
 > `...` somehow involves the common ancestor for both `diff` and `log`
 
