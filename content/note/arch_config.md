@@ -265,7 +265,9 @@ However, since Linux kernel version 5 I didn’t have to do this once!
 
 # (Pulse) Audio
 
-Just install `pulseaudio`, `pulseaudio-alsa`, `pavucontrol` and `xfce4-pulseaudio-plugin`; little to no configuring seems to be needed to get audio working.  I set _Built-in Audio_ to _Analog Stereo Output_ since this laptop has stereo out only.
+Just install `pulseaudio`, `pulseaudio-alsa`, `pavucontrol` and `xfce4-pulseaudio-plugin`; little to no configuring seems to be needed to get audio (out) working.  I set _Built-in Audio_ to _Analog Stereo Duplex_ since this laptop has stereo speakers, a built-in microphone and a 3.5 mm jack conducting both line in and out (stereo).
+
+The microphone needed work even with right settings in `pavucontrol`.  Install `alsa-utils` and launch `alsamixer`.  Make sure to choose the right device, set appropriate `CAPTURE` level and un-mute.  Test with `arecord -f dat -d 5 test.wav && aplay test.wav`.
 
 # Bluetooth
 

@@ -85,6 +85,8 @@ Contrary to popular belief, [`git pull` can be run on a branch that’s not curr
 git fetch origin my-topic:my-topic
 {{< /highlight >}}
 
+If `my-topic` and `origin/my-topic` have diverged, this gets reduced to an ordinary `fetch` i.e. only `origin/my-topic` gets updated.
+
 [pull-non-HEAD]: https://stackoverflow.com/a/42902058/183120
 
 # Please [mind the dots][mind-gap]
