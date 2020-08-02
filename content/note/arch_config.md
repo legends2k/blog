@@ -615,6 +615,7 @@ Miscellaneous user land customizations and tune-ups:
 # Issues
 
 1. Log out and in; mouse cursor is frozen!
+    - Fix: `sudo modprobe -r psmouse && modprobe psmouse`
 2. Reverse scrolling in Xfce4 Terminal.
 
 # Epilogue

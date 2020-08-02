@@ -142,10 +142,28 @@ git restore --staged hello
 git restore --WS --source 1fe35f hello
 {{< /highlight >}}
 
+# _Strings Attached_ Tags
+
+Annotated tags are tags with an accompanying message that are displayed by `git show`.  Unlike [lightweight tags][lightweight-vs-annotated-tag] they are unintuitive.
+
+{{< highlight bash >}}
+# Lightweight tag
+git tag 1.0.0
+
+# Annotated tag
+git tag -m "Tag for release after sign off from CI team" 1.0.0
+{{< /highlight >}}
+
+However, the differences go deeper.  Annotated tags themselves are separate objects while lightweight objects are just pointers i.e. they point to a commit object.  Like commit objects, apart from the message, annotated tags also carry their own _tagger_ and _date_ fields.  When you `git push --follow-tags`, only annotated tags are pushed; `git push --tags` pushes both.  Since they’re separate objects, like all [Git objects][git-object], they’ve a distinct hash; consequently they can also be tagged!  This can bite you when you [rename an annotated tag][annotated-tag-rename] by [creating the new tag with the old one][usual-tag-rename].
+
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap
 [intervals]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Including_or_excluding_endpoints
 [log-dots]: https://stackoverflow.com/a/7256391/183120
 [switch-restore-release]: https://hub.packtpub.com/git-2-23-released-with-two-new-commands-git-switch-and-git-restore-a-new-tutorial-and-much-more/
+[lightweight-vs-annotated-tag]: https://stackoverflow.com/q/11514075/183120
+[git-object]: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
+[annotated-tag-rename]: https://stackoverflow.com/a/49286861/183120
+[usual-tag-rename]: https://stackoverflow.com/a/5719854/183120
 
 [^1]: `switch` and `restore` are still experimental as of Git 2.26.2
