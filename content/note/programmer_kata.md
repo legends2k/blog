@@ -30,7 +30,7 @@ Becoming a good programmer doesn’t happen in a day.
   - Great tools like [ripgrep][] are hobby projects
 * Scope your project
   - Start with something small and tangible
-  - Having something decent in a week
+  - Have something working in a week
   - If not, you're biting more than you could chew; scope down
 * **Be consistent**
   - Work on your pet project at least an hour a day

@@ -5,7 +5,7 @@ date = 2020-06-22T07:36:47+05:30
 tags = ["tech", "tools", "linux"]
 +++
 
-My root partition had unused space while `/home` was starving.  I need to _resize both without data loss_.  I’d foreseen this and created my Linux partitions using [LVM][] while [installing Arch](/note/arch_install) 😇 .
+My root partition had unused space while `/home` was starving.  I needed to _resize both without data loss_.  I’d foreseen this and created my Linux partitions using [LVM][] while [installing Arch](/note/arch_install#lvm) 😇 .
 
 Since operations here involve resizing `/`, **boot from Live USB** and then perform them.  Also make sure the USB is **UEFI bootable**; otherwise it’d mean changing BIOS settings to enable _Legacy Boot_.  *This may lead to GRUB’s disappearance from boot menu.*
 

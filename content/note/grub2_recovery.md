@@ -17,7 +17,7 @@ My laptop doesn’t have a CD-ROM drive, also I prefer burning the ISO to a USB 
 | Secure Boot | Disabled                                         |
 | Fast Boot   | Enabled                                          |
 
-Thanks to [Debian’s GrubEFIReinstall guide][]; it made me recall that the _Boot Mode_ should be UEFI; it also gave the way verify it.  I’d to use a UEFI-bootable[^2] USB stick with Arch Linux ISO.  Things were smooth thereon!
+Thanks to [Debian’s GrubEFIReinstall guide][]; it made me recall that the _Boot Mode_ should be UEFI; it also gave the way to verify it.  I’d to use a UEFI-bootable[^2] USB stick with Arch Linux ISO.  Things were smooth thereon!
 
 {{< highlight basic >}}
 root@archiso / # [ -d /sys/firmware/efi ] && echo "EFI boot on HDD" || echo "Legacy boot on HDD"
