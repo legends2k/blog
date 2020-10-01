@@ -83,6 +83,8 @@ DNS=('1.1.1.1' '1.0.0.1')
 
 Start/switch to this profile as you normally would: `netctl switch-to wired`.
 
+> If you’re connecting a USB Type-C to 3.0 adapter with an ethernet port, its interface would not be `eth0`!  Make sure you’ve a similar profile for its interface too.
+
 [interface-name]: https://wiki.archlinux.org/index.php/Network_configuration#Change_interface_name
 
 ## Auto-Switching
