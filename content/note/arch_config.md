@@ -468,6 +468,32 @@ community/emacs-nox
 > yay -Qq | fzf --preview 'yay -Qil {}' --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'
 {{< /highlight >}}
 
+Irrespective of the wrapper used, pacman maintains `/var/log/pacman.log` since day 1 of its usage; very useful to know package management history.
+
+## Pac Cache Management
+
+Periodically `/var` gets full due to cached downloaded packages.  Clear it manually using the `paccache` script
+
+{{< highlight basic >}}
+sudo paccache -rk 2    # keep last 2 versions of each package
+{{< /highlight >}}
+
+[Automate cache clearance][autorun-paccache] with a pacman hook (refer `man alpm-hooks`) run post install:
+
+{{< highlight cfg >}}
+sudo cat > /etc/pacman.d/hooks/clean_pac_cache.hook
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Cleaning pacman cache...
+When = PostTransaction
+Exec = /usr/bin/paccache -rk 1
+{{< /highlight >}}
 
 [AUR]: https://aur.archlinux.org/
 [pacman wrappers]: https://wiki.archlinux.org/index.php/AUR_helpers#Pacman_wrappers
@@ -476,6 +502,7 @@ community/emacs-nox
 [Go]: https://golang.org/
 [Package Mapping]: https://bbs.archlinux.org/viewtopic.phpid=90635
 [fzf]: https://github.com/junegunn/fzf
+[autorun-paccache]: https://ostechnix.com/recommended-way-clean-package-cache-arch-linux/
 
 # Fonts
 
