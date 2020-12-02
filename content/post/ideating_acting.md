@@ -9,15 +9,15 @@ tags = ["psychology", "kaizen", "mind"]
 
 Young people are constantly bombareded with free advice by the elderly: people tell them how to talk, how to socialize, how to deal with money matters, etc.  It’s done to the point where it’s felt as preachy and rightly so.  Why?  More than what you say, kids pick up what you _do_.  Words don’t mean much to them; [actions speak much louder][AJCronin] indeed.
 
-Even as adults, many read motivational text, watch TED talks, discuss our problems with our friends and get ideas/free advice all the time on how to tackle.
+Even as adults we read motivational text, watch TED talks, discuss problems with friends and get ideas/free advice all the time.
 
-Now how useful are these ideas?  Say you want to take the stairs to your work floor everyday.  You make a pact with yourself; next day you get reminded of the pact while the elevator door dings.  So what’s missing?
+Now how useful are these ideas?  Say you want to take the stairs instead of lifts everyday.  You make a pact with yourself.  Next day you get reminded of the pact while the elevator bell rings.  So what’s missing?
 
 We get a lot of ideas and tips.  In this information age, they’re abundant to the point of becoming boring.  Yet, why don’t we all end up showing them in action?  Let aside _all_, not even _many_.  Majority of adults (and some kids[^1]), find it hard to change even one habit?
 
 > Invariably, we’re fed with ideas; when [armchair theorizing][] they sound great too.  When it comes to doing it, at that moment, it’s a totally different ball game.
 
-Everyone knows what to do.  How to do, however, has eluded us.
+Everyone knows _what_ to do.  _How_ to do, however, has eluded us.
 
 [AJCronin]: https://en.wiktionary.org/wiki/actions_speak_louder_than_words
 [armchair theorizing]: https://en.wikipedia.org/wiki/Armchair_theorizing

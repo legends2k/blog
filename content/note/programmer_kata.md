@@ -127,6 +127,25 @@ I’m a systems/middleware programmer, I’m partial to projects of those kinds.
     + Lexer
     + Compiler-toolchain
 
+[How to become a Better Developer][better-dev] admonitions to
+
+* Challenge yourself
+  - expose yourself to ideas you don’t understand
+  - try new languages or idioms
+* Study the masters
+  - read better works and blogs
+* Learn the classics
+  - concentrate on ideas/theory not tools (frameworks, OS, etc)
+* Practice Mindfully
+  - Participate in programming challenges
+  - Use katas and quizzes to conciously deeping your understanding
+* Mind your body
+  - Get fresh air, keep yourself healthy
+  - It’s needed not just for programming
+  - Know your priorities: without your body there’s no point in pursuing any of these
+
+Again the biggest factor to success isn’t intelligence, it’s grit -- passion and perseverance for long term goals.  Learning and consistently getting better at the face of failures; [making failure your friend][failure-friend].
+
 
 [grit]: https://www.bakadesuyo.com/2012/11/secret-success-not-giving-up/
 [ripgrep]: https://github.com/BurntSushi/ripgrep
@@ -158,3 +177,5 @@ I’m a systems/middleware programmer, I’m partial to projects of those kinds.
 [SDL]: https://libsdl.org/
 [lazyfoo]: http://lazyfoo.net/articles/article01/index.php
 [templators]: https://en.wikipedia.org/wiki/Template_processor
+[better-dev]: https://nuclearsquid.com/writings/how-to-become-a-better-developer/#fn:1
+[failure-friend]: https://drawabox.com/comic/4
