@@ -67,8 +67,9 @@ Where did you take a shortcut recently and got bitten by it?
     - Learning at and off work and applying for another company is more realistic
 2. Budding movie directors demanding absolute freedom, wanting to direct the next _Academy Award Winner_
     - Having this goal is okay but having demands as new comer is probably not
-    - Sure, some might have pulled it off without thinking so!  The idea is to accept any offer instead of waiting (perpetually) or (worse) quitting!
-    - Take upon the offers and improve along the way
+    - Sure, someone might have gotten an award for their debut movie but probably without expecting it!
+    - The idea is to accept any offer instead of waiting (perpetually) or (worse) quitting!
+    - Take upon offers coming your way and improve gradually
     - One day your work would be excellent then you’d have realistic terms you could demand
 3. Budding artists refusing to perform in _cheap restaurants_ as they want to only perform on big stages
 4. Over ambitious companies biting more than they can chew
