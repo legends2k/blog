@@ -31,7 +31,8 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 
 # To Do
 
-* Update _Projects_ page with _Spirit of C++_ and path finding
+* Update _Projects_ page with _Spirit of C++_, path finding, etc.
+* [Self-host fonts](https://news.ycombinator.com/item?id=25300396)
 * Make footnote as tool tip for hypertext using title attribute
 * Create a site map with all sections articles as a one page searchable list
 * Move to [Utterances](https://utteranc.es/) instead of Disqus for comments

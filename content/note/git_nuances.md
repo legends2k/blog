@@ -156,6 +156,34 @@ git tag -m "Tag for release after sign off from CI team" 1.0.0
 
 However, the differences go deeper.  Annotated tags themselves are separate objects while lightweight objects are just pointers i.e. they point to a commit object.  Like commit objects, apart from the message, annotated tags also carry their own _tagger_ and _date_ fields.  When you `git push --follow-tags`, only annotated tags are pushed; `git push --tags` pushes both.  Since they’re separate objects, like all [Git objects][git-object], they’ve a distinct hash; consequently they can also be tagged!  This can bite you when you [rename an annotated tag][annotated-tag-rename] by [creating the new tag with the old one][usual-tag-rename].
 
+# Frugal Fetches
+
+When getting a remote branch, ignore the popular advise to fetch everything (`git fetch`); a better option is to get just what you want; saves a lot of bandwidth:
+
+{{< highlight bash >}}
+# fetch just the interesting branch
+git fetch origin my_topic_branch
+
+# checkout locally and also set remote-tracking branch
+git checkout --track origin/my_topic_branch
+{{< /highlight >}}
+
+# Fetch Fiascos?  Shallow Repos!
+
+Irrespective of the number of times you yell `git fetch`, Git swears that there’s only one branch in a remote!  You look at `git branch -r` in dismay 😰
+
+Well, you forgot that it’s a shallow repro i.e. cloned with `--single-branch`.  The caveat lurks in `man git-clone`
+
+> `--[no-]single-branch`
+>
+> [...]
+>
+> Further fetches into the resulting repository will only update the
+> remote-tracking branch for the branch this option was used for the initial
+> cloning.
+
+Deepen the shallow repo with `git fetch --unshallow`.  Further details at [an SO post][shallow-fetch].
+
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap
 [intervals]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Including_or_excluding_endpoints
@@ -165,5 +193,6 @@ However, the differences go deeper.  Annotated tags themselves are separate obje
 [git-object]: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects
 [annotated-tag-rename]: https://stackoverflow.com/a/49286861/183120
 [usual-tag-rename]: https://stackoverflow.com/a/5719854/183120
+[shallow-fetch]: https://stackoverflow.com/q/1778088/183120
 
 [^1]: `switch` and `restore` are still experimental as of Git 2.26.2
