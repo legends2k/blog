@@ -61,6 +61,11 @@ enableGitInfo = true
     style = "dracula"
     tabWidth = 2
 
+[markup.tableOfContents]
+    startLevel = 1
+    endLevel = 2
+    ordered = true
+
 # “date” usually means (article’s file) creation date i.e. when the idea was
 # first convinced, “lastmod” almost always comes from Git, set “pushlishDate”
 # when publishing.  Being explicit is usually better; fallbacks below:

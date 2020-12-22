@@ -4,6 +4,7 @@ description = "Display, Audio, Bluetooth and tools"
 date = "2018-05-27T17:00:46-07:00"
 publishDate = "2019-04-26T11:31:00+05:30"
 tags = ["tech", "tools", "linux"]
+toc = true
 +++
 
 See [_Arch Linux Installation_](/note/arch_install) for installation notes.

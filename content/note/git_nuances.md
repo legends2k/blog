@@ -3,6 +3,7 @@ title = "Git Wizardry"
 description = "Obscure but useful Git incantations"
 date = 2020-05-13T19:56:56+05:30
 tags = ["tech", "vcs", "tools"]
+toc = true
 +++
 
 Git has its oddities with unusual commands and flags.  I keep learning something new every now and then.
@@ -195,4 +196,4 @@ Deepen the shallow repo with `git fetch --unshallow`.  Further details at [an SO
 [usual-tag-rename]: https://stackoverflow.com/a/5719854/183120
 [shallow-fetch]: https://stackoverflow.com/q/1778088/183120
 
-[^1]: `switch` and `restore` are still experimental as of Git 2.26.2
+[^1]: `switch` and `restore` are still experimental

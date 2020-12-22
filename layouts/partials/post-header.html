@@ -9,4 +9,10 @@
         <span>{{ .Site.Params.readingTimeText }} {{ .Page.ReadingTime }} min</span>
     </p>
     {{ end }}
+    {{ if .Params.toc }}
+    <aside>
+        <h1>Contents</h1>
+        {{.TableOfContents}}
+    </aside>
+    {{ end }}
 </header>

@@ -3,6 +3,7 @@ title = "Arch Linux Installation"
 description = "coexisting with Windows on a dual GPU laptop"
 date = "2018-05-27T17:00:46-07:00"
 tags = ["tech", "tools", "linux"]
+toc = true
 +++
 
 I've a dual GPU laptop: _Lenovo Legion Y520-15IKBN_; the _Nvidia GeForce 1050 Ti Mobile_ for graphics-heavy (3D) tasks and _Intel HD Graphics 630_ for rendering the rest.  It has an SSD and a traditional spinning disk.  UEFI + GPT as opposed to the classic BIOS + MBR combo is preferable.  I'm a long-time Xubuntu user but I wanted to try Arch Linux.  Here I note my experience in getting this laptop up and running.
