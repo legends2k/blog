@@ -35,6 +35,9 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 * [Self-host fonts](https://news.ycombinator.com/item?id=25300396)
 * Make footnote as tool tip for hypertext using title attribute
 * Create a site map with all sections articles as a one page searchable list
+  - Index is big and only shows 7; everyone mightn’t tap ‘Older Posts’
+* Enable [per-page auto-numbering](https://codingnconcepts.com/hugo/auto-number-headings-hugo/)
+  - Remove manual numbering in `note/site_customizations.md`
 * Move to [Utterances](https://utteranc.es/) instead of Disqus for comments
 * Tag pages doesn’t show article’s published date and time
 * Post/note index page doesn’t show tags of posts in the list

@@ -67,11 +67,10 @@ aside {
     text-align: left;
     font-size: smaller;
     width: 40%;
-    padding-left: .5rem;
+    padding-left: 1.0rem;
+    margin-left: 1.0rem;
     margin-top: 1.0rem;
-    margin-left: 1.5rem;
     float: right;
-    border-left: 1px solid rgba(240,56,56,0.75);
     background: #fffded;
 }
 
@@ -79,6 +78,7 @@ aside {
 aside > h1 {
     text-align: center;
     font-size: 1.5em; /* match h2 font-size */
+    margin-top: 20px;
 }
 
 figure img {

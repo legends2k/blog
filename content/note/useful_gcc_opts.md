@@ -3,7 +3,7 @@ title = "Useful GCC options"
 description = "Know thy compiler!"
 date = "2017-02-08T16:45:02+05:30"
 tags = ["tech", "gcc", "tools"]
-
+toc = true
 +++
 
 Here are some of the useful, but not widely known, options of GCC that I want to document.

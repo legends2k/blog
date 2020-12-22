@@ -1,5 +1,5 @@
 +++
-title = "First game jam experience!"
+title = "My First Game Jam!"
 description = "Alakajam Feb 2019"
 date = 2019-02-26T20:54:34+05:30
 tags = ["tech", "self", "gamedev"]

@@ -3,6 +3,7 @@ title = "I Git it!"
 description = "Summary of my ‘Aha!’ moments with Git"
 date = 2019-02-20T19:56:56+05:30
 tags = ["tech", "vcs", "tools"]
+toc = true
 +++
 
 Basics like initializing (a repository), staging and commiting files aren’t explained here; they simply make sense; no ‘Aha!’s there.  Moving references, branching and merging --- coupled with Git’s arcane command names[^3] --- are the confusing parts.

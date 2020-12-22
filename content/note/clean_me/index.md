@@ -3,6 +3,7 @@ title = "Shutting the ubiquitous backdoor"
 description = "a.k.a Intel ME with a programmer and some guts ;)"
 date = "2018-05-12T15:00:46-07:00"
 tags = ["tech", "security", "hardware", "tinker"]
+toc = true
 +++
 
 I believe [_resistance is futile_][Borg] if someone is bent on spying on you; there’re both serious and [creative ways][Side-channelling] to go about it.  Talking to your processor, behind your back, isn’t the primary or only means.  Our’s is a [golden age][Digital Age] where corporates and government agencies stoop low enough to pry into bedrooms.  Did you know that _almost_ all machines[^1] you _own_ have a processor aside from the one you paid for?  It controls your processor (host) and won’t listen to you.
