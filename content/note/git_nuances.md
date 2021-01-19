@@ -187,21 +187,26 @@ Deepen the shallow repo with `git fetch --unshallow`.  Further details at [an SO
 
 # Are You My Mother?
 
-Check if a `Commit-A` is reachable from `Commit-B` i.e. if `Commit-B` is an ancestor of `Commit-A`
+There’re times when you want to check a commit’s ancestory.  To know if `Possible-Parent` is truly an ancestor of `Child`
 
 {{< highlight bash >}}
-git merge-base --is-ancestor possible_grandparent person
+# check
+git merge-base --is-ancestor possible_ancestor person
+# show result
+echo $0
 {{< /highlight >}}
 
-This returns `0` if the lineage check succeeded.  Check with `echo $?` on *nix machines; on Windows `echo %errorlevel%` works.
+Prints `0` if the lineage checks out.  On Windows `echo %ErrorLevel%` tells the return value of the last command.
 
-In case you’re looking for all the branches containing a commit you could do
+Conversely, if you’re looking for all the branches containing a commit
 
 {{< highlight bash >}}
-git branch --contains my_commit
+git branch --contains some_parent
 {{< /highlight >}}
 
-This lists branch names whose tip is a descendant of `my_commit`; of course, this won’t be useful if the ancestor commit isn’t a branch tip.
+lists all branches descending from `some_parent`; of course, this isn’t useful if the descendant commit your looking for isn’t a branch tip.
+
+The general idea is _reachability_: an ancestor is reachable from a descendant, if you keep following the parental links.  When an ancestor is _reachable_, changes it introduced are _visible_.
 
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap
