@@ -17,9 +17,10 @@ Repertoire
 ==========
 
 **Languages**: C++ (17), C, Go, Rust, Lua, JavaScript, Python, Perl, GLSL  
-**Tools**: OpenGL, Direct3D, Direct2D, Boost, GTK+, Qt, GCC, VC++, Valgrind, Bash
-**Packages**: GIMP, Blender, 3ds Max  
-**Platforms**: Linux / Cygwin, Windows
+**Libraries**: OpenGL, Direct3D, Direct2D, Boost, GTK+, Qt  
+**Tools**: Bash, GCC, Clang, VC++, Valgrind  
+**Editors**: Emacs, Blender, GIMP, Krita  
+**Platforms**: Linux, macOS, Windows
 
 
 Work Experience (13+ years)
@@ -42,8 +43,8 @@ Education
 Web Presence
 ============
 
-* [StackOverflow](https://stackoverflow.com/users/183120/legends2k): Active member with over 20k reputation and a silver badge in C++  
-Top tags: C++, 3D, OpenGL, Math, Geometry
+* [StackOverflow](https://stackoverflow.com/users/183120/legends2k): Active member with over 25k reputation and a silver badge in C++  
+_Top Tags_: C++, 3D, OpenGL, Math, Geometry
 * [BitBucket](https://bitbucket.org/rmsundaram/tryouts/overview): C++ and 3D Workouts portfolio 
 * [GitHub](https://github.com/legends2k)
 * Career
