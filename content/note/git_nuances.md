@@ -185,6 +185,24 @@ Well, you forgot that it’s a shallow repro i.e. cloned with `--single-branch`.
 
 Deepen the shallow repo with `git fetch --unshallow`.  Further details at [an SO post][shallow-fetch].
 
+# Are You My Mother?
+
+Check if a `Commit-A` is reachable from `Commit-B` i.e. if `Commit-B` is an ancestor of `Commit-A`
+
+{{< highlight bash >}}
+git merge-base --is-ancestor possible_grandparent person
+{{< /highlight >}}
+
+This returns `0` if the lineage check succeeded.  Check with `echo $?` on *nix machines; on Windows `echo %errorlevel%` works.
+
+In case you’re looking for all the branches containing a commit you could do
+
+{{< highlight bash >}}
+git branch --contains my_commit
+{{< /highlight >}}
+
+This lists branch names whose tip is a descendant of `my_commit`; of course, this won’t be useful if the ancestor commit isn’t a branch tip.
+
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap
 [intervals]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Including_or_excluding_endpoints

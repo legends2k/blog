@@ -87,6 +87,6 @@ Growth is almost always a slow, incremental process.  It can’t be fast-tracked
 
 **Related**: [Teach Yourself Programming in Ten Years][prog-10-years] by _Peter Norvig_, Director of Research, Google
 
-[^1]: Of course, even if you aren’t starting something new, day dreams have other side-effects: more you dream the more you lose grip of reality.
+[^1]: Of course, even if you aren’t starting something new, day dreams have other side-effects: more you dream the more you lose your grip on reality.
 
 [prog-10-years]: https://www.norvig.com/21-days.html
