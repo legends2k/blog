@@ -183,7 +183,16 @@ Well, you forgot that it’s a shallow repro i.e. cloned with `--single-branch`.
 > remote-tracking branch for the branch this option was used for the initial
 > cloning.
 
-Deepen the shallow repo with `git fetch --unshallow`.  Further details at [an SO post][shallow-fetch].
+Deepen the shallow repo with `git fetch --unshallow`.  Further details at [an SO post][shallow-fetch].  I’ve also seen a manual method of editing `.git/config`: replacing branch name with `*` and `fetch`-ing
+
+{{< highlight cfg >}}
+[remote "origin"]
+	url = https://github.com/legends2k/blog
+# fetch = +refs/heads/master:refs/remotes/origin/master
+# fetch = +refs/tags/master:refs/tags/master
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	fetch = +refs/tags/*:refs/tags/*
+{{< /highlight >}}
 
 # Are You My Mother?
 
@@ -206,7 +215,16 @@ git branch --contains some_parent
 
 lists all branches descending from `some_parent`; of course, this isn’t useful if the descendant commit your looking for isn’t a branch tip.
 
-The general idea is _reachability_: an ancestor is reachable from a descendant, if you keep following the parental links.  When an ancestor is _reachable_, changes it introduced are _visible_.
+The general idea is _reachability_: an ancestor is reachable from a descendant, if you keep following the parental links.  When an ancestor is _reachable_, changes it introduced are _visible_ to the descendant.
+
+# Misc
+
+* Delete branch from remote directly: `git push origin --delete my_topic`
+* Remove local branches with no remote counterparts: `git remote prune origin`
+  - Doing the same while fetching newer branches: `git fetch --prune`
+* Remove untracked files from working tree: `git clean`
+* Clean up unnecessary house-keeping files and optimize repo: `git gc`
+  - Remove objects older than some duration: `git prune --expire 2.weeks.ago`; more manual
 
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap

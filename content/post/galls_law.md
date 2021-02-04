@@ -85,7 +85,11 @@ Be courageous; sell yourself short and work happily.  Keep working and you’d r
 
 Growth is almost always a slow, incremental process.  It can’t be fast-tracked.  Winning players are often seen in soiled clothes!
 
-**Related**: [Teach Yourself Programming in Ten Years][prog-10-years] by _Peter Norvig_, Director of Research, Google
+# Related
+
+* [Teach Yourself Programming in Ten Years][prog-10-years] by _Peter Norvig_, Director of Research, Google
+* [Why Trying to Be Perfect Won’t Help You Achieve Your Goals](https://jamesclear.com/repetitions)
+  - Numerous failed repetitions will
 
 [^1]: Of course, even if you aren’t starting something new, day dreams have other side-effects: more you dream the more you lose your grip on reality.
 
