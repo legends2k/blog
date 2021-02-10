@@ -7,6 +7,18 @@ date = "2017-02-24T12:34:07+05:30"
 Open Source
 ===========
 
+Spirit of C++
+-------------
+A presentation for the non-C++ programmer to build a healthy C++ mental model. High-level details are emphasized over low-level ones; it takes the approach that when learning something new, having a high-level and simple view leads to a healthy model.
+
+[View it directly in your browser][spirit-of-cpp].
+
+**Used**: C++, HTML, CSS, JS ♦ Cross-platform  
+**Link**: https://github.com/legends2k/spirit-of-cpp/  
+**Since** 2019
+
+[spirit-of-cpp]: https://legends2k.github.io/spirit-of-cpp
+
 3D Workouts
 -----------
 Multiple mid-sized projects to understand 3D math and graphics concepts from ground up using no high-level libraries.  Right from primitives to collision detection to spatial data structures to frustum culling everything was implemented manually from scratch.
@@ -16,12 +28,15 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 * Free-look (6 DoF) camera using matrices, quaternions (independently) and no `gluLookAt`.
 * 3D picking by ray casting.
 * Multi-textured terrain with lighting and quadtree-based frustum culling.
-* Math calculations on paper and book citations [documented](https://bitbucket.org/rmsundaram/tryouts/src/master/CG/Calculations) for future reference.
-
+* Math calculations on paper and book citations [documented][board-calculations] for future reference.
+* Path finding in a navigation mesh
+  - Funnel narrowing (string-pulling) algorithm for optimized, believable paths
 
 **Used**: C++, SIMD, shader-based OpenGL 3+, GLSL ♦ Cross-platform  
 **Homepage**: https://bitbucket.org/rmsundaram/tryouts/overview  
 **Since** 2013
+
+[board-calculations]: https://bitbucket.org/rmsundaram/tryouts/src/master/CG/Calculations
 
 Field of Vision System
 ----------------------
@@ -35,7 +50,7 @@ Geometric Transforms 101
 ------------------------
   A [GameDev.net featured](http://www.gamedev.net/page/resources/_/technical/math-and-physics/2d-transforms-101-r4212) interactive tutorial on geometric transformations for programmers favouring intuition over mathematical rigour; concepts explained are illustrated with animation.  In addition to elementary transforms on points, it also treats coordinate system and hierarchical transforms; shows mappings from active and passive viewpoints.  It can be viewed on a browser and in any form factor, as it only uses HTML5 and vector graphics.
 
-**Used**: Linear Algebra, Trigonometry, SVG ♦ Cross-platform  
+**Used**: Linear Algebra, Trigonometry, SVG, HTML, CSS, JS ♦ Cross-platform  
 **Link**: https://github.com/legends2k/2d-transforms-101/  
 **Since** 2015
 

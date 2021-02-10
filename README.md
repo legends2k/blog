@@ -31,11 +31,10 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 
 # To Do
 
-* Update _Projects_ page with _Spirit of C++_, path finding, etc.
 * [Self-host fonts](https://news.ycombinator.com/item?id=25300396)
-* Make footnote as tool tip for hypertext using title attribute
-* Create a site map with all sections articles as a one page searchable list
+* Create a site map/archives page listing all articles on one page (searchable)
   - Index is big and only shows 7; everyone mightn’t tap ‘Older Posts’
+* Make footnote as tool tip for hypertext using title attribute
 * Enable [per-page auto-numbering](https://codingnconcepts.com/hugo/auto-number-headings-hugo/)
   - Remove manual numbering in `note/site_customizations.md`
 * Move away from Disqus for comments
@@ -45,3 +44,7 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 * Post/note index page doesn’t show tags of posts in the list
 * Taxonomy: add **Categories**
     * Show both *Tag*s and *Category*s on a post
+
+## Content
+
+* Improve _Gall’s Law_; what it’s trying to convey is still unclear
