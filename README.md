@@ -38,7 +38,9 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
   - Index is big and only shows 7; everyone mightn’t tap ‘Older Posts’
 * Enable [per-page auto-numbering](https://codingnconcepts.com/hugo/auto-number-headings-hugo/)
   - Remove manual numbering in `note/site_customizations.md`
-* Move to [Utterances](https://utteranc.es/) instead of Disqus for comments
+* Move away from Disqus for comments
+  - [staticman](https://staticman.net/); see [example](https://travisdowns.github.io/blog/2020/02/05/now-with-comments.html)
+  - [Utterances](https://utteranc.es/) and [gitment](https://github.com/imsun/gitment) have the issue of not letting non-GitHub users in
 * Tag pages doesn’t show article’s published date and time
 * Post/note index page doesn’t show tags of posts in the list
 * Taxonomy: add **Categories**

@@ -5,7 +5,6 @@ title = "Bits of Insight"
 theme = "ghostwriter"
 copyright = "Sundaram Ramaswamy"
 googleAnalytics = ""
-disqusShortname = "legends2k"
 paginate =  7
 enableGitInfo = true
 
