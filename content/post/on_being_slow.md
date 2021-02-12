@@ -8,15 +8,14 @@ tags = ["ruminations", "introspections"]
 A colleague told me about two types of processors
 
 1. _Internal Processor_: A person who gives one clear statement -- externally; formulates what to say, makes corrections to it, etc. -- internally
-2. _External Processor_: A person who does all the above _externally_
+2. _External Processor_: A person who says something without thinking then corrects it and then some more correction...
 
-I’ve been an external processor mostly.  I think I’ve to slow down; I’m clumsy and fast under-the-hood.  I’m an impulsive person; judgemental too.  I work intuitively; deliberate, thought-through actions are a rarity.
+I’ve mostly been an external processor.  I’m clumsy and impatient.  I’m impulsive and judgemental too.  I’m intuition-driven; deliberate, thought-through actions are a rarity.  Though my intuition has mostly helped me, I’ve been bitten by over-confidence.
 
-My observation on meditation and mindfulness practises:
+A healthy balance between the approaches is needed.  Since I’m already erring on the impulsive side, I’d benefit more from balancing the equation by being more deliberate in my actions.  I’ve observed becoming more deliberate after I started meditation practise.
 
 > Meditation seems to balance.  If you’re a slow person it makes you fast enough, if you’re a fast person it slows you down enough.
 
-Though both approaches have their merits and demerits, a healthy balance is needed.  Since I’m already erring on the impulsive side, I’d benefit more from balancing the equation by being more deliberate in my actions.  I’ve observed becoming more deliberate after I started meditation practise.
 
 # Talking
 
