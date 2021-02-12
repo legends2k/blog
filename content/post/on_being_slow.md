@@ -8,9 +8,11 @@ tags = ["ruminations", "introspections"]
 A colleague asked an intriguing question: _"what kinda processor are you?"_.  He explained me the classification:
 
 1. _Internal Processor_: A person who gives one clear statement after having formulated what to say (including corrections, refinements, etc.) internally
-2. _External Processor_: A person who says something and keeps correcting it until satisfied -- externally
+2. _External Processor_: A person who says something and then goes on making a string of corrections until satisfied -- externally
 
-I’m clumsy and impatient; they stem from my impulsive and judgemental nature within.  I’m intuition-driven; deliberate, thought-through actions are a rarity.  On the positive side, my intuition has mostly helped me.  Many times I don’t know the method but I arrive at the right solution; I later trace back and understand my own solutions.  However, there’re times I’ve been bitten by impatience and over-confidence.
+My reply?  _"I’m an internal processor... Oh! Wait!  I think... Oh well!"_.  Colleague walks away with a knowing grin 😀
+
+I’m clumsy and impatient; they stem from my impulsive and judgemental nature.  I’m intuition-driven; deliberate, thought-through actions are a rarity.  On the positive side, my intuition has mostly helped me.  Many times I don’t know the method but I arrive at the right solution; I trace back and understand my own solutions at length later.  However, there’re times I’ve been bitten by impatience and over-confidence.
 
 A healthy balance is needed.  Since I’m already erring on the impulsive side, I’d benefit from being more deliberate in my actions; it’d balance the equation.  I’ve observed becoming more thoughtful since the start of my meditation practise.
 
@@ -20,7 +22,7 @@ A healthy balance is needed.  Since I’m already erring on the impulsive side, 
 
 I’m an introvert; I don’t speak much in a setting with unknown folks.  With close friends it’s quite the opposite!  Even with strangers, after a couple of meetings, I start to feel comfortable and could easily speak for more than half hour with the other just listening.  This is useful at times but it has its downsides.  I used to be completely unaware of whether they’re enjoying it or getting bored; this has improved a bit.
 
-A huge realization over the years: cutting down on talking makes me a lot more productive, improves my relationships with better conversations.  Furthermore, it leads to many silent realizations.  My mind needs the calm to correctly bring up the point I want to talk about; both in personal and professional front.
+As a kid I was notorious for my verbal diarrhoea; tagged often as "chatterbox".  A huge realization over the years: cutting down on talking makes me a lot more productive, improves my relationships with better conversations.  Talking drains my energy faster than more cerebral tasks.  Curtailing it leads me to many silent realizations.  My mind needs the calm to correctly bring up the point I want to talk about; both in personal and professional front.
 
 # Listening
 
