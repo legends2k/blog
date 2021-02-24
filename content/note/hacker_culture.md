@@ -13,7 +13,7 @@ It’s a bookmark page I update now and then.
 
 ## Eric S Raymond
 
-Renowned hacker[^1].  He’s written a lot about UNIX philosophy including [_The Art of Unix Programming_][taoup] and [_The Unix Koans of Master Foo_][unix-koans].
+Renowned hacker[^1].  He’s written a lot about Unix philosophy including [_The Art of Unix Programming_][taoup] and [_The Unix Koans of Master Foo_][unix-koans].
 
 * [How to Become a Hacker](http://www.catb.org/esr/faqs/hacker-howto.html)
 * [FAQs on Hackers](http://www.catb.org/esr/faqs/)
@@ -51,15 +51,18 @@ Co-founder of StackOverflow.com.
 * [Good Programmers Get Off Their Butts](https://blog.codinghorror.com/good-programmers-get-off-their-butts/)
 * [How to Hire a Programmer](https://blog.codinghorror.com/how-to-hire-a-programmer/)
 * [Nobody’s Going to Help You, and That’s Awesome](https://blog.codinghorror.com/nobodys-going-to-help-you-and-thats-awesome/)
+* [Regex: Now You’ve Two Problems](https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/)
+* [What’s Your Backup Strategy](https://blog.codinghorror.com/whats-your-backup-strategy/)
 
 ## Paul Graham
 
-Co-founded Y Combinator (the startup seeder) and Hacker News.  Also popular for his work on [Lisp][].
+Co-founder of Y Combinator (the startup seeder) and [_Hacker News_][hn].  His work/writings on [Lisp][] are popular too.
 
-* [Beating the Averages](http://paulgraham.com/avg.html)
 * [The Bus Ticket Theory of Genius](http://paulgraham.com/genius.html)
   - [The Value of Learning “Useless” Things](https://www.scotthyoung.com/blog/2020/12/21/knowledge-foundation/) by _Scott H Young_
+* [Beating the Averages](http://paulgraham.com/avg.html)
 
+[hn]: https://news.ycombinator.com
 [Lisp]: https://en.wikipedia.org/wiki/Lisp_(programming_language)
 
 ## Randall Munroe (XKCD)
@@ -70,6 +73,10 @@ Super popular web comics on programming.
 * [Duty Calls](https://xkcd.com/386/)
 * [Real Programmers](https://xkcd.com/378/)
 * [Wisdom of the Ancients](https://xkcd.com/979/)
+
+[explainxkcd.com][] details each comic.
+
+[explainxkcd]: https://www.explainxkcd.com/wiki/index.php
 
 ## James Hague
 

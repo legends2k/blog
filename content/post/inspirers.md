@@ -55,10 +55,11 @@ The founder of [BetterExplained.com][Better Explained].  If you haven't been to 
 [Why Do We Learn Math?]: https://betterexplained.com/articles/why-do-we-learn-math/
 
 ## Scott H. Young
-This man successfully completed MIT’s 4-year undergraduate computer science curriculum in 12 months, *without taking any classes*.  He also propagandised the [Feynman technique][] you may use to learn any topic in any domain.  He has written many great articles of which [one stands out][hello, world] as an inspiration.
+This man successfully completed MIT’s 4-year undergraduate computer science curriculum in 12 months, *without taking any classes*.  He also propagandised the [Feynman technique][] you may use to learn any topic in any domain.  He has written many great articles of which [one stands out][hello, world] as an inspiration.  He suggests writing down when you’ve a problem; any problem.  Talking and thinking leads to more confusions since there’s no structure to it; writing down your traumatic experience, OTOH, gives clarity and shape to your thoughts.  Helps alleviate the suffering and misconceptions around it.  This works even for trauma patients ([expressive writing][]).
 
 [Feynman technique]: https://www.scotthyoung.com/learnonsteroids/grab/TranscriptFeynman.pdf
 [hello, world]: /post/hello_world#writing-a-powerful-tool
+[expressive writing]: https://en.wikipedia.org/wiki/expressive_writing
 
 ## Richard Feynman
 He needs no introduction.  [His essays on Physics][Feynman essays] are the go-to literature if you are an amateur physicist.  He devised the Feynman technique for learners venturing into new fields.
