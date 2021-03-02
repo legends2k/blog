@@ -1,7 +1,7 @@
 +++
 title = "Drawing tablet setup on Windows"
 date = 2018-04-24T10:53:43+05:30
-tags = ["hardware", "drawing"]
+tags = ["tech", "hardware", "tools"]
 +++
 
 # Steps
