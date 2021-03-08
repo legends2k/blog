@@ -5,9 +5,9 @@ date = "2021-02-18T18:40:53+05:30"
 tags = ["tech", "bookmark"]
 +++
 
-You can’t learn everything from scratch practically; you need to stand on the shoulder of giants.  These articles were very insightful; either it’s a clear writing that shares my already-held belief or something that reshaped my thinking.  I’ve collected them over the years.  Most links have short descriptions too.
+You can’t learn everything from scratch practically; you need to stand on the shoulder of giants.  These articles were very insightful; either it’s a clear writing that shares my already-held belief or something that reshaped my thinking.  I’ve collected them over the years.  I’ve given short descriptions to most links.
 
-It’s a bookmark page I update now and then.
+It’s a bookmark page updated once in a while.
 
 # By Authors
 
@@ -89,7 +89,7 @@ Super popular web comics on programming.  [explainXKCD.com][] details each comic
 
 * [Start Pre-allocating and Stop Worrying](https://gamesfromwithin.com/start-pre-allocating-and-stop-worrying): when game making, stop worrying about memory allocation strategies and start pre-allocating
 * [What’s Your Pain Threshold](https://gamesfromwithin.com/whats-your-pain-threshold): build/test times breaking programmer flow
-* [Data-Oriented Design](https://gamesfromwithin.com/data-oriented-design): benefits of DOD
+* [Data-Oriented Design (Or Why You Might Be Shooting Yourself in The Foot With OOP)](https://gamesfromwithin.com/data-oriented-design): benefits of DOD
     - [Explaining Data-Oriented Design](http://www.codersnotes.com/notes/explaining-data-oriented-design/): further explanations on DOD
 
 # Misc
