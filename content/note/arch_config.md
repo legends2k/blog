@@ -387,7 +387,7 @@ polkit.addRule(function(action, subject) {
 });
 {{< /highlight >}}
 
-From now on, you should see NTFS and USB disk partitions in Thunar’s sidebar.  On click mount and unmount will work.
+From now on, you should see NTFS and USB disk partitions in Thunar’s sidebar.  One click mount and unmount will work.
 
 [Thunar]: https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot
 
@@ -448,10 +448,10 @@ Now install Yay from AUR
 {{< highlight basic >}}
 git clone https://aur.archlinux.org/yay.git
 cd yay/
-makepkg -si    # this needs sudo to install built pacakge
+makepkg -si    # this needs sudo to install built package
 {{< /highlight >}}
 
-I [found][Package Mapping] a few useful tricks as (my machine’s) admin:
+Yay respects `/etc/pacman.conf` settings; enable `Color`.  I [found][Package Mapping] a few useful tricks as (my machine’s) admin:
 
 * Map an existing file back to its (installed) package: `pacman -Qo FILE-PATH`
 {{< highlight basic >}}
@@ -501,7 +501,7 @@ Exec = /usr/bin/paccache -rk 1
 [AUR helpers]: https://wiki.archlinux.org/index.php/AUR_helpers
 [Yay]: https://github.com/Jguer/yay
 [Go]: https://golang.org/
-[Package Mapping]: https://bbs.archlinux.org/viewtopic.phpid=90635
+[Package Mapping]: https://bbs.archlinux.org/viewtopic.php?id=90635
 [fzf]: https://github.com/junegunn/fzf
 [autorun-paccache]: https://ostechnix.com/recommended-way-clean-package-cache-arch-linux/
 

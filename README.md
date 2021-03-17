@@ -34,6 +34,7 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 * [Self-host fonts](https://news.ycombinator.com/item?id=25300396)
 * Create a site map/archives page listing all articles on one page (searchable)
   - Index is big and only shows 7; everyone mightn’t tap ‘Older Posts’
+* Remove footer scrolling on mobile displays
 * Make footnote as tool tip for hypertext using title attribute
 * Enable [per-page auto-numbering](https://codingnconcepts.com/hugo/auto-number-headings-hugo/)
   - Remove manual numbering in `note/site_customizations.md`

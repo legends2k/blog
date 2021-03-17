@@ -6,16 +6,16 @@ tags = ["tech", "gamedev", "bookmark", "learning"]
 toc = true
 +++
 
-Here’s a list of curated learning resources I usually recommend for self-studying the domain of Computer Graphics.
+Here’s a curated list of learning resources I usually recommend for self-studying the domain of Computer Graphics.
 
-Learning graphics concepts isn’t the same as learing a rendering library; the latter is usually not very beneficial since a new library eventually replaces/takes over.  Strive to learn the theory behind the domain, not the tools or their idiosyncrasies.  Once you internalize the basic ideas, try doing [some CG projects with increasing hardness][cg-prog-projs].
+Learning graphics concepts isn’t the same as learning a rendering library; the latter is usually not very beneficial since a new library eventually replaces/takes over.  Strive to learn the theory behind the domain, not the tools or their idiosyncrasies.  Once you internalize the basic ideas, try doing [some CG projects with increasing hardness][cg-prog-projs].
 
 I’ve mostly centred the resources around OpenGL and not other libraries since they’re not cross-platform.  [Starting with OpenGL, instead of Vulkan, is better to learn graphics programming][learn-opengl-vulkan].  [Another article][which-graphics-lib] also admonitions not to start with Vulkan or D3D 12 and instead go with OpenGL or D3D 11.
 
 # Tutorials / eBooks
 
 * [Learn OpenGL][learngl] is a very clear and extensive OpenGL tutorial series on various topics ranging from basics to advanced levels.  Its categorization and illustrations are very good too.  Highly recommended for beginners.
-* [Learning Modern 3D Graphics Programming][arcsynth-community] is probably the most extensive free, well maintained online/offline (download-able for desktop, tablet and even kindle) book on modern OpenGL programming (i.e. it doesn't use fixed-function pipeline at all).
+* [Learning Modern 3D Graphics Programming][arcsynth-community] is probably the most extensive free, well-maintained online/offline (download-able for desktop, tablet and even kindle) book on modern OpenGL programming.
 * [OpenGL-Tutorial][gltut] is also modern and good, but isn't that extensive/detailed as compared to the former; although perspective projections are explained with diagrams extremely well here.
 * [OGLdev][ogldev] has close to 40 tutorials on modern OpenGL with nice explanations and rendered outputs.
 * [Lighthouse 3D][lighthouse] has tutorials for most of CG ~ math, Open GL, GLSL, GLUT, writing your own light weight library for game development.
