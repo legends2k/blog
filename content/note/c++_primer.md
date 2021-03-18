@@ -396,6 +396,7 @@ int main(int argc, char **argv) {
     - Deallocation
     - Operators
 - Popularly called **Rule of Three**, then **Rule of Five** but now really **[Rule of Zero](https://en.cppreference.com/w/cpp/language/rule_of_three)**
+- Refer [cheat sheet for when to supply which special member function](https://foonathan.net/2019/02/special-member-functions/)
 - Order is important
     - Construction happens from top to bottom e.g. inheritance,
       variables of a class, function, etc.
@@ -639,6 +640,7 @@ scope.
    topics like alignment, ADL, metaprogramming, etc.
 7. [The Definitive C++ Book Guide and List](https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list)
 8. [C++ Idioms](https://en.wikibooks.org/wiki/More_C%252B%252B_Idioms)
+9. [C++ Papyrus](https://caiorss.github.io/C-Cpp-Notes/): extensive notes on various C and C++-related topics including tool chains, shared libraries, Unix, Linux and WinAPI programming, OpenGL, etc.
 
 
 [^1]: [Use sorted vector instead of set](http://lafstern.org/matt/col1.pdf), if `find` calls outnumber `insert`; it’d be lot faster — Matt Austern.

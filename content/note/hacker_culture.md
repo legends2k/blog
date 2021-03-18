@@ -97,10 +97,13 @@ Super popular web comics on programming.  [explainXKCD.com][] details each comic
 * [OMG Ponies!!! (a.k.a Humanity: Epic Fail)](https://codeblog.jonskeet.uk/2009/11/02/omg-ponies-aka-humanity-epic-fail/): funny but meaningful exposition on bad decisions that make life of programmers hard
 * [Choose Boring Technology](https://mcfunley.com/choose-boring-technology): choose simple, boring and time-tested tools that’re easy to reason about and maintain than some niche tech only elites know
   - [Orthodox C++](https://gist.github.com/bkaradzic/2e39896bc7d8c34e042b): the subset of C++ that’s better understood and helps with maintainability
+  - [Why I Write Games in C (yes, C)](https://jonathanwhiting.com/writing/blog/games_in_c/) gives a clear exposition on why _C_ still has many advantages over other contending languages for a game programmer
 * [What Color is Your Function](https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/): explains how async has introduced two classes of functions which can’t be mixed
 * [Write Games, Not Engines](https://geometrian.com/programming/tutorials/write-games-not-engines/index.php): writing games, and many of them, gives you enough insights eventually it distil reusable parts into an engine; don’t hurt yourself doing it the other way around
   - [Make Games Not Engines... to learn Engines](https://seanmiddleditch.com/makes-games-not-engines-to-learn-engines/)
+* [Your Brain on the Internet — Multi-Tasking Research](http://teaching.idallen.com/cst8207/15w/notes/005_this_is_your_brain.html): on the horrors of _continuous partial attention_ due to multi-tasking, smartphones and internet.
 * [Essays on programming I think about a lot](https://www.benkuhn.net/progessays/): a page similar to this one
+
 
 [^1]: in the [right sense][hacker] of the word
 

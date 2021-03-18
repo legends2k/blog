@@ -121,7 +121,7 @@ git log A...B  # (3) show A-only and B-only commits
 
 # Overloaded `checkout`
 
-Keep getting confused between the various tasks that the overloaded `checkout` command performs?  It’s used to create new branches, switch branches and restore files from the index or a reference.  You don’t have to use it much these days; [Git 2.23 added two very useful commands][switch-restore-release] to remedy the situation[^1]:
+Keep getting confused between the various tasks that the overloaded `checkout` command performs?  It’s used to create new branches, switch branches and restore files from the index or a reference.  You don’t have to use it much these days; [Git 2.23 added two very useful commands][switch-restore-release] to remedy the situation[^experimental]:
 
 {{< highlight bash >}}
 # create new branch
@@ -159,7 +159,7 @@ However, the differences go deeper.  Annotated tags themselves are separate obje
 
 # Frugal Fetches
 
-When getting a remote branch, ignore the popular advise to fetch everything (`git fetch`); a better option is to get just what you want; saves a lot of bandwidth:
+When getting a remote branch, ignore the popular advise to fetch everything[^fetch-default] (`git fetch`); a better option is to get just what you want; saves a lot of time:
 
 {{< highlight bash >}}
 # fetch just the interesting branch
@@ -168,6 +168,8 @@ git fetch origin my_topic_branch
 # checkout locally and also set remote-tracking branch
 git checkout --track origin/my_topic_branch
 {{< /highlight >}}
+
+**Note**: This applies to `git pull` as well as `fetch` is its first step.
 
 # Fetch Fiascos?  Shallow Repos!
 
@@ -224,7 +226,8 @@ The general idea is _reachability_: an ancestor is reachable from a descendant, 
   - Doing the same while fetching newer branches: `git fetch --prune`
 * Remove untracked files from working tree: `git clean`
 * Clean up unnecessary house-keeping files and optimize repo: `git gc`
-  - Remove objects older than some duration: `git prune --expire 2.weeks.ago`; more manual
+  - Remove unreachable objects older than some duration: `git prune --expire 2.weeks.ago`; more manual
+  - Git 2.31 introduced `git maintenance start` to GC periodically in the background :)
 
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap
@@ -236,5 +239,7 @@ The general idea is _reachability_: an ancestor is reachable from a descendant, 
 [annotated-tag-rename]: https://stackoverflow.com/a/49286861/183120
 [usual-tag-rename]: https://stackoverflow.com/a/5719854/183120
 [shallow-fetch]: https://stackoverflow.com/q/1778088/183120
+[pull-sans-args]: https://stackoverflow.com/a/6861747/183120
 
-[^1]: `switch` and `restore` are still experimental
+[^fetch-default]: [`git fetch` without arguments][pull-sans-args] usually fetches all branches as `remote.<origin>.fetch` defaults to `+refs/heads/*:refs/remotes/<origin>/*`!
+[^experimental]: `switch` and `restore` are still experimental.
