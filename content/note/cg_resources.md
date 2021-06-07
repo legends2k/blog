@@ -36,7 +36,7 @@ To be proficient in computer graphics or even to understand the basics, a decent
 
 I’d recommend at least one book as tutorials just aren’t enough.  To get intuition and comfortably work in abstract 3D these would help:
 
-* [3D Math Primer for Graphics and Game Development][3d_primer] (both editions are good)
+* [3D Math Primer for Graphics and Game Development][3d_primer] (free to read online)
 * [Essential Mathematics for Games and Interactive Applications: A Programmer's Guide][essential_math], 2nd/3rd Edition
 * [Mathematics for 3D Game Programming and Computer Graphics][skeleton_math], 3rd Edition
 
@@ -169,7 +169,7 @@ Serious game development eventually leads to low-level optimisations.  This list
 [cg-buss]: http://amzn.com/0521821037
 [super_bible]: http://amzn.com/0321712617
 [pbrt]: http://amzn.com/0123750792
-[3d_primer]: http://amzn.com/1568817231
+[3d_primer]: https://gamemath.com
 [essential_math]: http://amzn.com/0123742978 
 [skeleton_math]: http://amzn.com/1435458869
 [low-c++]: https://1drv.ms/u/s!AqkzqQjJ-7EtgS9-oiB28cv_iqIj?e=c2dnKZ

@@ -668,3 +668,7 @@ Hat tip to all developers/creators who’ve worked to create this synergy ☯.
 4. [GRUB](https://wiki.archlinux.org/index.php/GRUB#Check_for_an_EFI_System_Partition) on Arch Linux Wiki
 5. [Dual-boot with Windows](https://wiki.archlinux.org/index.php/Dual_boot_with_Windows#UEFI_systems)
 6. [Pick A Suitable Desktop Environment For Arch Linux](https://www.2daygeek.com/install-xfce-mate-kde-gnome-cinnamon-lxqt-lxde-budgie-deepin-enlightenment-desktop-environment-on-arch-linux/)
+
+# See Also
+
+1. [Linux Desktop Setup](https://hookrace.net/blog/linux-desktop-setup/)

@@ -18,6 +18,9 @@ The easiest way to see the diff introduced by a [reference][git-concepts-ref] (f
 
 {{< highlight basic >}}
 git show REF
+
+# changes introduced to a particular file by a commit
+git show REF -- path/to/a/file
 {{< /highlight >}}
 
 It shows details about the commit along with the changes it brings about.  Of course, you can control the amount of information thrown at you with the usual options `show` shares with `log`: `--name-status`, `--shortstat`, `--stat`, `--summary`, etc.
@@ -159,7 +162,7 @@ However, the differences go deeper.  Annotated tags themselves are separate obje
 
 # Frugal Fetches
 
-When getting a remote branch, ignore the popular advise to fetch everything[^fetch-default] (`git fetch`); a better option is to get just what you want; saves a lot of time:
+When getting a remote branch, ignore the popular advise to `git fetch` as it fetches everything[^fetch-default]; a better option is to get just what you want; saves a lot of time:
 
 {{< highlight bash >}}
 # fetch just the interesting branch
@@ -169,7 +172,7 @@ git fetch origin my_topic_branch
 git checkout --track origin/my_topic_branch
 {{< /highlight >}}
 
-**Note**: This applies to `git pull` as well as `fetch` is its first step.
+**Note**: This applies to `git pull` as well since `fetch` is its first step.
 
 # Fetch Fiascos?  Shallow Repos!
 
