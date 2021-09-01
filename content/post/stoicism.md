@@ -9,6 +9,9 @@ draft = true
 > "Dig within. Within is the wellspring of Good; and it is always ready to bubble up, if you just dig."
 >  -- Marcus Aurelius
 
+> "We suffer more often in imagination than in reality."
+>  -- Seneca
+
 # Basics
 
 Eudaimonia

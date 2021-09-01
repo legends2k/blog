@@ -19,7 +19,7 @@ The easiest way to see the diff introduced by a [reference][git-concepts-ref] (f
 {{< highlight basic >}}
 git show REF
 
-# changes introduced to a particular file by a commit
+# changes introduced in a particular file by a commit
 git show REF -- path/to/a/file
 {{< /highlight >}}
 
@@ -168,11 +168,13 @@ When getting a remote branch, ignore the popular advise to `git fetch` as it fet
 # fetch just the interesting branch
 git fetch origin my_topic_branch
 
+**Note**: This applies to `git pull` as well since `fetch` is its first step.
+
 # checkout locally and also set remote-tracking branch
 git checkout --track origin/my_topic_branch
 {{< /highlight >}}
 
-**Note**: This applies to `git pull` as well since `fetch` is its first step.
+**Tip**: `git checkout my_topic_branch` is an even shorter form of above if `origin` is the only remote with `my_topic_branch`.
 
 # Fetch Fiascos?  Shallow Repos!
 

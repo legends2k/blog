@@ -105,6 +105,7 @@ Of these, my personal favourites are the last two.  More practical and hence eng
 
 Serious game development eventually leads to low-level optimisations.  This list might help at that point:
 
+* [You Don’t Have to Learn Assembly to Read Disassembly][disasm-basics]
 * Modern X86 Assembly, _Daniel Kusswurm_
 * [Low-level C and C++ curriculum][low-c++], _Alex Darby_
 * [Assembly and the Art of Debugging][mo_dbg], _Mohit_
@@ -120,7 +121,7 @@ Serious game development eventually leads to low-level optimisations.  This list
 
 [Reinventing the Wheel Often][reinvent_often] is natural when learning!  I like this quote from _Assembly Language Step by Step_, 3rd Edition by Jeff Duntemann:
 
-> "When somebody asks you, “Why would you want to do _that_?” what it really means is this: “You’ve asked me how to do something that is either impossible using tools that I favor or completely outside my experience, but I don’t want to lose face by admitting it.” [...] The answer to the _Infamous Question_ is always the same, and if the weasels ever ask it of you, snap back as quickly as possible, “Because I want to know how it works.” That is a completely sufficient answer."
+> "When somebody asks you, ‘Why would you want to do _that_?’ what it really means is this: ‘You’ve asked me how to do something that is either impossible using tools that I favor or completely outside my experience, but I don’t want to lose face by admitting it.’ [...] The answer to the _Infamous Question_ is always the same, and if the weasels ever ask it of you, snap back as quickly as possible, ‘Because I want to know how it works.’ That is a completely sufficient answer."
 
 
 [learn-opengl-vulkan]: https://computergraphics.stackexchange.com/a/3589/1650
@@ -176,6 +177,7 @@ Serious game development eventually leads to low-level optimisations.  This list
 [mo_dbg]: http://mohit.io/blog/category/debugging/
 [gamedev_post]: https://gamedev.stackexchange.com/a/46358
 [reinvent_often]: https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_72/
+[disasm-basics]: https://wordsandbuttons.online/you_dont_have_to_learn_assembly_to_read_disassembly.html
 
 
 <!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script><script>window.markdeepOptions = { tocStyle: 'medium' };</script>

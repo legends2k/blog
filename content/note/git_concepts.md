@@ -274,6 +274,10 @@ I get surprised by Git commands every now and then, I document the [obscure but 
 3. [Git Tutorials by Atlassian][]
 4. [Git Ready][]
 
+# See Also
+
+* [Git Cheatsheet][]
+
 [Think like a Git]: http://think-like-a-git.net/
 [Pro Git]: https://git-scm.com/book/en/v2
 [Git Tutorials by Atlassian]: https://www.atlassian.com/git/tutorials
@@ -282,6 +286,7 @@ I get surprised by Git commands every now and then, I document the [obscure but 
 [branch]: https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefbranchabranch
 [remote branches]: https://stackoverflow.com/q/7642273/183120
 [index internals]: https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified#_the_index
+[Git Cheatsheet]: https://www.philipdaniels.com/gitcheatsheet/
 
 [^1]: Case-sensitive!  `HEAD` will be the parent of a new commit in working tree, while a branch’s _head_ means its tip; see [glossary][branch].
 [^2]: Using `C3` for readability; substitute with proper commit ID.
