@@ -1,0 +1,67 @@
+#+TITLE: Assertions vs if checks
+#+DESCRIPTION: Two completely unrelated concepts
+#+DATE: <2021-10-13 Wed 19:07>
+#+TAGS[]: tech language c++
+#+DRAFT: true
+
+* TL;DR
+
+  Any program can have two classes of issues:
+  
+  1. Bugs
+  2. Runtime issues: invalid inputs, no access to resource, unreachable network, etc.
+
+  (1) is unknown to the programmer; (2) is known and handled in code.  There are different tools to deal with each; don’t conflate one with the other.  For (1) use /development-time/ checks to catch failing assumptions, changing invariants, pre-\slashpost-conditions.  For (2) use one of your language-provided feature including ~if~, ~try-catch-throw~, etc. that work at /runtime/.
+
+* Assertions
+
+  #+caption: *Example*: Using ~REQUIRE~ to check resource ID generation by ~open_image~
+  #+begin_src c++
+  int read_image(string path) {
+    if !os.exists(path) {                       // (2) runtime issue
+        // show file doesn’t exist dialog
+    }
+    Image i = open_image(path);
+    REQUIRE(i.resource_id != nullptr,           // (1) possible bug in open_image
+            "Resource ID unassigned for opened image");
+    cache(r.resource_id);
+  }
+  #+end_src
+
+  With asserts you’re checking your own code for possible bugs.  In the above code we try to cache the most recently opened image with its resource ID; before doing so we make sure such an internal ID was properly assigned to the opened image with a ~REQUIRE~ /macro/.  This check will be stripped from the final, released binary.  It’d only exist in /Debug/ builds which developers and testers would use.
+
+* Aren’t assertions ~if~ s anyway?
+
+  Though asserts are made of ~if~ statements, that’s true only for Debug builds; they don’t /fire/ on non-debug builds, like the ones which the end-user gets.  C and C++ have a preprocessor stage, so most codebases define some assertion macro which compile to no-op on a /Release/ build and on a /Debug/ build -- that would be run by the developer or tester -- define it to a valid ~if~ to say, log a message or invoke a ~DebugBreak~, etc.
+
+  #+begin_src C
+    #ifdef NDEBUG   //  usually set for non-debug builds
+    #  define REQUIRE(expr, msg) ((void) expr)
+    #else
+    #  define REQUIRE(expr, msg) if (expr) { std::cerr << msg; }
+    #fi
+  #+end_src
+
+  You can have a variety of assertion macros like ~REQUIRE~, ~DCHECK~ to denote it’s a check that works only in Debug, ~ASSERT~, ~ENSURE~, etc. to suit your needs and cases.  [[https://github.com/clibs/check][check]] seems to be a minimal, header-only C library with basic assertions macros.
+
+* Comparison
+
+  | Concept   | Source   | When             | Check             | Example                   |
+  |-----------+----------+------------------+-------------------+---------------------------|
+  | Error     | External | Runtime          | ~if~, ~try-catch~ | ~if (bad_handle) { … }~    |
+  | Assertion | Internal | Development Time | Macros            | ~DCHECK(valid_count)~     |
+  |           |          |                  |                   |                           |
+  
+Key difference is /source/: errors are due to the environment, user, etc.  You simply have to check for them at runtime.  However, assertions are to check your subsystems (module, function, component, etc.) for buggy code.  This is when some expected state isn’t reached or some condition or invariant isn’t met.  This is internal, within developer’s control.  Since assertions are development-time errors, they cab be avoided before the program hits the end-user.
+
+* Example with VLC
+
+Let’s say we’re developers of the popular media player [[https://videolan.org/][VLC]].  Checking for a bad/corrupt input (avi/mkv file) should be done with a good ‘ol ~if~ that works at runtime.
+
+However, whether VLC’s own source filter[fn:source] is always feeding normalized float data (within ~[0, 1]~) to its decoding filter[fn:decoder] is something to be checked by an assert; checking this with a runtime ~if~ in Release builds would be a waste of end-user CPU’s time and energy.
+
+* Footnotes
+
+[fn:source] Component feeding data to the decoder.
+
+[fn:decoder] Component processing data before sending to sink (display/speakers).

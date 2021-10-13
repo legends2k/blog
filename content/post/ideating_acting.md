@@ -7,7 +7,7 @@ tags = ["psychology", "kaizen", "mind"]
 
 # Ideas
 
-Young people are constantly bombareded with free advice by the elderly: people tell them how to talk, how to socialize, how to deal with money matters, etc.  It’s done to the point where it’s felt as preachy and rightly so.  Why?  More than what you say, kids pick up what you _do_.  Words don’t mean much to them; [actions speak much louder][AJCronin] indeed.
+Young people are constantly bombarded with free advice by the elderly: people tell them how to talk, how to socialize, how to deal with money matters, etc.  It’s done to the point where it’s felt as preachy and rightly so.  Why?  More than what you say, kids pick up what you _do_.  Words don’t mean much to them; [actions speak much louder][AJCronin] indeed.
 
 Even as adults we read motivational text, watch TED talks, discuss problems with friends and get ideas/free advice all the time.
 
@@ -26,7 +26,7 @@ Everyone knows _what_ to do.  _How_ to do, however, has eluded us.
 
 It’s great to have a [beginner’s mind][]; while an expert’s busy explaining how _new_ is actually _old_, a beginner accepts _new_ as it is; works with it.  However, it’s just plain reality that most of us don’t have a beginner’s mind and we’ve habits.  How, then, do we effectively change them?  Let’s see how the mind works at a coarse level to understand behaviours.
 
-[Neural pathway][]s are formed when you do a new _action_; bits of technique, from the new experience, is learnt.  As you continue doing similar actions, the pathways become stronger and denser; more connections are made to other parts of your cortex.  Once these pathways are quite established, it’s like a freeway to involuntary action.  Speaking while driving[^2], anyone?  Yes, that’s _[muscle memory][]_.  It’s not just committed to memory but is autonomous.  And this isn’t a good thing when the pathway is abetting one to reach for another cigarette.
+[Neural pathway][]s are formed when you do a new _action_; bits of technique, from the new experience, is learnt.  As you continue doing similar actions, the pathways become stronger and denser; more connections are made to other parts of your cortex.  Once these pathways are quite established, it’s like a highway to involuntary action.  Speaking while driving[^2], anyone?  Yes, that’s _[muscle memory][]_.  It’s not just committed to memory but is autonomous.  And this isn’t a good thing when the pathway is abetting one to reach for another cigarette.
 
 > Your conscious brain acts ~~nice~~ prude when you think consciously, _but_ your subconscious, the final authority, isn’t as nice.
 

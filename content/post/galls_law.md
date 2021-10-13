@@ -90,6 +90,7 @@ Growth is almost always a slow, incremental process.  It can’t be fast-tracked
 * [Teach Yourself Programming in Ten Years][prog-10-years] by _Peter Norvig_, Director of Research, Google
 * [Why Trying to Be Perfect Won’t Help You Achieve Your Goals](https://jamesclear.com/repetitions)
   - Numerous failed repetitions will
+* [More information is not the answer.  Doing is.](https://www.thenow.co/more-information-is-not-the-answer/)
 
 [^1]: Of course, even if you aren’t starting something new, day dreams have other side-effects: more you dream the more you lose your grip on reality.
 
