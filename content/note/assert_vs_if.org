@@ -2,7 +2,6 @@
 #+DESCRIPTION: Two completely unrelated concepts
 #+DATE: <2021-10-13 Wed 19:07>
 #+TAGS[]: tech language c++
-#+DRAFT: true
 
 * TL;DR
 
