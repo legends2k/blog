@@ -7,31 +7,37 @@
 
   Any program can have two classes of issues:
   
-  1. *Bugs*: unexpected, programmer /mistakes/.  E.g. [[https://en.wikipedia.org/wiki/Buffer_overflow][buffer overflow]], access violation, …
-  2. *Runtime issues*: issues programmer expected and /handled/ in code.  E.g. invalid inputs, no access to resource, unreachable network, …
+  1. *Runtime problems*: situations programmer foresaw and handled; /expected/.  E.g. invalid inputs, no access to resource, unreachable network, …
+  2. *Bugs*: programmer mistakes; /unexpected/.  E.g. [[https://en.wikipedia.org/wiki/Buffer_overflow][buffer overflow]], access violation, …
 
-  (1) is unknown to the programmer; (2) is known and handled in code.  There are different tools to deal with each; don’t conflate one with the other.  For (1) use /development-time/ checks to catch failing assumptions, changing invariants, pre-\slashpost-conditions.  For (2) use one of your language-provided feature including ~if~, ~try-catch-throw~, etc. that work at /runtime/.
+  There are different tools to deal with each; don’t conflate one with the other.
+
+#+begin_quote
+An assertion is just a validation of a programmer expectation; it “fires” when the expectation is betrayed.
+#+end_quote
+
+(1) is familiar to most; use one of your language-provided feature including ~if~, ~try-catch-throw~, etc. that work at /runtime/.  (2) needs early spotting of failing assumptions, changing invariants, unmet pre-\slashpost-conditions at /development-time/[fn:unspotted_failures].
 
 * Assertions
 
   #+caption: *Example*: Using ~REQUIRE~ to check resource ID generation by ~open_image~
   #+begin_src c++
   int read_image(string path) {
-    if !os.exists(path) {                       // (2) runtime issue
-        // show file doesn’t exist dialog
+    if !os.exists(path) {                // (1) runtime issue
+      file_missing_dialog.show(path);
     }
     Image i = open_image(path);
-    REQUIRE(i.resource_id != nullptr,           // (1) possible bug in open_image
+    REQUIRE(i.resource_id != nullptr,    // (2) possible bug in open_image
             "Resource ID unassigned for opened image");
     cache(r.resource_id);
   }
   #+end_src
 
-  With asserts you’re checking your own code for possible bugs.  In the above code we try to cache the most recently opened image with its resource ID; before doing so we make sure such an internal ID was properly assigned to the opened image with a ~REQUIRE~ /macro/.  This check will be stripped from the final, released binary.  It’d only exist in /Debug/ builds which developers and testers would use.
+  With asserts you’re checking your own code for possible bugs.  In the above code we try to cache the most recently opened image with its resource ID; before doing so we make sure such an internal ID was properly assigned to the opened image with a ~REQUIRE~ /macro/.  This check will be stripped from the final, released binary.  It’d only exist in debug builds which developers and testers would use.
 
 * Aren’t assertions ~if~ s anyway?
 
-  Though asserts are made of ~if~ statements, that’s true only for Debug builds; they don’t /fire/ on non-debug builds[fn:nondebug-builds].  C and C++ have a preprocessor stage, so most codebases define some assertion macro which compile to a [[https://en.wikipedia.org/wiki/NOP_(code)][no-op]] on non-debug builds and on a /Debug/ build -- run by the developer or tester -- define it as valid ~if~; when firing an assertion might say, log a message, invoke a ~DebugBreak~, etc.
+  Though asserts are made of ~if~ statements, that’s true only for debug builds; they don’t /fire/ on non-debug builds[fn:nondebug-builds].  C and C++ have a preprocessor stage, so most codebases define some assertion macro which compile to a [[https://en.wikipedia.org/wiki/NOP_(code)][no-op]] on non-debug builds and on a debug build -- run by the developer or tester -- define it as valid ~if~; upon firing, an assertion helps the developer better understand the issue e.g. log a message, invoke the debugger[fn:debug_break], etc.
 
   #+begin_src C
     #ifdef NDEBUG   //  usually set for non-debug builds
@@ -43,15 +49,22 @@
 
   You can have a variety of assertion macros like ~REQUIRE~, ~DCHECK~[fn:dcheck], ~ASSERT~, ~ENSURE~, etc. to suit your needs and cases.  [[https://github.com/clibs/check][check]] seems to be a minimal, header-only C library with basic assertions macros.
 
+* Why strip assertions in non-debug builds?
+
+#+begin_quote
+It’s a pointless wastage of CPU cycles, power, etc. to retain assertions in non-debug builds.
+#+end_quote
+
+  A software’s end-user seldom care/know about its technicalities[fn:enduser-debug].  Oblivious to its design and code, they can’t make sense of a failed assertion’s output --- logs, running under debugger, etc.  Contrastingly, programmers (and testers) specifically run debug builds just to catch a failing assumption early on.  Stripping of assertions is one of the reasons[fn:nondebug-speed] why debug builds are slow and non-debug builds are fast --- lesser ~if~ checks/branches.
+
 * Comparison
 
-  | Issue     | Source   | When             | Check             | Example                 |
-  |-----------+----------+------------------+-------------------+-------------------------|
-  | Error     | External | Runtime          | ~if~, ~try-catch~ | ~if (bad_handle) { … }~ |
-  | Assertion | Internal | Development Time | Macros            | ~DCHECK(valid_count)~   |
-  |           |          |                  |                   |                         |
+  | Issue | Source   | When             | Check             | Example                 |
+  |-------+----------+------------------+-------------------+-------------------------|
+  | Error | External | Runtime          | ~if~, ~try-catch~ | ~if (bad_handle) { … }~ |
+  | Bug   | Internal | Development Time | Assertion macros  | ~DCHECK(valid_count)~   |
   
-Key difference is /source/: errors are due to the environment, user, etc.  You simply have to check for them at runtime.  However, assertions are to check your subsystems (module, function, component, etc.) for buggy code.  This is when some expected state isn’t reached or some condition or invariant isn’t met.  This is internal, within developer’s control.  Since assertions are development-time errors, they cab be avoided before the program hits the end-user.
+Key difference is /source/: errors are due to the environment, user, etc.  You simply have to check for them at runtime.  However, assertions are to check your subsystems (module, function, component, etc.) for buggy code.  This is when some expected state isn’t reached or some condition or invariant isn’t met.  This is internal, within developer’s control.  They can be avoided before the program hits the end-user by the programmer checking what broke the assumption.
 
 * Example with VLC
 
@@ -59,13 +72,23 @@ Let’s say we’re developers of the popular media player [[https://videolan.or
 
 However, whether VLC’s own source filter[fn:source] is always feeding normalized float data (within ~[0, 1]~) to its decoding filter[fn:decoder] is something to be checked by an assert; checking this with a runtime ~if~ in Release builds would be a waste of end-user CPU’s time and energy.
 
-Though a runtime ~if~ also works in place of an assertion, a good programmer would use the right tool for the right job.
+#+begin_quote
+Though a plain ~if~ also works as an assertion, a good programmer would use the right tool for the right job.
+#+end_quote
 
 * Footnotes
 
+[fn:unspotted_failures] The unspotted failed assumptions eventually become bugs; hopefully reported by an annoyed (but sincere) end-user.
+
 [fn:nondebug-builds] [[https://stackoverflow.com/q/367884/183120][Non-debug builds]] generally have optimizations turned on and debug information stripped.  /Release/ builds, published to end-user, is a common example.
 
+[fn:debug_break] Different compilers have different ways of invoking the debugger; MSVC has ~DebugBreak~, GCC on POSIX systems have ~raise(SIGTRAP)~; [[https://github.com/nemequ/portable-snippets/tree/master/debug-trap][platform-independant abstractions]] are available too.
+
 [fn:dcheck] To denote a check that works only in the /Debug/ build configuration.
+
+[fn:enduser-debug] A technical end-user can always build the debug version of an open-source software.  With closed source software, you’re at the mercy of a corporation  to offer debug builds.
+
+[fn:nondebug-speed] Others include higher optimization levels, linking to non-debug builds of dependencies, etc.
 
 [fn:source] Component feeding data to the decoder.
 
