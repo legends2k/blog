@@ -40,11 +40,15 @@ An assertion is just a validation of a programmer expectation; it “fires” wh
   Though asserts are made of ~if~ statements, that’s true only for debug builds; they don’t /fire/ on non-debug builds[fn:nondebug-builds].  C and C++ have a preprocessor stage, so most codebases define some assertion macro which compile to a [[https://en.wikipedia.org/wiki/NOP_(code)][no-op]] on non-debug builds and on a debug build -- run by the developer or tester -- define it as valid ~if~; upon firing, an assertion helps the developer better understand the issue e.g. log a message, invoke the debugger[fn:debug_break], etc.
 
   #+begin_src C
-    #ifdef NDEBUG   //  usually set for non-debug builds
-    #  define REQUIRE(expr, msg) ((void) expr)
-    #else
-    #  define REQUIRE(expr, msg) if (expr) { std::cerr << msg; }
-    #fi
+  #ifdef NDEBUG          // usually defined for non-debug builds
+  #  define REQUIRE(expr, msg) ((void) expr)            // no-op
+  #else
+  #  define REQUIRE(expr, msg) if (expr) {                     \
+                                 std::cerr << __FILE__ << ':'  \
+                                           << __LINE__ << ": " \
+                                           << msg;             \
+                               }
+  #fi
   #+end_src
 
   You can have a variety of assertion macros like ~REQUIRE~, ~DCHECK~[fn:dcheck], ~ASSERT~, ~ENSURE~, etc. to suit your needs and cases.  [[https://github.com/clibs/check][check]] seems to be a minimal, header-only C library with basic assertions macros.
@@ -62,8 +66,8 @@ It’s a pointless wastage of CPU cycles, power, etc. to retain assertions in no
   | Issue | Source   | When             | Check             | Example                 |
   |-------+----------+------------------+-------------------+-------------------------|
   | Error | External | Runtime          | ~if~, ~try-catch~ | ~if (bad_handle) { … }~ |
-  | Bug   | Internal | Development Time | Assertion macros  | ~DCHECK(valid_count)~   |
-  
+  | Bug   | Internal | Development Time | Assertion macros  | ~ENSURE(valid_count)~   |
+
 Key difference is /source/: errors are due to the environment, user, etc.  You simply have to check for them at runtime.  However, assertions are to check your subsystems (module, function, component, etc.) for buggy code.  This is when some expected state isn’t reached or some condition or invariant isn’t met.  This is internal, within developer’s control.  They can be avoided before the program hits the end-user by the programmer checking what broke the assumption.
 
 * Example with VLC
