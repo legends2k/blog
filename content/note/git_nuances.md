@@ -226,7 +226,7 @@ The general idea is _reachability_: an ancestor is reachable from a descendant, 
 
 # Misc
 
-* Delete branch from remote directly: `git push origin --delete my_topic`
+* Delete branch from remote: `git push origin --delete my_topic`
 * Remove local branches with no remote counterparts: `git remote prune origin`
   - Doing the same while fetching newer branches: `git fetch --prune`
 * Remove untracked files from working tree: `git clean`
@@ -235,7 +235,9 @@ The general idea is _reachability_: an ancestor is reachable from a descendant, 
   - Git 2.31 introduced `git maintenance start` to GC periodically in the background :)
 * [Clone with submodules][submod-clone]: `git clone --recurse-submodules -j4 URI`
   - Missed it? `git submodule update --init --recursive`
-
+* `git log` shows commits in **ancestral, not chronological, order**!
+  - `push` younger commit first, `pull --rebase` makes elder become younger’s child
+* See remote tracking branch: `git branch -vv`
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap
 [intervals]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Including_or_excluding_endpoints
