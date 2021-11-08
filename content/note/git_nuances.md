@@ -233,6 +233,8 @@ The general idea is _reachability_: an ancestor is reachable from a descendant, 
 * Clean up unnecessary house-keeping files and optimize repo: `git gc`
   - Remove unreachable objects older than some duration: `git prune --expire 2.weeks.ago`; more manual
   - Git 2.31 introduced `git maintenance start` to GC periodically in the background :)
+* [Clone with submodules][submod-clone]: `git clone --recurse-submodules -j4 URI`
+  - Missed it? `git submodule update --init --recursive`
 
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap
@@ -245,6 +247,7 @@ The general idea is _reachability_: an ancestor is reachable from a descendant, 
 [usual-tag-rename]: https://stackoverflow.com/a/5719854/183120
 [shallow-fetch]: https://stackoverflow.com/q/1778088/183120
 [pull-sans-args]: https://stackoverflow.com/a/6861747/183120
+[submod-clone]: https://stackoverflow.com/a/4438292/183120
 
 [^fetch-default]: [`git fetch` without arguments][pull-sans-args] usually fetches all branches as `remote.<origin>.fetch` defaults to `+refs/heads/*:refs/remotes/<origin>/*`!
 [^experimental]: `switch` and `restore` are still experimental.

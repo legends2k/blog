@@ -5,77 +5,80 @@ date = "2018-06-17T07:00:43-07:00"
 tags = ["tech", "language", "tools", "emacs"]
 +++
 
-An IDE at least should do
+An IDE should at least aid with
 
-- Auto-completion (a.k.a Intellisense)
+- Auto-completion (a.k.a _Intellisense_)
 - Jump to definition
 - On-the-fly error checks
+
+Additionally it’d be good to have
+
 - Context-sensitive document lookup
     + Show variable and function type
-    + Show function description 
-- Autorun `gofmt` on save
-- **Bonus**: Auto-add/remove used/unused packages on file save
+    + Show function description
+- Auto-run `gofmt` on save
+- Auto-add/remove used/unused packages on file save
 
-We’ll try to get these going on Emacs.
+We’ll get these working for Go on Emacs using LSP.  It’s no secret that [Emacs’
+LSP support][emacs-lsp] is top notch.
 
-## External Tools
+> We assume Go 1.17+ i.e. with full modules support and `GO111MODULE`
+> unset[^GO111MODULE-unset].
 
-Though not part of the canonical tool set, these are written by seasoned Go devs
+[emacs-lsp]: https://emacs-lsp.github.io
 
-* gocode
-* godef
-* goflymake
-* goimports
-* godoc
+## Go, please!
 
-## Emacs Packages
+Yeah, that’s the name of `gopls`, [Go’s LSP server][gopls] 😉.  If your package
+manager doesn’t have it, `go install` it:
 
-We’d be needing these too to interface with above tools
-
-* go-mode
-* eldoc
-* company-go
-
-It's assumed that you already have `company` installed.
-
-## Steps
-
-1. Install Go binary
-    + Linux: use your distro’s package manager
-    + Windows: download and install 64-bit MSI package
-2. Set `$GOPATH`
-    + It can have multiple entries like `$PATH`
-    + First one’s where packages are downloaded by `go get`
-    + Source code is searched in all entries
-    + Add entries with a trailing slash
-    + Read `go help gopath`
-3. Go get these tools.  On Windows add `-ldflags -H=windowsgui` for `gocode`
-{{< highlight basic >}}
-go get -u github.com/mdempsky/gocode
-go get github.com/rogpeppe/godef
-go get -u github.com/dougm/goflymake
-go get golang.org/x/tools/cmd/goimports
-go get golang.org/x/tools/cmd/godoc
+{{< highlight bash >}}
+go install golang.org/x/tools/gopls@latest
 {{< /highlight >}}
-4. Install aforementioned Emacs packages
-5. If `$GOPATH/bin` isn’t part of `$PATH` at least make it part of Emacs' `exec-path`
+
+## Emacs Setup
+
+Install `go-mode` package from Melpa and hook it to `lsp-mode`:
+
 {{< highlight lisp >}}
-(add-to-list 'exec-path (concat (file-name-as-directory (getenv "GOPATH")) "bin") t)
+(use-package go-mode
+  :mode "\\.go\\'"
+  :config
+  (defun my/go-mode-setup ()
+    "Basic Go mode setup."
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'my/go-mode-setup))
+
+(use-package lsp-mode
+  :ensure t
+  :commands (lsp lsp-mode lsp-deferred)
+  :hook ((rust-mode python-mode go-mode) . lsp-deferred)
+  :config
+  (setq lsp-prefer-flymake nil
+        lsp-enable-indentation nil
+        lsp-enable-on-type-formatting nil
+        lsp-rust-server 'rust-analyzer)
+  ;; for filling args placeholders upon function completion candidate selection
+  ;; lsp-enable-snippet and company-lsp-enable-snippet should be nil with
+  ;; yas-minor-mode is enabled: https://emacs.stackexchange.com/q/53104
+  (lsp-modeline-code-actions-mode)
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (add-to-list 'lsp-file-watch-ignored "\\.vscode\\'"))
 {{< /highlight >}}
-6. Append to `.emacs`:
-{{< highlight lisp >}}
-(add-to-list 'load-path (concat (file-name-as-directory (getenv "GOPATH")) "src/github.com/dougm/goflymake"))
-(require 'go-flymake)
-; Use goimports instead of go-fmt for formatting with intelligent package addition/removal
-(setq gofmt-command "goimports")
-(add-hook 'go-mode-hook (lambda ()
-                          (set (make-local-variable 'company-backends) '(company-go))
-                          (local-set-key (kbd "M-.") 'godef-jump)
-                          (go-eldoc-setup)
-                          ; call Gofmt before saving
-                          (add-hook 'before-save-hook 'gofmt-before-save)))
-{{< /highlight >}}
-7. Periodically `go get -u all` to keep the downloaded tools updated.
+
+[gopls]: https://github.com/golang/tools/tree/master/gopls#installation
+
+## Verify
+
+Make sure `gopls` is in `$PATH`.  If you’ve `go install`-ed, make sure to add
+`$GOPATH/bin` to `$PATH`.  Since projects use modules now, I use `$GOPATH` only
+to house Go tools which aren’t part of the official toolchain.  Similar to
+`${HOME}/.cargo` for Rust, I set `${HOME}/.go` as my `$GOPATH` and fix `$PATH`.
+
+Read `go help gopath` and `go help install` for details.
+
+Add entries with a trailing slash; missing it may lead to issues.
 
 # Usage
 
@@ -90,33 +93,28 @@ go get golang.org/x/tools/cmd/godoc
     - When point is atop a function name, press `M-.`
     - This should open the file where it’s defined and seek to the definition
     - To return back to original place press `M-,`
-* Flymake should work without any intervention
-    - It’s too subtle; just highlights erroneous line with `!!` and underscores the problematic token
-    - `flymake-show-diagnostics-buffer` should show you a constantly updated buffer with the actual errors/warnings
+* Flycheck, with no setup, does a good job of flagging warnings/errors
+    - `flycheck-verify-setup` is useful at times
 * Context-sensitive document lookup
     - Positioning point on a variable/function should show its type in the minibuffer
-    - To describe variable/expression at point do `C-c C-d`
-    - To get a detailed description of a function do `godoc-at-point`
+    - To get a detailed description of a function do `godoc-at-point` (needs `godoc`)
     - You could bind it to a key combo; it’s fairly handy
 * Auto-formatting
     - When you save the buffer it auto-formats with `gofmt`
 * Auto-include/exclude
-    - [Go is strict](https://golang.org/doc/effective_go.html?#blank_unused) on what you import
     - At the top-level, include packages you wouldn’t reference
     - In functions from packages you didn’t import
-    - Save the buffer!  Redundant packages are wiped out and needed ones are imported 😉
+    - Save the buffer!  Redundant imports are deleted, needed ones are added 😉
+    - [Go is strict about unused imports][no-unused-imports] and this helps
 
-This setup is light and good enough for now.
+This is a stable and light setup.  I’m happy with it for now.
 
-# To Do
-
-Play with [`guru`](https://godoc.org/golang.org/x/tools/cmd/guru) -- looks like a sophisticated tool.
+[no-unused-imports]: https://golang.org/doc/effective_go.html?#blank_unused
 
 # References
 
-1. `go-mode`'s help in Emacs
-2. `$GOPATH/src/github.com/mdempsky/gocode/emacs-company/README.md`
-3. [Configure Emacs as a Go Editor From Scratch](https://tleyden.github.io/blog/2014/05/27/configure-emacs-as-a-go-editor-from-scratch-part-2/)
-4. [goflymake](https://github.com/dougm/goflymake)
-5. [gocode](https://github.com/mdempsky/gocode)
-6. [ArchWiki’s Go page](https://wiki.archlinux.org/index.php/Go)
+1. `go help install`
+2. `go help gopath`
+3. [gopls Documentation][gopls]
+
+[^GO111MODULE-unset]: Go 1.17+ ignores `GO111MODULE` and assumes modules mostly.
