@@ -7,13 +7,13 @@ description = "or how Gall’s Law is universal!"
 
 People often start a new endeavour to realise a vivid dream.  This is good by itself; the dream coupled with strong self-motivation would take them far when the going gets tough (which it usually does).
 
-However, there’s another side to dreams that’s quite dreadful, particularly for someone starting something new[^1] and with little experience.
+However, there’s another side to dreams that’s dreadful, particularly for someone starting something new[^1] and with little experience.
 
 # Unrealistic Expectations
 
 It’s no secret; when learning your work won’t be original, beautiful or fulfilling.  Experience shows us that anyone’s first picture is not far from a scribble.  Almost everyone I know learnt cycling after a crash.
 
-This failure might kill motivation; many new comers to a field exit it as new comers.
+This failure might kill motivation; new comers to a field exit it as new comers.
 
 > When you’ve a vivid dream, you may not want to sell yourself short; you want to realize the dream as-is, nothing short!
 
@@ -25,7 +25,7 @@ Having a high bar is not just unproductive but also unrealistic.  It’s plain w
 
 Applicable universally but masquerading as a technical law:
 
-> **A complex system that works is invariably found to have evolved from a simple system that worked**.  A complex system designed from scratch never works and cannot be patched up to make it work. You have to start over with a working simple system.
+> **A complex system that works is invariably found to have evolved from a simple system that worked**.  A complex system designed from scratch never works and cannot be patched up to make it work.  You have to start over with a working simple system.
 
 [Gall’s Law]: https://en.wikipedia.org/wiki/John_Gall_(author)#Gall's_law
 
@@ -37,11 +37,11 @@ Mind you, this isn’t just to learn fine arts.  I’ve seen this law to be far 
 
 ## Applications
 
-Here are a few applications from countless ones:
+Few applications from countless ones:
 
 ### Science
 
-Many inventions weren’t invented directly.  It’s usually built upon years of research and experiments preceding it e.g. radio, car, television, ….  This list is endless.
+Inventions weren’t invented directly.  It’s usually built upon years of research and experiments preceding it e.g. radio, car, television, ….  This list is endless.
 
 ### Technology
 
@@ -49,11 +49,11 @@ Though the use of computers and human communication has evolved to the point of 
 
 ### Finance
 
-You might have seen some governments introducing a new clause of tax very marginally.  This is the clever way of doing it.  Since the amount is marginal folks mighn’t notice it but when slowly incremented year over year, eventually it’d become a sizeable amount.  They literally go from 0 to 100 unnoticed by warming up the tax payer.
+You might have seen some governments introducing a new clause of tax marginally.  This is the clever way of doing it.  Since the amount is marginal folks mightn’t notice it but when slowly incremented year over year, eventually it’d become a sizeable amount.  They go from 0 to 100 unnoticed by warming up the tax payer.
 
 # Ignored Gall’s Law recently?
 
-Though super simple, I’ve seen Gall’s Law ignored by many (including myself) in a busy life.  It’s so simple we tend to overlook it; we think we can skip the intermediate steps and directly jump to 100 from 0.
+Though super simple, I’ve seen Gall’s Law often ignored in a busy life.  It’s so simple we tend to overlook it; we think we can skip the intermediate steps and directly jump to 100 from 0.
 
 Where did you take a shortcut recently and got bitten by it?
 

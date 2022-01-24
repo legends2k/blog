@@ -66,7 +66,7 @@ will show the disassembly of a compilation unit in Intel syntax *with inter-weav
 g++ -fdump-class-hierarchy my_classes.cpp
 {{< /highlight >}}
 
-This would show object memory layout of classes in the source; includes classes with complex inheritance hierarchies.
+This would show object memory layout of classes in the source; includes classes with complex inheritance hierarchies.  Padding can needlessly increase the size of a structure; use `-Wpadded` to reveal when padding bits are added.
 
 # Optimization Result
 

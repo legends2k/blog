@@ -35,7 +35,7 @@ An assertion is just a validation of a programmer expectation; it “fires” wh
 
   With asserts you’re checking your own code for possible bugs.  In the above code we try to cache the most recently opened image with its resource ID; before doing so we make sure such an internal ID was properly assigned to the opened image with a ~REQUIRE~ /macro/.  This check will be stripped from the final, released binary.  It’d only exist in debug builds which developers and testers would use.
 
-* Aren’t assertions ~if~ s anyway?
+* Aren’t assertions ~if~-s anyway?
 
   Though asserts are made of ~if~ statements, that’s true only for debug builds; they don’t /fire/ on non-debug builds[fn:nondebug-builds].  C and C++ have a preprocessor stage, so most codebases define some assertion macro which compile to a [[https://en.wikipedia.org/wiki/NOP_(code)][no-op]] on non-debug builds and on a debug build -- run by the developer or tester -- define it as valid ~if~; upon firing, an assertion helps the developer better understand the issue e.g. log a message, invoke the debugger[fn:debug_break], etc.
 

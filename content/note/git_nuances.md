@@ -95,7 +95,7 @@ If `my-topic` and `origin/my-topic` have diverged, this gets reduced to an ordin
 
 # Please [mind the dots][mind-gap]
 
-`git diff A..B` = diff [(`A`, `B`\]][intervals] i.e. the diff includes changes made by `B` but not by `A`.  Since a diff-ing utility just takes a pair of file sets, with these references we simply denote the repository at different states -- after committing `A` and after committing `B`.  This diffs the repository at _two points_.
+First thing to remember about `git diff` (or any diff): it’s always between _two points_; not a range.  `git diff A..B` = diff [(`A`, `B`\]][intervals] i.e. the diff includes changes made by `B` but not by `A`.  Since a diff-ing utility just takes a pair of file sets, with these references we simply denote the repository at different states -- after committing `A` and after committing `B`.
 
 {{< highlight bash >}}
 git diff A B    # same as below; only nicer
@@ -167,9 +167,11 @@ When getting a remote branch, ignore the popular advise to `git fetch` as it fet
 {{< highlight bash >}}
 # fetch just the interesting branch
 git fetch origin my_topic_branch
+{{< /highlight >}}
 
 **Note**: This applies to `git pull` as well since `fetch` is its first step.
 
+{{< highlight bash >}}
 # checkout locally and also set remote-tracking branch
 git checkout --track origin/my_topic_branch
 {{< /highlight >}}
