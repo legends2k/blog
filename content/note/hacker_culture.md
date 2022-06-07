@@ -101,12 +101,13 @@ Super popular web comics on programming.  [explainXKCD.com][] details each comic
   - [Why I Write Games in C (yes, C)](https://jonathanwhiting.com/writing/blog/games_in_c/) gives a clear exposition on why _C_ still has many advantages over other contending languages for a game programmer
   - [One Year of C](https://floooh.github.io/2018/06/02/one-year-of-c.html) talks about a key advantages of C over C++: less anxiety
   - [Follow Boring Advice](http://nywkap.com/other/follow-boring-advice.html) is the meta-concept
-* [The Rise of “Worse is Better”](https://www.jwz.org/doc/worse-is-better.html) discusses the edge “worse-is-better” philosophy (followed by C and Unix) has over “the-right-thing” (followed by Common Lisp); how the former has better survival characteristics and is better over the latter
+* [The Rise of “Worse is Better”](https://www.dreamsongs.com/RiseOfWorseIsBetter.html) argues how “worse-is-better” philosophy (followed by C and Unix) is better than “the-right-thing” (followed by Common Lisp); how former has better survival characteristics, etc.
 * [What Color is Your Function](https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/): explains how async programming has introduced two classes of functions which can’t be mixed
 * [Write Games, Not Engines](https://geometrian.com/programming/tutorials/write-games-not-engines/index.php): writing games, and many of them, gives you enough insights eventually it distil reusable parts into an engine; don’t hurt yourself doing it the other way around
   - [Make Games Not Engines... to learn Engines](https://seanmiddleditch.com/makes-games-not-engines-to-learn-engines/)
 * [Your Brain on the Internet — Multi-Tasking Research](http://teaching.idallen.com/cst8207/15w/notes/005_this_is_your_brain.html): on the horrors of _continuous partial attention_ due to multi-tasking, smartphones and internet.
 * [Essays on programming I think about a lot](https://www.benkuhn.net/progessays/): a page similar to this one
+* [The Rise of User-Hostile Software](https://den.dev/blog/user-hostile-software/): explains the rampant problem with proprietary, tracking software crippling the industry
 
 
 [^1]: in the [right sense][hacker] of the word

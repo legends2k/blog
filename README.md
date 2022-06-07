@@ -31,8 +31,12 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 
 # To Do
 
+## Site
+
 * [Self-host fonts](https://news.ycombinator.com/item?id=25300396)
+* Dark mode
 * Create a site map/archives page listing all articles on one page (searchable)
+  - Categorize by year
   - Index is big and only shows 7; everyone mightn’t tap ‘Older Posts’
 * Remove footer scrolling on mobile displays
 * Make footnote as tool tip for hypertext using title attribute
@@ -41,6 +45,8 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 * Move away from Disqus for comments
   - [staticman](https://staticman.net/); see [example](https://travisdowns.github.io/blog/2020/02/05/now-with-comments.html)
   - [Utterances](https://utteranc.es/) and [gitment](https://github.com/imsun/gitment) have the issue of not letting non-GitHub users in
+  - https://cactus.chat/
+* Implement admonitions (**NOTE**, **WARNING**, etc.) e.g. [Hugo-using blog](http://adventures.michaelfbryan.com/posts/how-not-to-riir/) (relevant [commit](https://github.com/Michael-F-Bryan/adventures.michaelfbryan.com/commit/2589df70e9b92508996365884f5cc81c5afb764e#diff-3633f5dd9cd5b17857cbcd6be5a9e51c))
 * Tag pages doesn’t show article’s published date and time
 * Post/note index page doesn’t show tags of posts in the list
 * Taxonomy: add **Categories**
