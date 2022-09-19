@@ -7,7 +7,7 @@ tags = ["tech", "tips", "learning"]
 
 Becoming a good programmer doesn’t happen in a day.
 
-> Like most skills, often [you need grit][grit] than intelligence/smartness.
+> Like most fields, [you need grit][grit] more than intelligence/smartness.
 
 # Guidelines
 
@@ -58,6 +58,11 @@ If you’re writing an image viewer, don’t roll your own PNG decoder; it’s a
 
 I’m a systems/middleware programmer, I’m partial to projects of those kinds.  Feel free to pick any project you fancy!
 
+* Partake in code jams
+  - Limited scope and explicit timelines are good teachers
+  - Recommendations
+    + [Advent of Code][aoc] highly recommended!
+    + [Game jams][game-jam] or your-domain-specific jams are [fun][alakajam]!
 * [Ray tracer][]
   - Lots of good tutorials [\[1\]][weekend-raytrace], [\[2\]][SAP-raytrace]
   - Scope for parallelization
@@ -157,6 +162,9 @@ Again the biggest factor to success isn’t intelligence, it’s grit -- passion
 [Emacs]: https://www.gnu.org/software/emacs/
 [Vim]: https://www.vim.org/
 [go-dep-hyg]: https://talks.golang.org/2012/splash.article#TOC_7.
+[aoc]: {{< relref "aoc_2018.md" >}}
+[alakajam]: {{< relref "sneak_out/index.md" >}}
+[game-jam]: https://letsmakeagame.net/game-jams-calendar/
 [weekend-raytrace]: http://www.realtimerendering.com/raytracing/Ray%20Tracing%20in%20a%20Weekend.pdf
 [Ray tracer]: https://en.wikipedia.org/wiki/Ray_tracing_(graphics)
 [SAP-raytrace]: https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing
