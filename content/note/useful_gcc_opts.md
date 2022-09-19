@@ -16,6 +16,20 @@ gcc -dumpspecs
 
 Gives the specifications with which GCC was built.
 
+# List supported targets
+
+{{< highlight basic >}}
+gcc --target-help
+gcc --help=target
+{{< /highlight >}}
+
+clang has `clang -print-supported-cpus` and `clang -print-targets` similarly.  Though clang operates on [target triples][]/quadruples.
+
+On older GCC [alternate command][old-gcc-march] is `gcc -E -march=help -xc /dev/null`.
+
+[target triples]: https://wiki.osdev.org/Target_Triplet
+[old-gcc-march]: https://stackoverflow.com/q/47299458/183120
+
 # Stack Usage
 
 {{< highlight basic >}}
@@ -91,12 +105,14 @@ Use `-ftree-vectorize` to enable vectorization of loops; this is implicitly enab
 
 # Sanitizers
 
-If you’re a C or C++ programmer, you should definitely try the sanitizers GCC has ([`-fsanitize`][instrumentation]).  Some interesting ones
+A language as low-level and powerful C++ is comes with its own set of challenges.  Many tools have been built over the years to help programmers; sanitizers are an important set of tools GCC has ([`-fsanitize`][instrumentation]).  Some interesting ones
 
-* Address sanitizer (`-fsanitize=address`)
-* Leak sanitizer (`-fsanitize=leak`)
-* Thread sanitizer (`-fsanitize=thread`)
-* Undefined Behaviour sanitizer (`-fsanitize=undefined`)
+* Address sanitizer (`-fsanitize=address -static-libasan`)
+* Leak sanitizer (`-fsanitize=leak -static-liblsan`)
+* Thread sanitizer (`-fsanitize=thread -static-libtsan`)
+* Undefined Behaviour sanitizer (`-fsanitize=undefined -static-libubsan`)
+
+Related: [Gavin’s blog post][san-blog].
 
 # Header Dependency Tree
 
@@ -116,6 +132,17 @@ There’re times when multiple headers with interlinked dependencies are a probl
 ... /…/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/math.h
 {{< /highlight >}}
 
+# Old compilers + new flags
+
+GCC doesn’t seem to have this feature _yet_.
+
+When an unknown flag is passed to Clang, it’ll raise a warning by default; projects often use `-Werror` to promote warnings to errors.  If using a new Clang-16-introduced flag (e.g. `-Wno-enum-constexpr-conversion`), unfamiliar to older versions, but still want the project be build-able using older compiler versions, use `-Wno-unknown-warning-option`.  Older versions will silently ignore the unknown (but new) flag.  Newer versions will recognize and honour both.
+
+A small caveat: using this flag means even really incorrect flags passed to Clang will go unwarned.  Perhaps using this for the short run is a better middle ground.
+
+
 What interesting GCC options do you know?
 
 [instrumentation]: https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html
+[san-blog]: https://gavinchou.github.io/experience/summary/syntax/gcc-address-sanitizer/
+

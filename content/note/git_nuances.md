@@ -240,6 +240,9 @@ The general idea is _reachability_: an ancestor is reachable from a descendant, 
 * `git log` shows commits in **ancestral, not chronological, order**!
   - `push` younger commit first, `pull --rebase` makes elder become younger’s child
 * See remote tracking branch: `git branch -vv`
+* Rebase `topic-2` that’s atop `topic-1` which is atop `main` to `main`: `git rebase --onto=main topic-1`
+  - If you’re not already on `topic-2`, pass `topic-2` additionally to `switch` to it before doing anything
+
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap
 [intervals]: https://en.wikipedia.org/wiki/Interval_(mathematics)#Including_or_excluding_endpoints
