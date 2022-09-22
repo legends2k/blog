@@ -38,7 +38,6 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
   - Categorize by year
   - Index is big and only shows 7; everyone mightn’t tap ‘Older Posts’
 * Dark mode
-* Remove footer scrolling on mobile displays
 * Make footnote as tool tip for hypertext using title attribute
 * Enable [per-page auto-numbering](https://codingnconcepts.com/hugo/auto-number-headings-hugo/)
   - Remove manual numbering in `note/site_customizations.md`
