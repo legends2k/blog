@@ -3,7 +3,7 @@ name: Generate GitHub Pages
 on:
   push:
     branches:
-      - dummy
+      - master
 
 jobs:
   trigger-workflow:
