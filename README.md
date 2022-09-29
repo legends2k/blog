@@ -1,10 +1,11 @@
-This is the source / content for my blog at [legends2k.github.io][blog] that is fed into [Hugo][].
+Source repo for personal blog at [legends2k.github.io][blog]; uses [Hugo][].
 
 [blog]: http://legends2k.github.io
 [Hugo]: http://gohugo.io
 
 # Licence
-Contents of this blog (authored by me)
+
+Contents authored by me
 
 * `content` 
 * `static`
@@ -33,10 +34,10 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 
 ## Site
 
-* [Self-host fonts](https://news.ycombinator.com/item?id=25300396)
 * Create a site map/archives page listing all articles on one page (searchable)
   - Categorize by year
   - Index is big and only shows 7; everyone mightn’t tap ‘Older Posts’
+* [Self-host fonts](https://news.ycombinator.com/item?id=25300396)
 * Dark mode
 * Make footnote as tool tip for hypertext using title attribute
 * Enable [per-page auto-numbering](https://codingnconcepts.com/hugo/auto-number-headings-hugo/)
