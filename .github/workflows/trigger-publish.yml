@@ -1,0 +1,24 @@
+name: Generate GitHub Pages
+
+on:
+  push:
+    branches:
+      - dummy
+
+jobs:
+  trigger-workflow:
+    runs-on: ubuntu-latest
+    env:
+      REPO_OWNER: legends2k
+      REPO_NAME: legends2k.github.io
+      WORKFLOW_FILENAME: generate.yml
+
+    steps:
+      - run: |
+          curl \
+            --request POST \
+            --url https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_FILENAME/dispatches \
+            --header "Accept: application/vnd.github.v3+json" \
+            --header "Authorization: Bearer ${{ secrets.BLOG_GENERATE_SECRET }}" \
+            --data '{"ref":"master"}' \
+            --fail
