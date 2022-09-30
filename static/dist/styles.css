@@ -518,8 +518,17 @@ blockquote ::-moz-selection, aside ::-moz-selection {
     float: left;
     /* remove top margin for post-tags as it's already set above with .share */
 }
+.post-tags a {
+    font-style: italic;
+}
+.post-tags a::before {
+    content: "# ";
+}
 .post-tags a:hover {
     color: #303030;
+}
+.post-tags span {
+    display: none;
 }
 
 .share {
@@ -638,7 +647,7 @@ blockquote ::-moz-selection, aside ::-moz-selection {
     text-transform: none;
 }
 
-.post-stub-date:before {
+.post-stub-date::before {
     content: "/ ";
 }
 
