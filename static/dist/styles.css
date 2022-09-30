@@ -575,10 +575,7 @@ blockquote ::-moz-selection, aside ::-moz-selection {
 .post-stub-date {
     display: inline-block;
     font-size: 80%;
-    color: darkgray;
-}
-.post-stub a:hover .post-stub-date {
-    display: none;
+    color: #7f7f7f;
 }
 .post-stub {
     border-bottom: 1px dotted #303030;
@@ -617,13 +614,12 @@ blockquote ::-moz-selection, aside ::-moz-selection {
 }
 
 .post-stub-tag-list {
-    display: none;
-}
-.post-stub a:hover .post-stub-tag-list {
-    display: inline;
+    display: block;
+    align-self: flex-end;
+    flex-basis: 100%;
 }
 .post-stub-tag-item {
-    color: #FF9994;
+    color: #cd5c5c;
     letter-spacing: 0.2mm;
     font-size: 0.8em;
     font-style: italic;
