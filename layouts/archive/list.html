@@ -1,0 +1,13 @@
+{{ partial "header.html" . }}
+
+<div id="post-index" class="container" itemscope="" itemtype="https://schema.org/Blog">
+    <article class="post-container">
+        {{ partial "page-header.html" . }}
+
+        {{ partial "page-content.html" . }}
+
+        {{ partial "archive-list.html" . }}
+    </article>
+</div>
+
+{{ partial "footer.html" . }}

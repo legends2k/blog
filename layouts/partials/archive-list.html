@@ -1,0 +1,6 @@
+<ol class="post-list">
+    {{ range .Site.RegularPages.ByPublishDate.Reverse }}
+      {{ partial "post-stub.html" . }}
+    {{ end }}
+</ol>
+

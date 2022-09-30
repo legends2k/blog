@@ -34,9 +34,6 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 
 ## Site
 
-* Create a site map/archives page listing all articles on one page (searchable)
-  - Categorize by year
-  - Index is big and only shows 7; everyone mightn’t tap ‘Older Posts’
 * [Self-host fonts](https://news.ycombinator.com/item?id=25300396)
 * Dark mode
 * Make footnote as tool tip for hypertext using title attribute
