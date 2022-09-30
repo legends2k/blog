@@ -36,7 +36,6 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
 
 * [Self-host fonts](https://news.ycombinator.com/item?id=25300396)
 * Dark mode
-* Make footnote as tool tip for hypertext using title attribute
 * Enable [per-page auto-numbering](https://codingnconcepts.com/hugo/auto-number-headings-hugo/)
   - Remove manual numbering in `note/site_customizations.md`
 * Move away from Disqus for comments
