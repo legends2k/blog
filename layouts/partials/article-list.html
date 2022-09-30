@@ -1,10 +1,5 @@
 <ol class="post-list">
-    {{ $pag := .Paginate .RegularPages }}
-    {{ range first 7 $pag.Pages.ByPublishDate.Reverse }}
+    {{ range .RegularPages.ByPublishDate.Reverse }}
     {{ partial "post-stub.html" . }}
     {{ end }}
 </ol>
-
-<div class="post-navigation">
-    {{ partial "pagination.html" . }}
-</div>
