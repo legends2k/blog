@@ -31,7 +31,8 @@ Becoming a good programmer doesn’t happen in a day.
 * Scope your project
   - Start with something small and tangible
   - Have something working in a week
-  - If not, you're biting more than you could chew; scope down
+  - If not, you're biting more than you could chew
+    + scope down or burn out
 * **Be consistent**
   - Work on your pet project at least an hour a day
   - An hour isn't much -- usually total wasted minutes/day is more
