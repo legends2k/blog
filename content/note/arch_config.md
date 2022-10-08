@@ -451,7 +451,7 @@ cd yay/
 makepkg -si    # this needs sudo to install built package
 {{< /highlight >}}
 
-Yay respects `/etc/pacman.conf` settings; enable `Color`.  I [found][Package Mapping] a few useful tricks as (my machine’s) admin:
+Yay respects `/etc/pacman.conf` settings; enable `Color` and `ParallelDownloads` -- very useful!  I [found][Package Mapping] a few useful tricks as (my machine’s) admin:
 
 * Map an existing file back to its (installed) package: `pacman -Qo FILE-PATH`
 {{< highlight basic >}}
@@ -589,6 +589,10 @@ I got both of these from [Unix.StackExchange][monospace-everywhere].
 
 Miscellaneous user land customizations and tune-ups:
 
+* Manuals
+    - `yay -S --needed texinfo`
+    - `for f in /usr/share/info/*;  do install-info ${f} /usr/share/info/dir 2>/dev/null; done`
+        + Unneeded ideally but texinfo’s `post_install()` doesn’t do it
 * Archive Manager
     - `yay -S --needed p7zip unzip unrar`
     - `xarchiver` GUI integrates well with Thunar
@@ -596,17 +600,17 @@ Miscellaneous user land customizations and tune-ups:
     - `xlockmore` works fine, just be aware that switching to TTY (with Ctrl + Alt + 2, ...) is still possible with it
     - Integrates seamlessly with `xflock4` a script (`/usr/bin/xflock4`) which tries different lockers
     - Other lockers have issues
-        - `gnome-screensaver`, `sflock` -- didn’t work
-        - `physlock` -- only `root` can unlock
-        - `light-lock` -- needs a display manager
+        + `gnome-screensaver`, `sflock` -- didn’t work
+        + `physlock` -- only `root` can unlock
+        + `light-lock` -- needs a display manager
 * Screenshots
     - `xfce4-screenshooter`; had to be hooked to <kbd>PrintScr</kbd> through `xfce4-keyboard-settings` under the _Application Shortcuts_ tab
 * Preferred Applications
     - `xdg-utils` (a dependency of packages like `mpv`, `blender`, etc.)
-        - `xdg-open` opens file with preferred application from terminal
+        + `xdg-open` opens file with preferred application from terminal
     - Another option: `perl-file-mimeinfo`
     - Xfce4 has _MIME Type Editor_ whose settings both MC and Thunar respect
-        - When something unassociated is opened in Thunar, what you choose gets updated here only
+        + When something unassociated is opened in Thunar, what you choose gets updated here only
 * Xfce4 Terminal Colour Scheme
     - Pick-up from [iTerm2 Color Schemes][]
     - Copy to `${HOME}/.local/share/xfce4/terminal/colorschemes`
@@ -620,8 +624,8 @@ Miscellaneous user land customizations and tune-ups:
     - CHM: [xCHM][]
     - ePub: [Bookworm][]
 * Images
-    - CLI: [feh]
-    - GUI: [Ristretto][], part of `xfce4-goodies`
+    - [geeqie][] (GUI) -- versatile; supports [many formats][geeqie-formats] including camera RAW and vector
+    - [feh][] (CLI)
 * Media
     - Per-file A/V playback: [mpv][]
     - Console music player/library: [Music on Console][]
@@ -631,6 +635,8 @@ Miscellaneous user land customizations and tune-ups:
 [iTerm2 Color Schemes]: https://iterm2colorschemes.com/
 [emacs.desktop]: https://emacs.stackexchange.com/q/14055/4106
 [cloud-vfs]: https://www.everything-linux-101.com/blog/mount-onedrive-in-linux/
+[geeqie]: http://www.geeqie.org/
+[geeqie-formats]: https://github.com/BestImageViewer/geeqie#features
 [feh]: https://feh.finalrewind.org/
 [Bookworm]: https://babluboy.github.io/bookworm/
 [xCHM]: https://github.com/rzvncj/xCHM
