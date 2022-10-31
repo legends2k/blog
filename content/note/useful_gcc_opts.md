@@ -46,6 +46,9 @@ cpp -xc++ -dM /dev/null
 
 # get macros defined when the language is C
 cpp -dM /dev/null
+
+# print GCC search directories for binaries and libraries
+gcc -print-search-dirs
 {{< /highlight >}}
 
 [stack_usage]: https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html#index-fstack-usage

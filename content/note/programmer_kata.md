@@ -166,7 +166,7 @@ Again the biggest factor to success isn’t intelligence, it’s grit -- passion
 [aoc]: {{< relref "aoc_2018.md" >}}
 [alakajam]: {{< relref "sneak_out/index.md" >}}
 [game-jam]: https://letsmakeagame.net/game-jams-calendar/
-[weekend-raytrace]: http://www.realtimerendering.com/raytracing/Ray%20Tracing%20in%20a%20Weekend.pdf
+[weekend-raytrace]: https://raytracing.github.io/
 [Ray tracer]: https://en.wikipedia.org/wiki/Ray_tracing_(graphics)
 [SAP-raytrace]: https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing
 [Blender]: https://www.blender.org/

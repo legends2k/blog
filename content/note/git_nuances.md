@@ -133,17 +133,17 @@ git switch -c shiny-topic-branch
 # switch BRANCH
 git switch master
 
-# restore hello from index
+# restore hello in working tree from index
 git restore hello
 
-# restore hello from commit 1fe35f
+# restore hello in working tree from commit 1fe35f
 git restore --source 1fe35f hello
 
-# restore hello in index from HEAD
+# restore hello in index from HEAD; unstage
 git restore --staged hello
 
-# restore hello in both index and working tree from 1fe35f
-git restore --WS --source 1fe35f hello
+# restore hello in both index and working tree from HEAD
+git restore --WS
 {{< /highlight >}}
 
 # _Strings Attached_ Tags

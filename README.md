@@ -44,7 +44,6 @@ are licenced under [Creative Commons BY-NC-SA 4.0][CC].
   - https://cactus.chat/
 * Implement admonitions (**NOTE**, **WARNING**, etc.) e.g. [Hugo-using blog](http://adventures.michaelfbryan.com/posts/how-not-to-riir/) (relevant [commit](https://github.com/Michael-F-Bryan/adventures.michaelfbryan.com/commit/2589df70e9b92508996365884f5cc81c5afb764e#diff-3633f5dd9cd5b17857cbcd6be5a9e51c))
 * Tag pages doesn’t show article’s published date and time
-* Post/note index page doesn’t show tags of posts in the list
 * Taxonomy: add **Categories**
     * Show both *Tag*s and *Category*s on a post
 

@@ -18,19 +18,21 @@ I’ve mostly centred the resources around OpenGL and not other libraries since 
 * [Learning Modern 3D Graphics Programming][arcsynth-community] is probably the most extensive free, well-maintained online/offline (download-able for desktop, tablet and even kindle) book on modern OpenGL programming.
 * [OpenGL-Tutorial][gltut] is also modern and good, but isn't that extensive/detailed as compared to the former; although perspective projections are explained with diagrams extremely well here.
 * [OGLdev][ogldev] has close to 40 tutorials on modern OpenGL with nice explanations and rendered outputs.
-* [Lighthouse 3D][lighthouse] has tutorials for most of CG ~ math, Open GL, GLSL, GLUT, writing your own light weight library for game development.
+* [MBSoftworks tutorials][mbsoftworks] covers a wide range of topics; interesting from a game development perspective too.
 * [An Intro to Modern OpenGL][modern_gl] is short and sweet; it's good to understand the rendering pipeline more clearly; once again because it's very illustrative. For more in-depth understanding, read [A trip through the Graphics Pipeline][pipeline_trip].
 * [OpenGL on WikiBooks][wikibooks] has lot of hands-on tutorials which seem to be good too.
+* [Lighthouse 3D][lighthouse] has tutorials for most of CG ~ math, Open GL, GLSL, GLUT, writing your own light weight library for game development.
 
 ## Math
 
 To be proficient in computer graphics or even to understand the basics, a decent amount of mathematical concepts needs to be grasped; it requires one to be comfortable in using trigonometry and linear algebra. For this I recommend
 
-* [Vector Math Tutorial][math-vec-tut] to visualize, seal the understanding and get comforable using vectors and matrices
+* [Vector Math Tutorial][math-vec-tut] to visualize, seal the understanding and get comfortable using vectors and matrices
 * [Song Ho Ahn's Articles][songho] on CG Math and OpenGL
 * [Matrix and Quaternion FAQ][mat_quat_faq] should clarify your doubts on vectors, matrices and quaternions.
 * [Linear Algebra Free Text][lin_alg] by Professor Jim Hefferon covers linear algebra from ground up with lot of exercises.
 * [3D Game Engine Programming][3dgep] has a bunch of articles covering spaces, vectors, matrices and quaternions
+* [2D Transforms 101][2d-transforms-101] is a 2D transforms presentation I gave years back; the general idea applies to 3D too
 
 ### 3D Math Books
 
@@ -130,7 +132,8 @@ Serious game development eventually leads to low-level optimisations.  This list
 [arcsynthesis]: https://alfonse.bitbucket.io/oldtut/
 [arcsynth-community]: https://paroj.github.io/gltut/
 [gltut]: http://www.opengl-tutorial.org/
-[ogldev]: http://ogldev.atspace.co.uk/
+[ogldev]: https://ogldev.org/
+[mbsoftworks]: https://www.mbsoftworks.sk/tutorials/
 [open.gl]: http://open.gl/
 [learngl]: http://www.learnopengl.com/
 [lighthouse]: http://www.lighthouse3d.com/tutorials/
@@ -141,6 +144,7 @@ Serious game development eventually leads to low-level optimisations.  This list
 [mat_quat_faq]: http://www.j3d.org/matrix_faq/matrfaq_latest.html
 [lin_alg]: http://joshua.smcvt.edu/linearalgebra/
 [3dgep]: https://www.3dgep.com/category/math/
+[2d-transforms-101]: https://legends2k.github.io/2d-transforms-101/
 [math-vec-tut]: https://chortle.ccsu.edu/VectorLessons/index.html
 [WebGL Fundamentals]: http://webglfundamentals.org/
 [WebGL2 Fundamentals]: http://webgl2fundamentals.org/
