@@ -67,7 +67,7 @@ For setting up auto completion in Emacs using Irony, I needed to know the includ
 cpp -xc++ -Wp,-v /dev/null
 {{< /highlight >}}
 
-This prints the list of standard include directories.  `g++ -v some.cpp` would give it too, but this is fast & easy; no input file or fake compiler calls.
+This prints the list of standard include directories.  `g++ -v some.cpp` would give it too, but this is fast & easy; no input file or fake compiler calls.  Another similar option is `g++ -### some.cpp`.
 
 # Disassembly
 
