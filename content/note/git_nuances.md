@@ -226,6 +226,19 @@ lists all branches descending from `some_parent`; of course, this isn’t useful
 
 The general idea is _reachability_: an ancestor is reachable from a descendant, if you keep following the parental links.  When an ancestor is _reachable_, changes it introduced are _visible_ to the descendant.
 
+# Botch Job Fix Up
+
+A topic branch with few commits has a commit down below making a mistake --- typo, poor name, wrong documentation, etc.  You want the original commit fixed; not a new fixing commit.  Easy!  Make a [fixup commit][] atop the problematic commit and rebase with auto-squash.
+
+{{< highlight bash >}}
+# stage fixed files and make a fixup commit
+git commit -a --fixup=PROBLEM-COMMIT-REF
+# interactive rebase onto problematic commit’s parent (^)
+git rebase -i --autosquash PROBLEM-COMMIT-REF^
+{{< /highlight >}}
+
+In the commit list opened in your `$EDITOR`, verify the fixup commit’s position (just below problematic one) and verb (`fixup`); save and exit!
+
 # Misc
 
 * Delete branch from remote: `git push origin --delete my_topic`
@@ -255,6 +268,7 @@ The general idea is _reachability_: an ancestor is reachable from a descendant, 
 [shallow-fetch]: https://stackoverflow.com/q/1778088/183120
 [pull-sans-args]: https://stackoverflow.com/a/6861747/183120
 [submod-clone]: https://stackoverflow.com/a/4438292/183120
+[fixup commit]: https://www.mikulskibartosz.name/git-fixup-explained/
 
 [^fetch-default]: [`git fetch` without arguments][pull-sans-args] usually fetches all branches as `remote.<origin>.fetch` defaults to `+refs/heads/*:refs/remotes/<origin>/*`!
 [^experimental]: `switch` and `restore` are still experimental.
