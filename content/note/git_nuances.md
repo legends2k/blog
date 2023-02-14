@@ -211,7 +211,7 @@ There’re times when you want to check a commit’s ancestory.  To know if `Pos
 # check
 git merge-base --is-ancestor possible_ancestor person
 # show result
-echo $0
+echo $?
 {{< /highlight >}}
 
 Prints `0` if the lineage checks out.  On Windows `echo %ErrorLevel%` tells the return value of the last command.

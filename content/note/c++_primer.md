@@ -643,10 +643,11 @@ scope.
 9. [C++ Papyrus](https://caiorss.github.io/C-Cpp-Notes/): extensive notes on various C and C++-related topics including tool chains, shared libraries, Unix, Linux and WinAPI programming, OpenGL, etc.
 
 [Swiss Table]: https://abseil.io/blog/20180927-swisstables
-[flat_hash_map]: https://github.com/skarupke/flat_hash_map
-[Malte Skarupe]: https://probablydance.com/2018/05/28/a-new-fast-hash-table-in-response-to-googles-new-fast-hash-table/
+[Skarupe]: https://github.com/skarupke/flat_hash_map
+[skarupe-blog]: https://probablydance.com/2018/05/28/a-new-fast-hash-table-in-response-to-googles-new-fast-hash-table/
+[skarupe-recommends]: https://youtu.be/M2fKMP47slQ?t=3915
 
 
 [^1]: [Use sorted vector instead of set](http://lafstern.org/matt/col1.pdf), if `find` calls outnumber `insert`; it’d be lot faster — Matt Austern.
 
-[^2]: [Swiss Table][] (part of Abseil C++ library) is much better than `std::unordered_map` and [Robin Hood hashing](https://www.sebastiansylvan.com/post/robin-hood-hashing-should-be-your-default-hash-table-implementation/) too.  Swiss Table is also Rust’s `HashMap` implementation.  [Other (probably better) options by Malte Skarupe][Malte Skarupe]: [`flat_hash_map` and `bytell_hash_map`][flat_hash_map].
+[^2]: [Robin Hood hashing](https://www.sebastiansylvan.com/post/robin-hood-hashing-should-be-your-default-hash-table-implementation/) is a good technique when using linear probing.  `absl::flat_hash_map`, part of Abseil’s [Swiss tables][], is recommended over `std::unordered_map`.  It is also Rust’s `HashMap` implementation.  [Malte Skarupe’s `bytell_hash_map`][Skarupe] is currently the [fastest][skarupe-blog].  Check [Malte’s recommendations][skarupe-recommends] on choosing one.

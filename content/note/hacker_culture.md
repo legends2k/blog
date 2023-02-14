@@ -84,6 +84,7 @@ Super popular web comics on programming.  [explainXKCD.com][] details each comic
 * [Do You Really Want to be Doing This When You’re 50?](https://prog21.dadgum.com/154.html): how programming for a profession is neither desirable nor rosy
 * [Constantly Create](https://prog21.dadgum.com/99.html): do what’s natural to you and keep creating; don’t try to a perfectionist, volume not perfection; don’t cave in to audience/review pressure, do it for yourself
     - [Why Trying to Be Perfect Won’t Help You Achieve Your Goals (And What Will)](https://jamesclear.com/repetitions) by _James Clear_
+    - [The Perils of Future-Coding](https://www.sebastiansylvan.com/post/the-perils-of-future-coding/): most insidious form of tech debt; over-engineering, second-system syndrome, over-generalized code
 * [How Did Things Ever Get This Good?](https://prog21.dadgum.com/51.html): just pick the tool of least resistance and get to work instead of wasting time
 
 ## Noel Llopis
