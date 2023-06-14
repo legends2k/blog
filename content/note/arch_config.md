@@ -11,7 +11,26 @@ See [_Arch Linux Installation_](/note/arch_install) for installation notes.
 
 # Network
 
-In the newly installed Arch you might notice that there's no network connectivity.  To enable do what you did during installation (see _Arch Linux Installation_, [§2 Wireless Network][]).  I did it only to realize, for `netctl` to hook to a WPA-secured network, the `wpa_supplicant` package is needed but was absent on the installed system.  To connect to the internet, you need a package from the internet!?  To get out of this [Catch-22][] situation, I'd to reboot from the installation USB, setup network and install `wpa_supplicant` to the new OS by chrooting
+In the newly installed Arch you might notice that there's no network connectivity.
+
+## Ethernet
+
+If you just need ethernet/LAN connectivity, just enable what the installation image uses
+
+{{< highlight basic >}}
+systemctl enable --now systemd-networkd.service
+systemctl enable --now systemd-resolved.service
+{{< /highlight >}}
+
+You can verify if your preferred network interface is up
+
+{{< highlight basic >}}
+ip address show
+# `UP` inside angle brackets
+ip link set MY_IFACE_NAME up
+{{< /highlight >}}
+
+To enable wireless what you did during installation (see _Arch Linux Installation_, [§2 Wireless Network][]).  I did it only to realize, for `netctl` to hook to a WPA-secured network, the `wpa_supplicant` package is needed but was absent on the installed system.  To connect to the internet, you need a package from the internet!?  To get out of this [Catch-22][] situation, I'd to reboot from the installation USB, setup network and install `wpa_supplicant` to the new OS by chrooting
 
 {{< highlight basic >}}
 root@archiso / # mount /dev/lvmg1/root /mnt
@@ -138,17 +157,19 @@ To have _Xfce_ up and running, you need a display system (_Xorg_; Xfce can’t r
 
 {{< highlight basic >}}
 pacman -Syu
-pacman -S --needed xorg xorg-server xfce4 xfce4-goodies lxdm xf86-input-synaptics
+pacman -S --needed xfce4 xfce4-goodies lxdm xf86-input-synaptics
 {{< /highlight >}}
 
-Once done, enable (for future boots) and start the display manager
+Set `graphical.target` as default.  Start and enable (for future boots) the display manager
 
 {{< highlight basic >}}
-systemctl enable lxdm.service
-systemctl start lxdm.service
+systemctl set-default graphical.target
+systemctl enable --now lxdm.service
 {{< /highlight >}}
 
 For the first run, make sure to set the _Session_ and _Locale_; not doing so led to a login screen loop.
+
+If LXDM doesn’t show your full name, it isn’t set in `/etc/passwd`.  Set it with `chfn -f 'Full Name' login_id`.
 
 For natural scrolling with laptop’s touchpad, similar to iPad, enabling _Reverse scroll direction_ under _Mouse and Touchpad_ settings; this fixes scroll in most places except _Terminal_ 😬.
 
@@ -325,6 +346,10 @@ If after every login bluetooth is auto-powered ON; this is due to Blueman’s _P
 
 The default Obex push directory is set to `~/.cache/obex`, named `Root`; change it to your convenience in _Local services_ -> _Transfer_.
 
+## Bluetooth Speakers
+
+Install `pulseaudio-bluetooth` and restart pulseaudio with `-k`.  Make sure Bluetooth is enabled (not soft blocked) through `rkfill`.  From _blueman_’s GUI, connect to your bluetooth speaker.  Everything should work once audio output device is switched.
+
 [Blueman_permissions]: https://wiki.archlinux.org/index.php/Blueman#Permissions
 [Bluetooth No Auto-ON]: https://www.linux.com/forums/networking/solved-bluez-543-have-bluetooth-disabled-boot
 
@@ -336,7 +361,7 @@ The default Obex push directory is set to `~/.cache/obex`, named `Root`; change 
 yay -S --needed laptop-mode-tools hdparm cpupower
 {{< /highlight >}}
 
-Start with `sudo systemctl enable laptop-mode.service`.  Then set the following parameters in respective files
+Start with `systemctl enable laptop-mode.service`.  Then set the following parameters in respective files
 
 {{< highlight cfg >}}
 # /etc/laptop-mode/conf.d/intel-sata-powermgmt.conf
@@ -438,8 +463,8 @@ Many essential packages live in [AUR][], the unofficial Arch repository; just th
 {{< highlight basic >}}
 pacman -S --needed base-devel
 su
-visudo                      # uncomment sudo group
-groupadd sudo               # if not already existing
+EDITOR=/usr/bin/nano visudo    # uncomment sudo group
+groupadd sudo                  # if not already existing
 gpasswd -a sundaram sudo
 {{< /highlight >}}
 
@@ -476,13 +501,13 @@ Irrespective of the wrapper used, pacman maintains `/var/log/pacman.log` since d
 Periodically `/var` gets full due to cached downloaded packages.  Clear it manually using the `paccache` script
 
 {{< highlight basic >}}
-sudo paccache -rk 2    # keep last 2 versions of each package
+paccache -rk 2    # keep last 2 versions of each package
 {{< /highlight >}}
 
 [Automate cache clearance][autorun-paccache] with a pacman hook (refer `man alpm-hooks`) run post install:
 
 {{< highlight cfg >}}
-sudo cat > /etc/pacman.d/hooks/clean_pac_cache.hook
+cat > /etc/pacman.d/hooks/clean_pac_cache.hook
 [Trigger]
 Operation = Upgrade
 Operation = Install
@@ -496,6 +521,8 @@ When = PostTransaction
 Exec = /usr/bin/paccache -rk 1
 {{< /highlight >}}
 
+If you’ve issues with keyring or keys, [reinitialize keyring][reinit-keyring].
+
 [AUR]: https://aur.archlinux.org/
 [pacman wrappers]: https://wiki.archlinux.org/index.php/AUR_helpers#Pacman_wrappers
 [AUR helpers]: https://wiki.archlinux.org/index.php/AUR_helpers
@@ -504,6 +531,7 @@ Exec = /usr/bin/paccache -rk 1
 [Package Mapping]: https://bbs.archlinux.org/viewtopic.php?id=90635
 [fzf]: https://github.com/junegunn/fzf
 [autorun-paccache]: https://ostechnix.com/recommended-way-clean-package-cache-arch-linux/
+[reinit-keyring]: https://stackoverflow.com/a/73001822/183120
 
 # Fonts
 
@@ -515,12 +543,12 @@ I’m a [Tamilian][Tamils] and a programmer.  Since most of my consumption is te
 * Noto TTFs
 
 {{< highlight basic >}}
-yay -S --needed ttf-dejavu  ttf-symbola noto-fonts
+yay -S --needed ttf-dejavu  ttf-symbola quivira noto-fonts noto-fonts-emoji
 {{< /highlight >}}
 
-[Quivira][] wasn’t in the Arch repos; installed manually by copying into `${HOME}/.local/share/fonts`.
+Fonts can be installed manually by copying into `${HOME}/.local/share/fonts`.
 
-Noto has excellent coverage across languages.  With these my missing-glyph agonies were gone.
+Noto has excellent coverage across languages.  [`noto-fonts-emoji` is the Emacs-recommended font for Emojis][emacs-noto-emoji]; xfce4-terminal shows them too 🤗.  With these my missing-glyph agonies were gone.
 
 ## Tamil
 
@@ -553,7 +581,7 @@ Under _Appearance_ set
 * **Default Font**: Noto Sans 12
 * **Default Monospace Font**: mononoki 13
 
-However, for monospace this wasn’t enough 🤦.  For instance, Terminal and Mousepad ignores it.  I don’t want to override for each app manually either.
+If setting system monospace wasn’t enough
 
 {{< highlight basic >}}
 gsettings set org.gnome.desktop.interface monospace-font-name 'mononoki 13'
@@ -578,7 +606,7 @@ I got both of these from [Unix.StackExchange][monospace-everywhere].
 
 [Tamils]: https://en.wikipedia.org/wiki/Tamils
 [unicode-fonts]: https://github.com/rolandwalker/unicode-fonts
-[Quivira]: http://www.quivira-font.com/files/Quivira.ttf
+[emacs-noto-emoji]: https://www.masteringemacs.org/article/whats-new-in-emacs-28-1
 [Mononoki]: https://madmalik.github.io/mononoki/
 [monospace-everywhere]: https://unix.stackexchange.com/questions/106070/changing-monospace-fonts-system-wide
 [Nerd Fonts]: https://nerdfonts.com/

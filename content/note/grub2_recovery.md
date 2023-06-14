@@ -39,6 +39,24 @@ Once [chroot][]ed[^3], I’d to reinstall GRUB to fix the issue!
 
 All is well now 😀
 
+# GRUB missing in UEFI’s NVRAM
+
+On an ArchLinux box (host) with UEFI + GPT setup, I’d to install Ubuntu on an external SSD, for a machine having legacy BIOS (target).  I booted host in _Legacy Boot_ mode and installed Ubuntu by marking the first primary partition on the SSD _bootable_; everything went well.  Rebooting showed GRUB on the SSD with both Ubuntu and ArchLinnux.  Since target machine won’t have Arch, I’d to turn off os-prober:
+
+{{< highlight basic >}}
+# cat >> /etc/default/grub
+GRUB_DISABLE_OS_PROBER=true
+
+# update-grub
+{{< /highlight >}}
+
+However, after switching back to _UEFI Boot_, I only saw _Windows Boot Manager_ and _EFI PXE Network_ options; GRUB was missing!  Mounting the EFI System Partition (ESP) showed GRUB under `/EFI/GRUB/grubx64.efi`, so it’s just the NVRAM GRUB was removed from.  Reinstalling GRUB by booting from an Arch Linux ISO is an option, but I didn’t want to lose my GRUB customizations like wallpaper, etc.  [Thanks to a good Unix.SE answer][efibootmgr-grub] helped me put GRUB back in NVRAM
+
+{{< highlight bash >}}
+# -c creates an entry with -l taking path in ESP at /dev/nvme0n1p1
+efibootmgr -c -d /dev/nvme0n1 -p 1 -l \\EFI\\GRUB\\grubx64.efi -L GRUB
+{{< /highlight >}}
+
 # See Also
 
 * [Debian’s GrubEFIReinstall guide][] -- like most Debian documents, thorough!
@@ -88,6 +106,7 @@ After the upgrade, the warning vanished and _Firmware Version_ reads `CC35` 😇
 
 [Rufus]: https://rufus.akeo.ie/
 [firmware upgrade]: http://knowledge.seagate.com/articles/en_US/FAQ/213915en
+[efibootmgr-grub]: https://unix.stackexchange.com/a/475245/30580
 [Debian’s GrubEFIReinstall guide]: https://wiki.debian.org/GrubEFIReinstall
 [chroot]: https://en.wikipedia.org/wiki/Chroot
 [ManualFirmwareUpgrade]: https://niallbest.com/seagate-2tb-st32000542as-cc35-firmware-upgrade/

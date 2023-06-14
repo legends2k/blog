@@ -46,7 +46,8 @@ Co-founder of StackOverflow.com.
 * [Shall I Call it... SomethingManager](https://blog.codinghorror.com/i-shall-call-it-somethingmanager/): avoid vague names; employing proper conventions help clarifying your code and improve its health
 * [The Broken Window Theory](https://blog.codinghorror.com/the-broken-window-theory/): ignoring one issue, and letting it slip by leads to poor software health as it becomes a habit and in no time we’ve lots of issues unattended
 * [The Best Code is No Code At All](https://blog.codinghorror.com/the-best-code-is-no-code-at-all/): more code = more bugs; minimalism for programmers
-* [The Delusion of Reuse](https://blog.codinghorror.com/the-delusion-of-reuse/): avoid over-engineering in the name of code reuse as it’s seldom done
+* [The Delusion of Reuse](https://blog.codinghorror.com/the-delusion-of-reuse/): avoid over-engineering in the name of code reuse as it’s seldom done; this is similar to [Write Games, Not Engines](https://geometrian.com/programming/tutorials/write-games-not-engines/index.php)
+    - [Stop Future-Proofing Software](https://medium.com/@george3d6/stop-future-proofing-software-c984cbd65e78)
 * [Code Smells](https://blog.codinghorror.com/code-smells/): list of code smells -- questionable idioms or patterns -- for easy reference
 * [Don't be Afraid to Break Stuff](https://blog.codinghorror.com/dont-be-afraid-to-break-stuff/): encourages programmers to poke around, make mistakes and learn instead of treading softly around code worrying about existing design/architecture breakage; problems of magical thinking
 * [Are You a Doer or a Talker?](https://blog.codinghorror.com/are-you-a-doer-or-a-talker/): against analysis paralysis and getting the job done, even if it’s not great
@@ -106,6 +107,8 @@ Super popular web comics on programming.  [explainXKCD.com][] details each comic
 * [What Color is Your Function](https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/): explains how async programming has introduced two classes of functions which can’t be mixed
 * [Write Games, Not Engines](https://geometrian.com/programming/tutorials/write-games-not-engines/index.php): writing games, and many of them, gives you enough insights eventually it distil reusable parts into an engine; don’t hurt yourself doing it the other way around
   - [Make Games Not Engines... to learn Engines](https://seanmiddleditch.com/makes-games-not-engines-to-learn-engines/)
+* [Teach Yourself Programming in Ten Years](http://norvig.com/21-days.html) - Peter Norvig’s excellent piece on practise
+  - [The Forty-Year Programmer](https://codefol.io/posts/the-forty-year-programmer/) - Great insights (and useful tips) from an experienced developer
 * [Your Brain on the Internet — Multi-Tasking Research](http://teaching.idallen.com/cst8207/15w/notes/005_this_is_your_brain.html): on the horrors of _continuous partial attention_ due to multi-tasking, smartphones and internet.
 * [Essays on programming I think about a lot](https://www.benkuhn.net/progessays/): a page similar to this one
 * [The Rise of User-Hostile Software](https://den.dev/blog/user-hostile-software/): explains the rampant problem with proprietary, tracking software crippling the industry

@@ -86,6 +86,8 @@ If the default Windows installation was done with RST selection, Windows 10 will
 
 SSDs are [not recommended](https://unix.stackexchange.com/a/89230) for volatile data, so `/var` and swap space should be allocated on spinning disk.  Rest like `/boot`, `/`, `/usr`, etc. can be left on the SSD: seen under `/dev/nvme0nXpY` not `/dev/sda`; `X` is the disk number, `Y` is the partition.
 
+**Note**: `/boot` needn’t be in a separate partition while `/boot/efi` should be; the [EFI System Partition][esp] partition is mounted in `/boot/efi`.
+
 Partition with `cfdisk` and verify them with `lsblk` or `fdisk -l`.  Choose _Linux filesystem_ for _Partition Type_ for everything except swap and LVM.  Mind that these partitions are the ones created outside the LVM; if you're going to manage all your Linux partitions with LVM, just create one partition and set its type to _Linux LVM_ in `fdisk`.
 
 My final scheme (sublist intelligible after reading the next section)
@@ -96,6 +98,8 @@ My final scheme (sublist intelligible after reading the next section)
     2. `/home` → `/dev/lvmg1/home` (remaining)
 3. `/var` → `dev/sda5` (4 GiB)
 4. swap → `dev/sda6` (4 GiB)
+
+[esp]: https://en.wikipedia.org/wiki/EFI_system_partition
 
 ## LVM
 
@@ -156,7 +160,7 @@ mount /dev/nvme0n1p1 /mnt/boot/efi
 I came to know that on ext4 [Linux silently reserves][ext4-reserve] 5% of system partitions for the root user; to be able to log in, if a regular user fills up the drive.  [See the reservation][tunefs] thus
 
 {{< highlight basic >}}
-> sudo tune2fs -l /dev/sda5 | egrep "Reserved block count|Block size" | paste -sd\ | awk '{print ($4 * $7 / ( 1024 * 1024 ) ), "MiB"}'
+> tune2fs -l /dev/sda5 | egrep "Reserved block count|Block size" | paste -sd\ | awk '{print ($4 * $7 / ( 1024 * 1024 ) ), "MiB"}'
 204.797 MiB
 {{< /highlight >}}
 
@@ -189,6 +193,10 @@ pacstrap /mnt base
 {{< highlight basic >}}
 genfstab -U /mnt >> /mnt/etc/fstab
 {{< /highlight >}}
+
+Usually `/var` is given additional options `nodev,nosuid,noexec`; while `/home` is marked with `nodev` for [tighter security][why-nodev-nosuid].
+
+[why-nodev-nosuid]: https://serverfault.com/q/547237/139619
 
 ## Change root
 
