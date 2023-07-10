@@ -268,11 +268,11 @@ If your machine has both USB 2 and 3 ports and boot logs show this warning
 kernel: usb: port power management may be unreliable
 {{< /highlight >}}
 
-there’s a good chance of a USB 3+ device (5000 Mbps) running with USB 2 (480 Mbps) speed.  Refer [UnixSE][] and [ArchLinux forums][arch-usb3-issue] for details.  The problem maps to inability of the kernel to determine a port’s peer and set correct power.  If that’s the case find out the port and manually suspend it; [refer][baeldung-usb-power]
+there’s a good chance of a USB 3+ device (5000 Mbps) running with USB 2 (480 Mbps) speed; verify with `lsusb -tvv`.  Refer [UnixSE][] and [ArchLinux forums][arch-usb3-issue] for details.  The problem maps to inability of the kernel to determine a port’s peer and set correct power.  If that’s the case, find the port (`dmesg | grep -i usb`) and manually suspend it; [refer][baeldung-usb-power]
 
 {{< highlight basic >}}
-echo "0" > "/sys/bus/usb/devices/1-3:1.0/power/autosuspend_delay_ms"
-echo "auto" > "/sys/bus/usb/devices/1-3:1.0/power/control"
+echo "0" > "/sys/bus/usb/devices/1-1:1.0/power/autosuspend_delay_ms"
+echo "auto" > "/sys/bus/usb/devices/1-1:1.0/power/control"
 {{< /highlight >}}
 
 [unixse]: https://unix.stackexchange.com/q/323692/30580
