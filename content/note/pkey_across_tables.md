@@ -258,10 +258,10 @@ This also also our table proliferation problem.  We don’t need _n_ tables to r
 
 ``` sql
 CREATE TABLE invoice_items (
-invoice_id bigint NOT NULL REFERENCES invoices (id),
-item_id bigint NOT NULL REFERENCES items (id),
-count smallint NOT NULL DEFAULT 1,
-PRIMARY KEY (invoice_id, item_id)
+  invoice_id bigint NOT NULL REFERENCES invoices (id),
+  item_id bigint NOT NULL REFERENCES items (id),
+  count smallint NOT NULL DEFAULT 1,
+  PRIMARY KEY (invoice_id, item_id)
 );
 ```
 
@@ -274,7 +274,7 @@ SELECT t1.item_id FROM invoice_items t1 JOIN items t2 ON t1.item_id = t2.id AND 
 
 # Other Considerations
 
-[Global serial generators are generally discouraged][5].  This isn’t what we’re after though; we want common serials for objects of different kinds but all belonging to a common, super-class.  This led me to think of inheritance but didn’t get long with it.
+[Global serial generators are generally discouraged][5].  This isn’t what we’re after though; we want common serials for objects of different kinds but all belonging to a common, super-class.  This led me to think of inheritance but didn’t get far with it.
 
 I did look at other options to avoid the table proliferation problem alone.  Here’re the ones I rejected
 

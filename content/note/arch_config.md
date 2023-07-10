@@ -13,23 +13,6 @@ See [_Arch Linux Installation_](/note/arch_install) for installation notes.
 
 In the newly installed Arch you might notice that there's no network connectivity.
 
-## Ethernet
-
-If you just need ethernet/LAN connectivity, just enable what the installation image uses
-
-{{< highlight basic >}}
-systemctl enable --now systemd-networkd.service
-systemctl enable --now systemd-resolved.service
-{{< /highlight >}}
-
-You can verify if your preferred network interface is up
-
-{{< highlight basic >}}
-ip address show
-# `UP` inside angle brackets
-ip link set MY_IFACE_NAME up
-{{< /highlight >}}
-
 To enable wireless what you did during installation (see _Arch Linux Installation_, [§2 Wireless Network][]).  I did it only to realize, for `netctl` to hook to a WPA-secured network, the `wpa_supplicant` package is needed but was absent on the installed system.  To connect to the internet, you need a package from the internet!?  To get out of this [Catch-22][] situation, I'd to reboot from the installation USB, setup network and install `wpa_supplicant` to the new OS by chrooting
 
 {{< highlight basic >}}
@@ -84,7 +67,24 @@ However, another statement admonitions that a router usually does this caching a
 
 ## Ethernet
 
-To use an ethernet connection too you need a profile.  However, I noticed that on every reboot the interface name kept changing between `enp4s0` and `eth0`.  [ArchLinux documents][interface-name] this too!  Basically create a rule file (`/etc/udev/rules.d/10-network.rules`) with the MAC address mapped to a name
+If you just need ethernet/LAN connectivity, just enable what the installation image uses
+
+{{< highlight basic >}}
+systemctl enable --now systemd-networkd.service
+systemctl enable --now systemd-resolved.service
+{{< /highlight >}}
+
+You can verify if your preferred network interface is up
+
+{{< highlight basic >}}
+ip address show
+# `UP` inside angle brackets
+ip link set MY_IFACE_NAME up
+{{< /highlight >}}
+
+### Stable Interface
+
+If you plan on using netctl, you need a profile for ethernet too (like wireless).  However, I noticed that on every reboot the interface name kept changing between `enp4s0` and `eth0`.  [ArchLinux documents][interface-name] this too!  Basically create a rule file (`/etc/udev/rules.d/10-network.rules`) with the MAC address mapped to a name
 
 {{< highlight basic >}}
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="fe:ed:f0:0d:ba:cc", NAME="eth0"
@@ -103,7 +103,7 @@ DNS=('1.1.1.1' '1.0.0.1')
 
 Start/switch to this profile as you normally would: `netctl switch-to wired`.
 
-> If you’re connecting a USB Type-C to 3.0 adapter with an ethernet port, its interface would not be `eth0`!  Make sure you’ve a similar profile for its interface too.
+> If you’re connecting a USB Type-C to 3.0 adapter with an ethernet port, its interface would not be `eth0`!  Make sure you’ve a similar profile for _its_ interface too.
 
 [interface-name]: https://wiki.archlinux.org/index.php/Network_configuration#Change_interface_name
 
@@ -677,6 +677,13 @@ Miscellaneous user land customizations and tune-ups:
 [Handbrake]: https://handbrake.fr/
 
 # Issues
+
+Check for kernel issues during boot up and down with
+
+{{< highlight bash >}}
+journalctl --list-boots
+journalctl -b1
+{{< /highlight >}}
 
 1. Log out and in; mouse cursor is frozen!
     - Fix: `sudo modprobe -r psmouse && modprobe psmouse`

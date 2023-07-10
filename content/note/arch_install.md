@@ -293,6 +293,26 @@ Failed unmounting /var
 
 This also seems to be [a non-issue](https://bbs.archlinux.org/viewtopic.php?pid=1204644#p1204644).
 
+# Processor Microcodes
+
+Processor security patches are released by CPU manufacturers, to be released as motherboard firmware updates; these come in slowly (or don’t 😉).  Linux solves this by loading the microcode update as early as possible during boot.
+
+Check boot log (`journalctl -b0`) for CPU bugs messages
+
+```
+MDS CPU bug present and SMT on, data leak possible. See https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/mds.html for more d>
+MMIO Stale Data CPU bug present and SMT on, data leak possible. See https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/process>
+```
+
+Refer [Microcode - ArchWiki][aw-microcode] to check if your processor has patches and perform necessary steps to install and load at boot.
+
+{{< highlight basic >}}
+pacman -S --needed intel-ucode
+grub-mkconfig -o /boot/grub/grub.cfg
+{{< /highlight >}}
+
+[aw-microcode]: https://wiki.archlinux.org/title/Microcode
+
 This completes my Arch Linux installation process.  The newly installed Arch now has be configured and maintained 😊.  The [Arch Linux Configuration][] article covers
 
 * Xfce4 desktop environment
