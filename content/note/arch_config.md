@@ -13,7 +13,9 @@ See [_Arch Linux Installation_](/note/arch_install) for installation notes.
 
 In the newly installed Arch you might notice that there's no network connectivity.
 
-To enable wireless what you did during installation (see _Arch Linux Installation_, [§2 Wireless Network][]).  I did it only to realize, for `netctl` to hook to a WPA-secured network, the `wpa_supplicant` package is needed but was absent on the installed system.  To connect to the internet, you need a package from the internet!?  To get out of this [Catch-22][] situation, I'd to reboot from the installation USB, setup network and install `wpa_supplicant` to the new OS by chrooting
+## Wireless
+
+To enable wireless do what you did during installation (see _Arch Linux Installation_, [§2 Wireless Network][]).  I did it only to realize, for `netctl` to hook to a WPA-secured network, the `wpa_supplicant` package is needed but was absent on the installed system.  To connect to the internet, you need a package from the internet!?  To get out of this [Catch-22][] situation, I'd to reboot from the installation USB, setup network and install `wpa_supplicant` to the new OS by chrooting
 
 {{< highlight basic >}}
 root@archiso / # mount /dev/lvmg1/root /mnt
@@ -223,69 +225,59 @@ The Intel device needs only these but still I couldn’t `startx` or `systemctl 
 
 ## Nvidia
 
-Switching between Nouveau and proprietary drivers (both `nvidia` and `nvidia-lts`), mucking around with `/etc/X11/xorg.conf`, creating and tweaking `/etc/X11/xorg.conf.d/20-nvidia.conf`, running `nvidia-xconfig` and `nvidia-settings` --- none of these worked!  Enter [Bumblebee][] and voilà!
+Using the discrete GPU for heavier workloads and powering it off (as integrated GPU does display stuff) would be ideal.  Official (nvidia) method is to go with `prime-run`.  Following [PRIME - ArchWiki][] did most of the trick but power management isn’t there yet. 
 
-Remove all nouveau-related and install Nvidia-supplied packages.  Install Bumblebee and friends:
-
-{{< highlight basic >}}
-pacman -Rs nouveau xf86-video-nouveau libvdpau
-pacman -S nvidia nvidia-utils
-pacman -S bumblebee primus bbswitch
-{{< /highlight >}}
-
-Make sure at least these entries are set right in `/etc/bumblebee/bumblebee.conf`:
-
-{{< highlight cfg >}}
-[bumblebeed]
-ServerGroup=bumblebee
-Driver=nvidia
-
-[driver-nvidia]
-KernelDriver=nvidia
-{{< /highlight >}}
-
-In order to use Bumblebee, add user to `bumblebee` group
+Basically uninstall all open-source video packages, bbswitch and bumblebee and install nvidia drivers and utilities:
 
 {{< highlight basic >}}
-gpasswd -a root bumblebee
+pacman -Rsc nouveau xf86-video-nouveau xf86-video-intel xf86-video-vesa bumblebee bbswitch primus
+rm -rf /etc/bumblebee /etc/modprobe.d/bbswitch.conf
+pacman -S nvidia nvidia-utils nvidia-prime
+systemctl enable --now nvidia-persistanced
 {{< /highlight >}}
 
-Start the _Bumblebee_ service to see if things work as expected; enable for service start across reboots.
+`prime-run` a process to choose discrete GPU; the default would be integrated:
 
 {{< highlight basic >}}
-systemctl start bumblebeed.service
-systemctl enable bumblebeed.service
+# should display integrated GPU
+glxinfo -B
+# should display discrete GPU
+prime-run glxinfo -B
+# useful (informative)
+nvidia-smi
+# information on GPU
+cat /proc/driver/nvidia/gpus/0000\:01\:00.0/information
 {{< /highlight >}}
 
-Once all the setting up is done, you could choose between the GPUs when running a process.  `optirun` the process to choose Nvidia; the default would be Intel:
+[Dynamic power management][nv-dyn-power] is only for Turing+ architectures.  Installing `nvidia-prime-rtd3pm` at least sets `/sys/bus/pci/devices/0000:01:00.0/power/control` to `auto` (better than `on`).  `cat /sys/bus/pci/devices/0000:01:00.0/power_state` always shows `D0`, `cat /proc/driver/nvidia/gpus/0000\:01\:00.0/power` shows `Disabled by default`.  What more, `nvidia-smi` isn’t able to show power stats as it’s unsupported for this GPU 🤦
 
-{{< highlight basic >}}
-glxinfo | grep "OpenGL Renderer"
-glxgears -info
-optirun glxgears -info
-{{< /highlight >}}
+[nv-dyn-power]: https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/README/dynamicpowermanagement.html
 
-Running _glxgears_ with and without `optirun` should show the right GPU selected for the demo running.
+### Futile Alternatives
 
-Once in a while, you might get this error when `optirun`nig something
-
-{{< highlight basic >}}
-[  146.868249] [ERROR]Cannot access secondary GPU - error: [XORG] (EE) NVIDIA(GPU-0): Failed to initialize the NVIDIA GPU at PCI:1:0:0.  Please
-[  146.868250] [ERROR]Aborting because fallback start is disabled.
-{{< /highlight >}}
-
-The [fix in ArchWiki][failed GPU init] says
-
-{{< highlight basic >}}
-su
-echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
-echo 1 > /sys/bus/pci/rescan
-{{< /highlight >}}
-
-However, since Linux kernel version 5 I didn’t have to do this once!
+Using nouveau doesn’t help as it doesn’t support power management _and_ hardware accelerated video decoding too for GeForce 1050 Ti; it’s worser than proprietary driver at the moment.  bbswitch is non-viable too; it suspend the card on boot (if `nvidia` is blacklisted) and restoring it back again when needed doesn’t work.  Without the blacklisting, it suspends the card only momentarily; it’s always ON once desktop loads.
 
 [Bumblebee]: https://bumblebee-project.org/
-[failed GPU init]: https://wiki.archlinux.org/index.php/Bumblebee#Failed_to_initialize_the_NVIDIA_GPU_at_PCI:1:0:0_(Bumblebee_daemon_reported:_error:_[XORG]_(EE)_NVIDIA(GPU-0))
+[prime - archwiki]: https://wiki.archlinux.org/title/PRIME
+
+# USB Port Speed
+
+If your machine has both USB 2 and 3 ports and boot logs show this warning
+
+{{< highlight basic >}}
+kernel: usb: port power management may be unreliable
+{{< /highlight >}}
+
+there’s a good chance of a USB 3+ device (5000 Mbps) running with USB 2 (480 Mbps) speed.  Refer [UnixSE][] and [ArchLinux forums][arch-usb3-issue] for details.  The problem maps to inability of the kernel to determine a port’s peer and set correct power.  If that’s the case find out the port and manually suspend it; [refer][baeldung-usb-power]
+
+{{< highlight basic >}}
+echo "0" > "/sys/bus/usb/devices/1-3:1.0/power/autosuspend_delay_ms"
+echo "auto" > "/sys/bus/usb/devices/1-3:1.0/power/control"
+{{< /highlight >}}
+
+[unixse]: https://unix.stackexchange.com/q/323692/30580
+[arch-usb3-issue]: https://bbs.archlinux.org/viewtopic.php?id=219465
+[baeldung-usb-power]: https://www.baeldung.com/linux/control-usb-power-supply
 
 # (Pulse) Audio
 
@@ -368,8 +360,12 @@ Start with `systemctl enable laptop-mode.service`.  Then set the following param
 CONTROL_INTEL_SATA_POWER="1"
 
 # /etc/laptop-mode/conf.d/lcd-brightness.conf
-BRIGHTNESS_OUTPUT="/sys/class/backlight/intel_backlight/brightness"
+# Follow comments to find brightness <value>s
 CONTROL_BRIGHTNESS=1
+BATT_BRIGHTNESS_COMMAND="echo 1500"
+LM_AC_BRIGHTNESS_COMMAND="echo 2250"
+NOLM_AC_BRIGHTNESS_COMMAND="echo 2250"
+BRIGHTNESS_OUTPUT="/sys/class/backlight/intel_backlight/brightness"
 
 # /etc/laptop-mode/laptop-mode.conf
 BATT_HD_POWERMGMT=200
