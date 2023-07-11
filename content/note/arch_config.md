@@ -609,6 +609,24 @@ I got both of these from [Unix.StackExchange][monospace-everywhere].
 [Font Awesome]: https://fontawesome.com/
 [Devicons]: http://vorillaz.github.io/devicons
 
+# Multi-monitor Setup
+
+Targus DisplayLink DOCK180USZ setup was easy; followed first few steps of [DisplayLink - ArchWiki][] and fiddled with _Display_ settings.
+
+{{< highlight basic >}}
+yay -S evdi displaylink linux-headers
+systemctl enable --now displaylink.service
+cat > /etc/X11/xorg.conf.d/20-evdi.conf
+Section "OutputClass"
+	Identifier "DisplayLink"
+	MatchDriver "evdi"
+	Driver "modesetting"
+	Option "AccelMethod" "none"
+EndSection
+{{< /highlight >}}
+
+[displaylink - archwiki]: https://wiki.archlinux.org/title/DisplayLink
+
 # User land
 
 Miscellaneous user land customizations and tune-ups:
