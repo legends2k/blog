@@ -279,11 +279,11 @@ echo "auto" > "/sys/bus/usb/devices/1-1:1.0/power/control"
 [arch-usb3-issue]: https://bbs.archlinux.org/viewtopic.php?id=219465
 [baeldung-usb-power]: https://www.baeldung.com/linux/control-usb-power-supply
 
-# (Pulse) Audio
+# Audio (Pipewire + Wireplumber = 🎵💘)
 
-Just install `pulseaudio`, `pulseaudio-alsa`, `pavucontrol` and `xfce4-pulseaudio-plugin`; little to no configuring seems to be needed to get audio (out) working.  I set _Built-in Audio_ to _Analog Stereo Duplex_ since this laptop has stereo speakers, a built-in microphone and a 3.5 mm jack conducting both line in and out (stereo).
+Install `pipewire-alsa`, `pipewire-pulse`, `pavucontrol` and `xfce4-pulseaudio-plugin`; little to no configuring needed to get audio working.
 
-The microphone needed work even with right settings in `pavucontrol`.  Install `alsa-utils` and launch `alsamixer`.  Make sure to choose the right device, set appropriate `CAPTURE` level and un-mute.  Test with `arecord -f dat -d 5 test.wav && aplay test.wav`.
+After installing `pipewire-alsa`, my bluetooth headphones with hands-free microphone, earlier showing up only as Audio-Out device, exposes UI to pick between A2DP Sink and HSP/HFP profiles in _Bluetooth Manager_!  Switching to the latter profile shows a new Audio-In device under `pavucontrol` :)
 
 # Bluetooth
 
