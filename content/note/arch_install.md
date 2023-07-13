@@ -313,6 +313,42 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 [aw-microcode]: https://wiki.archlinux.org/title/Microcode
 
+# Hibernation
+
+Hibernation needs a resume parameter in kernel with the disk to retrieve data from.  Check swap partition UUID:
+
+{{< highlight basic >}}
+swaplabel /dev/sda6
+{{< /highlight >}}
+
+Edit `/etc/default/grub` and append the parameter
+
+{{< highlight cfg >}}
+GRUB_CMDLINE_LINUX_DEFAULT="... resume=UUID=YOUR-SWAP-PARTITION-UUID"
+{{< /highlight >}}
+
+You also need the `resume` hook (a script run on the [initial ramdisk][]) in `/etc/mkinitcpio.conf`; ensure it’s added _after_ `udev` and `lvm2`; I added it almost the last:
+
+{{< highlight cfg >}}
+HOOKS=(base udev .. lvm2 .. resume fsck)
+{{< /highlight >}}
+
+Generate the ramdisk image and GRUB’s configuration file:
+
+{{< highlight basic >}}
+mkinitcpio -P
+
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+{{< /highlight >}}
+
+Hibernate (from Xfce4 panel’s Action Button) and resume should work now.  I’d like systemctl’s suspend-then-hibernate but [Xfce4 _Power Manager_ inhibits systemd’s ACPI settings][acpi-inhibit].  I’ll live with this for now than fiddle more 😅
+
+[acpi-inhibit]: https://wiki.archlinux.org/title/Power_management#Power_managers
+[initial ramdisk]: https://en.wikipedia.org/wiki/Initial_ramdisk
+
+# Up next...
+
 This completes my Arch Linux installation process.  The newly installed Arch now has be configured and maintained 😊.  The [Arch Linux Configuration][] article covers
 
 * Xfce4 desktop environment

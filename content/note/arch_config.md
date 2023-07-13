@@ -281,7 +281,7 @@ echo "auto" > "/sys/bus/usb/devices/1-1:1.0/power/control"
 
 # Audio (Pipewire + Wireplumber = 🎵💘)
 
-Install `pipewire-alsa`, `pipewire-pulse`, `pavucontrol` and `xfce4-pulseaudio-plugin`; little to no configuring needed to get audio working.
+Install `pipewire-alsa`, `pipewire-pulse`, `pavucontrol` and `xfce4-pulseaudio-plugin`; no fiddling was needed to get audio working.
 
 After installing `pipewire-alsa`, my bluetooth headphones with hands-free microphone, earlier showing up only as Audio-Out device, exposes UI to pick between A2DP Sink and HSP/HFP profiles in _Bluetooth Manager_!  Switching to the latter profile shows a new Audio-In device under `pavucontrol` :)
 
@@ -314,7 +314,7 @@ useradd -G lp $USER
 Enable and start `bluetooth.service`.
 
 {{< highlight basic >}}
-systemctl --now enable bluetooth.service
+systemctl enable --now bluetooth.service
 {{< /highlight >}}
 
 Though this is enough, at every login, there’d be an annoying prompt for the root password, to enable bluebooth.  Add this to `/etc/polkit-1/rules.d/51-blueman.rules` to not prompt for users in the `sudo` group as [detailed in the Wiki][Blueman_permissions]:
@@ -337,10 +337,6 @@ If after every login bluetooth is auto-powered ON; this is due to Blueman’s _P
 <!-- TODO: update this in Arch Wiki - https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot -->
 
 The default Obex push directory is set to `~/.cache/obex`, named `Root`; change it to your convenience in _Local services_ -> _Transfer_.
-
-## Bluetooth Speakers
-
-Install `pulseaudio-bluetooth` and restart pulseaudio with `-k`.  Make sure Bluetooth is enabled (not soft blocked) through `rkfill`.  From _blueman_’s GUI, connect to your bluetooth speaker.  Everything should work once audio output device is switched.
 
 [Blueman_permissions]: https://wiki.archlinux.org/index.php/Blueman#Permissions
 [Bluetooth No Auto-ON]: https://www.linux.com/forums/networking/solved-bluez-543-have-bluetooth-disabled-boot
