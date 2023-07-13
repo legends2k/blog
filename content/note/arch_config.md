@@ -279,18 +279,19 @@ echo "auto" > "/sys/bus/usb/devices/1-1:1.0/power/control"
 [arch-usb3-issue]: https://bbs.archlinux.org/viewtopic.php?id=219465
 [baeldung-usb-power]: https://www.baeldung.com/linux/control-usb-power-supply
 
-# Audio (Pipewire + Wireplumber = 🎵💘)
+# Audio
 
-Install `pipewire-alsa`, `pipewire-pulse`, `pavucontrol` and `xfce4-pulseaudio-plugin`; no fiddling was needed to get audio working.
+Install `pipewire-alsa`, `pipewire-pulse`, `pavucontrol` and `xfce4-pulseaudio-plugin`; no fiddling was needed to get audio working.  Pipewire + Wireplumber = 🎵💘!
 
-After installing `pipewire-alsa`, my bluetooth headphones with hands-free microphone, earlier showing up only as Audio-Out device, exposes UI to pick between A2DP Sink and HSP/HFP profiles in _Bluetooth Manager_!  Switching to the latter profile shows a new Audio-In device under `pavucontrol` :)
+After installing `pipewire-alsa`, my bluetooth headphones with handsfree microphone, earlier showing up only as Audio-Out device, exposes UI to pick between A2DP Sink and HSP/HFP profiles in _Bluetooth Manager_!  Switching to the latter profile shows a new Audio-In device under `pavucontrol` :)
 
 # Bluetooth
 
 Install `bluez`, `bluez-utils` and `blueman` -- for a decent GTK+ bluetooth manager with an applet.  Verify if bluetooth hardware is not hard blocked but is soft blocked.
 
 {{< highlight basic >}}
-> rfkill list highlight
+rfkill list highlight
+
 1: ideapad_bluetooth: Bluetooth
 	Soft blocked: yes
 	Hard blocked: no
@@ -337,6 +338,12 @@ If after every login bluetooth is auto-powered ON; this is due to Blueman’s _P
 <!-- TODO: update this in Arch Wiki - https://wiki.archlinux.org/index.php/Bluetooth#Auto_power-on_after_boot -->
 
 The default Obex push directory is set to `~/.cache/obex`, named `Root`; change it to your convenience in _Local services_ -> _Transfer_.
+
+To show battery charge in bluetooth devices like headphones (as passive desktop notifications too) enable D-Bus experimental features in `/etc/bluetooth/main.conf`:
+
+{{< highlight cfg >}}
+Experimental = true
+{{< /highlight >}}
 
 [Blueman_permissions]: https://wiki.archlinux.org/index.php/Blueman#Permissions
 [Bluetooth No Auto-ON]: https://www.linux.com/forums/networking/solved-bluez-543-have-bluetooth-disabled-boot
