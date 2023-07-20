@@ -7,17 +7,7 @@ date = "2017-02-24T12:34:07+05:30"
 Open Source
 ===========
 
-Spirit of C++
--------------
-A presentation for the non-C++ programmer to build a healthy C++ mental model. High-level details are emphasized over low-level ones; it takes the approach that when learning something new, having a high-level and simple view leads to a healthy model.
-
-[View it directly in your browser][spirit-of-cpp].
-
-**Used**: C++, HTML, CSS, JS ♦ Cross-platform  
-**Link**: https://github.com/legends2k/spirit-of-cpp/  
-**Since** 2019
-
-[spirit-of-cpp]: https://legends2k.github.io/spirit-of-cpp
+See Also: [WebGL 2 demos][demos]
 
 3D Workouts
 -----------
@@ -32,42 +22,55 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 * Path finding in a navigation mesh
   - Funnel narrowing (string-pulling) algorithm for optimized, believable paths
 
-**Used**: C++, SIMD, shader-based OpenGL 3+, GLSL ♦ Cross-platform  
-**Homepage**: https://bitbucket.org/rmsundaram/tryouts/overview  
+**Used**: C++, SIMD, shader-based OpenGL 3+, GLSL ♦ Cross-platform
+**Homepage**: https://bitbucket.org/rmsundaram/tryouts/overview
 **Since** 2013
 
 [board-calculations]: https://bitbucket.org/rmsundaram/tryouts/src/master/CG/Calculations
+[demos]: https://legends2k.github.io/projects/demos/
 
 Field of Vision System
 ----------------------
   An optimized field of view and line of sight system for visibility queries in strategy games; it minimizes intersection tests so that it is usable in a game where multiple AI agents would need their FoV computed every frame.  I worked out the math in designing the broad and narrow-phase culling; made a proof of concept implementation of the system in HTML5 canvas/JavaScript — viewable and debug-able in a browser.  The complete design with illustrations and the geometry involved is documented in excruciating detail; this document shows the level of understanding and intuition I have on such topics.
 
-**Used**: AI, Math, Geometry, HTML5, JavaScript ♦ Cross-platform  
-**Link**: https://legends2k.github.io/2d-fov  
+**Used**: AI, Math, Geometry, HTML5, JavaScript ♦ Cross-platform
+**Link**: https://legends2k.github.io/2d-fov
 **Since** 2016
 
 Geometric Transforms 101
 ------------------------
   A [GameDev.net featured](http://www.gamedev.net/page/resources/_/technical/math-and-physics/2d-transforms-101-r4212) interactive tutorial on geometric transformations for programmers favouring intuition over mathematical rigour; concepts explained are illustrated with animation.  In addition to elementary transforms on points, it also treats coordinate system and hierarchical transforms; shows mappings from active and passive viewpoints.  It can be viewed on a browser and in any form factor, as it only uses HTML5 and vector graphics.
 
-**Used**: Linear Algebra, Trigonometry, SVG, HTML, CSS, JS ♦ Cross-platform  
-**Link**: https://github.com/legends2k/2d-transforms-101/  
+**Used**: Linear Algebra, Trigonometry, SVG, HTML, CSS, JS ♦ Cross-platform
+**Link**: https://github.com/legends2k/2d-transforms-101/
 **Since** 2015
+
+Spirit of C++
+-------------
+A presentation for the non-C++ programmer to build a healthy C++ mental model. High-level details are emphasized over low-level ones; it takes the approach that when learning something new, having a high-level and simple view leads to a healthy model.
+
+[View it directly in your browser][spirit-of-cpp].
+
+**Used**: C++, HTML, CSS, JS ♦ Cross-platform
+**Link**: https://github.com/legends2k/spirit-of-cpp/
+**Since** 2019
+
+[spirit-of-cpp]: https://legends2k.github.io/spirit-of-cpp
 
 Artha
 -----
   A handy offline thesaurus originally written on GNU/Linux using WordNet as its database, with distinct features like global shortcut key look-up, passive desktop notification and wild-card search; most distributions' repositories have it.  It was later ported to Windows and Windows Phone; it was rated 5 stars in [AppStore](https://www.microsoft.com/en-US/store/Apps/Artha-The-Open-Thesaurus/9NBLGGH0DBNB).
 
-**Used**: C, C#, GTK+, X11, XAML, GCC, VC++, Autotools ♦ GNU/Linux, Windows, Windows Phone  
-**Link**: https://artha.sourceforge.net/  
+**Used**: C, C#, GTK+, X11, XAML, GCC, VC++, Autotools ♦ GNU/Linux, Windows, Windows Phone
+**Link**: https://artha.sourceforge.net/
 **Since** 2009
 
 Puyo Puyo
 ---------
   A tile-matching puzzle game playable on a terminal in any platform; written in modern C++ with portability and minimalism in mind.  The engine code, handling core logic and input, is an independent module that may be plugged to any front-end.  A command-line interface, using ncurses, was later added to make a cross-platform game out of the engine.
 
-**Used**: C++ 14, ncurses ♦ Cross-platform  
-**Link**: https://bitbucket.org/rmsundaram/tryouts/src/master/Puyo/  
+**Used**: C++ 14, ncurses ♦ Cross-platform
+**Link**: https://bitbucket.org/rmsundaram/tryouts/src/master/Puyo/
 **Since** 2012
 
 --------------------
