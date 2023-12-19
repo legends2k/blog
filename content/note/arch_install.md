@@ -88,7 +88,7 @@ SSDs are [not recommended](https://unix.stackexchange.com/a/89230) for volatile 
 
 **Note**: `/boot` needn’t be in a separate partition while `/boot/efi` should be; the [EFI System Partition][esp] partition is mounted in `/boot/efi`.
 
-Partition with `cfdisk` and verify them with `lsblk` or `fdisk -l`.  Choose _Linux filesystem_ for _Partition Type_ for everything except swap and LVM.  Mind that these partitions are the ones created outside the LVM; if you're going to manage all your Linux partitions with LVM, just create one partition and set its type to _Linux LVM_ in `fdisk`.
+Partition with `cfdisk` and verify them with `lsblk` or `fdisk -l`.  Choose _Linux filesystem_ for _Partition Type_ for everything except swap and LVM.  Mind that these partitions are the ones created outside the LVM; if you're going to manage all your Linux partitions with LVM, just create one partition (in addition to [ESP][]) and set its type to _Linux LVM_ in `fdisk`.
 
 My final scheme (sublist intelligible after reading the next section)
 
@@ -122,6 +122,21 @@ Later on, `pacstrap` would automatically add the `root=` kernal parameter to map
 {{< highlight basic >}}
 linux /vmlinuz-linux root=/dev/mapper/lvmg1-root rw quiet
 {{< /highlight >}}
+
+
+### Integrate `/boot` to LVM
+
+I decided to drop the separate partition to house `/boot` as it’s needless as GRUB supports booting the kernel from an LVM LV.  The exercise was quick and easy:
+
+1. Umount `/boot/efi` (`/dev/sda1`) and `/boot` (`/dev/nvme0n1p5`)
+2. Mount `/dev/nvme0n1p5` to `/mnt`
+3. Copy to boot in root partition `rsync -aqAXHS /mnt/ /boot`
+4. Drop `/dev/nvme0n1p5` from `/etc/fstab`
+5. Reboot (and everything works as expected)
+6. Add an LVM PV `pvcreate /dev/nvme0n1p5`
+7. Extend LVM VG `vgextend lvmg1 /dev/nvme0n1p5`
+8. Extend LVM LV with file system resize: `lvextend -l+100%FREE -r lvmg1/home`
+    - ext4 has on-line resizing -- while mounted -- capability; worked like a charm
 
 ## Format
 
