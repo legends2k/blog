@@ -7,15 +7,15 @@ toc = true
 +++
 
 Flash memories comes in different forms and use different interfaces to connect.  Pen drives use [flash memory][] while
-SSDs use [solid state storage][sss].   SSDs can be interfaced with your [mobo][] either through SATA or PCIe; M.2 is
-actually a form factor (standard stating about the size and form of such drives which are small and rectangular; looks
-like RAM modules compared to the 2.5 inch drives) and is orthogonal to the interface.  More importantly, there are M.2
-drives connecting over SATA (and are typically slower); you should go for PCIe interfaced M.2 drives if you want speed.
-These drives work using the [NVMe protocol][nvme]; [refer][ssd-diffs].
+SSDs use [solid state storage][sss].  SSDs can be interfaced with your [mobo][] either through AHCI (SATA) or PCIe; M.2
+is actually a form factor (standard stating about the size and form of such drives which are small and rectangular;
+looks like RAM modules compared to the 2.5 inch drives) and is orthogonal to the interface.  More importantly, there are
+M.2 drives connecting over AHCI (typically slower); go for PCIe interfaced M.2 drives if you want speed.  These drives
+work using the [NVMe protocol][nvme]; for details [refer][ssd-diffs].
 
-I recently bought a 500 GB NVMe drive for my AMD Ryzen 5600 desktop which didn’t realize its full potential, thanks to
-the spinning 3.5 inch HDD which was audibly grinding most of the time.  Now I love the software setup on this machine,
-with Arch at the helm and everything setup the way I want.
+I recently bought a 500 GB NVMe drive for my AMD Ryzen 5600 desktop.  Thanks to the spinning 3.5 inch HDD which was
+audibly grinding most of the time, the machine didn’t realize its full potential.  Now I love the software setup on this
+machine, with Arch at the helm and everything setup the way I want.
 
 This is a write-up on moving the OS setup from the HDD to SSD; it uses Linux Logical Volume Manager (LVM2) to
 flexibility (lossless partition sizes updates).
@@ -64,7 +64,7 @@ nvme fw-log /dev/nvme0
 
 [LBA]: https://en.wikipedia.org/wiki/Logical_block_addressing
 
-# Partition with `fdisk`
+# Fixed Partitioning
 
 EFI needs its own partition (ESP) for at least 512 MiB [\[3\]](#references).  The rest is made into one partition; note the
 types:
@@ -105,7 +105,7 @@ Volume ID is 387acba5, volume label EFI.
 
 Formatting the _Linux LVM_ partition is redundant as we’ll make logical volumes on it and anyway format them later.
 
-# Logical Volumes
+# Logical Partitioning
 
 Usual drill: create physcial volume (PV), volume group (VG) and logical volumes (LV) under VG.  For this case PV is just
 the NVMe device and there’s just going to be one VG; refer [\[4\]](#references) for various other configurations.
@@ -137,6 +137,8 @@ nvme0n1
   └─nvme-media
 {{< /highlight >}}
 
+## File System
+
 Format logical volumes individually with required filesystems.  Ensure that reserved space isn’t too much:
 
 {{< highlight basic >}}
@@ -157,7 +159,7 @@ tune2fs -r 524288 /dev/mapper/nvme-media
 
 Enable `fast_commit` [\[6\]](#references): `tune2fs -O fast_commit /dev/mapper/nvme-root` and verify.
 
-# Copy Data
+# Copy Data to SSD
 
 Boot into SystemRescue Live OS from a USB; I simply copied all files in its ISO to a FAT32 USB; UEFI boot simply looks for a `EFI` directory.
 Label it `RESUCE1002` as the loader looks for a filesystem by this label to get its data once booted; without this you'd still get a shell but
@@ -176,7 +178,7 @@ The parameters come from ArchWiki; refer [\[7\]](#references).
 
 # Fix `/etc/fstab`
 
-Use `blkid` and fix the new partition UUIDs. Using `genfstab` is an option but I fixed it manually.
+Use `blkid` and fix UUIDs of new partitions. Using `genfstab` is an option but I fixed it manually.
 
 # Reinstall GRUB
 
