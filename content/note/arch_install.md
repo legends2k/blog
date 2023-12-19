@@ -153,7 +153,7 @@ mkdir /mnt/boot/efi
 mount /dev/nvme0n1p1 /mnt/boot/efi
 {{< /highlight >}}
 
-`genfstab` is a Arch script that setups up `/etc/fstab` as per the current mounts; it would later detect mounted file systems and swap space.  Since we're on a UEFI + GPT boot scheme, mount the EFI partition too for `genfstab` and `os-prober` to pick up Windows for GRUB to list Windows too.  This is the same partition as used by Windows for booting, mounted as `/mnt/boot/efi`.  Same goes for other Windows partitions that needs to be listed in `fstab` for auto-mounting in the new OS.  Otherwise it has to be [done manually](https://wiki.archlinux.org/index.php/Fstab) with Emacs and `lsblk -f` or `blkid`.
+`genfstab` is a Arch script that setups up `/etc/fstab` as per the current mounted file systems and swap space.  Since we're on a UEFI + GPT boot scheme, mount the EFI partition too for `genfstab` and GRUB2 (`os-prober`) to pick up Windows.  This is the same partition as used by Windows for booting, mounted as `/mnt/boot/efi`.  Same goes for other Windows partitions that needs to be listed in `fstab` for auto-mounting in the new OS.  Otherwise it has to be [done manually](https://wiki.archlinux.org/index.php/Fstab) with Emacs and `lsblk -f` or `blkid`.
 
 #### Reserved Space
 
@@ -195,6 +195,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 {{< /highlight >}}
 
 Usually `/var` is given additional options `nodev,nosuid,noexec`; while `/home` is marked with `nodev` for [tighter security][why-nodev-nosuid].
+
+Check `/mnt/etc/fstab`, the table of filesystems and their mount points, the system refers for auto-mounting at every boot.
 
 [why-nodev-nosuid]: https://serverfault.com/q/547237/139619
 

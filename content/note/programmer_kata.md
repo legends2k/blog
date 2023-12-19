@@ -152,6 +152,10 @@ I’m a systems/middleware programmer, I’m partial to projects of those kinds.
 
 Again the biggest factor to success isn’t intelligence, it’s grit -- passion and perseverance for long term goals.  Learning and consistently getting better at the face of failures; [making failure your friend][failure-friend].
 
+# See Also
+
+1. [What should I program?](https://jamesmcm.github.io/blog/programming-projects/)
+
 
 [grit]: https://www.bakadesuyo.com/2012/11/secret-success-not-giving-up/
 [ripgrep]: https://github.com/BurntSushi/ripgrep

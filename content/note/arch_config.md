@@ -309,7 +309,7 @@ Create and add yourself to it.
 {{< highlight basic >}}
 groups $USER            # check if user already in lp
 groupadd lp
-useradd -G lp $USER
+usermod -aG lp $USER
 {{< /highlight >}}
 
 Enable and start `bluetooth.service`.
@@ -464,7 +464,7 @@ pacman -S --needed base-devel
 su
 EDITOR=/usr/bin/nano visudo    # uncomment sudo group
 groupadd sudo                  # if not already existing
-gpasswd -a sundaram sudo
+usermod -aG sudo $USER
 {{< /highlight >}}
 
 Now install Yay from AUR
@@ -630,6 +630,14 @@ EndSection
 
 [displaylink - archwiki]: https://wiki.archlinux.org/title/DisplayLink
 
+# Memory Card Write Access
+
+Add to `storage` group to get read-write, instead of read-only, access to SD cards.
+
+{{< highlight basic >}}
+usermod -aG storage $USER
+{{< /highlight >}}
+
 # User land
 
 Miscellaneous user land customizations and tune-ups:
@@ -638,6 +646,8 @@ Miscellaneous user land customizations and tune-ups:
     - `yay -S --needed texinfo`
     - `for f in /usr/share/info/*;  do install-info ${f} /usr/share/info/dir 2>/dev/null; done`
         + Unneeded ideally but texinfo’s `post_install()` doesn’t do it
+* plocate, findutils, binutils, util-linux, pax-utils (`lddtree`)
+    - `systemctl enable --now plocate-updatedb.timer`
 * Archive Manager
     - `yay -S --needed p7zip unzip unrar`
     - `xarchiver` GUI integrates well with Thunar

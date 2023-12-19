@@ -105,6 +105,7 @@ Super popular web comics on programming.  [explainXKCD.com][] details each comic
   - [Follow Boring Advice](http://nywkap.com/other/follow-boring-advice.html) is the meta-concept
 * [The Rise of “Worse is Better”](https://www.dreamsongs.com/RiseOfWorseIsBetter.html) argues how “worse-is-better” philosophy (followed by C and Unix) is better than “the-right-thing” (followed by Common Lisp); how former has better survival characteristics, etc.
 * [What Color is Your Function](https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/): explains how async programming has introduced two classes of functions which can’t be mixed
+  - [Red & blue functions are actually a good thing](https://blainehansen.me/post/red-blue-functions-are-actually-good/): counter point to above idea
 * [Write Games, Not Engines](https://geometrian.com/programming/tutorials/write-games-not-engines/index.php): writing games, and many of them, gives you enough insights eventually it distil reusable parts into an engine; don’t hurt yourself doing it the other way around
   - [Make Games Not Engines... to learn Engines](https://seanmiddleditch.com/makes-games-not-engines-to-learn-engines/)
 * [Teach Yourself Programming in Ten Years](http://norvig.com/21-days.html) - Peter Norvig’s excellent piece on practise
