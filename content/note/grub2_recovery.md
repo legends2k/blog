@@ -41,7 +41,7 @@ All is well now 😀
 
 # GRUB missing in UEFI’s NVRAM
 
-On an ArchLinux box (host) with UEFI + GPT setup, I’d to install Ubuntu on an external SSD, for a machine having legacy BIOS (target).  I booted host in _Legacy Boot_ mode and installed Ubuntu by marking the first primary partition on the SSD _bootable_; everything went well.  Rebooting showed GRUB on the SSD with both Ubuntu and ArchLinnux.  Since target machine won’t have Arch, I’d to turn off os-prober:
+On an ArchLinux box (host) with UEFI + GPT setup, I’d to install Ubuntu on an external SSD, for a machine having legacy BIOS (target).  I booted host in _Legacy Boot_ mode and installed Ubuntu by marking the first primary partition on the SSD _bootable_; everything went well.  Rebooting showed GRUB on the SSD with both Ubuntu and ArchLinnux.  Since target machine won’t have Arch, I’d to turn off os-prober and regenerate GRUB configuration file [^4]:
 
 {{< highlight basic >}}
 # cat >> /etc/default/grub
@@ -116,3 +116,4 @@ After the upgrade, the warning vanished and _Firmware Version_ reads `CC35` 😇
 [^1]: GRUB is present in _EFI Order_ since this was made after the recovery.
 [^2]: This is rather important; a legacy boot USB stick wouldn’t be bootable when _Boot Mode_ is UEFI.
 [^3]: This is important too; without chrooting file paths would be off.
+[^4]: Modern machines have `grub-mkconfig` instead of `update-grub`
