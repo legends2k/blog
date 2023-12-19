@@ -17,7 +17,7 @@ I recently bought a 500 GB NVMe drive for my AMD Ryzen 5600 desktop.  Thanks to 
 audibly grinding most of the time, the machine didn’t realize its full potential.  Now I love the software setup on this
 machine, with Arch at the helm and everything setup the way I want.
 
-This is a write-up on moving the OS setup from the HDD to SSD; it uses Linux Logical Volume Manager (LVM2) to
+This is a write-up on moving the OS setup from the HDD to SSD; it uses Linux Logical Volume Manager (LVM2) for
 flexibility (lossless partition sizes updates).
 
 [sss]: https://en.wikipedia.org/wiki/Solid-state_storage
