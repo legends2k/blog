@@ -20,5 +20,5 @@ jobs:
             --url https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_FILENAME/dispatches \
             --header "Accept: application/vnd.github.v3+json" \
             --header "Authorization: Bearer ${{ secrets.BLOG_GENERATE_SECRET }}" \
-            --data '{"ref":"master", "inputs": { "hugoVersion":"0.104.2" }}' \
+            --data '{"ref":"master", "inputs": { "hugoVersion":"0.120.1" }}' \
             --fail
