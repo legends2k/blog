@@ -302,10 +302,10 @@ Processor security patches are released by CPU manufacturers, to be released as 
 
 Check boot log (`journalctl -b0`) for CPU bugs messages
 
-```
+{{< highlight txt >}}
 MDS CPU bug present and SMT on, data leak possible. See https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/mds.html for more d>
 MMIO Stale Data CPU bug present and SMT on, data leak possible. See https://www.kernel.org/doc/html/latest/admin-guide/hw-vuln/process>
-```
+{{< /highlight >}}
 
 Refer [Microcode - ArchWiki][aw-microcode] to check if your processor has patches and perform necessary steps to install and load at boot.
 

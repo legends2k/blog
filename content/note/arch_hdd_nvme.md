@@ -7,28 +7,28 @@ toc = true
 +++
 
 Flash memories comes in different forms and use different interfaces to connect.  Pen drives use [flash memory][] while
-SSDs use [solid state storage][sss].  SSDs can be interfaced with your [mobo][] either through AHCI (SATA) or PCIe; M.2
+SSDs use [solid state storage][sss].  SSDs can be interfaced with your _mobo_[^fn1] either through SATA or PCIe; M.2
 is actually a form factor (standard stating about the size and form of such drives which are small and rectangular;
-looks like RAM modules compared to the 2.5 inch drives) and is orthogonal to the interface.  More importantly, there are
-M.2 drives connecting over AHCI (typically slower); go for PCIe interfaced M.2 drives if you want speed.  These drives
-work using the [NVMe protocol][nvme]; for details [refer][ssd-diffs].
+looks like RAM modules compared to the 2.5 inch drives), connecting to your mobo via PCIe with the logical interface options of AHCI (legacy) or NVMe.  So you might encounter
+M.2 drives connecting over AHCI (typically slower); check if your M.2 drives interface over NVMe if you want speed.  For disambiguation of these terms [refer][ssd-diffs].
 
-I recently bought a 500 GB NVMe drive for my AMD Ryzen 5600 desktop.  Thanks to the spinning 3.5 inch HDD which was
+I recently bought a 500 GB NVMe drive for my AMD Ryzen 5600 desktop.  Thanks to the spinning 3.5 inch HDD, which was
 audibly grinding most of the time, the machine didn’t realize its full potential.  Now I love the software setup on this
 machine, with Arch at the helm and everything setup the way I want.
 
-This is a write-up on moving the OS setup from the HDD to SSD; it uses Linux Logical Volume Manager (LVM2) for
-flexibility (lossless partition sizes updates).
+This is a write-up on moving the OS setup from the HDD (with logical volumes of LVM2 [for flexibility][lvm-flex]) to SSD.
 
 [sss]: https://en.wikipedia.org/wiki/Solid-state_storage
 [flash memory]: https://en.wikipedia.org/wiki/Flash_memory
 [mobo]: https://en.wikipedia.org/wiki/Motherboard
-[nvme]: https://en.wikipedia.org/wiki/NVM_Express
 [ssd-diffs]: https://www.pcworld.com/article/558324/nvme-vs-m-2-vs-sata-ssd-whats-the-difference.html
+[lvm-flex]: {{< relref "lvm_resize.md" >}}
+
+[^fn1]: slang for motherboard
 
 # Setup NVMe LBA
 
-Install NVMe CLI (`nvme`) for setting the right [LBA][] size; it can do a bunch of other things:
+Install NVMe CLI (`nvme`) for setting the optimal [LBA][] size:
 
 {{< highlight basic >}}
 yay -S --needed nvme-cli
