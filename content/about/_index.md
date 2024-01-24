@@ -8,7 +8,7 @@ I’m a graphics programmer; I enjoy learning the math behind a domain — how i
 
 > I live in Emacs and love the command-line.
 
-I have enjoyed working on an [array of projects](/projects).  Here’s [my CV](https://bbcdn.githack.com/rmsundaram/tryouts/raw/bba90197e2958d08cc11da31aca34237e5f29418/Misc/resume/resume.html).
+I have enjoyed working on an [array of projects](/projects).  Here’s [my CV](https://bbcdn.githack.com/rmsundaram/tryouts/raw/dev/Misc/resume/resume.html).
 
 I can be reached at _&#108;&#x65;&#x67;&#x65;&#110;&#100;&#x73;&#50;&#x6b;&#64;&#x79;&#x61;&#104;&#x6f;&#x6f;&#46;&#x63;&#x6f;&#x6d;_.
 
