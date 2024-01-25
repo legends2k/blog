@@ -6,7 +6,7 @@ date = "2017-02-24T12:34:07+05:30"
 
 # Open Source
 
-See Also: [WebGL 2 demos][demos]
+[Live 3D Demos in WebGL 2][demos]
 
 ## 3D Workouts
 
@@ -21,24 +21,26 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 
 **Used**: C++, SIMD, shader-based OpenGL 3+, GLSL ♦ Cross-platform
 
-**Homepage**: https://bitbucket.org/rmsundaram/tryouts/overview
+**Link**: https://bitbucket.org/rmsundaram/tryouts/overview
 
 [board-calculations]: https://bitbucket.org/rmsundaram/tryouts/src/master/CG/Calculations
 [demos]: https://legends2k.github.io/projects/demos/
 
 ## Field of Vision System
 
-  An optimized field of view and line of sight system for visibility queries in strategy games; it minimizes intersection tests so that it is usable in a game where multiple AI agents would need their FoV computed every frame.  I worked out the math in designing the broad and narrow-phase culling; made a proof of concept implementation of the system in HTML5 canvas/JavaScript — viewable and debug-able in a browser.  The complete design with illustrations and the geometry involved is documented in excruciating detail; this document shows the level of understanding and intuition I have on such topics.
+  An optimized field of view and line of sight system for visibility queries in strategy games; it minimizes intersection tests so that it is usable in a game where multiple AI agents would need their FoV computed every frame.  I worked out the math in designing the broad and narrow-phase culling; made a proof of concept implementation of the system in HTML5 canvas/JavaScript — viewable and debug-able in a browser.  The complete design with illustrations and the geometry involved is documented in excruciating detail; [this document][2d-fov-doc] shows the level of understanding and intuition I have on such topics.
 
 **Link**: [Live Demo](https://legends2k.github.io/2d-fov)
 
 **Used**: Geometry, HTML5/Canvas, JavaScript ♦ Cross-platform
 
+[2d-fov-doc]: https://legends2k.github.io/2d-fov/design.html
+
 ## Navmesh Pather
 
   An optimized navigation mesh based path finding system for strategy games.  It uses funnel narrowing (string-pulling) algorithm for optimized, realistic paths.
 
-**Link**: [Live Demo](https://bbcdn.githack.com/rmsundaram/tryouts/raw/321af903903bdf33dbaf8b68e1ebe8753016d06a/CG/WebGL/NavmeshPather/centroid/level.html)
+**Link**: [Live Demo](https://bbcdn.githack.com/rmsundaram/tryouts/raw/dev/CG/WebGL/NavmeshPather/centroid/level.html)
 
 **Used**: Geometry, Graph, HTML5/Canvas, JavaScript ♦ Cross-platform
 
@@ -52,7 +54,9 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 
 ## Spirit of C++
 
-A presentation for the non-C++ programmer to build a healthy C++ mental model. High-level details are emphasized over low-level ones; it takes the approach that when learning something new, having a high-level and simple view leads to a healthy model.
+A presentation for the non-C++ programmer to build a healthy C++ mental model. High-level details are emphasized over low-level ones; it takes the approach of demonstrating high-level and simple ideas leading to a healthy model when learning something new.  The larger C++ community [received it well][spirit-reddit] too.
+
+I've trained multiple teams in Microsoft with this in [my C++ bootstrap workshops][inker].
 
 [View it directly in your browser][spirit-of-cpp].
 
@@ -61,6 +65,8 @@ A presentation for the non-C++ programmer to build a healthy C++ mental model. H
 **Used**: C++, HTML, CSS, JS ♦ Cross-platform
 
 [spirit-of-cpp]: https://legends2k.github.io/spirit-of-cpp
+[spirit-reddit]: https://www.reddit.com/r/cpp/comments/da4xrd/spirit_of_c/
+[inker]: https://github.com/sundaramramaswamy/inker
 
 ## Artha
 
@@ -86,22 +92,30 @@ A presentation for the non-C++ programmer to build a healthy C++ mental model. H
 
 ## Microsoft
 
-### PDF Engine
-
-Authored the annotations component of the PDF rendering engine used by the Edge browser and the store app. Reader.  Additionally I take care of print and parts of the rendering subsystem involving transparency (compositing and blending).
-
-**Used**: C++, Direct2D ♦ Windows 8+
-
 ### WGLES
 
 Conceptualized and implemented the texturing subsystem on a roadmap project implementing the OpenGL ES specification using Direct3D.
 
 **Used**: C++, Compressed Textures (DDS), OpenGL ES 2, Direct3D 11 ♦ Windows 8
 
+### Edge on macOS
+
+I owned the technical development of macOS-specific feature design and build.  My team implemented the [tab scrubber and media controller experience for MacBook Pro Touch Bar which was well-received][touchbar-blog] improved the browser [DAU][] numbers by 3%.
+
+**Used**: Objective-C++, Cocoa, AppKit, Core Animation ♦ macOS
+
+[touchbar-blog]: https://techcommunity.microsoft.com/t5/articles/try-the-revamped-touch-bar-experience-on-microsoft-edge-on-mac/m-p/1061372
+[dau]: https://en.wikipedia.org/wiki/Active_users
+
+### PDF Engine
+
+Authored the _Annotations_ subsystem of the PDF rendering engine used by the Edge browser.  Parsing, building document elements, rendering and printing of annotations was my responsibility.  Additionally I took care of PDF print, shading patterns and parts of the rendering subsystem involving transparency (compositing and blending).
+
+**Used**: C++, WinAPI, Direct2D, Chromium ♦ Windows
 
 ## Electronic Arts
 
-### 2D Game Engine
+### 2D Game Engine / C++ EA SDK
 
 Authored a 2D game engine and associated tools for artists to work on sprites and resource packing.  The engine abstracted differences amongst WindowsMobile devices and exposed a common feature set for game teams to work on.  Its basic features like image drawing to advanced ones like animation and blending were implemented from scratch.  It sported effects like on-the-fly grey scaling and parallax scrolling.  Ported J2ME (Java) game code of Jewel Quest III and Sims 2 Castaway to WindowsMobile (C++) using said engine.
 
