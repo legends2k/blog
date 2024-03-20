@@ -19,6 +19,7 @@ Renowned hacker[^1].  He’s written a lot about Unix philosophy including [_The
     - [FAQs on Hackers](http://www.catb.org/esr/faqs/): follow-ups on doubts you might have on above
 * [How to Ask Questions The Smart Way](http://catb.org/~esr/faqs/smart-questions.html): please read this if you haven’t the experience of asking (good) questions; not just via digital mediums
     - [Short, Self Contained, Correct (Compilable), Example](http://www.sscce.org/): come up with this before asking programming questions
+    - [Help Vampires](https://slash7.com/2006/12/22/vampires/)
 * [Compactness and Orthogonality](http://www.catb.org/esr/writings/taoup/html/ch04s02.html): two very important concepts for programmers and architects
 
 [taoup]: http://www.catb.org/esr/writings/taoup/html/index.html

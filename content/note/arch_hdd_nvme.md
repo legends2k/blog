@@ -178,7 +178,7 @@ The parameters come from ArchWiki; refer [\[7\]](#references).
 
 # Fix `/etc/fstab`
 
-Use `blkid` and fix UUIDs of new partitions. Using `genfstab` is an option but I fixed it manually.
+Use `blkid` and fix UUIDs of new partitions. Using `genfstab` is an option but I fixed them manually.
 
 # Reinstall GRUB
 
