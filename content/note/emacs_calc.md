@@ -44,7 +44,8 @@ I use the GNU [Emacs Calc][], an [RPN][] calculator, exclusively unless I’m aw
 ## Misc
 
 * Integer divide quotient / reminder: `\` / `%`
-* Floor, Trunc, Ceil, Round: `F`, `I R`, `I F`, `R`
+  - **Note**: floors (rounds → -∞) unlike the truncating _C_ integer division (rounds → 0)
+* Floor, Truncate, Ceil, Round: `F`, `I R`, `I F`, `R`
 * Vector
   - (Euclidean) Length / l-2 norm: `A`
   - Dot / Cross products: `*` / `V C`
