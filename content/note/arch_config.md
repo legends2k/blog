@@ -646,8 +646,9 @@ Miscellaneous user land customizations and tune-ups:
     - `yay -S --needed texinfo`
     - `for f in /usr/share/info/*;  do install-info ${f} /usr/share/info/dir 2>/dev/null; done`
         + Unneeded ideally but texinfo’s `post_install()` doesn’t do it
-* plocate, findutils, binutils, util-linux, pax-utils (`lddtree`)
-    - `systemctl enable --now plocate-updatedb.timer`
+* plocate, findutils, binutils, util-linux, pax-utils (`lddtree`), pkgfile, man-db
+    - `systemctl enable --now plocate-updatedb.timer pkgfile-update.timer man-db.timer`
+    - Check timers: `systemctl list-timers`
 * Archive Manager
     - `yay -S --needed p7zip unzip unrar`
     - `xarchiver` GUI integrates well with Thunar
