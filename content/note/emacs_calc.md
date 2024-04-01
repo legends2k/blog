@@ -6,10 +6,11 @@ tags = [ "tech", "emacs", "tools" ]
 mathjax = true
 +++
 
-I use the GNU [Emacs Calc][], an [RPN][] calculator, exclusively unless I’m away from a computer; as a programming, scientific and general calculator.  The manual documents all features extensively, with examples too; this is my cheat sheet for my oft-used functions.
+I use the GNU [Emacs Calc][], an [RPN][] calculator, exclusively unless I’m away from a computer; as a programming, scientific and general calculator.  This is my cheat sheet for my oft-used functions.  There’s also a printable, broad-coverage [official reference card][calc cheat] (PDF).  True to Emacs’ documenting tradition, the manual documents all features extensively, with examples too.
 
 [rpn]: https://en.wikipedia.org/wiki/Reverse_Polish_notation
 [emacs calc]: https://www.gnu.org/software/emacs/manual/html_mono/calc.html
+[calc cheat]: https://www.gnu.org/software/emacs/refcards/pdf/calccard.pdf
 
 # Programming
 
@@ -23,7 +24,7 @@ I use the GNU [Emacs Calc][], an [RPN][] calculator, exclusively unless I’m aw
   - Set negative word size if you want to work on signed numbers
     + Arithmetic `-1320 >> 4` = `65530` (base = 16) instead of `-83` (base = -16)
   - Manually clip values to $2^w$: `b c`
-  - Set word size per-operation (except shifts/rotates) with prefix: `C-u 4`
+  - Set word size per-operation (except shifts/rotates) with prefix: `C-u SIZE`
     + Example: `C-u 4 b n` flips bits and clips to $2^4$
 * Enable leading zero display: `d z`
   - Useful to see the entire word
@@ -81,8 +82,8 @@ I use the GNU [Emacs Calc][], an [RPN][] calculator, exclusively unless I’m aw
 | `I P`   | $\gamma$ | [Euler’s constant][] | 0.577215664902 |
 | `I H P` | $\phi$   | [Golden ratio][]     | 1.61803398875  |
 
+* Floating-point / Fixed-point / Scientific notation: `d n` / `d f` / `d s`
 * Set precision: `p`
-  - Floating-point / Fixed-point / Scientific notation: `d n` / `d f` / `d s`
 * Log to top-of-stack as base: `B`
 * Square root: `Q`
   - n-th root: `I ^`
@@ -94,8 +95,7 @@ I use the GNU [Emacs Calc][], an [RPN][] calculator, exclusively unless I’m aw
 # General
 
 * Edit top-of-stack: backtick
-* Flip top-of-stack and previous
-* Rotate stack: `C-u 0 ESC-TAB`
+* Rotate stack: `C-u 0 M-TAB`
 
 [euler’s number]: https://en.wikipedia.org/wiki/E_(mathematical_constant)
 [golden ratio]: https://en.wikipedia.org/wiki/Golden_ratio
