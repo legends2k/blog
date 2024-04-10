@@ -8,6 +8,18 @@ toc = true
 
 Here are some of the useful, but not widely known, options of GCC that I want to document.
 
+# Output preprocessor output, assembly and object code
+
+{{< highlight basic >}}
+gcc -save-temp=obj -o hello main.cpp
+{{< /highlight >}}
+
+outputs the following in addition to `hello`
+
+1. `hello-main.ii`: annotated output of preprocessor
+2. `hello-main.s`: assembly
+3. `hello-main.o`: object code
+
 # GCC Build Specs
 
 {{< highlight basic >}}
