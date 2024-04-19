@@ -6,7 +6,7 @@ tags = ["tech", "gcc", "tools"]
 toc = true
 +++
 
-Here are some of the useful, but not widely known, options of GCC that I want to document.
+Here are some of the useful, but not widely known, options of GCC I use periodically.
 
 # Output preprocessor output, assembly and object code
 
@@ -35,7 +35,7 @@ gcc --target-help
 gcc --help=target
 {{< /highlight >}}
 
-clang has `clang -print-supported-cpus` and `clang -print-targets` similarly.  Though clang operates on [target triples][]/quadruples.
+Clang has `clang -print-supported-cpus` and `clang -print-targets` similarly.  Though Clang operates on [target triples][]/quadruples.
 
 On older GCC [alternate command][old-gcc-march] is `gcc -E -march=help -xc /dev/null`.
 
@@ -59,13 +59,13 @@ cpp -xc++ -dM /dev/null
 # get macros defined when the language is C
 cpp -dM /dev/null
 
-# print GCC search directories for binaries and libraries
+# print built-in search directories for binaries and libraries but not includes
 gcc -print-search-dirs
 {{< /highlight >}}
 
 [stack_usage]: https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html#index-fstack-usage
 
-Prints the macros defined when the preprocessor was called.  The last command [is popular][macro_SO_question] as `gcc -dM -E - << /dev/null` but is not as good for two reasons:
+Prints the macros defined when the preprocessor was called.  [Using GCC instead of CPP is popular][macro_SO_question] as `gcc -dM -E - << /dev/null` but is not as good for two reasons:
 
 1. If you want to talk to the preprocessor, talk directly to it, why go through the compiler?
 2. Looking at this, one might get a false hope that `g++ -dM -E - << /dev/null` will spit C++ macros; it doesn't.  Instead one has to do `g++ -xc++ -dM -E - << /dev/null` for [some reasons][macro_g++].
@@ -73,7 +73,7 @@ Prints the macros defined when the preprocessor was called.  The last command [i
 [macro_SO_question]: http://stackoverflow.com/a/2224357/183120
 [macro_g++]: http://stackoverflow.com/a/27980787/183120
 
-For setting up auto completion in Emacs using Irony, I needed to know the include directories GCC searches.  How do we find them?
+For setting up auto-completion in Emacs I needed to know the include directories GCC searches.  How do I find them?
 
 {{< highlight basic >}}
 cpp -xc++ -Wp,-v /dev/null
@@ -99,7 +99,7 @@ This would show object memory layout of classes in the source; includes classes 
 
 # Optimization Result
 
-With GCC 9 you can check if an optimization was performed or missed ([`-fopt-info`][opt-info]). Example
+From GCC 9 onwards you can check if an optimization was performed or missed ([`-fopt-info`][opt-info]). Example
 
 {{< highlight basic >}}
 $ g++ -c inline.cc -O2 -fopt-info-inline-all
