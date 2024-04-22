@@ -15,7 +15,7 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 **Highlights**:
 
 * Free-look (6 DoF) camera using matrices, quaternions (independently) and no `gluLookAt`.
-* 3D picking by ray casting.
+* [3D picking by ray casting][picking].
 * Multi-textured terrain with lighting and quadtree-based frustum culling.
 * Math calculations on paper and book citations [documented][board-calculations] for future reference.
 
@@ -25,6 +25,7 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 
 [board-calculations]: https://bitbucket.org/rmsundaram/tryouts/src/master/CG/Calculations
 [demos]: https://legends2k.github.io/projects/demos/
+[picking]: https://legends2k.github.io/3d-picking
 
 ## Field of Vision System
 
