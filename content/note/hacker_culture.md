@@ -62,6 +62,7 @@ Co-founder of StackOverflow.com.
 
 Co-founder of Y Combinator (the startup seeder) and [_Hacker News_][hn].  His work/writings on [Lisp][] are popular too.
 
+* [Keep Your Identity Small](https://www.paulgraham.com/identity.html): identifying yourself with more topics leads to clouded judgements and emotional discussions
 * [The Bus Ticket Theory of Genius](http://paulgraham.com/genius.html): having obsessive interest in something just for its sake, without any gains, distinguishes geniuses from normals
     - [The Value of Learning “Useless” Things](https://www.scotthyoung.com/blog/2020/12/21/knowledge-foundation/) by _Scott H Young_: explains how having interest in random things actually come together when you don’t expect
 * [Beating the Averages](http://paulgraham.com/avg.html): how using Lisp when most weren’t gave Viaweb an edge over competitors -- this is a departure from using boring tech which I believe is better, but it’s a nice read

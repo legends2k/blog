@@ -631,6 +631,19 @@ scope.
 
 # Further Reading
 
+## My Content
+
+1. [Spirit of C++][Spirit of C++] - Slide deck of a detailed presentation targeting non-C++ learners
+2. [Selected C++ Idioms][] - Slide deck of a presentation idioms often used in large codebases like Chromium
+3. [Build Fundamentals][] - Slide deck of a presentation on building C++ code: starts manually and moves to tools like GNU Make
+4. [C++ Parameter Choices][] - Cheat sheet of when and how to take/pass function parameters
+
+[build fundamentals]: https://legends2k.github.io/build-fundamentals/
+[Selected C++ Idioms]: https://legends2k.github.io/cpp-idioms-chrome
+[c++ parameter choices]: https://github.com/legends2k/cpp-param-ref
+
+## Misc
+
 1. [ISO C++ FAQ](https://isocpp.org/wiki/faq)
 2. [C++ and standard library reference](https://en.cppreference.com)
 3. [StackOverflow C++ FAQ](https://stackoverflow.com/tags/c++-faq)
@@ -641,6 +654,7 @@ scope.
 7. [The Definitive C++ Book Guide and List](https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list)
 8. [C++ Idioms](https://en.wikibooks.org/wiki/More_C%252B%252B_Idioms)
 9. [C++ Papyrus](https://caiorss.github.io/C-Cpp-Notes/): extensive notes on various C and C++-related topics including tool chains, shared libraries, Unix, Linux and WinAPI programming, OpenGL, etc.
+10. [How to build highly-debuggable C++ binaries](https://dhashe.com/how-to-build-highly-debuggable-c-binaries.html)
 
 [Swiss Tables]: https://abseil.io/blog/20180927-swisstables
 [Skarupe]: https://github.com/skarupke/flat_hash_map
@@ -648,6 +662,6 @@ scope.
 [skarupe-recommends]: https://youtu.be/M2fKMP47slQ?t=3915
 
 
-[^1]: [Use sorted vector instead of set](http://lafstern.org/matt/col1.pdf), if `find` calls outnumber `insert`; it’d be lot faster — Matt Austern.
+[^1]: [Use sorted vector instead of set](http://lafstern.org/matt/col1.pdf), if `find` calls outnumber `insert`; it’d be lot faster — Matt Austern.  C++23 offers `std::flat_set`.
 
 [^2]: [Robin Hood hashing](https://www.sebastiansylvan.com/post/robin-hood-hashing-should-be-your-default-hash-table-implementation/) is a good technique when using linear probing.  `absl::flat_hash_map`, part of Abseil’s [Swiss tables][], is recommended over `std::unordered_map`.  It is also Rust’s `HashMap` implementation.  [Malte Skarupe’s `bytell_hash_map`][Skarupe] is the [fastest][skarupe-blog] as of writing this article.  Check [Malte’s recommendations][skarupe-recommends] on choosing one.
