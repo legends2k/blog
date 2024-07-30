@@ -120,6 +120,10 @@ Serious game development eventually leads to low-level optimisations.  This list
 * Instruction-level Parallelism, _Wikipedia_
 * GPGPU Programming for Games and Science ~ Chapter 3, _David Eberly_
 
+# See Also
+
+1. [(Free) Computer Graphics Programming Resources](https://gist.github.com/notnotrobby/ceef71527b4f15869133ba7b397912e9)
+
 
 [Reinventing the Wheel Often][reinvent_often] is natural when learning!  I like this quote from _Assembly Language Step by Step_, 3rd Edition by Jeff Duntemann:
 
