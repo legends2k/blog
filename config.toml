@@ -58,8 +58,17 @@ enableGitInfo = true
     url = "/about/"
     weight = 5
 
-[markup]
-    footnoteReturnLinkContents = "↩"
+# Enable super/subscript with Goldmark Extras extension e.g. H~2~O, πr^2^
+# Disable strikethrough extension and enable equivalent delete and subscript
+# for this to work: gohugo.io/getting-started/configuration-markup/#extras.
+[markup.goldmark.extensions]
+    strikethrough = false
+[markup.goldmark.extensions.extras.delete]
+    enable = true
+[markup.goldmark.extensions.extras.subscript]
+    enable = true
+[markup.goldmark.extensions.extras.superscript]
+    enable = true
 
 [markup.highlight]
     style = "dracula"

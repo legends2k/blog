@@ -592,7 +592,7 @@ Explore now; find gems!
 
 ### Associative
 
-- `std::set` collection of unique items; sorted and searchable in O(log<sub>2</sub> N) time[^1]
+- `std::set` collection of unique items; sorted and searchable in O(log~2~ N) time[^1]
 - `std::map` collection of key-value pairs; same as `set` with a value associated to the key
 - `std::multiset`, `std::multimap` multiple keys allowed; not just unique
 
