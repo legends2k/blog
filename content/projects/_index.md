@@ -8,6 +8,20 @@ date = "2017-02-24T12:34:07+05:30"
 
 [Live 3D Demos in WebGL 2][demos]
 
+##  Bespoke 3D Game Engine
+
+I’ve authored a cross-platform 3D game engine using C++ and OpenGL/D3D/Metal
+
+* Supported platforms: Windows, macOS, Linux, Android and iOS
+* Skeletal animation of glTF models
+* NavMeshes are used for path finding/planning
+* Path finding and smoothing (Funnel algorithm)
+* Terrain rendering with lighting
+* QuadTree data structure for frustum culling of scene
+* Debug visualization of object bounding box and character selection with a shaders
+* Quaternions based rotations
+* Uniform grids for visibility queries
+
 ## 3D Workouts
 
 Multiple mid-sized projects to understand 3D math and graphics concepts from ground up using no high-level libraries.  Right from primitives to collision detection to spatial data structures to frustum culling everything was implemented manually from scratch.
