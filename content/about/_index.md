@@ -16,18 +16,19 @@ I can be reached at _&#108;&#x65;&#x67;&#x65;&#110;&#100;&#x73;&#50;&#x6b;&#64;&
 Repertoire
 ==========
 
-**Languages**: C++ (17), C, Go, Rust, Lua, JavaScript, Python, Perl, GLSL  
-**Libraries**: OpenGL, Direct3D, Direct2D, Boost, GTK+, Qt  
-**Tools**: Bash, GCC, Clang, VC++, Valgrind  
-**Editors**: Emacs, Blender, GIMP, Krita  
+**Languages**: **C++ (20)**, **C**, **Rust**, **Python**, Lua, JavaScript, Perl, GLSL
+**Libraries**: OpenGL (3.3+), Vulkan, WebGPU, WebGL2, Direct3D, Direct2D, Boost, GTK+, Qt, Cocoa
+**Tools**: Bash, GCC, Clang, VC++, Valgrind, Visual Studio, CMake, meson, Bazel
+**Editors**: Emacs, Blender, GIMP, Krita
 **Platforms**: Linux, macOS, Windows
 
 
-Work Experience (13+ years)
+Work Experience (17+ years)
 ===============
 
-* Senior Software Design Engineer, **Microsoft** (2018 — Present)
-* Software Design Engineer II, **Microsoft** (2010 — 2018)
+* Senior Software Design Engineer, **Microsoft** (2018 — 2023)
+* Developer Relations Engineer, **Havok/Microsoft** (2017 — 2018)
+* Software Design Engineer II, **Microsoft** (2010 — 2017)
 * Software Engineer I, **Electronic Arts Mobile** (2008 — 2010)
 * Software Engineer, **Aricent** (2006 — 2008)
 
@@ -43,9 +44,9 @@ Education
 Web Presence
 ============
 
-* [StackOverflow](https://stackoverflow.com/users/183120/legends2k): Active member with over 25k reputation and a silver badge in C++  
+* [StackOverflow](https://stackoverflow.com/users/183120/legends2k): Active member with over 25k reputation and a silver badge in C++
 _Top Tags_: C++, 3D, OpenGL, Math, Geometry
-* [BitBucket](https://bitbucket.org/rmsundaram/tryouts/overview): C++ and 3D Workouts portfolio 
+* [BitBucket](https://bitbucket.org/rmsundaram/tryouts/overview): C++ and 3D Workouts portfolio
 * [GitHub](https://github.com/legends2k)
 * Career
     + [LinkedIn](https://in.linkedin.com/in/sundaram-ramaswamy-1a0b2024)

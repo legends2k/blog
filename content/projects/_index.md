@@ -41,7 +41,7 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 
   An optimized navigation mesh based path finding system for strategy games.  It uses funnel narrowing (string-pulling) algorithm for optimized, realistic paths.
 
-**Link**: [Live Demo](https://bbcdn.githack.com/rmsundaram/tryouts/raw/dev/CG/WebGL/NavmeshPather/centroid/level.html)
+**Link**: [Live Demo](https://bbcdn.githack.com/rmsundaram/tryouts/raw/dev/CG/WebGL/NavmeshPather/midpoint/level.html)
 
 **Used**: Geometry, Graph, HTML5/Canvas, JavaScript ♦ Cross-platform
 
