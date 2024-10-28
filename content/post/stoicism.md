@@ -1,6 +1,6 @@
 +++
 tags = ["philosophy"]
-date = "2019-10-2T14:22:41+05:30"
+date = "2019-10-02T14:22:41+05:30"
 title = "Stoicism"
 description = "Learnings from Jonas Salzgeber’s book"
 draft = true
