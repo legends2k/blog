@@ -5,12 +5,7 @@ title = "Bits of Insight"
 theme = "ghostwriter"
 copyright = "Sundaram Ramaswamy"
 googleAnalytics = ""
-paginate =  7
 enableGitInfo = true
-
-[Author]
-    name = "Sundaram Ramaswamy"
-    profile = "https://legends2k.github.io/about/"
 
 [Taxonomies]
     tag = "tags"
@@ -32,6 +27,10 @@ enableGitInfo = true
     shareLinkedIn = true
     readingTime = false
     readingTimeText = ""
+
+[[Params.Author]]
+    name = "Sundaram Ramaswamy"
+    profile = "https://legends2k.github.io/about/"
 
 [[menu.main]]
     name = "Posts"
@@ -78,6 +77,9 @@ enableGitInfo = true
     startLevel = 1
     endLevel = 2
     ordered = true
+
+[pagination]
+    pagerSize = 7
 
 # “date” usually means (article’s file) creation date i.e. when the idea was
 # first convinced, “lastmod” almost always comes from Git, set “pushlishDate”
