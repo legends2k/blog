@@ -8,6 +8,8 @@ toc = true
 
 Here’s a curated list of learning resources I usually recommend for self-studying the domain of Computer Graphics.
 
+# Introduction
+
 Learning graphics concepts isn’t the same as learning a rendering library; the latter is usually not very beneficial since a new library eventually replaces/takes over.  Strive to learn the theory behind the domain, not the tools or their idiosyncrasies.  Once you internalize the basic ideas, try doing [some CG projects with increasing hardness][cg-prog-projs].
 
 I’ve mostly centred the resources around OpenGL and not other libraries since they’re not cross-platform.  [Starting with OpenGL, instead of Vulkan, is better to learn graphics programming][learn-opengl-vulkan].  [Another article][which-graphics-lib] also admonitions not to start with Vulkan or D3D 12 and instead go with OpenGL or D3D 11.
@@ -23,7 +25,7 @@ I’ve mostly centred the resources around OpenGL and not other libraries since 
 * [OpenGL on WikiBooks][wikibooks] has lot of hands-on tutorials which seem to be good too.
 * [Lighthouse 3D][lighthouse] has tutorials for most of CG ~ math, Open GL, GLSL, GLUT, writing your own light weight library for game development.
 
-## Math
+# Math
 
 To be proficient in computer graphics or even to understand the basics, a decent amount of mathematical concepts needs to be grasped; it requires one to be comfortable in using trigonometry and linear algebra. For this I recommend
 
@@ -34,7 +36,7 @@ To be proficient in computer graphics or even to understand the basics, a decent
 * [3D Game Engine Programming][3dgep] has a bunch of articles covering spaces, vectors, matrices and quaternions
 * [2D Transforms 101][2d-transforms-101] is a 2D transforms presentation I gave years back; the general idea applies to 3D too
 
-### 3D Math Books
+## 3D Math Books
 
 I’d recommend at least one book as tutorials just aren’t enough.  To get intuition and comfortably work in abstract 3D these would help:
 
@@ -44,14 +46,24 @@ I’d recommend at least one book as tutorials just aren’t enough.  To get int
 
 Out of these math books, the most intuitive is the first with lot of funny anecdotes in between, the last is for hard core math fanatics (if you're afraid of symbol vomit, steer clear of it), although it's a good book for experienced CG programmers who need a reference. The one in between is really good in that it details out somethings which the other two (or many books for that matter) omit, and in the spectrum of intuitiveness and hard core math it's in between.
 
-## Shaders
+# Shaders
 
 * [The Book of Shaders][shader_book] is for those who want to write cool-looking pixel effects using fragment shaders.
 * [Shader School][shader_school] is an introduction to GLSL shaders and graphics programming using WebGL; looks promising.
 
-## WebGL
+# WebGL2 and friends
 
-WebGL is attractive option since
+3D programming isn’t confined to native apps; web pages have 3D content.  Facilitating that are a few API stacks:
+
+| API    | Derived From |
+|--------|--------------|
+| WebGL  | OpenGL ES 2  |
+| WebGL2 | OpenGL ES 3  |
+| WebGPU | Vulkan       |
+
+WebGPU (like Vulkan) is more low-level; you’d end up tuning a lot of hardware knobs without knowing why.  Mind you, WebGL2 (like OpenGL) is already low-level, WebGPU is even lower!  **To learn the basics of 3D graphics programming I’d recommend WebGL 2**, similar to [my recommendation of OpenGL over Vulkan](#introduction).  If you need something more high-level than WebGL2 I’d half-heartedly recommend [three.js][] as it’d rob you off the basics.  For instance, you can throw in an `AmbientLight` object without knowing how it’s implemented at the shader level.
+
+WebGL2 is an attractive option to learn the basics of graphics programming since
 
 * Setup costs are lower[^1]
 * Concepts learnt map 1:1 to other graphics programming libraries like D3D 11, OpenGL, etc.
@@ -59,13 +71,13 @@ WebGL is attractive option since
 
 However, I’ve seen library and tooling availability _w.r.t. CG_ more in C and C++.
 
-* [WebGL Academy][webgl_academy] is the most interactive tutorial out there teaching 3D computer graphics with step by step code walk-through and showing what changed on screen.  It starts with the basics and goes on to cover advanced topics like PCF, distance mapping, variance shadow mapping, deferred shading, etc.
-* [WebGL2 Fundamentals][] is a very good introduction to 2D and 3D computer graphics using WebGL by Gregg Tavares.  He also has
+* [WebGL2 Fundamentals][] is a very good introduction to 2D and 3D computer graphics using WebGL2 by Gregg Tavares.  He also has
   - [WebGL samples][webgl_samples]
   - [WebGPU Fundamentals][]
-  - [WebGL Fundamentals][]
+  - [WebGL Fundamentals][] (prefer WebGL2 - more modern, less legacy cruft)
+* [WebGL Academy][webgl_academy] is the most interactive tutorial out there teaching 3D computer graphics with step by step code walk-through and showing what changed on screen.  It starts with the basics and goes on to cover advanced topics like PCF, distance mapping, variance shadow mapping, deferred shading, etc.
 
-## Ray Tracing
+# Ray Tracing
 
 Most aforementioned resources are for real-time or online rendering where 30 to 60 frames are pumped on screen every second by a _rasterizer_.  Another branch of CG is offline rendering: every frame takes minutes (or sometimes hours!) to render on a single computer by a _ray tracer_.  For these, per-frame render time isn’t a problem; they value visual quality.  Once rendered, the output can be viewed at leisure, without any user input business.
 
@@ -75,7 +87,7 @@ Most aforementioned resources are for real-time or online rendering where 30 to 
   3. The Rest of Your Life
 * [ScratchAPixel.com][scratchapixel] is an excellent resource for in-depth Computer Graphics theory partial to raytracing
 
-## Cheat Sheets
+# Cheat Sheets
 
 * [3d Maths Cheat Sheet][cheat-anton]
 * [Math Cheat Sheet][cheat-opengl-tut]
@@ -90,14 +102,14 @@ Most aforementioned resources are for real-time or online rendering where 30 to 
 
 # Physical Books
 
-* [Computer Graphics: Principles and Practice][cg-bible-3], 3rd Edition ([2nd][cg-bible-2] is also highly regarded) - this book is called *The Bible of CG*
+* [Computer Graphics: Principles and Practice][cg-bible-3], 3rd Edition ([2nd][cg-bible-2] is also highly regarded) --- dubbed *The Bible of CG*
 * [Computer Graphics, C Version][cg-c-ver], 2nd Edition (not 3rd or 4th which weren't well received)
 * [Fundamentals of Computer Graphics][cg-fundamentals], 4th Edition
-* [Computer Graphics using OpenGL][cg-using-gl], 2nd or 3rd Edition*
-* [Interactive Computer Graphics: A Top-Down Approach with WebGL][cg-interactive], 7th Edition*
-* [3D Computer Graphics: A Mathematical Introduction with OpenGL][cg-buss]*
+* [Computer Graphics using OpenGL][cg-using-gl], 2nd or 3rd Edition†
+* [Interactive Computer Graphics: A Top-Down Approach with WebGL][cg-interactive], 7th Edition†
+* [3D Computer Graphics: A Mathematical Introduction with OpenGL][cg-buss]†
 
-_*: not OpenGL books; they just use OpenGL to teach rudimentary CG concepts_
+~†: not an OpenGL book; teaches rudimentary CG concepts using OpenGL~
 
 Of these, my personal favourites are the last two.  More practical and hence engrossing for the beginner; the explanations aren't very cryptic, unlike the other, more academic books in the list.
 
@@ -124,8 +136,9 @@ Serious game development eventually leads to low-level optimisations.  This list
 
 1. [(Free) Computer Graphics Programming Resources](https://gist.github.com/notnotrobby/ceef71527b4f15869133ba7b397912e9)
 
+--------------------------------------------------------------------------------
 
-[Reinventing the Wheel Often][reinvent_often] is natural when learning!  I like this quote from _Assembly Language Step by Step_, 3rd Edition by Jeff Duntemann:
+[Reinventing the Wheel Often][reinvent_often] is natural when learning!  I like this quote from _Assembly Language Step by Step_, by Jeff Duntemann:
 
 > "When somebody asks you, ‘Why would you want to do _that_?’ what it really means is this: ‘You’ve asked me how to do something that is either impossible using tools that I favor or completely outside my experience, but I don’t want to lose face by admitting it.’ [...] The answer to the _Infamous Question_ is always the same, and if the weasels ever ask it of you, snap back as quickly as possible, ‘Because I want to know how it works.’ That is a completely sufficient answer."
 
@@ -182,7 +195,7 @@ Serious game development eventually leads to low-level optimisations.  This list
 [essential_math]: http://amzn.com/0123742978 
 [skeleton_math]: http://amzn.com/1435458869
 [low-c++]: https://1drv.ms/u/s!AqkzqQjJ-7EtgS9-oiB28cv_iqIj?e=c2dnKZ
-[mo_dbg]: http://mohit.io/blog/category/debugging/
+[mo_dbg]: https://mohit.io/blog/category/debugging/
 [gamedev_post]: https://gamedev.stackexchange.com/a/46358
 [reinvent_often]: https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_72/
 [disasm-basics]: https://wordsandbuttons.online/you_dont_have_to_learn_assembly_to_read_disassembly.html
