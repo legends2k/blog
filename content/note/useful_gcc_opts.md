@@ -161,3 +161,6 @@ What interesting GCC options do you know?
 [instrumentation]: https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html
 [san-blog]: https://gavinchou.github.io/experience/summary/syntax/gcc-address-sanitizer/
 
+# See Also
+
+1. [PDBs with GCC - separate debug symbols](https://arvid.io/2018/05/05/pdbs-on-linux/)

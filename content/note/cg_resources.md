@@ -12,7 +12,18 @@ Here’s a curated list of learning resources I usually recommend for self-study
 
 Learning graphics concepts isn’t the same as learning a rendering library; the latter is usually not very beneficial since a new library eventually replaces/takes over.  Strive to learn the theory behind the domain, not the tools or their idiosyncrasies.  Once you internalize the basic ideas, try doing [some CG projects with increasing hardness][cg-prog-projs].
 
-I’ve mostly centred the resources around OpenGL and not other libraries since they’re not cross-platform.  [Starting with OpenGL, instead of Vulkan, is better to learn graphics programming][learn-opengl-vulkan].  [Another article][which-graphics-lib] also admonitions not to start with Vulkan or D3D 12 and instead go with OpenGL or D3D 11.
+## Vulkan or Direct3D 12?
+
+Khronos’ official [Vulkan Programming Guide][vulkan-pg] goes:
+
+> Vulkan is intended to be used as the interface between large, complex
+> graphics and compute applications and graphics hardware.  Many of the
+> features and responsibilities previously assumed by drivers implementing APIs
+> such as OpenGL now fall to the application. [...]  **Vulkan is not
+> well-suited to simple test applications; neither is it a suitable aid for
+> teaching graphics concepts.**
+
+[Starting with OpenGL, instead of Vulkan, is better to learn graphics programming][learn-opengl-vulkan].  [Another article][which-graphics-lib] also admonitions not to start with Vulkan or D3D 12 and instead go with OpenGL or D3D 11.  Resources below are centred around OpenGL; other libraries aren’t cross-platform (e.g. D3D11), or are too low-level, requires intimate knowledge of hardware and low-level programming, it’s no longer _just_ graphics programming.
 
 # Tutorials / eBooks
 
@@ -105,11 +116,11 @@ Most aforementioned resources are for real-time or online rendering where 30 to 
 * [Computer Graphics: Principles and Practice][cg-bible-3], 3rd Edition ([2nd][cg-bible-2] is also highly regarded) --- dubbed *The Bible of CG*
 * [Computer Graphics, C Version][cg-c-ver], 2nd Edition (not 3rd or 4th which weren't well received)
 * [Fundamentals of Computer Graphics][cg-fundamentals], 4th Edition
-* [Computer Graphics using OpenGL][cg-using-gl], 2nd or 3rd Edition†
-* [Interactive Computer Graphics: A Top-Down Approach with WebGL][cg-interactive], 7th Edition†
-* [3D Computer Graphics: A Mathematical Introduction with OpenGL][cg-buss]†
+* [Computer Graphics using OpenGL][cg-using-gl], 2nd or 3rd Edition^†^
+* [Interactive Computer Graphics: A Top-Down Approach with WebGL][cg-interactive], 7th Edition^†^
+* [3D Computer Graphics: A Mathematical Introduction with OpenGL][cg-buss]^†^
 
-~†: not an OpenGL book; teaches rudimentary CG concepts using OpenGL~
+^†: not an OpenGL book; teaches rudimentary CG concepts using OpenGL^
 
 Of these, my personal favourites are the last two.  More practical and hence engrossing for the beginner; the explanations aren't very cryptic, unlike the other, more academic books in the list.
 
@@ -144,6 +155,7 @@ Serious game development eventually leads to low-level optimisations.  This list
 
 
 [learn-opengl-vulkan]: https://computergraphics.stackexchange.com/a/3589/1650
+[vulkan-pg]: https://www.vulkanprogrammingguide.com/
 [which-graphics-lib]: http://rastertek.com/choosing.html
 [cg-prog-projs]: http://graphicscodex.com/projects/projects/index.html
 [arcsynthesis]: https://alfonse.bitbucket.io/oldtut/
