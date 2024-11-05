@@ -8,6 +8,8 @@ date = "2017-02-24T12:34:07+05:30"
 
 [Live 3D Demos in WebGL 2][demos]
 
+[demos]: {{< relref "demos" >}}
+
 ##  Bespoke 3D Game Engine
 
 I’ve authored a cross-platform 3D game engine using C++ and OpenGL/D3D/Metal
@@ -18,9 +20,11 @@ I’ve authored a cross-platform 3D game engine using C++ and OpenGL/D3D/Metal
 * Path finding and smoothing (Funnel algorithm)
 * Terrain rendering with lighting
 * QuadTree data structure for frustum culling of scene
-* Debug visualization of object bounding box and character selection with a shaders
+* Debug visualization of object bounding box and character selection with shaders
 * Quaternions based rotations
 * Uniform grids for visibility queries
+
+**Used**: C++, shader-based OpenGL 3+, GLSL, glTF, DirectXMath, ImGui ♦ Cross-platform
 
 ## 3D Workouts
 
@@ -38,7 +42,6 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 **Link**: https://bitbucket.org/rmsundaram/tryouts/overview
 
 [board-calculations]: https://bitbucket.org/rmsundaram/tryouts/src/master/CG/Calculations
-[demos]: https://legends2k.github.io/projects/demos/
 [picking]: https://legends2k.github.io/3d-picking
 
 ## Field of Vision System

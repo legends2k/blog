@@ -35,3 +35,7 @@ Code: https://bitbucket.org/rmsundaram/tryouts/src/dev/CG/WebGL/
 # Marching Squares
 
 {{< iframe src="pages/MarchingSquares/metaballs.html" width="655px" height="570px" >}}
+
+# Proto Mario
+
+{{< figure src="ProtoMario-debug.webp" link="ProtoMario-debug.webp" caption="Character controller in plain C++, no engine!" >}}
