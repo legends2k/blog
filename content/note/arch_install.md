@@ -43,36 +43,9 @@ Without internet access modern linux installations are an exercise in pain.  I d
 3. Check if wireless is not blocked with `rfkill list`
     * If hard-blocked, press hardware button to enable wireless hardware
     * If soft-blocked: `rfkill unblock wifi`
-4. `cp /etc/netctl{/examples,}/wireless-wpa`
-    * Just copy an example profile and tweak
-    * Arch comes with _netctl_ (network manager) and _WPA supplicant_ for connection to WPA secured networks
-    * Can't use _iw_ or _wireless\_tools_ if the network uses _WPA2 Personal_
-5. Edit parameters in copied file as per network
-    * Use `wpa_passphrase` to get the hex passphrase to put in netctl's profile
-    * Make sure you run `wpa_passphrase` with the correct SSID
-    * Set custom DNS servers for _netctl_ to write to `/etc/resolv.conf`
-
-{{< highlight cfg >}}
-Description='A simple WPA encrypted wireless connection'
-Interface=wlp3s0
-Connection=wireless
-
-Security=wpa
-IP=dhcp
-
-ESSID='InfoProbe'
-Key=\72ac...
-Hidden=yes
-DNS=('1.1.1.1' '1.0.0.1')
-{{< /highlight >}}
-
-1. `netctl start wireless-wpa`
-2. Ping should now work if all went well
-
-In case `netctl` errors out, it might be because of two things:
-
-1. A DHCP daemon is still running; do `systemctl stop ...` as in step 1
-2. The interface is already up; [netctl needs it down](https://bbs.archlinux.org/viewtopic.php?id=162582): `ip link set wlp3s0 down`
+4. Configure wireless using `iwctl`
+    * `device list` (check station name which is usually `wlan0`)
+    * `station wlan0 connect SSID`
 
 # Partitions
 
@@ -142,16 +115,11 @@ mkfs.ext4 /dev/lvmg1/root
 ## Mount
 
 {{< highlight basic >}}
-mount /dev/lvmg1/root /mnt
-mkdir /mnt/boot
-mount /dev/nvme0n1p5 /mnt/boot
-mkdir /mnt/home
-mount /dev/lvmg1/home /mnt/home
-mkdir /mnt/var
-mount /dev/sda5 /mnt/var
-
-mkdir /mnt/boot/efi
-mount /dev/nvme0n1p1 /mnt/boot/efi
+mount    /dev/lvmg1/root /mnt
+mount -m /dev/nvme0n1p5  /mnt/boot
+mount -m /dev/nvme0n1p1  /mnt/boot/efi
+mount -m /dev/lvmg1/home /mnt/home
+mount -m /dev/sda5       /mnt/var
 {{< /highlight >}}
 
 `genfstab` is a Arch script that setups up `/etc/fstab` as per the current mounted file systems and swap space.  Since we're on a UEFI + GPT boot scheme, mount the EFI partition too for `genfstab` and GRUB2 (`os-prober`) to pick up Windows.  This is the same partition as used by Windows for booting, mounted as `/mnt/boot/efi`.  Same goes for other Windows partitions that needs to be listed in `fstab` for auto-mounting in the new OS.  Otherwise it has to be [done manually](https://wiki.archlinux.org/index.php/Fstab) with Emacs and `lsblk -f` or `blkid`.
@@ -172,20 +140,24 @@ You can change this with `tune2fs -m <percentage> <device>`; mine’s too petty 
 
 # Base Install
 
-Before proceeding, it might be a good idea to fix the order of mirrors in `/etc/pacman.d/mirrorlist` since it's copied to the installed system as-is.  Instead of doing this manually, you might prefer using [`reflector`][]; it retrieves latest mirror list based on country:
+Before proceeding, it might be a good idea to check `/etc/pacman.d/mirrorlist`; for me, it was already setup with the optimal mirror by a background systemd unit once network was up :)  Check it’s [mtime][] and contents.  If needed, update using [`reflector`][]; it retrieves latest mirror list based on country:
 
 {{< highlight basic >}}
 pacman -S --needed reflector
 reflector --verbose --country IN -l10 --sort rate --save /etc/pacman.d/mirrorlist
 {{< /highlight >}}
 
-Once satisfied with `mirrorlist`, proceed with the base installation:
+Proceed with the base installation:
 
 {{< highlight basic >}}
-pacstrap /mnt base
+pacstrap -K /mnt base base-devel linux linux-firmware linux-headers acpi lvm2 grub efibootmgr os-prober iwd sudo exfatprogs intel-ucode smartmontools lshw inxi strace rsync wget mc nano emacs rg fd fzf bfs 7zip pv git links tree
 {{< /highlight >}}
 
+It’s important to include packages needed for the booted system to be self-sufficient.  For instance, missing out wireless networking package will leave you with no internet connectivity!
+I usually go for a well-rounded commandline system.
+
 [`reflector`]: https://www.ostechnix.com/retrieve-latest-mirror-list-using-reflector-arch-linux/
+[mtime]: https://en.wikipedia.org/wiki/Stat_(system_call)
 
 # System Config
 
@@ -207,8 +179,6 @@ Check `/mnt/etc/fstab`, the table of filesystems and their mount points, the sys
 arch-chroot /mnt
 {{< /highlight >}}
 
-Make sure to install packages that would be needed for network access in the installed system now; specifically `wpa_supplicant` since the new system wouldn't have network access and will not contain this package either.  This is a dependency for `netctl`.
-
 ## Time
 
 Once done, know your time zone using `tzselect` and do
@@ -223,14 +193,14 @@ hwclock --systohc
 {{< highlight basic >}}
 nano /etc/locale.gen
 locale-gen
-localectl set-locale LANG=en_IN.UTF-8
+
 {{< /highlight >}}
 
 The last line sets `LANG`.
 
 ## Network
 
-Set `/etc/hostname` and `/etc/hosts` for easy network identification.  Ping and check if the network configuration works fine.
+Set `/etc/hostname` for easy network identification.  Ping and check if the network configuration works fine.
 
 # Update initramfs
 
@@ -244,7 +214,7 @@ HOOKS="(base udev ... block lvm2 filesystems...)"
 Regenerate `initramfs` image
 
 {{< highlight basic >}}
-mkinitcpio -p linux
+mkinitcpio -P
 {{< /highlight >}}
 
 # Root Password
@@ -253,23 +223,17 @@ Use `passwd` to set `root`'s password.
 
 # Boot
 
-Since Windows 8, Microsoft forces the UEFI + GPT combo, make sure this is followed by Arch for a successful coexistence with Windows.  Pre-installed Windows machines have a EFI partition already made from which Windows boots; verify this using `fdisk`.  [This means](https://wiki.archlinux.org/index.php/EFI_System_Partition#Mount_the_partition) we don't have to create an EFI partition but simply mount it for GRUB to use.  We're using GRUB as the bootloader.  The mounting part should've already been done as part of _§3.5 Mount_:
+Since Windows 8, Microsoft forces the UEFI + GPT combo, make sure this is followed by Arch for an amicable coexistence with Windows.  Pre-installed Windows machines have a EFI partition already made from which Windows boots; verify this using `fdisk`.  [This means](https://wiki.archlinux.org/index.php/EFI_System_Partition#Mount_the_partition) we don't have to create an EFI partition but simply mount it for GRUB to use.  We're using GRUB as the bootloader.  The mounting part should've already been done as part of _§3.5 Mount_:
 
 {{< highlight basic >}}
-pacman -S --needed grub efibootmgr
-mkdir /boot/efi
-mount /dev/nvme0n1p1 /boot/efi
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 nano /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 {{< /highlight >}}
 
-The suggested `os-prober` package, which makes GRUB look for other OSs, didn't find Windows. Apparently, the EFI partition should be mounted to `/mnt/boot` _before_ pacstrapping as this is where the kernel and bootloader are installed to.  If you get `lvmetad` errors, you may safely ignore them.  Probing should work inside the new Arch.
-
 # Reboot
 
 {{< highlight basic >}}
-umount -R /mnt
 exit
 umount -R /mnt
 reboot
@@ -345,10 +309,11 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 {{< /highlight >}}
 
-Hibernate (from Xfce4 panel’s Action Button) and resume should work now.  I’d like systemctl’s suspend-then-hibernate but [Xfce4 _Power Manager_ inhibits systemd’s ACPI settings][acpi-inhibit].  I’ll live with this for now than fiddle more 😅
+Hibernate (from Xfce4 panel’s Action Button) and resume should work now.  [Xfce 4.20+ _Power Manager_ supports _Hybrid Sleep_][xfce-hybrid-sleep] and rightly [inhibits systemd’s ACPI settings][acpi-inhibit] 😁.
 
 [acpi-inhibit]: https://wiki.archlinux.org/title/Power_management#Power_managers
 [initial ramdisk]: https://en.wikipedia.org/wiki/Initial_ramdisk
+[xfce-hybrid-sleep]: https://xfce.org/download/changelogs/4.20
 
 # Up next...
 

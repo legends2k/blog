@@ -11,129 +11,32 @@ See [_Arch Linux Installation_](/note/arch_install) for installation notes.
 
 # Network
 
-In the newly installed Arch you might notice that there's no network connectivity.
-
-## Wireless
-
-To enable wireless do what you did during installation (see _Arch Linux Installation_, [§2 Wireless Network][]).  I did it only to realize, for `netctl` to hook to a WPA-secured network, the `wpa_supplicant` package is needed but was absent on the installed system.  To connect to the internet, you need a package from the internet!?  To get out of this [Catch-22][] situation, I'd to reboot from the installation USB, setup network and install `wpa_supplicant` to the new OS by chrooting
-
-{{< highlight basic >}}
-root@archiso / # mount /dev/lvmg1/root /mnt
-root@archiso / # mount /dev/nvme0n1p5 /mnt/boot
-root@archiso / # mount /dev/lvmg1/home /mnt/home
-root@archiso / # mount /dev/sda5 /mnt/var
-root@archiso / # swapon /dev/sda6
-root@archiso / # arch-chroot /mnt
-[root@archiso /]# pacman -S wpa_supplicant
-[root@archiso /]# exit
-root@archiso / # reboot
-{{< /highlight >}}
-
-To permanently enable a network on boot, enable the service
-
-{{< highlight basic >}}
-netctl enable infoprobe
-{{< /highlight >}}
-
-If on every boot you get this with a long wait
-
-{{< highlight basic >}}
-[***      ] A start job is running for dhcpcd on wlp3s0 (14 s / 1min 30s).
-{{< /highlight >}}
-
-As [discussed in the forums][dhcp_job] set `/etc/systemd/system/systemd-user-sessions.service`
+In the newly installed Arch you might notice that there's no network connectivity.  [Fix it with `iwctl`](/note/arch_install).
+[iwd][] seems to be the simplest and fastest for wireless network on Linux.  It’s self-sufficient having a built-in DHCP client.  Manually fixing `/etc/resolv.conf` with some standard DNS addresses should get you online.  However, I prefer `systemd-resolved` for DNS and `systemd-networkd` for ethernet connections.  I referred [insanity.industries’ excellent guide][nw-setup] to setup all of these.  My final `/etc/iwd/main.conf`:
 
 {{< highlight cfg >}}
-[Unit]
-Description=Permit User Sessions
-Documentation=man:systemd-user-sessions.service(8)
-After=remote-fs.target nss-user-lookup.target
+[General]
+EnableNetworkConfiguration=true
+AddressRandomization=once
 
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=/usr/lib/systemd/systemd-user-sessions start
-ExecStop=/usr/lib/systemd/systemd-user-sessions stop
+[Scan]
+DisablePeriodicScan=true
+
+[Network]
+NameResolvingService=systemd
 {{< /highlight >}}
 
-According to Arch Wiki’s [domain name resolution][]
-
-> The `Glibc` resolver provides only the most basic necessities, it does not cache queries nor provides any security features. If you require more functionality, use another resolver.
-
-However, another statement admonitions that a router usually does this caching at the network-level, so you can skip setting up a more robust resolver.
-
-[Catch-22]: https://en.wikipedia.org/wiki/Catch-22_(logic)
-[§2 Wireless Network]: {{< relref "arch_install.md#wireless-network" >}}
-[dhcp_job]: https://bbs.archlinux.org/viewtopic.php?id=213363
-[domain name resolution]: https://wiki.archlinux.org/index.php/Domain_name_resolution#Lookup_utilities
-
-## Ethernet
-
-If you just need ethernet/LAN connectivity, just enable what the installation image uses
-
-{{< highlight basic >}}
-systemctl enable --now systemd-networkd.service
-systemctl enable --now systemd-resolved.service
-{{< /highlight >}}
-
-You can verify if your preferred network interface is up
-
-{{< highlight basic >}}
-ip address show
-# `UP` inside angle brackets
-ip link set MY_IFACE_NAME up
-{{< /highlight >}}
-
-### Stable Interface
-
-If you plan on using netctl, you need a profile for ethernet too (like wireless).  However, I noticed that on every reboot the interface name kept changing between `enp4s0` and `eth0`.  [ArchLinux documents][interface-name] this too!  Basically create a rule file (`/etc/udev/rules.d/10-network.rules`) with the MAC address mapped to a name
-
-{{< highlight basic >}}
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="fe:ed:f0:0d:ba:cc", NAME="eth0"
-{{< /highlight >}}
-
-Check if the interface name is stable (`ip link`) after this change.
-
-Check if the interface is down (`cat /sys/class/net/eth0/operstate`), else take it down: `ip link set dev eth0 down`.  Create a profile for the wired network by copying from `/etc/netctl/examples/ethernet-dhcp`.  Fix the interface name to match the one you named.
+and `/etc/systemd/resolved.conf`:
 
 {{< highlight cfg >}}
-Interface=eth0
-Connection=ethernet
-IP=dhcp
-DNS=('1.1.1.1' '1.0.0.1')
+[Resolve]
+FallbackDNS=1.1.1.1 1.0.0.1
 {{< /highlight >}}
 
-Start/switch to this profile as you normally would: `netctl switch-to wired`.
+This way an access point’s DNS preferred over the fallback Cloudfare’s.
 
-> If you’re connecting a USB Type-C to 3.0 adapter with an ethernet port, its interface would not be `eth0`!  Make sure you’ve a similar profile for _its_ interface too.
-
-[interface-name]: https://wiki.archlinux.org/index.php/Network_configuration#Change_interface_name
-
-## Auto-Switching
-
-To automatically configure your ethernet device on cable un/plug, install `ifplugd` and enable the service.  Likewise to automatically start/stop profiles as you move from a wireless network’s range into another, you need to enable another service.
-
-{{< highlight bash >}}
-netctl disable infoprobe  # disable any earlier enabled profile
-
-systemctl enable netctl-ifplugd@eth0.service
-systemctl enable netctl-auto@wlp3s0.service
-{{< /highlight >}}
-
-Refer [Special systemd units][systemd-special-nw] for details.
-
-[systemd-special-nw]: https://wiki.archlinux.org/index.php/Netctl#Special_systemd_units
-
-# Resurrecting Windows
-
-On a dual boot setup, if you notice that _Windows_ is’t an option in the boot menu, install the `os-prober` package.  Mount the EFI partition and re-run GRUB config maker:
-
-{{< highlight basic >}}
-mount /dev/nvme0n1p1 /boot/efi
-grub-mkconfig -o /boot/grub/grub.cfg
-{{< /highlight >}}
-
-_Windows_ would come up as an option now, as the prober would be able to _see_ the Windows installation.
+[iwd]: https://wiki.archlinux.org/title/iwd
+[nw-setup]: https://insanity.industries/post/simple-networking/
 
 # Real Time Clock Setup
 
@@ -159,7 +62,7 @@ To have _Xfce_ up and running, you need a display system (_Xorg_; Xfce can’t r
 
 {{< highlight basic >}}
 pacman -Syu
-pacman -S --needed xfce4 xfce4-goodies lxdm xf86-input-synaptics
+pacman -S --needed xfce4 xfce4-goodies lxdm
 {{< /highlight >}}
 
 Set `graphical.target` as default.  Start and enable (for future boots) the display manager
@@ -173,11 +76,7 @@ For the first run, make sure to set the _Session_ and _Locale_; not doing so led
 
 If LXDM doesn’t show your full name, it isn’t set in `/etc/passwd`.  Set it with `chfn -f 'Full Name' login_id`.
 
-For natural scrolling with laptop’s touchpad, similar to iPad, enabling _Reverse scroll direction_ under _Mouse and Touchpad_ settings; this fixes scroll in most places except _Terminal_ 😬.
-
-For sanity, [disable desktop zoom][] "feature" in  _Settings Editor_ → _xfwm4_; uncheck `zoom_desktop`.
-
-[disable desktop zoom]: https://forum.xfce.org/viewtopic.php?pid=41556#p41556
+For natural scrolling with laptop’s touchpad enable _Reverse scroll direction_ under _Mouse and Touchpad_ settings.
 
 # Display
 
@@ -189,13 +88,7 @@ lspci -k | grep -A 2 -E "(VGA|3D)"
 
 ## Intel
 
-To get Intel graphics working
-
-{{< highlight basic >}}
-pacman -S --needed xf86-video-intel mesa mesa-demos
-{{< /highlight >}}
-
-With Skylake and its successors (Kabylake, …) we can enable `i915` module for [early KMS start] in `/etc/mkinitcpio.conf` and run `mkinitcpio -p linux`
+With Skylake and its successors (Kabylake, …) we can enable `i915` module for [early KMS start][] in `/etc/mkinitcpio.conf` and run `mkinitcpio -p linux`
 
 {{< highlight cfg >}}
 # MODULES
@@ -203,35 +96,22 @@ With Skylake and its successors (Kabylake, …) we can enable `i915` module for 
 MODULES=(i915)
 {{< /highlight >}}
 
-Enable GuC, HuC and FBC in `/etc/modprobe.d/i915.conf`
+That’s it!  Things work out of the box.  You can check that GuC, HuC and FBC are enabled by default
 
 {{< highlight basic >}}
-options i915 enable_guc=-1 enable_fbc=1
+# options with defaults
+modinfo -p i915
+# currently enabled options
+systool -m i915 -av
 {{< /highlight >}}
-
-Screen tearing when scrolling large walls of text in Firefox is a common occurrence.  To fix this set `/etc/X11/xorg.conf.d/20-intel.conf` to
-
-{{< highlight basic >}}
-Section "Device"
-    Identifier "Intel Graphics"
-    Driver "intel"
-    Option "TearFree" "true"
-EndSection
-{{< /highlight >}}
-
-The Intel device needs only these but still I couldn’t `startx` or `systemctl start lxdm.service`; even if stuff shows up, it usually hung during power down sequence.  All because the Nvidia device was preferred over Intel's and its drivers were broken.
 
 [early KMS start]: https://wiki.archlinux.org/index.php/Kernel_mode_setting#Early_KMS_start
 
 ## Nvidia
 
-Using the discrete GPU for heavier workloads and powering it off (as integrated GPU does display stuff) would be ideal.  Official (nvidia) method is to go with `prime-run`.  Following [PRIME - ArchWiki][] did most of the trick but power management isn’t there yet. 
-
-Basically uninstall all open-source video packages, bbswitch and bumblebee and install nvidia drivers and utilities:
+Using the discrete GPU for heavier workloads and powering it off (as integrated GPU does display stuff) would be ideal.  Official (nvidia) method is to go with `prime-run`.  Following [PRIME - ArchWiki][] did most of the trick but power management isn’t there yet.
 
 {{< highlight basic >}}
-pacman -Rsc nouveau xf86-video-nouveau xf86-video-intel xf86-video-vesa bumblebee bbswitch primus
-rm -rf /etc/bumblebee /etc/modprobe.d/bbswitch.conf
 pacman -S nvidia nvidia-utils nvidia-prime
 systemctl enable --now nvidia-persistanced
 {{< /highlight >}}
@@ -252,12 +132,6 @@ cat /proc/driver/nvidia/gpus/0000\:01\:00.0/information
 [Dynamic power management][nv-dyn-power] is only for Turing+ architectures.  Installing `nvidia-prime-rtd3pm` at least sets `/sys/bus/pci/devices/0000:01:00.0/power/control` to `auto` (better than `on`).  `cat /sys/bus/pci/devices/0000:01:00.0/power_state` always shows `D0`, `cat /proc/driver/nvidia/gpus/0000\:01\:00.0/power` shows `Disabled by default`.  What more, `nvidia-smi` isn’t able to show power stats as it’s unsupported for this GPU 🤦
 
 [nv-dyn-power]: https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/README/dynamicpowermanagement.html
-
-### Futile Alternatives
-
-Using nouveau doesn’t help as it doesn’t support power management _and_ hardware accelerated video decoding too for GeForce 1050 Ti; it’s worser than proprietary driver at the moment.  bbswitch is non-viable too; it suspend the card on boot (if `nvidia` is blacklisted) and restoring it back again when needed doesn’t work.  Without the blacklisting, it suspends the card only momentarily; it’s always ON once desktop loads.
-
-[Bumblebee]: https://bumblebee-project.org/
 [prime - archwiki]: https://wiki.archlinux.org/title/PRIME
 
 # USB Port Speed
@@ -318,16 +192,16 @@ Enable and start `bluetooth.service`.
 systemctl enable --now bluetooth.service
 {{< /highlight >}}
 
-Though this is enough, at every login, there’d be an annoying prompt for the root password, to enable bluebooth.  Add this to `/etc/polkit-1/rules.d/51-blueman.rules` to not prompt for users in the `sudo` group as [detailed in the Wiki][Blueman_permissions]:
+Though this is enough, at every login, there’d be an annoying prompt for the root password, to enable bluebooth.  Add this to `/etc/polkit-1/rules.d/51-blueman.rules` to not prompt for users in the `wheel` group as [detailed in the Wiki][Blueman_permissions]:
 
 {{< highlight cfg >}}
-/* Allow users in sudo group to use blueman feature requiring root without authentication */
+/* Allow users in wheel group to use blueman feature requiring root without authentication */
 polkit.addRule(function(action, subject) {
     if ((action.id == "org.blueman.network.setup" ||
          action.id == "org.blueman.dhcp.client" ||
          action.id == "org.blueman.rfkill.setstate" ||
          action.id == "org.blueman.pppd.pppconnect") &&
-        subject.isInGroup("sudo")) {
+        subject.isInGroup("wheel")) {
 
         return polkit.Result.YES;
     }
@@ -387,7 +261,7 @@ Enter [`udisks2`][udisks2] -- [the most-recommended approach][udisk recommendati
 yay -S --needed udisks2
 {{< /highlight >}}
 
-To allow users of group `sudo` to mount NTFS drives (with write permissions) without asking for `root` password, [enable the group in _polkit_][polkit sudo mount] under `/etc/polkit-1/rules.d/50-udisks.rules`
+To allow users of group `wheel` to mount NTFS drives (with write permissions) without asking for `root` password, [enable the group in _polkit_][polkit wheel mount] under `/etc/polkit-1/rules.d/50-udisks.rules`
 
 {{< highlight cfg >}}
 polkit.addRule(function(action, subject) {
@@ -405,7 +279,7 @@ polkit.addRule(function(action, subject) {
     "org.freedesktop.udisks2.eject-media-other-seat": YES,
     "org.freedesktop.udisks2.power-off-drive-other-seat": YES
   };
-  if (subject.isInGroup("sudo")) {
+  if (subject.isInGroup("wheel")) {
     return permission[action.id];
   }
 });
@@ -451,27 +325,28 @@ A recommended GUI, if needed, is [udiskie](https://github.com/coldfix/udiskie).
 [udisk recommendation]: https://wiki.archlinux.org/index.php/USB_storage_devices#Auto-mounting_with_udisks
 [udisks2]: https://wiki.archlinux.org/index.php/Udisks
 [common mount point]: https://wiki.archlinux.org/index.php/Udisks#Mount_to_/media_(udisks2)
-[polkit sudo mount]: https://unix.stackexchange.com/a/207667
+[polkit wheel mount]: https://unix.stackexchange.com/a/207667
 
 # Package Management, yay!
 
 Many essential packages live in [AUR][], the unofficial Arch repository; just the official repositories won’t cut it.  The default package manager client `pacman` works only with official repos.  Many famous [AUR helpers][] and [pacman wrappers][] have been written hence.  The former deals only with AUR packages, while letting `pacman` work with the official repo packages; the latter is more wholesome.  Pacman wrappers take care of both official and AUR repos; effectively letting the user deal with both transparently e.g. `yay -Syu` updates all packages irrespective of their repo.
 
-[Yay][] --- the pacman wrapper written in [Go][] --- simple interface, feature-rich and an active project.  I recommend it over the many, now-defunct, pacman wrappers out there.  Once installed, Yay should take care of your AUR (and official repo) package needs.  However, to get Yay itself, you need to do manual AUR package installation.  To make packages from AUR you need the `base-devel` package group and super user permissions; you can’t `sudo` before getting added to the group, so
+[Yay][] --- the pacman wrapper written in [Go][] --- simple interface, feature-rich and an active project.  I recommend it over the many, now-defunct, pacman wrappers out there.  Once installed, Yay should take care of your AUR (and official repo) package needs.  However, to get Yay itself, you need to do manual AUR package installation.  To make packages from AUR you need the `base-devel` package group and super user permissions; you can’t `sudo` before getting added to sudo/wheel group
 
 {{< highlight basic >}}
 pacman -S --needed base-devel
 su
-EDITOR=/usr/bin/nano visudo    # uncomment sudo group
-groupadd sudo                  # if not already existing
-usermod -aG sudo $USER
+EDITOR=/usr/bin/nano visudo    # allow wheel group members to sudo
+groupadd wheel                 # if not already existing
+usermod -aG wheel $USER
+sudo -e /etc/makepkg.conf      # disable *-debug builds: OPTIONS=(… !debug)
 {{< /highlight >}}
 
-Now install Yay from AUR
+Install pre-built Yay from AUR
 
 {{< highlight basic >}}
-git clone https://aur.archlinux.org/yay.git
-cd yay/
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin/
 makepkg -si    # this needs sudo to install built package
 {{< /highlight >}}
 
@@ -564,7 +439,7 @@ Looks beautiful 😇 அருமை அருமை!
 I seem to be partial to fonts with curves.  I’m a fan of [Mononoki][] and Ubuntu Mono.
 
 {{< highlight basic >}}
-yay -S --needed ttf-ubuntu-font-family ttf-mononoki
+yay -S --needed ttf-ubuntu-font-family ttf-mononoki-nerd
 {{< /highlight >}}
 
 This starts showing up inside the browser --- for code snippets --- too!
@@ -573,7 +448,7 @@ This starts showing up inside the browser --- for code snippets --- too!
 
 ## Xfce4 Settings
 
-To see available fonts, install `fontconfig` and do `fc-list`.
+To see available fonts, run `fc-list` (from `fontconfig` package)
 
 Under _Appearance_ set
 
@@ -650,15 +525,9 @@ Miscellaneous user land customizations and tune-ups:
     - `systemctl enable --now plocate-updatedb.timer pkgfile-update.timer man-db.timer`
     - Check timers: `systemctl list-timers`
 * Archive Manager
-    - `yay -S --needed p7zip unzip unrar`
+    - `yay -S --needed 7zip unzip unrar`
     - `xarchiver` GUI integrates well with Thunar
-* Lock screen
-    - `xlockmore` works fine, just be aware that switching to TTY (with Ctrl + Alt + 2, ...) is still possible with it
-    - Integrates seamlessly with `xflock4` a script (`/usr/bin/xflock4`) which tries different lockers
-    - Other lockers have issues
-        + `gnome-screensaver`, `sflock` -- didn’t work
-        + `physlock` -- only `root` can unlock
-        + `light-lock` -- needs a display manager
+* `lightlocker` is pretty good as a lock screen
 * Screenshots
     - `xfce4-screenshooter`; had to be hooked to <kbd>PrintScr</kbd> through `xfce4-keyboard-settings` under the _Application Shortcuts_ tab
 * Preferred Applications
@@ -678,10 +547,10 @@ Miscellaneous user land customizations and tune-ups:
 * Books
     - PDF: [Evince][]
     - CHM: [xCHM][]
-    - ePub: [Bookworm][]
+    - ePub: [Foliate][]
 * Images
+    - [ImageMagick][], the swiss-army knife of image formats
     - [geeqie][] (GUI) -- versatile; supports [many formats][geeqie-formats] including camera RAW and vector
-    - [feh][] (CLI)
 * Media
     - Per-file A/V playback: [mpv][]
     - Console music player/library: [Music on Console][]
@@ -693,8 +562,7 @@ Miscellaneous user land customizations and tune-ups:
 [cloud-vfs]: https://www.everything-linux-101.com/blog/mount-onedrive-in-linux/
 [geeqie]: http://www.geeqie.org/
 [geeqie-formats]: https://github.com/BestImageViewer/geeqie#features
-[feh]: https://feh.finalrewind.org/
-[Bookworm]: https://babluboy.github.io/bookworm/
+[Foliate]: https://johnfactotum.github.io/foliate/
 [xCHM]: https://github.com/rzvncj/xCHM
 [Evince]: https://wiki.gnome.org/Apps/Evince
 [rclone]: https://rclone.org/
@@ -703,6 +571,7 @@ Miscellaneous user land customizations and tune-ups:
 [Music on Console]: https://moc.daper.net/
 [ffmpeg]: https://ffmpeg.org/
 [Handbrake]: https://handbrake.fr/
+[imagemagick]: https://imagemagick.org/
 
 # Issues
 
@@ -710,7 +579,8 @@ Check for kernel issues during boot up and down with
 
 {{< highlight bash >}}
 journalctl --list-boots
-journalctl -b1
+# Check current boot’s logs, use ‘-b -1’ for previous, etc.
+journalctl -b [-0]
 {{< /highlight >}}
 
 1. Log out and in; mouse cursor is frozen!
