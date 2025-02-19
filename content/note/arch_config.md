@@ -527,7 +527,7 @@ Miscellaneous user land customizations and tune-ups:
 * Archive Manager
     - `yay -S --needed 7zip unzip unrar`
     - `xarchiver` GUI integrates well with Thunar
-* `lightlocker` is pretty good as a lock screen
+* `light-locker` is pretty good as a lock screen
 * Screenshots
     - `xfce4-screenshooter`; had to be hooked to <kbd>PrintScr</kbd> through `xfce4-keyboard-settings` under the _Application Shortcuts_ tab
 * Preferred Applications

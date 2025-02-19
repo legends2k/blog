@@ -112,7 +112,7 @@ Super popular web comics on programming.  [explainXKCD.com][] details each comic
   - [Make Games Not Engines... to learn Engines](https://seanmiddleditch.com/makes-games-not-engines-to-learn-engines/)
 * [Teach Yourself Programming in Ten Years](http://norvig.com/21-days.html) - Peter Norvig’s excellent piece on practise
   - [The Forty-Year Programmer](https://codefol.io/posts/the-forty-year-programmer/) - Great insights (and useful tips) from an experienced developer
-* [Your Brain on the Internet — Multi-Tasking Research](http://teaching.idallen.com/cst8207/15w/notes/005_this_is_your_brain.html): on the horrors of _continuous partial attention_ due to multi-tasking, smartphones and internet.
+* [Your Brain on the Internet — Multi-Tasking Research](https://teaching.idallen.com/cst8207/19w/notes/005_this_is_your_brain.html): on the horrors of _continuous partial attention_ due to multi-tasking, smartphones and internet.
 * [Essays on programming I think about a lot](https://www.benkuhn.net/progessays/): a page similar to this one
 * [The Rise of User-Hostile Software](https://den.dev/blog/user-hostile-software/): explains the rampant problem with proprietary, tracking software crippling the industry
 

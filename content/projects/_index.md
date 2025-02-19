@@ -28,6 +28,8 @@ I’ve authored a cross-platform 3D game engine using C++ and OpenGL/D3D/Metal
 
 ## 3D Workouts
 
+{{< figure src="terrain.webp" link="terrain.webp" caption="Terrain with triangle picking sans engine; plain C++ and OpenGL" >}}
+
 Multiple mid-sized projects to understand 3D math and graphics concepts from ground up using no high-level libraries.  Right from primitives to collision detection to spatial data structures to frustum culling everything was implemented manually from scratch.
 
 **Highlights**:
@@ -46,7 +48,9 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 
 ## Field of Vision System
 
-  An optimized field of view and line of sight system for visibility queries in strategy games; it minimizes intersection tests so that it is usable in a game where multiple AI agents would need their FoV computed every frame.  I worked out the math in designing the broad and narrow-phase culling; made a proof of concept implementation of the system in HTML5 canvas/JavaScript — viewable and debug-able in a browser.  The complete design with illustrations and the geometry involved is documented in excruciating detail; [this document][2d-fov-doc] shows the level of understanding and intuition I have on such topics.
+{{< figure src="2d-fov.webp" link="2d-fov.webp" caption="2D Field of View with JS + HTML5 canvas" >}}
+
+An optimized field of view and line of sight system for visibility queries in strategy games; it minimizes intersection tests so that it is usable in a game where multiple AI agents would need their FoV computed every frame.  I worked out the math in designing the broad and narrow-phase culling; made a proof of concept implementation of the system in HTML5 canvas/JavaScript — viewable and debug-able in a browser.  The complete design with illustrations and the geometry involved is documented in excruciating detail; [this document][2d-fov-doc] shows the level of understanding and intuition I have on such topics.
 
 **Link**: [Live Demo](https://legends2k.github.io/2d-fov)
 
@@ -56,13 +60,17 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 
 ## Navmesh Pather
 
-  An optimized navigation mesh based path finding system for strategy games.  It uses funnel narrowing (string-pulling) algorithm for optimized, realistic paths.
+{{< figure src="navmesh-pather.webp" link="navmesh-pather.webp" caption="Navigation Mesh based path finder" >}}
+
+An optimized navigation mesh based path finding system for strategy games.  It uses funnel narrowing (string-pulling) algorithm for optimized, realistic paths.
 
 **Link**: [Live Demo](https://bbcdn.githack.com/rmsundaram/tryouts/raw/dev/CG/WebGL/NavmeshPather/midpoint/level.html)
 
 **Used**: Geometry, Graph, HTML5/Canvas, JavaScript ♦ Cross-platform
 
 ## Geometric Transforms 101
+
+{{< figure src="2d-xforms-101.webp" link="2d-xforms-101.webp" caption="Interactive tutorial on graphics transforms" >}}
 
   A [GameDev.net featured](http://www.gamedev.net/page/resources/_/technical/math-and-physics/2d-transforms-101-r4212) interactive tutorial on geometric transformations for programmers favouring intuition over mathematical rigour; concepts explained are illustrated with animation.  In addition to elementary transforms on points, it also treats coordinate system and hierarchical transforms; shows mappings from active and passive viewpoints.  It can be viewed on a browser and in any form factor, as it only uses HTML5 and vector graphics.
 
@@ -71,6 +79,8 @@ Multiple mid-sized projects to understand 3D math and graphics concepts from gro
 **Used**: Linear Algebra, Trigonometry, SVG, HTML, CSS, JS ♦ Cross-platform
 
 ## Spirit of C++
+
+{{< figure src="spirit-of-cpp.webp" link="spirit-of-cpp.webp" caption="Cross-platform English Thesaurus" >}}
 
 A presentation for the non-C++ programmer to build a healthy C++ mental model. High-level details are emphasized over low-level ones; it takes the approach of demonstrating high-level and simple ideas leading to a healthy model when learning something new.  The larger C++ community [received it well][spirit-reddit] too.
 
@@ -88,17 +98,23 @@ I've trained multiple teams in Microsoft with this in [my C++ bootstrap workshop
 
 ## Artha
 
-  A handy offline thesaurus originally written on GNU/Linux using WordNet as its database, with distinct features like global shortcut key look-up, passive desktop notification and wild-card search; [most distributions' repositories have it][artha-pkg].  I later ported to Windows and Windows Phone; it was rated 5 stars in [AppStore](https://www.microsoft.com/en-US/store/Apps/Artha-The-Open-Thesaurus/9NBLGGH0DBNB).
+{{< figure src="artha.webp" link="artha.webp" caption="Cross-platform English Thesaurus" >}}
+
+A handy offline thesaurus originally written on GNU/Linux using WordNet as its database, with distinct features like global shortcut key look-up, passive desktop notification and wild-card search; [most distributions' repositories have it][artha-pkg].  It garners many [positive reviews][artha-reviews] and [user recommendations][artha-recos].
 
 **Link**: https://artha.sourceforge.net/
 
 **Used**: C, C#, GTK+, X11, XAML, GCC, VC++, Autotools ♦ GNU/Linux, Windows, Windows Phone
 
 [artha-pkg]: https://pkgs.org/search/?q=artha
+[artha-reviews]: https://www.google.com/search?hl=en&q=artha+thesaurus+reviews
+[artha-recos]: https://www.youtube.com/watch?v=TIq5fdhS7Ww
 
 ## Puyo Puyo
 
-  A tile-matching puzzle game playable on a terminal in any platform; written in modern C++ with portability and minimalism in mind.  The engine code, handling core logic and input, is an independent module that may be plugged to any front-end.  A command-line interface, using ncurses, was later added to make a cross-platform game out of the engine.
+{{< figure src="puyo.webp" link="puyo.webp" caption="ncurses frontend for engine" >}}
+
+A tile-matching puzzle game playable on a terminal in any platform; written in modern C++ with portability and minimalism in mind.  The engine code, handling core logic and input, is an independent module that may be plugged to any front-end.  A command-line interface, using ncurses, was later added to make a cross-platform game out of the engine.
 
 **Link**: https://bitbucket.org/rmsundaram/tryouts/src/master/Puyo/
 
@@ -146,3 +162,13 @@ Authored a 2D game engine and associated tools for artists to work on sprites an
 Authored source filters for A/V codecs like A-Law, μ-Law, H.264 and for progressive downloading of (YouTube) videos on Windows Media Player.
 
 **Used**: C++, DirectShow ♦ WindowsMobile
+
+## Freelancer
+
+### mERP
+
+{{< figure src="mERP-MDI.webp" link="mERP-MDI.webp" caption="Tailor-made ERP suite" >}}
+
+End-to-end, customizable ERP solution for small businesses.  Manage products, sub-parts, stocks, employees, sales and more!  Generate elegant PDF receipts, reports and ledgers.  Both on-prem and cloud DB servers are supported.  Supports Linux, Windows and macOS.
+
+**Used**: Qt, Python, PostgreSQL

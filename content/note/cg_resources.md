@@ -46,6 +46,8 @@ To be proficient in computer graphics or even to understand the basics, a decent
 * [Linear Algebra Free Text][lin_alg] by Professor Jim Hefferon covers linear algebra from ground up with lot of exercises.
 * [3D Game Engine Programming][3dgep] has a bunch of articles covering spaces, vectors, matrices and quaternions
 * [2D Transforms 101][2d-transforms-101] is a 2D transforms presentation I gave years back; the general idea applies to 3D too
+* [An Introduction to Practical 3D Math for Programmers][stunlock-lin-alg] is a guide covering important concepts of 3D math without (too much) symbol vomit
+* [Matrix Compendium - AMD GPUOpen][matrix-compendium]
 
 ## 3D Math Books
 
@@ -174,6 +176,8 @@ Serious game development eventually leads to low-level optimisations.  This list
 [lin_alg]: http://joshua.smcvt.edu/linearalgebra/
 [3dgep]: https://www.3dgep.com/category/math/
 [2d-transforms-101]: https://legends2k.github.io/2d-transforms-101/
+[stunlock-lin-alg]: https://stunlock.gg/posts/linear_algebra/
+[matrix-compendium]: https://gpuopen.com/learn/matrix-compendium/matrix-compendium-intro/
 [math-vec-tut]: https://chortle.ccsu.edu/VectorLessons/index.html
 [WebGL Fundamentals]: http://webglfundamentals.org/
 [WebGL2 Fundamentals]: http://webgl2fundamentals.org/

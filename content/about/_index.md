@@ -16,11 +16,11 @@ I can be reached at _&#108;&#x65;&#x67;&#x65;&#110;&#100;&#x73;&#50;&#x6b;&#64;&
 Repertoire
 ==========
 
-**Languages**: **C++ (20)**, **C**, **Rust**, **Python**, Lua, JavaScript, Perl, GLSL
-**Libraries**: OpenGL (3.3+), Vulkan, WebGPU, WebGL2, Direct3D, Direct2D, Boost, GTK+, Qt, Cocoa
-**Tools**: Bash, GCC, Clang, VC++, Valgrind, Visual Studio, CMake, meson, Bazel
-**Editors**: Emacs, Blender, GIMP, Krita
-**Platforms**: Linux, macOS, Windows
+* **Languages**: **C++ (20)**, **C**, **Rust**, **Python**, Lua, JavaScript, Perl, GLSL
+* **Libraries**: OpenGL (3.3+), Vulkan, WebGPU, WebGL2, Direct3D, Direct2D, Boost, GTK+, Qt, Cocoa
+* **Tools**: Bash, GCC, Clang, VC++, Valgrind, Visual Studio, CMake, meson, Bazel
+* **Editors**: Emacs, Blender, GIMP, Krita
+* **Platforms**: Linux, macOS, Windows
 
 
 Work Experience (17+ years)
