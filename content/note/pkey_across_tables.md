@@ -296,7 +296,7 @@ Refer [Model Inheritance in a DB][6] and [How can you represent inheritance in a
 1. [Inheritance - PostgreSQL Manual][1]
 2. [Inheritance: Caveats - PostgreSQL Manual][2]
 3. [Violation of uniqueness in primary key when using inheritance - StackOverflow][3]
-4. [Why foreign keys must reference a unique key in PostgreSQL - StackOverflow][4]
+4. [Why do composite foreign keys need a separate unique constraint?][4]
 5. [Sharing a single primary key sequence across a database?][5]
 6. [How do you effectively model inheritance in a database?][6]
 7. [Super-type and Sub-types arrangement - StackOverflow][7] - My inspiration but not solution
@@ -358,7 +358,7 @@ Foreign-key constraints:
 [1]: https://www.postgresql.org/docs/15/ddl-inherit.html
 [2]: https://stackoverflow.com/q/56637251/183120
 [3]: https://www.postgresql.org/docs/15/ddl-inherit.html#DDL-INHERIT-CAVEATS
-[4]: https://stackoverflow.com/a/11966555/183120
+[4]: https://dba.stackexchange.com/a/153395
 [5]: https://dba.stackexchange.com/q/50652/259438
 [6]: https://stackoverflow.com/q/190296/183120
 [7]: https://stackoverflow.com/a/27415430/183120

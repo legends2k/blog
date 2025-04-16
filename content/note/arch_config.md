@@ -33,7 +33,7 @@ and `/etc/systemd/resolved.conf`:
 FallbackDNS=1.1.1.1 1.0.0.1
 {{< /highlight >}}
 
-This way an access point’s DNS preferred over the fallback Cloudfare’s.
+This way an access point’s DNS is preferred over the fallback Cloudfare’s.
 
 [iwd]: https://wiki.archlinux.org/title/iwd
 [nw-setup]: https://insanity.industries/post/simple-networking/
@@ -319,7 +319,7 @@ udisksctl unmount --block-device /dev/disk/by-label/CAPSULE
 udisksctl power-off --block-device /dev/disk/by-label/CAPSULE    # power-off before unplug
 {{< /highlight >}}
 
-A recommended GUI, if needed, is [udiskie](https://github.com/coldfix/udiskie).
+A recommended GUI, if needed, is [udiskie](https://github.com/coldfix/udiskie).  Thunar auto-integrates well though.
 
 [by-label populator]: https://unix.stackexchange.com/q/56291/30580
 [udisk recommendation]: https://wiki.archlinux.org/index.php/USB_storage_devices#Auto-mounting_with_udisks
@@ -444,7 +444,7 @@ yay -S --needed ttf-ubuntu-font-family ttf-mononoki-nerd
 
 This starts showing up inside the browser --- for code snippets --- too!
 
-[Nerd Fonts][] is a project that lets you impregnate your favourite font with glyphs from icon packages like [Font Awesome][], [Devicons][], ….  It’s useful if you’re used to using these special icons.  Most popular fonts don’t need anything manual -- the legwork is already done; just download!  I removed `ttf-mononoki` and installed _mononoki Nerd Font_ manually.
+[Nerd Fonts][] is a project that lets you impregnate your favourite font with glyphs from icon packages like [Font Awesome][], [Devicons][], ….  It’s useful if you’re used to using these special icons.  Most popular fonts don’t need anything manual -- the legwork is already done; just download!
 
 ## Xfce4 Settings
 
@@ -452,8 +452,8 @@ To see available fonts, run `fc-list` (from `fontconfig` package)
 
 Under _Appearance_ set
 
-* **Default Font**: Noto Sans 12
-* **Default Monospace Font**: mononoki 13
+* **Default Font**: Noto Sans Regular 12
+* **Default Monospace Font**: Mononoki Nerd Font Mono Regular 13
 
 If setting system monospace wasn’t enough
 
@@ -585,7 +585,6 @@ journalctl -b [-0]
 
 1. Log out and in; mouse cursor is frozen!
     - Fix: `sudo modprobe -r psmouse && modprobe psmouse`
-2. Reverse scrolling in Xfce4 Terminal.
 
 # Epilogue
 
