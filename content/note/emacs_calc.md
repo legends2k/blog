@@ -84,13 +84,14 @@ I use the GNU [Emacs Calc][], an [RPN][] calculator, exclusively unless I’m aw
 
 * Floating-point / Fixed-point / Scientific notation: `d n` / `d f` / `d s`
 * Set precision: `p`
-* Log to top-of-stack as base: `B`
-  - Integer log to top-of-stack as base `f I`
+* Log of top-of-stack to base top-but-one-of-stack: `B`
+  - Integer log of top-of-stack to base top-but-one-of-stack: `f I`
   - $log_{10}$: `H L`
   - $ln$: `L`
 * Square root: `Q`
   - Integer square root: `f Q`
   - n-th root: `I ^`
+* Raise to power: `^`
 * Reciprocal: `&`
 * Convert to fraction/float: `c F` / `c f`
 * Change to radians/degrees: `m r` / `m d`
