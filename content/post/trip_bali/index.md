@@ -17,7 +17,10 @@ draft = true
 
 # Day 0
 
-- Check-in at Umasari Rice Terrace Villa
+- Arrival at airport
+- Purchase SIM with just data
+    + Enough for Gojek, Grab and maps
+- Check-in at Umasari Rice Terrace Villa at night
 
 # Day 1
 
@@ -33,8 +36,11 @@ draft = true
 
 1. Visit Ulun Danu Beratan Temple [optional]
     + Most temples are like this but this one's popular
-2. Visit some waterfall between (1) and (3)
+2. Visit some waterfall before hitting Tanah Lot
+    + This was needless and delayed us for the next spot
 3. Visit Tanah Lot for sunset [must-watch]
+    + We got here late; poor visibility due to twilight
+    + Would’ve preferred to be here a bit earlier
 
 # Day 3
 
