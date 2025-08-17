@@ -16,21 +16,31 @@ I can be reached at _&#108;&#x65;&#x67;&#x65;&#110;&#100;&#x73;&#50;&#x6b;&#64;&
 Repertoire
 ==========
 
-* **Languages**: **C++ (20)**, **C**, **Rust**, **Python**, Lua, JavaScript, Perl, GLSL
-* **Libraries**: OpenGL (3.3+), Vulkan, WebGPU, WebGL2, Direct3D, Direct2D, Boost, GTK+, Qt, Cocoa
+* **Languages**: **C++ (20)**, **C**, **Rust**, **Python**, Objective-C, JavaScript, Lua, SQL, GLSL
+* **Libraries**: OpenGL (3.3+), WebGPU, WebGL2, Direct3D, Direct2D, Boost, GTK+, Qt, Cocoa
 * **Tools**: Bash, GCC, Clang, VC++, Valgrind, Visual Studio, CMake, meson, Bazel
+* **Databases**: PostgreSQL, SQLite
 * **Editors**: Emacs, Blender, GIMP, Krita
 * **Platforms**: Linux, macOS, Windows
 
 
-Work Experience (17+ years)
+Work Experience (19+ years)
 ===============
 
+* Principal Software Engineer, **Microsoft** (2025 - present)
+* **Freelancer** (2023-2025)
+    - Performance-tuning [4Classic][4classic], an MMORPG
+    - Porting [KStars][] to WebAssembly
+    - Author mERP, an end-to-end inventory solution for [Autocom][]
 * Senior Software Design Engineer, **Microsoft** (2018 — 2023)
 * Developer Relations Engineer, **Havok/Microsoft** (2017 — 2018)
 * Software Design Engineer II, **Microsoft** (2010 — 2017)
 * Software Engineer I, **Electronic Arts Mobile** (2008 — 2010)
 * Software Engineer, **Aricent** (2006 — 2008)
+
+[autocom]: https://acmvalves.com/
+[4classic]: https://www.4classic.eu/
+[kstars]: https://kstars.kde.org/
 
 
 Education
@@ -44,7 +54,7 @@ Education
 Web Presence
 ============
 
-* [StackOverflow](https://stackoverflow.com/users/183120/legends2k): Active member with over 25k reputation and a silver badge in C++
+* [StackOverflow](https://stackoverflow.com/users/183120/legends2k): Active member with over 30k reputation and a silver badge in C++
 _Top Tags_: C++, 3D, OpenGL, Math, Geometry
 * [BitBucket](https://bitbucket.org/rmsundaram/tryouts/overview): C++ and 3D Workouts portfolio
 * [GitHub](https://github.com/legends2k)
