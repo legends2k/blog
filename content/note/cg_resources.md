@@ -35,6 +35,7 @@ Khronos’ official [Vulkan Programming Guide][vulkan-pg] goes:
 * [An Intro to Modern OpenGL][modern_gl] is short and sweet; it's good to understand the rendering pipeline more clearly; once again because it's very illustrative. For more in-depth understanding, read [A trip through the Graphics Pipeline][pipeline_trip].
 * [OpenGL on WikiBooks][wikibooks] has lot of hands-on tutorials which seem to be good too.
 * [Lighthouse 3D][lighthouse] has tutorials for most of CG ~ math, Open GL, GLSL, GLUT, writing your own light weight library for game development.
+* [The Hitchhiker’s Guide to Digital Colour][hg2dc] is a step by step guide to understand digital colour for pixel pushers
 
 # Math
 
@@ -142,7 +143,7 @@ Serious game development eventually leads to low-level optimisations.  This list
 * Mathematics for Game Developers ~ Part V ~ Optimization, _Christopher Tremblay_
 * Vector Game Math Processors, _James C. Leiterman_
 * Real-Time Collision Detection ~ Chapter 13 Optimization, _Christer Ericson_
-* Instruction-level Parallelism, _Wikipedia_
+* [Instruction-level Parallelism][ilp], _Wikipedia_
 * GPGPU Programming for Games and Science ~ Chapter 3, _David Eberly_
 
 # See Also
@@ -168,6 +169,7 @@ Serious game development eventually leads to low-level optimisations.  This list
 [open.gl]: http://open.gl/
 [learngl]: http://www.learnopengl.com/
 [lighthouse]: http://www.lighthouse3d.com/tutorials/
+[hg2dc]: https://hg2dc.com/
 [modern_gl]: http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Table-of-Contents.html
 [pipeline_trip]: http://fgiesen.wordpress.com/2011/07/09/a-trip-through-the-graphics-pipeline-2011-index/
 [wikibooks]: http://en.wikibooks.org/wiki/OpenGL_Programming#Modern_OpenGL
@@ -212,6 +214,7 @@ Serious game development eventually leads to low-level optimisations.  This list
 [skeleton_math]: http://amzn.com/1435458869
 [low-c++]: https://1drv.ms/u/s!AqkzqQjJ-7EtgS9-oiB28cv_iqIj?e=c2dnKZ
 [mo_dbg]: https://mohit.io/blog/category/debugging/
+[ilp]: https://en.wikipedia.org/wiki/Instruction-level_parallelism
 [gamedev_post]: https://gamedev.stackexchange.com/a/46358
 [reinvent_often]: https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_72/
 [disasm-basics]: https://wordsandbuttons.online/you_dont_have_to_learn_assembly_to_read_disassembly.html

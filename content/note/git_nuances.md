@@ -255,6 +255,8 @@ In the commit list opened in your `$EDITOR`, verify the fixup commit’s positio
 * See remote tracking branch: `git branch -vv`
 * Rebase `topic-2` that’s atop `topic-1` which is atop `main` to `main`: `git rebase --onto=main topic-1`
   - If you’re not already on `topic-2`, pass `topic-2` additionally to `switch` to it before doing anything
+* Use bundles to transfer history, patches to move diffs
+  - Bundles can act as a remote and restore entire repo if it's a full backup
 
 
 [mind-gap]: https://en.wikipedia.org/wiki/Mind_the_gap
